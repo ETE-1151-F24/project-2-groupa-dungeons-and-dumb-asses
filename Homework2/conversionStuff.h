@@ -19,10 +19,18 @@ int charToBinary(char){
     //convert charachter to binary
     //int resultChar = 
 }
-
-
 //function for converting integer to binary
+int numToBinary(num){
+    // code to convert numbers to binary
+    //int resultNum =
 
-
-
+}
 //function for converting floats to binary
+int floaterToBinary(floater){
+    // code that convert decimal to binary
+    //int resultDecimal
+}
+
+
+
+
