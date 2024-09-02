@@ -1,3 +1,7 @@
+#include<iostream>
+#include<string> 
+#include<cctype> // includes the cctype setting to run things like isdigit to check if something is a number
+using namespace std;
 // this is where i put my functions
 // Using the information you have learned so far (and a little google foo):
 
@@ -13,24 +17,32 @@
 //     return result;
 // }       
 
+if inputToConvert == char;
+elif inputToConvert == number
 
 //function for converting charachter to binary
-int charToBinary(char c){
-    //convert charachter to binary
-    //int resultChar = 
+int charToBinary(char carac) {
+   //convert charachter to binary
+    //int resultChar = .....;
+    return resultChar;
 }
 //function for converting integer to binary
-int numToBinary(int number){
+int numToBinary(int number) {
     // code to convert numbers to binary
-    //int resultNum =
+    //int resultNum = .....;
+    return resultNum;
 
 }
 //function for converting floats to binary
-int floaterToBinary(float number){
+int floaterToBinary(float number) {
     // code that convert decimal to binary
     //int resultDecimal
+    return resultDecimal;
 }
-
-
+int mainconvert(){
+}
+char charToBinary;
+int numToBinary;
+float floaterToBinary;
 
 
