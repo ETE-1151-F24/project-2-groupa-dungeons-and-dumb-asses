@@ -1,9 +1,12 @@
+#include "functions.h"
 #include<iostream>
-#include<string>
 using namespace std;
 
 
+
+}
 int main() {
+
 
 //this is where i would make an input statement and code to initialize input
 
