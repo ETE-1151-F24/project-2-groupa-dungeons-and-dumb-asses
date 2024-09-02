@@ -20,7 +20,7 @@ int charToBinary(char){
     //int resultChar = 
 }
 //function for converting integer to binary
-int numToBinary(num){
+int numToBinary(number){
     // code to convert numbers to binary
     //int resultNum =
 
