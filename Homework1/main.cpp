@@ -3,6 +3,9 @@
 #include<iostream>
 
 int main() {
+#include<iostream>
+
+int main() {
 
     // code goes below here
     std::cout << "Hello, World!" << std::endl;
