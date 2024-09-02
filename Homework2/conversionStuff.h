@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string> 
+#include<sstream> //allows me to do stuff involging string streams
 #include<cctype> // includes the cctype setting to run things like isdigit to check if something is a number
 using namespace std;
 // this is where i put my functions
@@ -17,7 +18,7 @@ using namespace std;
 //     return result;
 // }       
 
-if inputToConvert == char;
+if inputToConvert isdigit;
 elif inputToConvert == number
 
 //function for converting charachter to binary
