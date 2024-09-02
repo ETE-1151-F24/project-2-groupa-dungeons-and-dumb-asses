@@ -7,3 +7,6 @@
 // Here is a helpful web page
 // function for character
 
+//function for converting charachter to binary
+//function for converting integer to binary
+//function for converting floats to binary
