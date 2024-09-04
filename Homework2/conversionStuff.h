@@ -1,10 +1,6 @@
-#include<iostream>
-#include<string> 
-#include<sstream> //allows me to do stuff involging string streams
-#include<cctype> // includes the cctype setting to run things like isdigit to check if something is a number
-using namespace std;
-// this is where i put my functions
-// Using the information you have learned so far (and a little google foo):
+#ifndef CONVERSIONSTUFF_H       //if my [conversionStuff.h] isnt already defined...
+#define CONVERSIONSTUFF_H       //then define [conversionStuff.h] with the following code lines as seen below
+
 
 // Create a program that takes and input and converts it to binary 
 // Program should be able to return correct binary value of Chars, int and floats
@@ -12,38 +8,15 @@ using namespace std;
 // Here is a helpful web page
 // function for character
 
+
 //   ##example##
 // int addNumbers( int first_param, int second_param){
 //     int result = first_param + second_param;
 //     return result;
 // }       
 
-if inputToConvert isdigit;
-elif inputToConvert == number
+void charToBinary(char c);      //preliminarily declaring a function called [charToBinary] and expecting a character [char] variable [c]
+void numToBinary(int n);        //preliminarily declaring a function called [numToBinary] and expecting a integer [int] variable [n]
+void floaterToBinary(float f);  //preliminarily declaring a function called [floaterToBinary] and expecting a float [float] variable [f]
 
-//function for converting charachter to binary
-int charToBinary(char carac) {
-   //convert charachter to binary
-    //int resultChar = .....;
-    return resultChar;
-}
-//function for converting integer to binary
-int numToBinary(int number) {
-    // code to convert numbers to binary
-    //int resultNum = .....;
-    return resultNum;
-
-}
-//function for converting floats to binary
-int floaterToBinary(float number) {
-    // code that convert decimal to binary
-    //int resultDecimal
-    return resultDecimal;
-}
-int mainconvert(){
-}
-char charToBinary;
-int numToBinary;
-float floaterToBinary;
-
-
+#endif CONVERSIONSTUFF_H //this is the statement to end the definition of the [conversionStuff.h]

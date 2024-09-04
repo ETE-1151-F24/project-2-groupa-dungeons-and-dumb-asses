@@ -48,3 +48,6 @@ else {
 
     return 0;    //returns the value of 0 if the program completes correctly                   
 }
+
+
+// there was some mention fo possibly putting error handling into the program but i am not sure what to do with it.
