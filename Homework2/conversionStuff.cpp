@@ -31,6 +31,6 @@ void floaterToBinary(float f) {
         int output;
     } data;
     data.input = f;
-    std::bitset<32> binary(data.output);
-    std::cout << binary << std::endl;
+    bitset<32> binary(data.output);
+    cout << binary << endl;
 }

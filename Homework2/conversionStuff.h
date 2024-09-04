@@ -1,5 +1,5 @@
 #ifndef CONVERSIONSTUFF_H       //if my [conversionStuff.h] isnt already defined...
-#define CONVERSIONSTUFF_H       //then define [conversionStuff.h] with the following code lines as seen below
+#define CONVERSIONSTUFF_H       //then define [CONVERSIONSTUFF_H] with the following code lines as seen below
 
 // Create a program that takes and input and converts it to binary 
 // Program should be able to return correct binary value of Chars, int and floats
