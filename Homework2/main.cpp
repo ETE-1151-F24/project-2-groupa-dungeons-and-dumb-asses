@@ -2,7 +2,8 @@
 // i am doing this convention to help that stand out in my comments better
 
 
-#include "conversionStuff.h"  // Includes the functions that i declared in conversionStuff.h
+#include "conversionStuff.h" // Includes the functions that i declared in conversionStuff.h
+#include "conversionStuff.cpp" //
 #include<iostream>
 #include<string>               //this is the statement to include the string library for using the [string] syntax
 #include<cctype>                // this code includes a library to help with the [isalpha] input check

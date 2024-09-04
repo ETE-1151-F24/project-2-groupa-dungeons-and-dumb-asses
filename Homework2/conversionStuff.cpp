@@ -9,15 +9,15 @@ using namespace std;
 //here is the code for the function [charToBinary]
 void charToBinary(char c) {
     // [bitset<8>] creates a bitset of 8 bits, representing the char [c]
-    bitset<8> binary(c);  //  then convert the char [c] to an 8-bit [binary] number
-    cout << binary << endl;  // then it outputs the binary  to the console
+    std::bitset<8> binary(c);  //  then convert the char [c] to an 8-bit [binary] number
+    std::cout << binary << std::endl;  // then it outputs the binary  to the console
 }
 
 //here is the code for the function [numToBinary]
 void numToBinary(int n) {
     //[bitset<32>] creates a bitset of 32 bits, representing the integer [n]
-    bitset<32> binary(n);  // and then Converts the integer [n] to a 32-bit [binary] number
-    cout << binary << endl;  // then it outputs the binary
+    std::bitset<32> binary(n);  // and then Converts the integer [n] to a 32-bit [binary] number
+    std::cout << binary << std::endl;  // then it outputs the binary
 }
 
 //here is the code for the function [floaterToBinary]
@@ -31,6 +31,6 @@ void floaterToBinary(float f) {
         int output;
     } data;
     data.input = f;
-    bitset<32> binary(data.output);
-    cout << binary << endl;
+    std::bitset<32> binary(data.output);
+    std::cout << binary << std::endl;
 }
