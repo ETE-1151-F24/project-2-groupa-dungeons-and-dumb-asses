@@ -13,7 +13,8 @@ int main() {
                           
 
     cout << "Where do you live?" << endl;  	//this is a prompt statement and goes before cin
-	cin >> x;		                 //tells the computer to hold for input for [x]
+	getline(cin, x);	//[cin] tells the computer to hold for input for [x] and [getline] allows for capturing strings with spaces
+
 
                     // !!!!!!! pay close attention to the quote marks ELI...[”] Result is = [”] curly quotes create and UNRECOGNIZED TOKEN ERROR
                 // !!!!!!! the correct quotes to use are ["] Result is = ["]  **** notice they are straight quotes
