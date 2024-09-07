@@ -10,14 +10,12 @@
 constexpr double pi = 3.14159265358979323846;  
 // Constexpr ensures the value of pi is computed at compile-time and double allows it to be many decimal places
 
+constexpr int squareArea(int side); //parameter for this function is [side]
+constexpr int rectangleArea(int length, int width); //parameter for this function is [length] and [width]
+constexpr double circleArea(double radius); //parameter for this function is [radius] and its a [double] since it is interacting with pi
+constexpr double cylinderVolume(double radius, double height);//paramet of funct are [radius] and [height] are [double]s since pi interaction 
 //this is my constant expressions declarations of my  individual functions that i will expand on in the [areaStuff.cpp] file
 
-constexpr int squareArea(int side); 
-constexpr int rectangleArea(int length, int width);
-constexpr double circleArea(double radius);
-constexpr double cylinderArea(double radius, double height);
 
-
-
-//this is the statement to end the definition of the [conversionStuff.h]
-#endif // CONVERSIONSTUFF_H
+//this is the statement to end the definition of the [areaStuff.h]
+#endif // AREASTUFF_H
