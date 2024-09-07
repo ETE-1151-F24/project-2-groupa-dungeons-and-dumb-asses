@@ -1,6 +1,8 @@
 //DONT EVER TY TO COMPILE THIS...IT IS JUST FOR VISUAL REFERENCE
 // cout << "" << endl;       this is the syntax for an output statement with text
 
+// ANYTIME DEALING WITH PI YOU SHOULD CHOOSE TO DECLARE AS A DOUBLE
+
 //-------------------------------------THIS IS YOUR STARTING JUMP OFF POINT FOR CODING------------------------------
 #include<iostream>
 using namespace std;                //this makes it the [std::] naming scheme so i dont have to type it over and over
