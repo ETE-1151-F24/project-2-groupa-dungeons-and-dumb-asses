@@ -37,5 +37,22 @@ cout << "1. Area of a square" << endl;      //this is the output message for squ
 cout << "2. Area of a rectangle" << endl;   //this is the output message for rectangle option
 cout << "3. Area of a circle" << endl;      //this is the output message for circle option
 cout << "4. Area of a cylinder" << endl;    //this is the output message for cylinder option
+
+void sniches(){
+   int gear{Wand};
+   //switch ( Initialization Statment; Control Expression)
+    switch (double magicPower{3.56}; gear) {
+        case Wand: {
+            std::cout << "Equipped gear is Wand. Magic Power: " << magicPower << std::endl;
+        }
+        break;
+
+
+
+
+
+
+
+
 return 0;
 }
