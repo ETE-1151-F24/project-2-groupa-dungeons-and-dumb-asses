@@ -23,26 +23,7 @@ total area:1        */
 #include <iostream>            // Includes the standard input/output stream library for cout
 #include "areaStuff.h"
 using namespace std;
-//i need to make [constant expressions] for area for square, rectangles, or circles, cylinders,
-//area of a square = side*side
-//area of a rectangle = length * width
-// area of a circle = pi*(radius^2) = pi*radius*radius which will need to be a double because pi has so many decimal places
-// area of a cylinder = pi*radius*radius*height which will need to be a double because pi has so many decimal places
-// also need a constant expression for pi which will need to be a double because pi has so many decimal places
-
-constexpr double pi = 3.14159265358979323846;  
-// Constexpr ensures the value of pi is computed at compile-time and double allows it to be many decimal places
-
-constexpr int squareArea(int side) {
-    // ths Define a [constexpr] function [int squareArea] with the parameter of type [int] named [side]to calculate the area of a square
-    return side * side;  // Returns the area of the square (side * side)
-}
-constexpr
-constexpr
-constexpr
-
-
-
+//int the header file [areaStuff.h] i am specifying the constants that will have the functions attatched to them
 
 
 int main() {
