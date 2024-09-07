@@ -29,21 +29,24 @@ using namespace std;
 int main() {
 
 //i need to initialize a variable to store the user input
-int option;  // this code initialzes a variable to store the user input as [option] and an integer
+int option;                                     // this code initialzes a variable to store the user input as [option] and an integer
 
 cout << "Choose an object to calculate the area of (1-4)" << endl;  
-// Outputs a message to the user, prompting them to choose a number between 1 and 4 to select which object’s area they want to calculate.
-cout << "1. Area of a square" << endl;      //this is the output message for square option
-cout << "2. Area of a rectangle" << endl;   //this is the output message for rectangle option
-cout << "3. Area of a circle" << endl;      //this is the output message for circle option
-cout << "4. Area of a cylinder" << endl;    //this is the output message for cylinder option
+                                                // Outputs a message to the user, prompting number between 1 and 4 for which area
+cout << "1. Area of a square" << endl;          //this is the output message for square option
+cout << "2. Area of a rectangle" << endl;       //this is the output message for rectangle option
+cout << "3. Area of a circle" << endl;          //this is the output message for circle option
+cout << "4. Area of a cylinder" << endl;        //this is the output message for cylinder option
+cin >> option;                                  // this is the code for waiting for the user input and then stores it to [option]
 
-void sniches(){
-   int gear{Wand};
-   //switch ( Initialization Statment; Control Expression)
-    switch (double magicPower{3.56}; gear) {
-        case Wand: {
-            std::cout << "Equipped gear is Wand. Magic Power: " << magicPower << std::endl;
+switch (option){                                //initializes [switch] operator to check which [case] is chosen/referenced from [option]
+                                                //for each case, it will perform the following operations
+                                                // which is declare my parameter variable(s), prompt input for them, store the input...
+                                                // use stored inputs to run case specific functions  
+        
+        case 1: { 
+
+
         }
         break;
 
