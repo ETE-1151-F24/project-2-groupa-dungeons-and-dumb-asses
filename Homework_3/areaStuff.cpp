@@ -1,9 +1,5 @@
 #include "areaStuff.h" // this includes the contents of the [areaStuff.h] file while compiling
 // the areaStuff.cpp file with have the definitions of my functions included within this
-int side;
-int lenght;
-int height;
-double radius;
 
 constexpr int squareArea(int side){                         //the area of a square is the sides multiplied together
     return side*side;

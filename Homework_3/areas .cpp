@@ -22,9 +22,9 @@ total area:1        */
 
 #include <iostream>            // Includes the standard input/output stream library for cout
 #include "areaStuff.h"
-using namespace std;
-//int the header file [areaStuff.h] i am specifying the constants that will have the functions attatched to them
 
+//int the header file [areaStuff.h] i am specifying the constants that will have the functions attatched to them
+using namespace std;
 
 int main() {
 
@@ -44,7 +44,37 @@ switch (option){                                //initializes [switch] operator 
                                                 // which is declare my parameter variable(s), prompt input for them, store the input...
                                                 // use stored inputs to run case specific functions  
         
-        case 1: { 
+        case 1: {
+            int side;
+
+
+        }
+        break;
+
+        case 2: {
+            int length,width;
+             
+
+
+        }
+        break;
+
+        case 3: {
+            double radius
+             
+
+
+        }
+        break;
+
+        case 4: {
+            double radius, height,
+            cout << "Enter the radius of the cylinder: ";  
+            cin >> radius;  
+            cout << "enter cylinder height"
+            cin >> height;  
+            cout << "Total surface area of the cylinder: " << cylinderArea(radius, height) << std::endl;  // Call the function
+            break; 
 
 
         }
