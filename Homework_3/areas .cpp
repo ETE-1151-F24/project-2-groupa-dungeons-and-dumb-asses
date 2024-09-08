@@ -44,43 +44,71 @@ switch (option){                                //initializes [switch] operator 
                                                 // which is declare my parameter variable(s), prompt input for them, store the input...
                                                 // use stored inputs to run case specific functions  
         
-        case 1: {
-            int side;
+    case 1: {                                                                               //case one is square 
+            int side;                                                                       //initializes the variable [side]
+            cout << "enter side length of the square:" <<endl;                              //output message prompt for the side
+            cin >> side;                                                                    ////stores user input into variable [side]
+            cout << "the area of the square is" << squareArea(side) << endl;                //area message followed by the function [squareArea]...
+        }                                                                                   //with user specified parameter [side]
+    break;
+
+    case 2: {                                                                               //case two is rectangle
+            int length,width;                                                               //initializes the variables [length] and [width]
+            cout << "enter length of the rectangle:" <<endl;                                //output message prompt for the length
+            cin >> length;                                                                  //stores user input into variable [length]
+            cout << "enter width of rectangle square:" << endl;                             //output message promptydoo for width
+            cin >> width;                                                                   //stores user input into variable [width]
+            cout << "the area of the square is" << rectangleArea(length, width) << endl;    //area message followed by the function [rectangleArea]...         
+                                                                                            //with user specified parameters [length] and [width]
 
 
         }
-        break;
+    break;
 
-        case 2: {
-            int length,width;
+    case 3: {                                                                               //case three is circle
+            double radius;                                                                  //initializes the variable [radius]
+            cout << "enter radius of the circle:" <<endl;                                   //output message prompt for the radius
+            cin >> length;                                                                  //stores user input into variable [length]
+            cout << "enter width of rectangle square:" << endl;                             //output message promptydoo for width
+            cin >> width;                                                                   //stores user input into variable [width]
+            cout << "the area of the square is" << rectangleArea(length, width) << endl;    //area message followed by the function [rectangleArea]...         
+                                                                                            //with user specified parameters [length] and [width]
              
 
 
         }
-        break;
+    break;
 
-        case 3: {
-            double radius
-             
-
-
-        }
-        break;
-
-        case 4: {
-            double radius, height,
-            cout << "Enter the radius of the cylinder: ";  
-            cin >> radius;  
-            cout << "enter cylinder height"
-            cin >> height;  
-            cout << "Total surface area of the cylinder: " << cylinderArea(radius, height) << std::endl;  // Call the function
-            break; 
+    case 4: {
+        double radius, height;
+        cout << "enter radius of cylinder: "  << endl;  
+        cin >> radius;  
+        cout << "Enter the height of the cylinder: " << endl;
+        cin >> height;  
+        cout << "Total surface area of the cylinder: " << cylinderArea(radius, height) << std::endl;  // Call the function
+    break;
+}
 
 
         }
         break;
 
+/*
+        .-.
+       |_:_|
+      /(_Y_)\  
+     ( \/M\/ )
+      ) |-| (
+     /  |-|  \
+    /   |_|   \
+   /    (_)    \
+  /'._.-' `-._.'\
+ /               \
+/__..--'''''--..__\
+`"--.._______..--"`
 
+lord vader approves
+*/
 
 
 
