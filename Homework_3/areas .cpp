@@ -58,41 +58,33 @@ switch (option){                                //initializes [switch] operator 
             cin >> length;                                                                  //stores user input into variable [length]
             cout << "enter width of rectangle square:" << endl;                             //output message promptydoo for width
             cin >> width;                                                                   //stores user input into variable [width]
-            cout << "the area of the square is" << rectangleArea(length, width) << endl;    //area message followed by the function [rectangleArea]...         
+            cout << "the area of the square is" << rectangleArea(length, width) << endl;    //area message followed by function [rectangleArea]...         
                                                                                             //with user specified parameters [length] and [width]
-
-
         }
     break;
 
     case 3: {                                                                               //case three is circle
             double radius;                                                                  //initializes the variable [radius]
             cout << "enter radius of the circle:" <<endl;                                   //output message prompt for the radius
-            cin >> length;                                                                  //stores user input into variable [length]
-            cout << "enter width of rectangle square:" << endl;                             //output message promptydoo for width
-            cin >> width;                                                                   //stores user input into variable [width]
-            cout << "the area of the square is" << rectangleArea(length, width) << endl;    //area message followed by the function [rectangleArea]...         
-                                                                                            //with user specified parameters [length] and [width]
-             
-
-
+            cin >> radius;                                                                  //stores user input into variable [radius]
+            cout << "the area of the circle is" << circleArea(radius) << endl;              //area message followed by function [circleArea]...         
+                                                                                            //with user specified parameter [radius]
         }
     break;
 
-    case 4: {
-        double radius, height;
-        cout << "enter radius of cylinder: "  << endl;  
-        cin >> radius;  
-        cout << "Enter the height of the cylinder: " << endl;
-        cin >> height;  
-        cout << "Total surface area of the cylinder: " << cylinderArea(radius, height) << std::endl;  // Call the function
+    case 4: {                                                                               //case four is cylinder
+        double radius, height;                                                              //initializes the variables [radius] and [height]
+        cout << "enter radius of cylinder:"  << endl;                                      //output message prompt for the radius
+        cin >> radius;                                                                      //stores user input into variable [radius]
+        cout << "enter the height of the cylinder:" << endl;                               //output message prompt for the height
+        cin >> height;                                                                      //stores user input into variable [height]
+        cout << "surface area of the cylinder:" << cylinderArea(radius, height) << endl;   //area message followed by function [cylinderArea]...
+    }                                                                                           
     break;
-}
+    }
+    return 0;
 
-
-        }
-        break;
-
+    }
 /*
         .-.
        |_:_|
@@ -109,11 +101,3 @@ switch (option){                                //initializes [switch] operator 
 
 lord vader approves
 */
-
-
-
-
-
-
-return 0;
-}
