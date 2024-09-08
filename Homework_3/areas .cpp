@@ -22,6 +22,7 @@ total area:1        */
 
 #include <iostream>            // Includes the standard input/output stream library for cout
 #include "areaStuff.h"
+#include "areaStuff.cpp"
 
 //int the header file [areaStuff.h] i am specifying the constants that will have the functions attatched to them
 using namespace std;
@@ -29,15 +30,15 @@ using namespace std;
 int main() {
 
 //i need to initialize a variable to store the user input
-int option;                                     // this code initialzes a variable to store the user input as [option] and an integer
+int option;                                                             // initialzes variable to store user input as integer [option]
 
-cout << "Choose an object to calculate the area of (1-4)" << endl;  
-                                                // Outputs a message to the user, prompting number between 1 and 4 for which area
-cout << "1. Area of a square" << endl;          //this is the output message for square option
-cout << "2. Area of a rectangle" << endl;       //this is the output message for rectangle option
-cout << "3. Area of a circle" << endl;          //this is the output message for circle option
-cout << "4. Area of a cylinder" << endl;        //this is the output message for cylinder option
-cin >> option;                                  // this is the code for waiting for the user input and then stores it to [option]
+cout << "Choose an object to calculate the area of (1-4)" << endl;      // Outputs message prompting number between 1 and 4 
+                                               
+cout << "1. Area of a square" << endl;                                  //output message for square option
+cout << "2. Area of a rectangle" << endl;                               //output message for rectangle option
+cout << "3. Area of a circle" << endl;                                  //output message for circle option
+cout << "4. Area of a cylinder" << endl;                                //output message for cylinder option
+cin >> option;                                                          //input into variable [option]
 
 switch (option){                                //initializes [switch] operator to check which [case] is chosen/referenced from [option]
                                                 //for each case, it will perform the following operations
@@ -46,45 +47,46 @@ switch (option){                                //initializes [switch] operator 
         
     case 1: {                                                                               //case one is square 
             int side;                                                                       //initializes the variable [side]
-            cout << "enter side length of the square:" <<endl;                              //output message prompt for the side
-            cin >> side;                                                                    ////stores user input into variable [side]
-            cout << "the area of the square is" << squareArea(side) << endl;                //area message followed by the function [squareArea]...
+            cout << "enter side length of the square:" << endl;                             //output message prompt for the side
+            cin >> side;                                                                    //stores user input into variable [side]
+            cout << "the area of the square is " << squareArea(side) << endl;               //area message followed by the function [squareArea]...
         }                                                                                   //with user specified parameter [side]
     break;
 
     case 2: {                                                                               //case two is rectangle
-            int length,width;                                                               //initializes the variables [length] and [width]
-            cout << "enter length of the rectangle:" <<endl;                                //output message prompt for the length
+            int length, width;                                                              //initializes the variables [length] and [width]
+            cout << "enter length of the rectangle:" << endl;                               //output message prompt for the length
             cin >> length;                                                                  //stores user input into variable [length]
-            cout << "enter width of rectangle square:" << endl;                             //output message promptydoo for width
+            cout << "enter width of the rectangle:" << endl;                                //output message prompt for width
             cin >> width;                                                                   //stores user input into variable [width]
-            cout << "the area of the square is" << rectangleArea(length, width) << endl;    //area message followed by function [rectangleArea]...         
+            cout << "area of the rectangle is " << rectangleArea(length, width) << endl;    //area message followed by function [rectangleArea]...         
                                                                                             //with user specified parameters [length] and [width]
         }
     break;
 
     case 3: {                                                                               //case three is circle
             double radius;                                                                  //initializes the variable [radius]
-            cout << "enter radius of the circle:" <<endl;                                   //output message prompt for the radius
+            cout << "enter radius of the circle:" << endl;                                  //output message prompt for the radius
             cin >> radius;                                                                  //stores user input into variable [radius]
-            cout << "the area of the circle is" << circleArea(radius) << endl;              //area message followed by function [circleArea]...         
+            cout << "the area of the circle is " << circleArea(radius) << endl;             //area message followed by function [circleArea]...         
                                                                                             //with user specified parameter [radius]
         }
     break;
 
     case 4: {                                                                               //case four is cylinder
-        double radius, height;                                                              //initializes the variables [radius] and [height]
-        cout << "enter radius of cylinder:"  << endl;                                      //output message prompt for the radius
-        cin >> radius;                                                                      //stores user input into variable [radius]
-        cout << "enter the height of the cylinder:" << endl;                               //output message prompt for the height
-        cin >> height;                                                                      //stores user input into variable [height]
-        cout << "surface area of the cylinder:" << cylinderArea(radius, height) << endl;   //area message followed by function [cylinderArea]...
-    }                                                                                           
+            double radius, height;                                                          //initializes the variables [radius] and [height]
+            cout << "enter radius of cylinder:" << endl;                                    //output message prompt for the radius
+            cin >> radius;                                                                  //stores user input into variable [radius]
+            cout << "enter the height of the cylinder:" << endl;                            //output message prompt for the height
+            cin >> height;                                                                  //stores user input into variable [height]
+            cout << "area of the cylinder is " << cylinderArea(radius, height) << endl;     //area message followed by function [cylinderArea]...
+        }                                                                                   //with user specified parameters [radius] and [height]  
     break;
     }
     return 0;
 
-    }
+}
+
 /*
         .-.
        |_:_|
