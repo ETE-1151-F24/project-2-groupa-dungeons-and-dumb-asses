@@ -6,7 +6,7 @@ Using what you read incorporate Constant expressions and Constexpr variables in 
 
 
 /*Starting with your Homework #1 create a program that calculates the area of a circle, square, rectangle and a cylinder depending on the selected input of the user. 
-
+--------------
 1. Calculate the area of a square.
 2. Calculate the area of a rectangle.
 3. Calculate the area of a circle.
