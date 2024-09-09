@@ -34,3 +34,22 @@ cout << ” Result is = ” << z;       //references the variable [z] address   
 
                 return 0;                   //returns the value of 0 if the program completes correctly                   
 }
+//---------------------------------------------IF STATEMENTS-------------------------------------------------
+if (/*boolean/comparison*/){
+    /*perform this command*/;
+} else{
+    /*perform this command instead*/
+}
+
+//--------------------------------------------SETTING FIXED PRECISION FLOATS-----------------------------
+int main() {
+    float num = 3.14159265;
+
+    // Set the precision to 3 decimal places
+    cout << fixed << setprecision(3);            //output with [setprecision] to [(2)] [fixed] decimal places
+    cout << "Number with 3 decimal places: " << num << endl;
+
+    // Set the precision to 5 decimal places
+    cout << fixed << setprecision(5);
+    cout << "Number with 5 decimal places: " << num << endl;
+//------------------------------------------------
