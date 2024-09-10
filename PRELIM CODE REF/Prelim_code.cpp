@@ -230,3 +230,18 @@ T FunctionName2(T param1, U param2) {
 #endif // HEADER_FILE_NAME_H
 
 //------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------USING A RANDOM NUMBER GENERATOR-------------------
+std::cout << rand() % 100 << " "; // Output a random number between 0 and 99 (INCLUSIVE), followed by a space
+
+// [std::cout]: Standard output stream, used to print to the console.
+// [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.
+// [% 100]: This is the modulus operator. It gives the remainder when the random number is divided by 100. 
+// This operation ensures the result is between 0 and 99 (inclusive).
+// << " ": This inserts a space after the random number, separating it from other output.
+
+//IMPLEMENTING A SHIFT IN THE RANGES
+std::cout << (rand() % 38) + 6 << " "; // Output a random number between 6 and 43, followed by a space
+
+// [rand()] % 38: Generates a random number between 0 and 37 (because 43 - 6 + 1 = 38).
+// [+ 6]: Shifts the range from 0-37 to 6-43.
