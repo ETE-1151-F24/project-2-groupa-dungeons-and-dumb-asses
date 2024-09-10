@@ -19,7 +19,13 @@
 #include <cstdlib> // Required for rand()
 #include <iostream>
 int main() {
-  std::cout << rand() % 100 << " "; // Numbers between 0 and 99
+  std::cout << rand() % 100 << " "; // Numbers between 0 and 99  // Output a random number between 0 and 99, followed by a space
+
+// std::cout: Standard output stream, used to print to the console.
+// rand(): Generates a random integer, often a large number. The actual range of values is system-dependent.
+// % 100: This is the modulus operator. It gives the remainder when the random number is divided by 100. 
+// This operation ensures the result is between 0 and 99 (inclusive).
+// << " ": This inserts a space after the random number, separating it from other output.
   return 0;
 }
 
