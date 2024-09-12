@@ -16,40 +16,33 @@
 // Do not have fun with this (this option will override the hard requirement, and you will be issued a -1 for your enjoyment)
  
 
-#include "mapStuff.h"      // Include the header file for map functions
-#include <iostream>        // For input/output functionality
-#include <cstdlib>         // For rand() function (random number generation)
-#include <ctime>           // For time() function to seed random number generator
-#include <limits>          // For numeric limits to handle input errors
+#include "mapStuff.h"         // Include the header file for map functions
+#include <iostream>           // For input/output functionality
+#include <cstdlib>            // For rand() function (random number generation)
+#include <ctime>              // For time() function to seed random number generator
+#include <limits>             // For numeric limits to handle input errors
 
-using namespace std; // Use standard [std] C++ namespace
+using namespace std;          // Use standard [std] C++ namespace
 
 
-//THESE ARE GOING TO BE GLOBAL VARIABLES SUCH AS THE MAPSIZE AND THE USER LOCATIONS ENTERED
 
+
+// ------------------------Global variables for map size and user coordinates (defined here)
 //i only want to generate the map at the start of the program and not every time there is an error
 // map size directions will be half in one direction and half in the other
-int mapSizeX; //this is the random number generated for the total x width of the map  =(rand() % 81) + 20
-int mapSizeY; // this is the random number generated for the total y width of the map =(rand() % 81) + 20
 
-//LOGICAL OPERATORS WOULD BE IF, ELSE, OR BOOLEANS
-//for the input of [locations (X,Y)], 
-//i will want error handling messages that say that the input was expecting a number and got a letter or something else
 
-// Global variables for map size and user coordinates (defined here)
 int mapSizeX, mapSizeY;       //preliminarily initializing the mapsize variables
-double locationX, locationY;  //preliminarily initializing the location variables
+                              //this is the random number generated for the total x width of the map  =(rand() % 81) + 20
+double locationX, locationY;  //preliminarily initializing the location variables 
+                              // this is the random number generated for the total y width of the map =(rand() % 81) + 20
 string userName;              //preliminarily initializing the [string] [userName]
 
 
 // Function to randomly generate the size of the map
-void generateMap() {
-    // Random map size between 20 and 100 for both width (X) and height (Y)
-    mapSizeX = (rand() % 81) + 20; // Random width (range: 20 to 100)
-    mapSizeY = (rand() % 81) + 20; // Random height (range: 20 to 100)
-
-    // Output the generated map size
-    cout << "Randomly generated map size is " << mapSizeX << " (width) by " << mapSizeY << " (height)." << endl;
+void generateMap() {                        // Random map size between 20 and 100 for both width (X) and height (Y)
+    mapSizeX = (rand() % 81) + 20;          // Random width (range: 20 to 100)
+    mapSizeY = (rand() % 81) + 20;          // Random height (range: 20 to 100)
 }
 
 
@@ -61,16 +54,32 @@ void generateMap() {
     // (mapSizeX/2) is the right ide of the map
     //-(mapSizeX/2) is the bottom side of the map
     // (mapSizeX/2) is the top side of the map
+    string horizontal;
+    string vertical;
+    bool confirmX;
+    bool confirmY;
 
- //   if locationX>0 and locationX<= (mapSizeX/2)....then [horizontal]=right and confirmX=true
-//    else....if locationX==0....then [horizontal]=center and confirmx=true
- //   else....if locationX<0 and locationX>= -(mapSizeX/2)....then [horizontal]=left and confirmX=true
-//      else....confirmX=false
+if (locationX > 0 && locationX <= (mapSizeX / 2)) {
+    horizontal = right;
+    confirmX = true;
+}else if (locationX==0){
+    horizontal=center;
+    confirmX = true;
+
+}else if (locationX < 0 && locationX >= -(mapSizeX/2)) {
+    horizontal = left
+    confirmX = true  /* code */
+}else{
+  confirmX = false
+}
 
 
- //   if locationY>0 and locationY<= (mapSizeY/2)....then [vertical]=top and confirmY=true
-//    else....if locationY==0....then [vertical]=center and confirmy=true
- //   else....if locationY<0 and locationY>= -(mapSizeY/2)....then [vertical]=bottom and confirmY=true
+ //   if locationY>0 && locationY<= (mapSizeY/2)....
+ then [vertical]=top and confirmY=true
+//    else....if locationY==0....
+then [vertical]=center and confirmy=true
+ //   else....if locationY<0 and locationY>= -(mapSizeY/2)....t
+ hen [vertical]=bottom and confirmY=true
 //      else....confirmY=false
 
 if confirmX=true and confirmY=true;
