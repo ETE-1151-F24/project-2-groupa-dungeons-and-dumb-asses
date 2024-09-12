@@ -58,6 +58,15 @@ void generateMap() {                        // Random map size between 20 and 10
     string vertical;
     bool confirmX;
     bool confirmY;
+// Function to validate if the user's coordinates are within the map boundaries
+// Updated: Now uses global variables locationX and locationY directly
+
+bool isValidLocation() {
+    int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
+    int halfY = mapSizeY / 2;
+    return (locationX >= -halfX && locationX <= halfX) && (locationY >= -halfY && locationY <= halfY);
+} // this boolean with either return a true or false value if both of the conditions meet or fail
+
 
 if (locationX > 0 && locationX <= (mapSizeX / 2)) {
     horizontal = right;
@@ -65,7 +74,6 @@ if (locationX > 0 && locationX <= (mapSizeX / 2)) {
 }else if (locationX==0){
     horizontal=center;
     confirmX = true;
-
 }else if (locationX < 0 && locationX >= -(mapSizeX/2)) {
     horizontal = left
     confirmX = true  /* code */
@@ -74,18 +82,21 @@ if (locationX > 0 && locationX <= (mapSizeX / 2)) {
 }
 
 
- //   if locationY>0 && locationY<= (mapSizeY/2)....
- then [vertical]=top and confirmY=true
+if locationY>0 && locationY<= (mapSizeY/2)....
+ then [vertical]=top and 
+ confirmY=true
 //    else....if locationY==0....
-then [vertical]=center and confirmy=true
+then [vertical]=center and 
+confirmy=true
  //   else....if locationY<0 and locationY>= -(mapSizeY/2)....t
- hen [vertical]=bottom and confirmY=true
+ hen [vertical]=bottom and 
+ confirmY=true
 //      else....confirmY=false
 
 if confirmX=true and confirmY=true;
-  outcome = Success       //initialize outcome variable
+  outcome = true       //initialize outcome variable
 else {
-  outcome = Failure
+  outcome = false
   // while the outcome is a failure, return the user to the input prompt after displaying [wrong guess]
 }
 
