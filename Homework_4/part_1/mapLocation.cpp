@@ -119,7 +119,7 @@ cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [ ]" << endl<<"[ ] [+]"<<endl;
 
 
-} else if (horizontal== "center" && vertical== "bottom") {   
+} else if (horizontal == "center" && vertical == "bottom") {   
   quad == "Bottom Center";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [ ]" << endl<<"[ ]+[ ]"<<endl;
