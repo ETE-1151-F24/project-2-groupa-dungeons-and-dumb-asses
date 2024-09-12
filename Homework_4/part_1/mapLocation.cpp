@@ -50,10 +50,10 @@ void generateMap() {                        // Random map size between 20 and 10
 
 
 //to establish left and right and top and bottom quadrants i need to find the half way points of each mapSize
-    //-(mapSizeX/2) is the left side of the map
-    // (mapSizeX/2) is the right ide of the map
-    //-(mapSizeX/2) is the bottom side of the map
-    // (mapSizeX/2) is the top side of the map
+    //-(mapSizeX/2) is the left side of the map [-halfx]
+    // (mapSizeX/2) is the right ide of the map [halfx]
+    //-(mapSizey/2) is the bottom side of the map [-halfy]
+    // (mapSizey/2) is the top side of the map  [halfy]
     string horizontal;
     string vertical;
     bool confirmX;
@@ -67,27 +67,29 @@ bool isValidLocation() {
     return (locationX >= -halfX && locationX <= halfX) && (locationY >= -halfY && locationY <= halfY);
 } // this boolean with either return a true or false value if both of the conditions meet or fail
 
+void determineQuadrant() {   //determining the quadrant location on the map based on [locationX] and [loactionY]
+    int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
+    int halfY = mapSizeY / 2;
+    string horizontal, vertical;
+    string quadrant;
 
-if (locationX > 0 && locationX <= (mapSizeX / 2)) {
-    horizontal = right;
-    confirmX = true;
-}else if (locationX==0){
-    horizontal=center;
-    confirmX = true;
-}else if (locationX < 0 && locationX >= -(mapSizeX/2)) {
-    horizontal = left
-    confirmX = true  /* code */
-}else{
-  confirmX = false
-}
+    if (locationX > 0 && locationX <= halfX) {
+        horizontal = "right";
+    } else if (locationX == 0) {
+        horizontal = "center";
+    } else {
+        horizontal = "left";
+    }
+
+
 
 
 if locationY>0 && locationY<= (mapSizeY/2)....
- then [vertical]=top and 
+ vertical=top and 
  confirmY=true
-//    else....if locationY==0....
-then [vertical]=center and 
-confirmy=true
+else if locationY==0{
+vertical = center
+
  //   else....if locationY<0 and locationY>= -(mapSizeY/2)....t
  hen [vertical]=bottom and 
  confirmY=true
@@ -98,7 +100,7 @@ if confirmX=true and confirmY=true;
 else {
   outcome = false
   // while the outcome is a failure, return the user to the input prompt after displaying [wrong guess]
-}
+}*/
 
 
 //if [horizontal]=right && [vertical]=top:        then [quadrant] = quad1
