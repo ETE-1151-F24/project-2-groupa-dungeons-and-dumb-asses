@@ -90,80 +90,48 @@ void determineQuadrant() {   //determining the quadrant location on the map base
     }
 //now checking for
 if (horizontal == "right" && vertical == "top"){      
-quad = "Quadrant 1";
-cout << "you are located in" << quad << endl;
+quad = "1st Quadrant";
+cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [+]" << endl<<"[ ] [ ]" << endl;
 
-} else if(horizontal =="left" && vertical == "top"){      
-  quad = "Quadrant 2";
-cout << "" << endl;//you are located in Quadrant 2 
-cout << "" << endl;//[+] [ ]
-cout << "" << endl;//[ ] [ ]
-} else if (horizontal="center" && vertical="top"){      
-  quad = "topcenter";
-//if [quadrant]= topcenter then display message 
-cout << "" << endl;//you are located in the top center of the map
-cout << "" << endl;//[ ]+[ ]
-cout << "" << endl;//[ ] [ ]
-} else if (horizontal="right" && vertical="bottom"){   
-  quad = "quad3";
+} else if(horizontal == "left" && vertical == "top"){      
+  quad = "2nd Quadrant";
+cout << "you are located in the " << quad <<" of the map." << endl;
+cout << "[+] [ ]" << endl<<"[ ] [ ]" << endl;
+
+} else if (horizontal == "center" && vertical == "top"){      
+  quad = "Top Center";
+cout << "you are located in the " << quad <<" of the map." << endl;
+cout << "[ ]+[ ]" << endl<<"[ ] [ ]"<<endl;
+
+} else if (horizontal=="right" && vertical == "bottom"){   
+  quad = "3rd Quadrant";
 //if [quadrant]= quad3 then display message 
-cout << "" << endl;//you are located in Quadrant 3 
-cout << "" << endl;//[ ] [ ]
-cout << "" << endl;//[+] [ ]
+cout << "you are located in the " << quad <<" of the map." << endl;
+cout << "[ ] [ ]" << endl<<"[+] [ ]"<<endl;
+
+
 } else if (horizontal="left" && vertical="bottom"){   
-  quad = "quad4";
+  quad = "4th Quadrant";
 //if [quadrant]= quad4 then display message 
-cout << "" << endl;//you are located in Quadrant 4 
-cout << "" << endl;//[ ] [ ]
-cout << "" << endl;//[ ] [+]
+cout << "you are located in the " << quad <<" of the map." << endl;
+cout << "[ ] [ ]" << endl<<"[ ] [+]"<<endl;
+
+
 } else if (horizontal="center" && vertical="bottom"){   
-  quad = "bottomcenter";
-//if [quadrant]= bottomcenter then display message 
-cout << "" << endl;//you are located in the bottom center of the map 
-cout << "" << endl;//[ ] [ ]
-cout << "" << endl;//[ ]+[ ]
-} else if (horizontal="center" && vertical="center"){   
-  quad = "exactcenter";
-  //if [quadrant]= exactcenter then display message 
-//you are located in the bottom center of the map 
-//[ ] [ ]
-//   +
-//[ ] [ ]
+  quad = "Bottom Center";
+cout << "you are located in the " << quad <<" of the map." << endl;
+cout << "[ ] [ ]" << endl<<"[ ]+[ ]"<<endl;
+
+
+} else if (horizontal = "center" && vertical = "center"){   
+  quad = "Exact Center";
+cout << "you are located in the " << quad <<" of the map." << endl;
+cout << "[ ] [ ]" << endl <<"   +"<< endl <<"[ ] [ ]"<< endl ;
+
 }
-//if [quadrant] is in quad1 then display message 
-//you are located in Quadrant 1 
-//[ ] [+]
-//[ ] [ ]
-
-//if [quadrant]= quad2 then display message 
-//you are located in Quadrant 2 
-//[+] [ ]
-//[ ] [ ]
-
-//if [quadrant]= quad3 then display message 
-//you are located in Quadrant 3 
-//[ ] [ ]
-//[+] [ ]
-
-//if [quadrant]= quad4 then display message 
-//you are located in Quadrant 4 
-//[ ] [ ]
-//[ ] [+]
 
 
-
-
-//if [quadrant]= bottomcenter then display message 
-//you are located in the bottom center of the map 
-//[ ] [ ]
-//[ ]+[ ]
-
-//if [quadrant]= exactcenter then display message 
-//you are located in the bottom center of the map 
-//[ ] [ ]
-//   +
-//[ ] [ ]
 
 int main() {
  std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
