@@ -37,7 +37,7 @@ int mapSizeX, mapSizeY;       //preliminarily initializing the mapsize variables
 double locationX, locationY;  //preliminarily initializing the location variables 
                               // this is the random number generated for the total y width of the map =(rand() % 81) + 20
 string userName;              //preliminarily initializing the [string] [userName]
-
+int quadrant;
 
 // Function to randomly generate the size of the map
 void generateMap() {                        // Random map size between 20 and 100 for both width (X) and height (Y)
@@ -60,57 +60,77 @@ void generateMap() {                        // Random map size between 20 and 10
     bool confirmY;
 // Function to validate if the user's coordinates are within the map boundaries
 // Updated: Now uses global variables locationX and locationY directly
-
+//--------------------------------------------------------------------------------------------------
 bool isValidLocation() {
     int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
     int halfY = mapSizeY / 2;
     return (locationX >= -halfX && locationX <= halfX) && (locationY >= -halfY && locationY <= halfY);
 } // this boolean with either return a true or false value if both of the conditions meet or fail
-
+//-----------------------------------------------------------------------------------------------------------------
 void determineQuadrant() {   //determining the quadrant location on the map based on [locationX] and [loactionY]
     int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
     int halfY = mapSizeY / 2;
     string horizontal, vertical;
-    string quadrant;
-
-    if (locationX > 0 && locationX <= halfX) {
-        horizontal = "right";
+    string quad;
+//----------checking x location
+    if (locationX > 0 && locationX <= halfX) {  //if the [locationX] is within the bounds of the [halfx] measurements
+        horizontal == "right";
     } else if (locationX == 0) {
-        horizontal = "center";
+        horizontal == "center";
     } else {
-        horizontal = "left";
+        horizontal == "left";
     }
+//----------checking y location
+    if (locationY > 0 && locationY <= halfY) {  //if the [locationY] is within the bounds of the [halfy] measurements
+        vertical == "top";
+    } else if (locationY == 0) {
+        vertical == "center";
+    } else{
+      vertical == "bottom";
+    }
+//now checking for
+if (horizontal == "right" && vertical == "top"){      
+quad = "Quadrant 1";
+cout << "you are located in" << quad << endl;
+cout << "[ ] [+]" << endl<<"[ ] [ ]" << endl;
 
-
-
-
-if locationY>0 && locationY<= (mapSizeY/2)....
- vertical=top and 
- confirmY=true
-else if locationY==0{
-vertical = center
-
- //   else....if locationY<0 and locationY>= -(mapSizeY/2)....t
- hen [vertical]=bottom and 
- confirmY=true
-//      else....confirmY=false
-
-if confirmX=true and confirmY=true;
-  outcome = true       //initialize outcome variable
-else {
-  outcome = false
-  // while the outcome is a failure, return the user to the input prompt after displaying [wrong guess]
-}*/
-
-
-//if [horizontal]=right && [vertical]=top:        then [quadrant] = quad1
-//if [horizontal]=left  && [vertical]=top:        then [quadrant] = quad2
-//if [horizontal]=center  && [vertical]=top:      then [quadrant] = topcenter
-//if [horizontal]=right && [vertical]=bottom:     then [quadrant] = quad3
-//if [horizontal]=left  && [vertical]=bottom:     then [quadrant] = quad4
-//if [horizontal]=center  && [vertical]=bottom:   then [quadrant] = bottomcenter
-//if [horizontal]=center && [vertical]=center:    then [quadrant] = exactcenter
-
+} else if(horizontal =="left" && vertical == "top"){      
+  quad = "Quadrant 2";
+cout << "" << endl;//you are located in Quadrant 2 
+cout << "" << endl;//[+] [ ]
+cout << "" << endl;//[ ] [ ]
+} else if (horizontal="center" && vertical="top"){      
+  quad = "topcenter";
+//if [quadrant]= topcenter then display message 
+cout << "" << endl;//you are located in the top center of the map
+cout << "" << endl;//[ ]+[ ]
+cout << "" << endl;//[ ] [ ]
+} else if (horizontal="right" && vertical="bottom"){   
+  quad = "quad3";
+//if [quadrant]= quad3 then display message 
+cout << "" << endl;//you are located in Quadrant 3 
+cout << "" << endl;//[ ] [ ]
+cout << "" << endl;//[+] [ ]
+} else if (horizontal="left" && vertical="bottom"){   
+  quad = "quad4";
+//if [quadrant]= quad4 then display message 
+cout << "" << endl;//you are located in Quadrant 4 
+cout << "" << endl;//[ ] [ ]
+cout << "" << endl;//[ ] [+]
+} else if (horizontal="center" && vertical="bottom"){   
+  quad = "bottomcenter";
+//if [quadrant]= bottomcenter then display message 
+cout << "" << endl;//you are located in the bottom center of the map 
+cout << "" << endl;//[ ] [ ]
+cout << "" << endl;//[ ]+[ ]
+} else if (horizontal="center" && vertical="center"){   
+  quad = "exactcenter";
+  //if [quadrant]= exactcenter then display message 
+//you are located in the bottom center of the map 
+//[ ] [ ]
+//   +
+//[ ] [ ]
+}
 //if [quadrant] is in quad1 then display message 
 //you are located in Quadrant 1 
 //[ ] [+]
@@ -129,13 +149,10 @@ else {
 //if [quadrant]= quad4 then display message 
 //you are located in Quadrant 4 
 //[ ] [ ]
-//[+] [ ]
+//[ ] [+]
 
 
-//if [quadrant]= topcenter then display message 
-//you are located in the top center of the map
-//[ ]+[ ]
-//[ ] [ ]
+
 
 //if [quadrant]= bottomcenter then display message 
 //you are located in the bottom center of the map 
