@@ -16,10 +16,14 @@
 // Do not have fun with this (this option will override the hard requirement, and you will be issued a -1 for your enjoyment)
  
 
-#include <cstdlib> // Required for rand()
-#include <iostream>
-using namespace std;
-#include "mapStuff.h"
+#include "mapStuff.h"      // Include the header file for map functions
+#include <iostream>        // For input/output functionality
+#include <cstdlib>         // For rand() function (random number generation)
+#include <ctime>           // For time() function to seed random number generator
+#include <limits>          // For numeric limits to handle input errors
+
+using namespace std; // Use standard [std] C++ namespace
+
 
 //THESE ARE GOING TO BE GLOBAL VARIABLES SUCH AS THE MAPSIZE AND THE USER LOCATIONS ENTERED
 
@@ -28,10 +32,28 @@ using namespace std;
 int mapSizeX; //this is the random number generated for the total x width of the map  =(rand() % 81) + 20
 int mapSizeY; // this is the random number generated for the total y width of the map =(rand() % 81) + 20
 
-double locationX;
-double locationY;
 //LOGICAL OPERATORS WOULD BE IF, ELSE, OR BOOLEANS
-/*for the input of [locations], i will want error handling messages that say that the input was expecting a number and got a letter or something else*/
+//for the input of [locations (X,Y)], 
+//i will want error handling messages that say that the input was expecting a number and got a letter or something else
+
+// Global variables for map size and user coordinates (defined here)
+int mapSizeX, mapSizeY;       //preliminarily initializing the mapsize variables
+double locationX, locationY;  //preliminarily initializing the location variables
+string userName;              //preliminarily initializing the [string] [userName]
+
+
+// Function to randomly generate the size of the map
+void generateMap() {
+    // Random map size between 20 and 100 for both width (X) and height (Y)
+    mapSizeX = (rand() % 81) + 20; // Random width (range: 20 to 100)
+    mapSizeY = (rand() % 81) + 20; // Random height (range: 20 to 100)
+
+    // Output the generated map size
+    cout << "Randomly generated map size is " << mapSizeX << " (width) by " << mapSizeY << " (height)." << endl;
+}
+
+
+
 
 
 //to establish left and right and top and bottom quadrants i need to find the half way points of each mapSize
@@ -40,15 +62,15 @@ double locationY;
     //-(mapSizeX/2) is the bottom side of the map
     // (mapSizeX/2) is the top side of the map
 
- //   if x>0 and x<= (mapSizeX/2)....then [horizontal]=right and confirmX=true
-//    else....if x==0....then [horizontal]=center and confirmx=true
- //   else....if x<0 and x>= -(mapSizeX/2)....then [horizontal]=left and confirmX=true
+ //   if locationX>0 and locationX<= (mapSizeX/2)....then [horizontal]=right and confirmX=true
+//    else....if locationX==0....then [horizontal]=center and confirmx=true
+ //   else....if locationX<0 and locationX>= -(mapSizeX/2)....then [horizontal]=left and confirmX=true
 //      else....confirmX=false
 
 
- //   if y>0 and y<= (mapSizeY/2)....then [vertical]=top and confirmY=true
-//    else....if y==0....then [vertical]=center and confirmy=true
- //   else....if y<0 and y>= -(mapSizeY/2)....then [vertical]=bottom and confirmY=true
+ //   if locationY>0 and locationY<= (mapSizeY/2)....then [vertical]=top and confirmY=true
+//    else....if locationY==0....then [vertical]=center and confirmy=true
+ //   else....if locationY<0 and locationY>= -(mapSizeY/2)....then [vertical]=bottom and confirmY=true
 //      else....confirmY=false
 
 if confirmX=true and confirmY=true;
@@ -65,41 +87,47 @@ else {
 //if [horizontal]=right && [vertical]=bottom:     then [quadrant] = quad3
 //if [horizontal]=left  && [vertical]=bottom:     then [quadrant] = quad4
 //if [horizontal]=center  && [vertical]=bottom:   then [quadrant] = bottomcenter
+//if [horizontal]=center && [vertical]=center:    then [quadrant] = exactcenter
 
 //if [quadrant] is in quad1 then display message 
 //you are located in Quadrant 1 
-//[ ] [*]
+//[ ] [+]
 //[ ] [ ]
 
 //if [quadrant]= quad2 then display message 
 //you are located in Quadrant 2 
-//[*] [ ]
+//[+] [ ]
 //[ ] [ ]
 
 //if [quadrant]= quad3 then display message 
 //you are located in Quadrant 3 
 //[ ] [ ]
-//[*] [ ]
+//[+] [ ]
 
 //if [quadrant]= quad4 then display message 
 //you are located in Quadrant 4 
 //[ ] [ ]
-//[*] [ ]
+//[+] [ ]
 
 
 //if [quadrant]= topcenter then display message 
 //you are located in the top center of the map
-//[ ]*[ ]
+//[ ]+[ ]
 //[ ] [ ]
 
 //if [quadrant]= bottomcenter then display message 
 //you are located in the bottom center of the map 
 //[ ] [ ]
-//[ ]*[ ]
+//[ ]+[ ]
 
+//if [quadrant]= exactcenter then display message 
+//you are located in the bottom center of the map 
+//[ ] [ ]
+//   +
+//[ ] [ ]
 
 int main() {
- // std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
+ std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
 // [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.
 // [% 100]: This is the modulus operator. It gives the remainder when the random number is divided by 100. 
 // This operation ensures the result is between 0 and 99 (inclusive).
@@ -128,6 +156,7 @@ cout << "Where would you like to be on the map?" << endl;
 // "Filthy hobbitses, trixie and false!!! (apparently this location does not exist on the map i had in mind)
 // "MAYBE TRY A SMALLER NUMBER"
 /*output statement to try again*/
+
 
 //THEN GO TO SPECIFIED [COORDINATE FUNCTION] FOR ENTERING THE VALUES I WILL NEED SOME FORM OF A [WHILE] LOOP
 
