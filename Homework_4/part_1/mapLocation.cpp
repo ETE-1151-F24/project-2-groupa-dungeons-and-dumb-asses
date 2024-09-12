@@ -37,7 +37,7 @@ int mapSizeX, mapSizeY;       //preliminarily initializing the mapsize variables
 double locationX, locationY;  //preliminarily initializing the location variables 
                               // this is the random number generated for the total y width of the map =(rand() % 81) + 20
 string userName;              //preliminarily initializing the [string] [userName]
-int quadrant;
+const string quad;
 
 // Function to randomly generate the size of the map
 void generateMap() {                        // Random map size between 20 and 100 for both width (X) and height (Y)
@@ -88,49 +88,50 @@ void determineQuadrant() {   //determining the quadrant location on the map base
     } else{
       vertical == "bottom";
     }
-//now checking for
-if (horizontal == "right" && vertical == "top"){      
-quad = "1st Quadrant";
+}
+//---------------------QUADRANT IMAGING FUNCTION---------------------------------------------
+void quadImaging(){ 
+
+if (horizontal == "right" && vertical == "top") {      
+quad == "1st Quadrant";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [+]" << endl<<"[ ] [ ]" << endl;
 
-} else if(horizontal == "left" && vertical == "top"){      
-  quad = "2nd Quadrant";
+} else if(horizontal == "left" && vertical == "top") {      
+  quad == "2nd Quadrant";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[+] [ ]" << endl<<"[ ] [ ]" << endl;
 
-} else if (horizontal == "center" && vertical == "top"){      
-  quad = "Top Center";
+} else if (horizontal == "center" && vertical == "top") {      
+  quad == "Top Center";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ]+[ ]" << endl<<"[ ] [ ]"<<endl;
 
-} else if (horizontal=="right" && vertical == "bottom"){   
-  quad = "3rd Quadrant";
-//if [quadrant]= quad3 then display message 
+} else if (horizontal == "right" && vertical == "bottom") {   
+  quad == "3rd Quadrant";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [ ]" << endl<<"[+] [ ]"<<endl;
 
 
-} else if (horizontal="left" && vertical="bottom"){   
-  quad = "4th Quadrant";
-//if [quadrant]= quad4 then display message 
+} else if (horizontal == "left" && vertical == "bottom") {   
+  quad == "4th Quadrant";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [ ]" << endl<<"[ ] [+]"<<endl;
 
 
-} else if (horizontal="center" && vertical="bottom"){   
-  quad = "Bottom Center";
+} else if (horizontal== "center" && vertical== "bottom") {   
+  quad == "Bottom Center";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [ ]" << endl<<"[ ]+[ ]"<<endl;
 
 
-} else if (horizontal = "center" && vertical = "center"){   
-  quad = "Exact Center";
+} else if (horizontal == "center" && vertical == "center") {   
+  quad == "Exact Center";
 cout << "you are located in the " << quad <<" of the map." << endl;
 cout << "[ ] [ ]" << endl <<"   +"<< endl <<"[ ] [ ]"<< endl ;
 
 }
-
+}
 
 
 int main() {
