@@ -31,7 +31,7 @@ int main() {
     
     while (!validLocation) {                                                                //Loop until valid location is entered                                                             
                   
-        validLocation = isValidLocation();                                                  //Check if entered coordinates within the map bounds                                            
+        validLocation = isValidLocation();                                                 //Check if entered coordinates within the map bounds                                            
                                                                                             //Call isValidLocation to check both coordinates valid
 
         if (!validLocation) {                                                               //If location invalid, show error message
@@ -41,8 +41,8 @@ int main() {
         std::cout << "(apparently this location does not exist in Middle Earth)" << std::endl;        //commentary
         std::cout << "maybe try some smaller numbers" << std::endl;                                   //output statement, try again, Ask for new coordinates
 
-        locationX = getNumberInput("Enter an x coordinate: ");  // Get new x coordinate
-        locationY = getNumberInput("Enter a y coordinate: ");   // Get new y coordinate
+        locationX = getNumberInput("Enter an x coordinate: ");                                        // Get new x coordinate
+        locationY = getNumberInput("Enter a y coordinate: ");                                         // Get new y coordinate
         }
     }
     // After valid input, determine the quadrant and print the map size

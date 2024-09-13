@@ -38,8 +38,8 @@ int mapSizeX, mapSizeY;             //preliminarily initializing the mapsize var
 
 double locationX, locationY;        //preliminarily initializing the location variables 
 
-string userName;                    //preliminarily initializing the [string]s:[userName], [quad], [horizontal] ,[vertical]          
-string horizontal, vertical;        // initializing [horizontal] and [vertical]
+std::string userName;                    //preliminarily initializing the [string]s:[userName], [quad], [horizontal] ,[vertical]          
+std::string horizontal, vertical;        // initializing [horizontal] and [vertical]
 
 
 //-------------------------------RANDOM MAP GENERATOR FUNCTION----------------------------------------------------------------
@@ -150,32 +150,26 @@ void printStatement(string quad) {
 // Function to get valid numeric input from the user and handle errors
 double getNumberInput(string prompt) {                                        //and intitializing a [string] called [prompt]
   
-    double number;                                                    // Declare variable to store input as [double] called [number]
+  double number;                                                              // Declare variable to store input as [double] called [number]
+   
+    while (true) {                                                            //while loop                                           
 
-    std::cout << prompt;   // Display prompt, in this case for each prompt in get number such as "enter and x coordinate"
+      std::cout << prompt;                                                    //Display prompt, for each occurence "enter coordinate"
     
-    // Get input and attempt to store in [number]
-    std::cin >> number;
+      std::cin >> number;                                                     //Get input and attempt to store in [number]
 
-    
-    if (std::cin.fail()) {                                   // Check if the input failed (i.e., the user did not enter a valid number)
+      if (std::cin.fail()) {                                                  //Check if input failed (i.e.,user didnt enter valid number)
+              
+        std::cout << "Invalid input. Please enter a valid number no letters." << std::endl;        //error message indicating input invalid   
         
-       
-      std::cout << "Invalid input. Please enter a valid number." << std::endl;        //error message indicating input invalid
+        std::cin.clear();                                     // Clear error flag on input stream [std::cin], from non-num value entered    
         
-        
-      std::cin.clear();                                     // Clear error flag on input stream [std::cin], occuring when non-num value is entered
-
-        
-        
-      std::cin.ignore(1000, '\n');                          // Ignore remaining input in stream up to 1000 characters or until the next newline
-                                                            // helps remove any invalid input that might still be in the buffer
-                                                            //(1000 characters should be more than enough)
-        
-      return getNumberInput(prompt);                        // Repeat calling the function to prompt the user again and get a valid input
-                                                            // Since function calls itself, it keeps doing  until user enters valid number
+        std::cin.ignore(1000, '\n');                          // Ignore remaining input in stream up to 1000 characters or until the next newline
+                                                              // helps remove any invalid input that might still be in the buffer
+                                                              //(1000 characters should be more than enough)        
+        } else {
+            return number;                                    // Valid input received, return it
+        }
     }
-
-    return number; // upon valid input (i.e., no failure in the 'std::cin' stream), return number to caller
 }
 
