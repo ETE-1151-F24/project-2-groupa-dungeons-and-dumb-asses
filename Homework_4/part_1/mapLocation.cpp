@@ -43,13 +43,50 @@ void generateMap() {                              // Random map size between 10 
 
 
 
+//---------------------------------COORDINATE intro function--------------------
+void coordination() {
+    std::cout << std::endl << "Where would you like to be on the map?" << std::endl << std::endl;
+
+                                                                                              //Get user X, Y coordinates using input validation
+    locationX = getNumberInput("Enter an [X] coordinate: ");                                  //Call getNumberInput with prompt for x coordinate
+    locationY = getNumberInput("Enter a [Y] coordinate: ");                                   //Call getNumberInput with prompt for y coordinate
+  
+                                                                
+    bool validLocation = false;                                                             // Variable tracks if location valid or not   
+    
+    while (!validLocation) {                                                                //Loop until valid location is entered                                                             
+                  
+        validLocation = isValidLocation(locationX, locationY);                                                 //Check if entered coordinates within the map bounds                                            
+                                                                                            //Call isValidLocation to check both coordinates valid
+
+        if (!validLocation) {                                                               //If location invalid, show error message
+                                                                          
+
+        std::cout << std::endl << "Filthy hobbitses, trixie and false!!!" << std::endl;                  //error message
+        std::cout << "   (apparently this location does not exist in Middle Earth)" << std::endl;        //commentary
+        std::cout << "         maybe try some smaller numbers" << std::endl;                             //output statement, try again, Ask for new coordinates
+
+        locationX = getNumberInput("Enter an x coordinate: ");                                        // Get new x coordinate
+        locationY = getNumberInput("Enter a y coordinate: ");                                         // Get new y coordinate
+        }
+    }
+}
+
+
+
+
+
+
 //---------------------------------LOCATION VALIDITY CHECKING FUNCTION-----------------------------------------------------------------
 // Function to validate if the user's coordinates are within the map boundaries
 // Updated: Now uses global variables locationX and locationY directly
 bool isValidLocation(double locationX, double locationY) {
-    int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
-    int halfY = mapSizeY / 2;
+    float halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
+    float halfY = mapSizeY / 2;
     return (locationX >= -halfX && locationX <= halfX) && (locationY >= -halfY && locationY <= halfY);
+
+
+
 } // this boolean wiLL either return a true or false value if both of the conditions meet or fail
 
 

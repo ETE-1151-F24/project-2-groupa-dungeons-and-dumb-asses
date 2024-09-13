@@ -11,46 +11,29 @@ int main() {
     generateMap();                                                                          //Generate random map size, but doesnt print yet
 
 //-------------------------- USER NAME ENTRY CODE--------------------
-    std::cout << "Please enter your name." << std::endl;                                              // initial prompt
-
-    std::cin >> userName;                                                                        // Get user name and store in global variable [userName]
+    std::cout << "Please enter your name." << std::endl << std::endl;                       // initial prompt
     
-    std::cout << "Thank you " << userName << " for participating in this adventure!" << std::endl;    //THANKYOU message
+    std::getline(std::cin, userName);                                                       // Use std::getline to allow names with spaces
+    
+    std::cout << std::endl  <<  "Thank you [" << userName << "] for participating in this adventure!" << std::endl;    //THANKYOU message
 
  
-//-------------------------- USER lOCATION ENTRY CODE--------------------
-    std::cout << "Where would you like to be on the map?" << std::endl;
+//-------------------------- USER lOCATION ENTRY FUNCTION--------------------
 
-                                                                                            //Get user X, Y coordinates using input validation
-    locationX = getNumberInput("Enter an x coordinate: ");                                  //Call getNumberInput with prompt for x coordinate
-    locationY = getNumberInput("Enter a y coordinate: ");                                   //Call getNumberInput with prompt for y coordinate
-  
-                                                                
-    bool validLocation = false;                                                             // Variable tracks if location valid or not   
+    coordination();                                                              // Call [coordination] function to get valid coordinates
+
     
-    while (!validLocation) {                                                                //Loop until valid location is entered                                                             
-                  
-        validLocation = isValidLocation(locationX, locationY);                                                 //Check if entered coordinates within the map bounds                                            
-                                                                                            //Call isValidLocation to check both coordinates valid
-
-        if (!validLocation) {                                                               //If location invalid, show error message
-                                                                          
-
-        std::cout << "Filthy hobbitses, trixie and false!!!" << std::endl;                            //error message
-        std::cout << "(apparently this location does not exist in Middle Earth)" << std::endl;        //commentary
-        std::cout << "maybe try some smaller numbers" << std::endl;                                   //output statement, try again, Ask for new coordinates
-
-        locationX = getNumberInput("Enter an x coordinate: ");                                        // Get new x coordinate
-        locationY = getNumberInput("Enter a y coordinate: ");                                         // Get new y coordinate
-        }
-    }
     // After valid input, determine the quadrant and print the map size
     // Determine and display quadrant info
     determineQuadrant(locationX, locationY);
     quadImaging();
 
-    std::cout << "The map is ("<< mapSizeX << " by "<< mapSizeY << ") B T dubs"<< std::endl;
+        // Calculate halfX and halfY here
+    float halfX = mapSizeX / 2.0f;
+    float halfY = mapSizeY / 2.0f;
 
+    std::cout << "The map is ("<< mapSizeX << " by "<< mapSizeY << ") B T dubs"<< std::endl;
+    std::cout << "Each quadrant is ("<< halfX << " by "<< halfY << ")" << std::endl;
     return 0;
 }
 
