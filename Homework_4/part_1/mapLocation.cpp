@@ -153,77 +153,24 @@ double getNumberInput(string prompt) {                                        //
     cin >> number;
 
     
-    if (cin.fail()) {                 // Check if the input failed (i.e., the user did not enter a valid number)
+    if (cin.fail()) {                                   // Check if the input failed (i.e., the user did not enter a valid number)
         
        
       cout << "Invalid input. Please enter a valid number." << endl;        //error message indicating input invalid
         
         
-      cin.clear();                  // Clear error flag on input stream [cin], which occurs when a non-numeric value is entered
+      cin.clear();                                      // Clear error flag on input stream [cin], which occurs when a non-numeric value is entered
 
         
         
-      cin.ignore(1000, '\n');   // Ignore remaining input in stream up to 1000 characters or until the next newline
-                                // helps remove any invalid input that might still be in the buffer
-                                //(1000 characters should be more than enough)
+      cin.ignore(1000, '\n');                           // Ignore remaining input in stream up to 1000 characters or until the next newline
+                                                        // helps remove any invalid input that might still be in the buffer
+                                                        //(1000 characters should be more than enough)
         
-      return getNumberInput(prompt);  // Recursively call the function to prompt the user again and get a valid input
-                                        // Since function calls itself, it keeps doing  until user enters valid number
+      return getNumberInput(prompt);                    // Repeat calling the function to prompt the user again and get a valid input
+                                                        // Since function calls itself, it keeps doing  until user enters valid number
     }
 
-   
     return number; // upon valid input (i.e., no failure in the 'cin' stream), return number to caller
 }
-int main() {
- std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
-// [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.
-// [% 100]: This is the modulus operator. It gives the remainder when the random number is divided by 100. 
-// This operation ensures the result is between 0 and 99 (inclusive).
-// << " ": This inserts a space after the random number, separating it from other output.
-
-
-/*this is where the code to randomly choose the size of the map from a range of 10 to 100 */
-
-//USER NAME ENTRY CODE
-cout << "Please enter your name." << endl;
-cout << "We swears we will 'keep it secret, keep it safe' *Gollum* *Gollum*" << endl;
-cin >> userName ;
-cout << "Thank you "<< userName <<"for participating in this adventure" << endl;
-cout << "Where would you like to be on the map?" << endl;
-
-//[COORDINATE FUNCTION] 
-      cout << "Enter an x coordinate: ";
-      cin >> locationX;
-      cout << "Enter a y coordinate:";
-      cin >> locationY;
-
-
-
-//THIS IS THE SECTION FOR THE FAILURE MESSAGE
-// if the x and/OR y location dont fit anywhere on the random map then display the messages
-// "Filthy hobbitses, trixie and false!!! (apparently this location does not exist on the map i had in mind)
-// "MAYBE TRY A SMALLER NUMBER"
-/*output statement to try again*/
-
-
-//THEN GO TO SPECIFIED [COORDINATE FUNCTION] FOR ENTERING THE VALUES I WILL NEED SOME FORM OF A [WHILE] LOOP
-
-
-/*choice of output results*/
-      //variable [outcome] =
-                  //success; then display message "you have chosen wisely"
-                  //failure; while the [outcome] is failure, 
-
-                  //if a value entered for either of the numbers is too big, put a message that says, maybe try a smaller location with either x or y
-
-
-
-
-
-
-
-
-  return 0;
-}
-
 
