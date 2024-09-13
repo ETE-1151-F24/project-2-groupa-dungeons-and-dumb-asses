@@ -10,9 +10,16 @@ int main() {
     
     generateMap(); // Generate a random map size, but doesnt print anything yet
 
+//-------------------------- USER NAME ENTRY CODE--------------------
+    cout << "Please enter your name." << endl;                                              // initial prompt
+
+    cin >> userName;                                                                        // Get user name and store in global variable [userName]
+    
+    cout << "Thank you " << userName << " for participating in this adventure!" << endl;    //THANKYOU message
+
+
  
- 
- 
+//-------------------------- USER lOCATION ENTRY CODE--------------------
  
  //std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
 // [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.
