@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>            // For time() to seed random number generator
 #include "mapStuff.h"       // Include the header file with your function declarations and global variables
-
+#include "mapLocation.cpp"
 
 int main() {
     srand(time(0));                                                                         //Seed random number generator to 
