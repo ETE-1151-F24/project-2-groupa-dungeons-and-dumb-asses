@@ -37,41 +37,41 @@ int mapSizeX, mapSizeY;       //preliminarily initializing the mapsize variables
 double locationX, locationY;  //preliminarily initializing the location variables 
                               // this is the random number generated for the total y width of the map =(rand() % 81) + 20
 string userName;              //preliminarily initializing the [string] [userName]
-const string quad;
+string quad;
+string horizontal;
+string vertical;
 
+//-------------------------------RANDOM MAP GENERATOR FUNCTION----------------------------------------------------------------
 // Function to randomly generate the size of the map
-void generateMap() {                        // Random map size between 20 and 100 for both width (X) and height (Y)
-    mapSizeX = (rand() % 81) + 20;          // Random width (range: 20 to 100)
-    mapSizeY = (rand() % 81) + 20;          // Random height (range: 20 to 100)
+void generateMap() {                        // Random map size between 10 and 100 for both width (X) and height (Y)
+    mapSizeX = (rand() % 91) + 10;          // Random width (range: 10 to 100)
+    mapSizeY = (rand() % 91) + 10;          // Random height (range: 10 to 100)
 }
-
-
-
-
-
 //to establish left and right and top and bottom quadrants i need to find the half way points of each mapSize
     //-(mapSizeX/2) is the left side of the map [-halfx]
     // (mapSizeX/2) is the right ide of the map [halfx]
     //-(mapSizey/2) is the bottom side of the map [-halfy]
     // (mapSizey/2) is the top side of the map  [halfy]
-    string horizontal;
-    string vertical;
-    bool confirmX;
-    bool confirmY;
+
+
+//---------------------------------LOCATION VALIDITY CHECKING FUNCTION-----------------------------------------------------------------
 // Function to validate if the user's coordinates are within the map boundaries
 // Updated: Now uses global variables locationX and locationY directly
-//--------------------------------------------------------------------------------------------------
 bool isValidLocation() {
     int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
     int halfY = mapSizeY / 2;
     return (locationX >= -halfX && locationX <= halfX) && (locationY >= -halfY && locationY <= halfY);
 } // this boolean with either return a true or false value if both of the conditions meet or fail
-//-----------------------------------------------------------------------------------------------------------------
+
+
+
+//---------------------------------QUADRANT DETERMINING FUNCTION--------------------------------------------------------------------------------
 void determineQuadrant() {   //determining the quadrant location on the map based on [locationX] and [loactionY]
     int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
     int halfY = mapSizeY / 2;
     string horizontal, vertical;
     string quad;
+    
 //----------checking x location
     if (locationX > 0 && locationX <= halfX) {  //if the [locationX] is within the bounds of the [halfx] measurements
         horizontal == "right";
@@ -90,49 +90,49 @@ void determineQuadrant() {   //determining the quadrant location on the map base
     }
 }
 //---------------------QUADRANT IMAGING FUNCTION---------------------------------------------
-void quadImaging(){ 
-
-if (horizontal == "right" && vertical == "top") {      
-quad == "1st Quadrant";
-cout << "you are located in the " << quad <<" of the map." << endl;
-cout << "[ ] [+]" << endl<<"[ ] [ ]" << endl;
-
-} else if(horizontal == "left" && vertical == "top") {      
-  quad == "2nd Quadrant";
-cout << "you are located in the " << quad <<" of the map." << endl;
-cout << "[+] [ ]" << endl<<"[ ] [ ]" << endl;
-
-} else if (horizontal == "center" && vertical == "top") {      
-  quad == "Top Center";
-cout << "you are located in the " << quad <<" of the map." << endl;
-cout << "[ ]+[ ]" << endl<<"[ ] [ ]"<<endl;
-
-} else if (horizontal == "right" && vertical == "bottom") {   
-  quad == "3rd Quadrant";
-cout << "you are located in the " << quad <<" of the map." << endl;
-cout << "[ ] [ ]" << endl<<"[+] [ ]"<<endl;
-
-
-} else if (horizontal == "left" && vertical == "bottom") {   
-  quad == "4th Quadrant";
-cout << "you are located in the " << quad <<" of the map." << endl;
-cout << "[ ] [ ]" << endl<<"[ ] [+]"<<endl;
-
-
-} else if (horizontal == "center" && vertical == "bottom") {   
-  quad == "Bottom Center";
-cout << "you are located in the " << quad <<" of the map." << endl;
-cout << "[ ] [ ]" << endl<<"[ ]+[ ]"<<endl;
-
-
-} else if (horizontal == "center" && vertical == "center") {   
-  quad == "Exact Center";
-cout << "you are located in the " << quad <<" of the map." << endl;
-cout << "[ ] [ ]" << endl <<"   +"<< endl <<"[ ] [ ]"<< endl ;
-
-}
+void printStatement(string quad) {
+    cout << "You are located in the " << quad << " of the map." << endl;
 }
 
+void quadImaging() { 
+string quad;
+
+  if (horizontal == "right" && vertical == "top") {      
+    quad = "1st Quadrant";  // if the above conditions are met then the quadrant is this
+    printStatement(quad);  // 
+    cout << "[ ] [+]" << endl << "[ ] [ ]" << endl;
+
+  } else if(horizontal == "left" && vertical == "top") {      
+    quad = "2nd Quadrant";
+    cout << "you are located in the " << quad <<" of the map." << endl;
+    cout << "[+] [ ]" << endl << "[ ] [ ]" << endl;
+
+  } else if (horizontal == "center" && vertical == "top") {      
+    quad = "Top Center";
+    cout << "you are located in the " << quad <<" of the map." << endl;
+    cout << "[ ]+[ ]" << endl << "[ ] [ ]" << endl;
+
+  } else if (horizontal == "right" && vertical == "bottom") {   
+    quad = "3rd Quadrant";
+    cout << "you are located in the " << quad <<" of the map." << endl;
+    cout << "[ ] [ ]" << endl << "[+] [ ]" << endl;
+
+  } else if (horizontal == "left" && vertical == "bottom") {   
+    quad = "4th Quadrant";
+    cout << "you are located in the " << quad <<" of the map." << endl;
+    cout << "[ ] [ ]" << endl << "[ ] [+]" << endl;
+
+  } else if (horizontal == "center" && vertical == "bottom") {   
+    quad = "Bottom Center";
+    cout << "you are located in the " << quad <<" of the map." << endl;
+    cout << "[ ] [ ]" << endl << "[ ]+[ ]" << endl;
+
+  } else if (horizontal == "center" && vertical == "center") {   
+    quad = "Exact Center";
+    cout << "you are located in the " << quad <<" of the map." << endl;
+    cout << "[ ] [ ]" << endl << "   +" << endl << "[ ] [ ]" << endl;
+  }
+}
 
 int main() {
  std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
