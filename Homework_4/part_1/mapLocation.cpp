@@ -65,6 +65,12 @@ bool isValidLocation() {
 } // this boolean wiLL either return a true or false value if both of the conditions meet or fail
 
 
+//---------------------------------FINAL PRINT STATEMENT FUNCTION---------------------------------
+// initializing a print statement so to use less typing later
+void printStatement(string quad) {
+    cout << "Coordinate (" << locationX <<", " << locationY <<") is located in the " << quad << " of the map." << endl;
+}
+
 
 //---------------------------------QUADRANT DETERMINING FUNCTION--------------------------------------------------------------------------------
 void determineQuadrant() {                      //determining the quadrant location on the map based on [locationX] and [loactionY]
@@ -90,13 +96,11 @@ void determineQuadrant() {                      //determining the quadrant locat
       vertical == "bottom";
     }
 }
+
+
+
+
 //---------------------------------QUADRANT IMAGING FUNCTION---------------------------------------------
-
-// initializing a print statement so to use less typing later
-void printStatement(string quad) {
-    cout << "You are located in the " << quad << " of the map." << endl;
-}
-
 void quadImaging() {                                                          //INITIALIZING THE QUADRANT IMAGING FUNCTION
 string quad;                                                                  //initializing the string [quad] for the function
 
@@ -140,10 +144,13 @@ string quad;                                                                  //
 //---------------------------------GETTING AN INPUT LOCATION FUNCTION---------------------------------------------------------------------------------
 // Function to get valid numeric input from the user and handle errors
 double getNumberInput(string prompt) {
-    double number;
+  
+    double number;  // Declare variable [number] of type double that will store the user's input
+
+    // Start an infinite loop to continuously prompt the user until valid input is received
     while (true) {
-
-
+        // Output the prompt message to the console (e.g., "Enter a number: ")
+        cout << prompt;
 
 
 
