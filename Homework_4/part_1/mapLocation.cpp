@@ -38,10 +38,8 @@ int mapSizeX, mapSizeY;             //preliminarily initializing the mapsize var
 
 double locationX, locationY;        //preliminarily initializing the location variables 
 
-string userName;                    //preliminarily initializing the [string]s:[userName], [quad], [horizontal] ,[vertical]
-string quad;                 
-string horizontal;
-string vertical;
+string userName;                    //preliminarily initializing the [string]s:[userName], [quad], [horizontal] ,[vertical]          
+string horizontal, vertical;        // initializing [horizontal] and [vertical]
 
 
 //-------------------------------RANDOM MAP GENERATOR FUNCTION----------------------------------------------------------------
@@ -75,24 +73,22 @@ bool isValidLocation() {
 void determineQuadrant() {                      //determining the quadrant location on the map based on [locationX] and [loactionY]
     int halfX = mapSizeX / 2;                   //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
     int halfY = mapSizeY / 2;
-    string horizontal, vertical;
-    string quad;
     
-//----------checking X location
-    if (locationX > 0 && locationX <= halfX) {  //FINDING [locationX] within SPECIFIC bounds of the [halfx] measurements
-        horizontal == "right";
+//----------checking X location                 //FINDING [locationX] within SPECIFIC bounds of the [halfx] measurements
+    if (locationX > 0 && locationX <= halfX) {  
+        horizontal = "right";                  //assign [right] if positive x
     } else if (locationX == 0) {
-        horizontal == "center";
+        horizontal = "center";                 //assign [center] if x == 0
     } else {
-        horizontal == "left";
+        horizontal = "left";                   //assign [left] if negative x
     }
-//----------checking Y location
-    if (locationY > 0 && locationY <= halfY) {  //FINDING [locationY] within SPECIFIC bounds of the [halfy] measurements
-        vertical == "top";
+//----------checking Y location                 //FINDING [locationY] within SPECIFIC bounds of the [halfy] measurements
+    if (locationY > 0 && locationY <= halfY) {  
+        vertical = "top";                      //assign [top] if positive y
     } else if (locationY == 0) {
-        vertical == "center";
+        vertical = "center";                   //assign [center] if y == 0
     } else{
-      vertical == "bottom";
+      vertical = "bottom";                     //assign [bottom] if negative y
     }
 }
 
