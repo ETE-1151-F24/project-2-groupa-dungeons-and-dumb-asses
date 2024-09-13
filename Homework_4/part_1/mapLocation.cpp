@@ -24,22 +24,9 @@
 #include <limits>                       // For numeric limits to handle input errors
 
 
-
-
-
 // ------------------------GLOBAL VARIABLES AND STRINGS FOR MAPSIZE, LOCATION AND NAME INITIALIZATIONS---------------------
 //NOTE: i only want to generate the map at the start of the program and not every time there is an error
 //NOTE:  map size directions will be half in one direction and half in the other
-
-int mapSizeX, mapSizeY;             //preliminarily initializing the mapsize variables
-                                    //this is the random number generated in the map generator function
-                                    //for the total x width of the map  =(rand() % 91) + 10
-
-double locationX, locationY;        //preliminarily initializing the location variables 
-
-std::string userName;                    //preliminarily initializing the [string]s:[userName], [quad], [horizontal] ,[vertical]          
-std::string horizontal, vertical, quad;        // initializing [horizontal] and [vertical]
-
 
 //-------------------------------RANDOM MAP GENERATOR FUNCTION----------------------------------------------------------------
 // Function to randomly generate the size of the map

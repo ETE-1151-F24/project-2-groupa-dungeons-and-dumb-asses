@@ -4,11 +4,10 @@
 #include <string> // Required for string data type
 
 // Global variables for map size and user coordinates
-extern int mapSizeX, mapSizeY; // Declared as external so they can be used in other files
-extern double locationX, locationY;
-extern std::string userName;
-extern std::string horizontal, vertical; // Declare these externally since they will be set globally
-extern std::string quad;
+ int mapSizeX, mapSizeY; // Declared as external so they can be used in other files
+ double locationX, locationY;
+ std::string userName, horizontal, vertical, quad;
+
 
 // Function declarations for map-related operations
 void generateMap();                                         // Function to generate random map size
