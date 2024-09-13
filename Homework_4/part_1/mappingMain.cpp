@@ -30,7 +30,7 @@ int main() {
     
     while (!validLocation) {                                                                //Loop until valid location is entered                                                             
                   
-        validLocation = isValidLocation();                                                 //Check if entered coordinates within the map bounds                                            
+        validLocation = isValidLocation(locationX, locationY);                                                 //Check if entered coordinates within the map bounds                                            
                                                                                             //Call isValidLocation to check both coordinates valid
 
         if (!validLocation) {                                                               //If location invalid, show error message
@@ -45,8 +45,10 @@ int main() {
         }
     }
     // After valid input, determine the quadrant and print the map size
-    determineQuadrant();  // Once a valid location is entered, call determineQuadrant to find out which quadrant the user is in
+    // Determine and display quadrant info
+    determineQuadrant(locationX, locationY);
+    quadImaging();
 
-    return 0;  // End the program
+    return 0;
 }
 
