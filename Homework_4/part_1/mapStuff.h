@@ -8,7 +8,7 @@ extern int mapSizeX, mapSizeY; // Declared as external so they can be used in ot
 extern double locationX, locationY;
 extern std::string userName;
 extern std::string horizontal, vertical; // Declare these externally since they will be set globally
-
+extern std::string quad;
 
 // Function declarations for map-related operations
 void generateMap();                                         // Function to generate random map size

@@ -23,7 +23,6 @@
 #include <ctime>                        // For time() function to seed random number generator
 #include <limits>                       // For numeric limits to handle input errors
 
-using namespace std;                    // Use standard [std] C++ namespace
 
 
 
@@ -39,7 +38,7 @@ int mapSizeX, mapSizeY;             //preliminarily initializing the mapsize var
 double locationX, locationY;        //preliminarily initializing the location variables 
 
 std::string userName;                    //preliminarily initializing the [string]s:[userName], [quad], [horizontal] ,[vertical]          
-std::string horizontal, vertical;        // initializing [horizontal] and [vertical]
+std::string horizontal, vertical, quad;        // initializing [horizontal] and [vertical]
 
 
 //-------------------------------RANDOM MAP GENERATOR FUNCTION----------------------------------------------------------------
@@ -95,9 +94,9 @@ void determineQuadrant() {                      //determining the quadrant locat
 
 //---------------------------------QUADRANT IMAGING FUNCTION---------------------------------------------
 // this is used to make a generic visual of the location of the coordinate
-
+ 
 void quadImaging() {                                                          //INITIALIZING THE QUADRANT IMAGING FUNCTION
-string quad;                                                                  //initializing the string [quad] for the function
+std::string quad;
 
   if (horizontal == "right" && vertical == "top") {      
       quad = "1st Quadrant";                                                    // if the above conditions are met then the quadrant is this
@@ -114,12 +113,12 @@ string quad;                                                                  //
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     std::cout << "[ ]+[ ]" << std::endl << "[ ] [ ]" << std::endl;                           //visual output of quadrant
 
-  } else if (horizontal == "right" && vertical == "bottom") {   
+  } else if (horizontal == "left" && vertical == "bottom") {   
       quad = "3rd Quadrant";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     std::cout << "[ ] [ ]" << std::endl << "[+] [ ]" << std::endl;                           //visual output of quadrant
 
-  } else if (horizontal == "left" && vertical == "bottom") {   
+  } else if (horizontal == "right" && vertical == "bottom") {   
       quad = "4th Quadrant";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     std::cout << "[ ] [ ]" << std::endl << "[ ] [+]" << std::endl;                           //visual output of quadrant
@@ -140,7 +139,7 @@ string quad;                                                                  //
 
 //---------------------------------FINAL PRINT STATEMENT FUNCTION---------------------------------
 // initializing a print statement so to use less typing later
-void printStatement(string quad) {
+void printStatement(std::string quad) {
     std::cout << "Coordinate (" << locationX <<", " << locationY <<") is located in the " << quad << " of the map." << std::endl;
 }
 
@@ -148,7 +147,7 @@ void printStatement(string quad) {
 
 //---------------------------------GETTING AN INPUT LOCATION FUNCTION (UNTIL VALID)-------------------------------------------------------------------------
 // Function to get valid numeric input from the user and handle errors
-double getNumberInput(string prompt) {                                        //and intitializing a [string] called [prompt]
+double getNumberInput(std::string prompt) {                                        //and intitializing a [string] called [prompt]
   
   double number;                                                              // Declare variable to store input as [double] called [number]
    
