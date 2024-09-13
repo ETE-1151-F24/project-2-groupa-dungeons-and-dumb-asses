@@ -49,6 +49,8 @@ int main() {
     determineQuadrant(locationX, locationY);
     quadImaging();
 
+    std::cout << "The map is ("<< mapSizeX << " by "<< mapSizeY << ") B T dubs"<< std::endl;
+
     return 0;
 }
 

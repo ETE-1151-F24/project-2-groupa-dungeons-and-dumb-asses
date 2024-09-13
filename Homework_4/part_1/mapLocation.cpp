@@ -119,6 +119,16 @@ std::string quad;
       quad = "Exact Center";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     std::cout << "[ ] [ ]" << std::endl << "   +" << std::endl << "[ ] [ ]" << std::endl;         //visual output of quadrant
+  
+  } else if (horizontal == "left" && vertical == "center") {   
+      quad = "Left Center";
+        printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
+    std::cout << "[ ] [ ]" << std::endl << " +" << std::endl << "[ ] [ ]" << std::endl;         //visual output of quadrant
+  
+  } else if (horizontal == "right" && vertical == "center") {   
+      quad = "Right Center";
+        printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
+    std::cout << "[ ] [ ]" << std::endl << "     +" << std::endl << "[ ] [ ]" << std::endl;         //visual output of quadrant
   }
 }
 
