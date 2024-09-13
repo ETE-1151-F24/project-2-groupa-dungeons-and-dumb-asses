@@ -5,7 +5,16 @@
 using namespace std;
 
 int main() {
- std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
+    srand(time(0));  // Seed the random number generator to ensure random map size each time the program runs   
+     
+    
+    generateMap(); // Generate a random map size, but doesnt print anything yet
+
+ 
+ 
+ 
+ 
+ //std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
 // [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.
 // [% 100]: This is the modulus operator. It gives the remainder when the random number is divided by 100. 
 // This operation ensures the result is between 0 and 99 (inclusive).
@@ -34,21 +43,6 @@ cout << "Where would you like to be on the map?" << endl;
 // "Filthy hobbitses, trixie and false!!! (apparently this location does not exist on the map i had in mind)
 // "MAYBE TRY A SMALLER NUMBER"
 /*output statement to try again*/
-
-
-//THEN GO TO SPECIFIED [COORDINATE FUNCTION] FOR ENTERING THE VALUES I WILL NEED SOME FORM OF A [WHILE] LOOP
-
-
-/*choice of output results*/
-      //variable [outcome] =
-                  //success; then display message "you have chosen wisely"
-                  //failure; while the [outcome] is failure, 
-
-                  //if a value entered for either of the numbers is too big, put a message that says, maybe try a smaller location with either x or y
-
-
-
-
 
 
 
