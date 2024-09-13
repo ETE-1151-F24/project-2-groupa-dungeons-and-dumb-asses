@@ -7,6 +7,8 @@
 extern int mapSizeX, mapSizeY; // Declared as external so they can be used in other files
 extern double locationX, locationY;
 extern std::string userName;
+extern std::string horizontal, vertical; // Declare these externally since they will be set globally
+
 
 // Function declarations for map-related operations
 void generateMap();                                         // Function to generate random map size
@@ -14,5 +16,6 @@ bool isValidLocation(double locationX, double locationY);   // Function to check
 void determineQuadrant(double x, double y);                 // Function to determine which quadrant the user is located in
 void quadImaging();                                         // function for displaying quadrant location
 double getNumberInput(std::string prompt);                  // Function to get valid numeric input from the user
+void printStatement(std::string quad);                      // Function to print quadrant information
 
 #endif // End of include guard
