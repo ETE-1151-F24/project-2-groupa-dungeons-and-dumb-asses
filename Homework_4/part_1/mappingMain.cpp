@@ -17,9 +17,24 @@ int main() {
     
     cout << "Thank you " << userName << " for participating in this adventure!" << endl;    //THANKYOU message
 
-
  
 //-------------------------- USER lOCATION ENTRY CODE--------------------
+    cout << "Where would you like to be on the map?" << endl;
+
+ // Get the user's X and Y coordinates using input validation
+    locationX = getNumberInput("Enter an x coordinate: ");                                  //Call getNumberInput with prompt for x coordinate
+    locationY = getNumberInput("Enter a y coordinate: ");                                   //Call getNumberInput with prompt for y coordinate
+  
+  // Loop until a valid location is entered
+    bool validLocation = false;                                                             // Variable tracks if location valid or not   
+    while (!validLocation) {
+                // Check if the entered coordinates are within the map's bounds
+    validLocation = isValidLocation();  // Call isValidLocation to check if both coordinates are valid
+            // If the location is invalid, show an error message
+    if (!validLocation) {
+
+        
+
  
  //std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
 // [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.
