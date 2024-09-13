@@ -12,15 +12,15 @@ int main() {
     generateMap();                                                                          //Generate random map size, but doesnt print yet
 
 //-------------------------- USER NAME ENTRY CODE--------------------
-    cout << "Please enter your name." << endl;                                              // initial prompt
+    std::cout << "Please enter your name." << std::endl;                                              // initial prompt
 
-    cin >> userName;                                                                        // Get user name and store in global variable [userName]
+    std::cin >> userName;                                                                        // Get user name and store in global variable [userName]
     
-    cout << "Thank you " << userName << " for participating in this adventure!" << endl;    //THANKYOU message
+    std::cout << "Thank you " << userName << " for participating in this adventure!" << std::endl;    //THANKYOU message
 
  
 //-------------------------- USER lOCATION ENTRY CODE--------------------
-    cout << "Where would you like to be on the map?" << endl;
+    std::cout << "Where would you like to be on the map?" << std::endl;
 
                                                                                             //Get user X, Y coordinates using input validation
     locationX = getNumberInput("Enter an x coordinate: ");                                  //Call getNumberInput with prompt for x coordinate
@@ -37,47 +37,17 @@ int main() {
         if (!validLocation) {                                                               //If location invalid, show error message
                                                                           
 
-        cout << "Filthy hobbitses, trixie and false!!!" << endl;                            //error message
-        cout << "(apparently this location does not exist in Middle Earth)" << endl;        //commentary
-        cout << "maybe try some smaller numbers" << endl;                                   //output statement, try again, Ask for new coordinates
+        std::cout << "Filthy hobbitses, trixie and false!!!" << std::endl;                            //error message
+        std::cout << "(apparently this location does not exist in Middle Earth)" << std::endl;        //commentary
+        std::cout << "maybe try some smaller numbers" << std::endl;                                   //output statement, try again, Ask for new coordinates
 
         locationX = getNumberInput("Enter an x coordinate: ");  // Get new x coordinate
         locationY = getNumberInput("Enter a y coordinate: ");   // Get new y coordinate
         }
     }
+    // After valid input, determine the quadrant and print the map size
+    determineQuadrant();  // Once a valid location is entered, call determineQuadrant to find out which quadrant the user is in
 
-
-
- 
- //std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
-// [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.
-// [% 100]: This is the modulus operator. It gives the remainder when the random number is divided by 100. 
-// This operation ensures the result is between 0 and 99 (inclusive).
-// << " ": This inserts a space after the random number, separating it from other output.
-
-
-/*this is where the code to randomly choose the size of the map from a range of 10 to 100 */
-
-//USER NAME ENTRY CODE
-cout << "Please enter your name." << endl;
-cout << "We swears we will 'keep it secret, keep it safe' *Gollum* *Gollum*" << endl;
-cin >> userName ;
-cout << "Thank you "<< userName <<"for participating in this adventure" << endl;
-cout << "Where would you like to be on the map?" << endl;
-
-//[COORDINATE FUNCTION] 
-      cout << "Enter an x coordinate: ";
-      cin >> locationX;
-      cout << "Enter a y coordinate:";
-      cin >> locationY;
-
-
-
-
-
-
-
-
-  return 0;
+    return 0;  // End the program
 }
 

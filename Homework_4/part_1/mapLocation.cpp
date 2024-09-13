@@ -106,37 +106,37 @@ string quad;                                                                  //
   if (horizontal == "right" && vertical == "top") {      
       quad = "1st Quadrant";                                                    // if the above conditions are met then the quadrant is this
         printStatement(quad);  
-    cout << "[ ] [+]" << endl << "[ ] [ ]" << endl;                           //visual output of quadrant
+    std::cout << "[ ] [+]" << std::endl << "[ ] [ ]" << std::endl;                           //visual output of quadrant
 
   } else if(horizontal == "left" && vertical == "top") {      
       quad = "2nd Quadrant";                                                    // if the above conditions are met then the quadrant is this
         printStatement(quad); 
-    cout << "[+] [ ]" << endl << "[ ] [ ]" << endl;                           //visual output of quadrant
+    std::cout << "[+] [ ]" << std::endl << "[ ] [ ]" << std::endl;                           //visual output of quadrant
 
   } else if (horizontal == "center" && vertical == "top") {      
       quad = "Top Center";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
-    cout << "[ ]+[ ]" << endl << "[ ] [ ]" << endl;                           //visual output of quadrant
+    std::cout << "[ ]+[ ]" << std::endl << "[ ] [ ]" << std::endl;                           //visual output of quadrant
 
   } else if (horizontal == "right" && vertical == "bottom") {   
       quad = "3rd Quadrant";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
-    cout << "[ ] [ ]" << endl << "[+] [ ]" << endl;                           //visual output of quadrant
+    std::cout << "[ ] [ ]" << std::endl << "[+] [ ]" << std::endl;                           //visual output of quadrant
 
   } else if (horizontal == "left" && vertical == "bottom") {   
       quad = "4th Quadrant";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
-    cout << "[ ] [ ]" << endl << "[ ] [+]" << endl;                           //visual output of quadrant
+    std::cout << "[ ] [ ]" << std::endl << "[ ] [+]" << std::endl;                           //visual output of quadrant
 
   } else if (horizontal == "center" && vertical == "bottom") {   
       quad = "Bottom Center";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
-    cout << "[ ] [ ]" << endl << "[ ]+[ ]" << endl;                           //visual output of quadrant
+    std::cout << "[ ] [ ]" << std::endl << "[ ]+[ ]" << std::endl;                           //visual output of quadrant
 
   } else if (horizontal == "center" && vertical == "center") {   
       quad = "Exact Center";
         printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
-    cout << "[ ] [ ]" << endl << "   +" << endl << "[ ] [ ]" << endl;         //visual output of quadrant
+    std::cout << "[ ] [ ]" << std::endl << "   +" << std::endl << "[ ] [ ]" << std::endl;         //visual output of quadrant
   }
 }
 
@@ -145,7 +145,7 @@ string quad;                                                                  //
 //---------------------------------FINAL PRINT STATEMENT FUNCTION---------------------------------
 // initializing a print statement so to use less typing later
 void printStatement(string quad) {
-    cout << "Coordinate (" << locationX <<", " << locationY <<") is located in the " << quad << " of the map." << endl;
+    std::cout << "Coordinate (" << locationX <<", " << locationY <<") is located in the " << quad << " of the map." << std::endl;
 }
 
 
@@ -156,30 +156,30 @@ double getNumberInput(string prompt) {                                        //
   
     double number;                                                    // Declare variable to store input as [double] called [number]
 
-    cout << prompt;   // Display the prompt, in this case for each prompt in get number such as "enter and x coordinate"
+    std::cout << prompt;   // Display prompt, in this case for each prompt in get number such as "enter and x coordinate"
     
     // Get input and attempt to store in [number]
-    cin >> number;
+    std::cin >> number;
 
     
-    if (cin.fail()) {                                   // Check if the input failed (i.e., the user did not enter a valid number)
+    if (std::cin.fail()) {                                   // Check if the input failed (i.e., the user did not enter a valid number)
         
        
-      cout << "Invalid input. Please enter a valid number." << endl;        //error message indicating input invalid
+      std::cout << "Invalid input. Please enter a valid number." << std::endl;        //error message indicating input invalid
         
         
-      cin.clear();                                      // Clear error flag on input stream [cin], which occurs when a non-numeric value is entered
+      std::cin.clear();                                     // Clear error flag on input stream [std::cin], occuring when non-num value is entered
 
         
         
-      cin.ignore(1000, '\n');                           // Ignore remaining input in stream up to 1000 characters or until the next newline
-                                                        // helps remove any invalid input that might still be in the buffer
-                                                        //(1000 characters should be more than enough)
+      std::cin.ignore(1000, '\n');                          // Ignore remaining input in stream up to 1000 characters or until the next newline
+                                                            // helps remove any invalid input that might still be in the buffer
+                                                            //(1000 characters should be more than enough)
         
-      return getNumberInput(prompt);                    // Repeat calling the function to prompt the user again and get a valid input
-                                                        // Since function calls itself, it keeps doing  until user enters valid number
+      return getNumberInput(prompt);                        // Repeat calling the function to prompt the user again and get a valid input
+                                                            // Since function calls itself, it keeps doing  until user enters valid number
     }
 
-    return number; // upon valid input (i.e., no failure in the 'cin' stream), return number to caller
+    return number; // upon valid input (i.e., no failure in the 'std::cin' stream), return number to caller
 }
 
