@@ -29,11 +29,16 @@ int main() {
     bool validLocation = false;                                                             // Variable tracks if location valid or not   
     while (!validLocation) {
                 // Check if the entered coordinates are within the map's bounds
-    validLocation = isValidLocation();  // Call isValidLocation to check if both coordinates are valid
+        validLocation = isValidLocation();  // Call isValidLocation to check if both coordinates are valid
             // If the location is invalid, show an error message
-    if (!validLocation) {
+        if (!validLocation) {
+                    //THIS IS THE SECTION FOR THE FAILURE MESSAGE
+                    // if the x and/OR y location dont fit anywhere on the random map then display the messages
+        cout << "Filthy hobbitses, trixie and false!!!" << endl;
+        cout << "(apparently this location does not exist in Middle Earth)" << endl;
+        cout << "MAYBE TRY A SMALLER NUMBER" << endl;                       /*output statement to try again*/
 
-        
+
 
  
  //std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
@@ -60,11 +65,7 @@ cout << "Where would you like to be on the map?" << endl;
 
 
 
-//THIS IS THE SECTION FOR THE FAILURE MESSAGE
-// if the x and/OR y location dont fit anywhere on the random map then display the messages
-// "Filthy hobbitses, trixie and false!!! (apparently this location does not exist on the map i had in mind)
-// "MAYBE TRY A SMALLER NUMBER"
-/*output statement to try again*/
+
 
 
 
