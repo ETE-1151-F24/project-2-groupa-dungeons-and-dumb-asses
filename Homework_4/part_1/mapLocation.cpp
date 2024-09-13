@@ -46,7 +46,7 @@ void generateMap() {                              // Random map size between 10 
 //---------------------------------LOCATION VALIDITY CHECKING FUNCTION-----------------------------------------------------------------
 // Function to validate if the user's coordinates are within the map boundaries
 // Updated: Now uses global variables locationX and locationY directly
-bool isValidLocation() {
+bool isValidLocation(double locationX, double locationY) {
     int halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
     int halfY = mapSizeY / 2;
     return (locationX >= -halfX && locationX <= halfX) && (locationY >= -halfY && locationY <= halfY);
@@ -56,7 +56,7 @@ bool isValidLocation() {
 
 
 //---------------------------------QUADRANT DETERMINING FUNCTION--------------------------------------------------------------------------------
-void determineQuadrant() {                      //determining the quadrant location on the map based on [locationX] and [loactionY]
+void determineQuadrant(double locationX, double locationY) {                      //determining the quadrant location on the map based on [locationX] and [loactionY]
     int halfX = mapSizeX / 2;                   //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
     int halfY = mapSizeY / 2;
     
