@@ -105,56 +105,75 @@ void quadImaging() {                                                          //
 string quad;                                                                  //initializing the string [quad] for the function
 
   if (horizontal == "right" && vertical == "top") {      
-    quad = "1st Quadrant";                                                    // if the above conditions are met then the quadrant is this
-    printStatement(quad);  
+      quad = "1st Quadrant";                                                    // if the above conditions are met then the quadrant is this
+        printStatement(quad);  
     cout << "[ ] [+]" << endl << "[ ] [ ]" << endl;                           //visual output of quadrant
 
   } else if(horizontal == "left" && vertical == "top") {      
-    quad = "2nd Quadrant";                                                    // if the above conditions are met then the quadrant is this
-    printStatement(quad); 
+      quad = "2nd Quadrant";                                                    // if the above conditions are met then the quadrant is this
+        printStatement(quad); 
     cout << "[+] [ ]" << endl << "[ ] [ ]" << endl;                           //visual output of quadrant
 
   } else if (horizontal == "center" && vertical == "top") {      
-    quad = "Top Center";
-    printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
+      quad = "Top Center";
+        printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     cout << "[ ]+[ ]" << endl << "[ ] [ ]" << endl;                           //visual output of quadrant
 
   } else if (horizontal == "right" && vertical == "bottom") {   
-    quad = "3rd Quadrant";
-    printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
+      quad = "3rd Quadrant";
+        printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     cout << "[ ] [ ]" << endl << "[+] [ ]" << endl;                           //visual output of quadrant
 
   } else if (horizontal == "left" && vertical == "bottom") {   
-    quad = "4th Quadrant";
-    printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
+      quad = "4th Quadrant";
+        printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     cout << "[ ] [ ]" << endl << "[ ] [+]" << endl;                           //visual output of quadrant
 
   } else if (horizontal == "center" && vertical == "bottom") {   
-    quad = "Bottom Center";
-    printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
+      quad = "Bottom Center";
+        printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     cout << "[ ] [ ]" << endl << "[ ]+[ ]" << endl;                           //visual output of quadrant
 
   } else if (horizontal == "center" && vertical == "center") {   
-    quad = "Exact Center";
-    printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
+      quad = "Exact Center";
+        printStatement(quad);                                                     // if the above conditions are met then the quadrant is this
     cout << "[ ] [ ]" << endl << "   +" << endl << "[ ] [ ]" << endl;         //visual output of quadrant
   }
 }
 
-//---------------------------------GETTING AN INPUT LOCATION FUNCTION---------------------------------------------------------------------------------
+//---------------------------------GETTING AN INPUT LOCATION FUNCTION (UNTIL VALID)-------------------------------------------------------------------------
 // Function to get valid numeric input from the user and handle errors
-double getNumberInput(string prompt) {
+double getNumberInput(string prompt) {                                        //and intitializing a [string] called [prompt]
   
-    double number;  // Declare variable [number] of type double that will store the user's input
+    double number;                                                    // Declare variable to store input as [double] called [number]
 
-    // Start an infinite loop to continuously prompt the user until valid input is received
-    while (true) {
-        // Output the prompt message to the console (e.g., "Enter a number: ")
-        cout << prompt;
+    cout << prompt;   // Display the prompt, in this case for each prompt in get number such as "enter and x coordinate"
+    
+    // Get input and attempt to store in [number]
+    cin >> number;
 
+    
+    if (cin.fail()) {                 // Check if the input failed (i.e., the user did not enter a valid number)
+        
+       
+      cout << "Invalid input. Please enter a valid number." << endl;        //error message indicating input invalid
+        
+        
+      cin.clear();                  // Clear error flag on input stream [cin], which occurs when a non-numeric value is entered
 
+        
+        
+      cin.ignore(1000, '\n');   // Ignore remaining input in stream up to 1000 characters or until the next newline
+                                // helps remove any invalid input that might still be in the buffer
+                                //(1000 characters should be more than enough)
+        
+      return getNumberInput(prompt);  // Recursively call the function to prompt the user again and get a valid input
+                                        // Since function calls itself, it keeps doing  until user enters valid number
+    }
 
-
+   
+    return number; // upon valid input (i.e., no failure in the 'cin' stream), return number to caller
+}
 int main() {
  std::cout << rand() % 100 << " "; // Output a random number between 0 and 99, followed by a space
 // [rand()]: Generates a random integer, often a large number. The actual range of values is system-dependent.

@@ -245,3 +245,67 @@ std::cout << (rand() % 38) + 6 << " "; // Output a random number between 6 and 4
 
 // [rand()] % 38: Generates a random number between 0 and 37 (because 43 - 6 + 1 = 38).
 // [+ 6]: Shifts the range from 0-37 to 6-43.
+
+
+//-------------------------------GET NUMBER VALIDATION------------------------------
+
+// Function to get valid numeric input from the user and handle errors
+double getNumberInput(string prompt) {
+    
+    // Declare a variable to store the user input as a double
+    double number;
+
+    // Infinite loop to keep asking for input until a valid number is entered
+    while (true) {
+
+        // Output the prompt message to the user
+        cout << prompt;
+        
+        // Get input from the user and attempt to store it in the 'number' variable
+        cin >> number;
+
+        // Check if the input failed (i.e., the user did not enter a valid number)
+        if (cin.fail()) {
+
+            // Clear the error flag on the input stream (cin)
+            cin.clear();
+
+            // Ignore any remaining input in the stream until the end of the line
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            // Inform the user that the input was invalid
+            cout << "Error: Expected a number but received invalid input." << endl;
+        
+        } else {
+
+            // Ignore any remaining input in the stream (if any) to avoid issues with subsequent input
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            // Return the valid number to the caller (this also exits the loop)
+            return number;
+        }
+    }
+}
+            // 'cin.ignore()' is a function used to ignore characters in the input stream (cin).
+            // It's useful when you want to skip invalid or extra characters left in the input buffer
+            // after taking input, especially after using 'cin >>'.
+            
+            // 'numeric_limits<streamsize>::max()' is a way to specify how many characters should be ignored.
+            // Let's break it down:
+            //
+            // 1. 'numeric_limits' is a template class that provides information about the properties of
+            //    fundamental numeric types (like int, double, etc.). In this case, it's applied to 'streamsize',
+            //    the type used for representing the size of the input/output stream.
+            //
+            // 2. '<streamsize>' specifies that we are retrieving the limits (such as max value) for the 'streamsize' type.
+            //
+            // 3. '::max()' returns the maximum value that a 'streamsize' variable can hold. In this context,
+            //    it means we are telling 'cin.ignore()' to ignore up to the maximum possible number of characters in the input stream.
+            
+            // The second argument, '\n', specifies the delimiter. It means the function will stop ignoring characters 
+            // once it encounters a newline ('\n'), or after the maximum number of characters (given by 'numeric_limits<streamsize>::max()') 
+            // is ignored. Essentially, it ignores everything until the end of the current input line.
+            
+            // Practical use: This line clears any leftover characters from the input buffer, preventing
+            // unexpected behavior when reading further input. It's commonly used after input validation
+            // to ensure no invalid characters (like extra letters or spaces) remain in the input stream.
