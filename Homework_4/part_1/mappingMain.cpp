@@ -5,10 +5,11 @@
 using namespace std;
 
 int main() {
-    srand(time(0));  // Seed the random number generator to ensure random map size each time the program runs   
+    srand(time(0));                                                                         //Seed random number generator to 
+                                                                                            //ensure random map size each time program runs   
      
     
-    generateMap(); // Generate a random map size, but doesnt print anything yet
+    generateMap();                                                                          //Generate random map size, but doesnt print yet
 
 //-------------------------- USER NAME ENTRY CODE--------------------
     cout << "Please enter your name." << endl;                                              // initial prompt
@@ -21,22 +22,29 @@ int main() {
 //-------------------------- USER lOCATION ENTRY CODE--------------------
     cout << "Where would you like to be on the map?" << endl;
 
- // Get the user's X and Y coordinates using input validation
+                                                                                            //Get user X, Y coordinates using input validation
     locationX = getNumberInput("Enter an x coordinate: ");                                  //Call getNumberInput with prompt for x coordinate
     locationY = getNumberInput("Enter a y coordinate: ");                                   //Call getNumberInput with prompt for y coordinate
   
-  // Loop until a valid location is entered
+                                                                
     bool validLocation = false;                                                             // Variable tracks if location valid or not   
-    while (!validLocation) {
-                // Check if the entered coordinates are within the map's bounds
-        validLocation = isValidLocation();  // Call isValidLocation to check if both coordinates are valid
-            // If the location is invalid, show an error message
-        if (!validLocation) {
-                    //THIS IS THE SECTION FOR THE FAILURE MESSAGE
-                    // if the x and/OR y location dont fit anywhere on the random map then display the messages
-        cout << "Filthy hobbitses, trixie and false!!!" << endl;
-        cout << "(apparently this location does not exist in Middle Earth)" << endl;
-        cout << "MAYBE TRY A SMALLER NUMBER" << endl;                       /*output statement to try again*/
+    
+    while (!validLocation) {                                                                //Loop until valid location is entered                                                             
+                  
+        validLocation = isValidLocation();                                                  //Check if entered coordinates within the map bounds                                            
+                                                                                            //Call isValidLocation to check both coordinates valid
+
+        if (!validLocation) {                                                               //If location invalid, show error message
+                                                                          
+
+        cout << "Filthy hobbitses, trixie and false!!!" << endl;                            //error message
+        cout << "(apparently this location does not exist in Middle Earth)" << endl;        //commentary
+        cout << "maybe try some smaller numbers" << endl;                                   //output statement, try again, Ask for new coordinates
+
+        locationX = getNumberInput("Enter an x coordinate: ");  // Get new x coordinate
+        locationY = getNumberInput("Enter a y coordinate: ");   // Get new y coordinate
+        }
+    }
 
 
 
