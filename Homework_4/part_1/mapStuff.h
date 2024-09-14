@@ -16,5 +16,7 @@ void quadImaging();                                         // function for disp
 double getNumberInput(std::string prompt);                  // Function to get valid numeric input from the user
 void printStatement(std::string quad);                      // Function to print quadrant information
 void coordination();                                        // function to get valid coordinates and chide user for wrong stuff
+void showMapSizes();                                        // Function to reveal actual map dimensions and quadrant sizes at end        
+void nameEntry();                                           // Function to run name entry dialogue
 
 #endif // End of include guard

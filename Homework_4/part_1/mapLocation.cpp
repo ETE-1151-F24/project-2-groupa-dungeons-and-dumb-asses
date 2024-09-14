@@ -30,46 +30,54 @@
 
 //-------------------------------RANDOM MAP GENERATOR FUNCTION----------------------------------------------------------------
 // Function to randomly generate the size of the map
-void generateMap() {                              // Random map size between 10 and 100 for both width (X) and height (Y)
-    mapSizeX = (rand() % 91) + 10;                // Random width (range: 10 to 100)
-    mapSizeY = (rand() % 91) + 10;                // Random height (range: 10 to 100)
+void generateMap() {                                                                        // Random map size between 10 and 100 
+    mapSizeX = (rand() % 91) + 10;                                                          // Random width (range: 10 to 100)
+    mapSizeY = (rand() % 91) + 10;                                                          // Random height (range: 10 to 100)
 }
 //NOTE: to establish left and right and top and bottom quadrants i need to find the half way points of each mapSize
-                //-(mapSizeX/2) is the left side of the map [-halfX]
-                // (mapSizeX/2) is the right ide of the map [halfX]
-                //-(mapSizeY/2) is the bottom side of the map [-halfY]
-                // (mapSizeY/2) is the top side of the map  [halfY]............SEE BELOW
+                                                                                            //-(mapSizeX/2) is the left of map [-halfX]
+                                                                                            // (mapSizeX/2) is the right of map [halfX]
+                                                                                            //-(mapSizeY/2) is the bottom of map [-halfY]
+                                                                                            // (mapSizeY/2) is the top of the map  [halfY]
 
 
+//--------------------------------- USER NAME ENTRY FUNCTION--------------------
+void nameEntry(){
+    std::cout << "Please enter your name." << std::endl << std::endl;                       // initial prompt
+    
+    std::cout << "We swears we will KEEP IT SECRET, KEEP IT SAFE ....*retching*  *gollum*  *gollum*." << std::endl << std::endl; 
+    
+    std::getline(std::cin, userName);                                                       // Use std::getline to allow names with spaces
+    
+    std::cout << std::endl  <<  "Thank you [" << userName << "] for participating in this adventure!" << std::endl;    //THANKYOU message
+   }
 
 
 //---------------------------------COORDINATE intro function--------------------
 void coordination() {
-    std::cout << std::endl << "Where would you like to be on the map?" << std::endl << std::endl;
+  std::cout << std::endl << "Where would you like to be on the map?" << std::endl << std::endl;
 
                                                                                               //Get user X, Y coordinates using input validation
-    locationX = getNumberInput("Enter an [X] coordinate: ");                                  //Call getNumberInput with prompt for x coordinate
-    locationY = getNumberInput("Enter a [Y] coordinate: ");                                   //Call getNumberInput with prompt for y coordinate
-  
-                                                                
-    bool validLocation = false;                                                             // Variable tracks if location valid or not   
+  locationX = getNumberInput("Enter an [X] coordinate: ");                                    //Call getNumberInput with prompt for x coordinate
+  locationY = getNumberInput("Enter a [Y] coordinate: ");                                     //Call getNumberInput with prompt for y coordinate
+                                                               
+  bool validLocation = false;                                                                 // Variable tracks if location valid or not   
     
-    while (!validLocation) {                                                                //Loop until valid location is entered                                                             
+  while (!validLocation) {                                                                    //Loop until valid location is entered                                                             
                   
-        validLocation = isValidLocation(locationX, locationY);                                                 //Check if entered coordinates within the map bounds                                            
-                                                                                            //Call isValidLocation to check both coordinates valid
+    validLocation = isValidLocation(locationX, locationY);                                    //Check if coordinates within the map bounds                                            
+                                                                                              //Call isValidLocation to check both valid
 
-        if (!validLocation) {                                                               //If location invalid, show error message
+    if (!validLocation) {                                                                     //If location invalid, show error message
                                                                           
+      std::cout << std::endl << "Filthy hobbitses, trixie and false!!!" << std::endl;         //error message
+      std::cout << " (apparently this location does not exist in Middle Earth)" << std::endl; //commentary
+      std::cout << "         maybe try some smaller numbers" << std::endl;                    //output statement, try again, Ask for new coordinates
 
-        std::cout << std::endl << "Filthy hobbitses, trixie and false!!!" << std::endl;                  //error message
-        std::cout << "   (apparently this location does not exist in Middle Earth)" << std::endl;        //commentary
-        std::cout << "         maybe try some smaller numbers" << std::endl;                             //output statement, try again, Ask for new coordinates
-
-        locationX = getNumberInput("Enter an x coordinate: ");                                        // Get new x coordinate
-        locationY = getNumberInput("Enter a y coordinate: ");                                         // Get new y coordinate
-        }
-    }
+      locationX = getNumberInput("Enter an x coordinate: ");                                  // Get new x coordinate
+      locationY = getNumberInput("Enter a y coordinate: ");                                   // Get new y coordinate
+      }
+  }
 }
 
 
@@ -78,16 +86,15 @@ void coordination() {
 
 
 //---------------------------------LOCATION VALIDITY CHECKING FUNCTION-----------------------------------------------------------------
+
 // Function to validate if the user's coordinates are within the map boundaries
 // Updated: Now uses global variables locationX and locationY directly
 bool isValidLocation(double locationX, double locationY) {
-    float halfX = mapSizeX / 2; //this is setting a halfwaypoint in either direction of the origin(0,0) based on the mapsize
+    float halfX = mapSizeX / 2;                                   //[halfX] or [halfY] is measure of quadrant sizes in either direction
     float halfY = mapSizeY / 2;
     return (locationX >= -halfX && locationX <= halfX) && (locationY >= -halfY && locationY <= halfY);
 
-
-
-} // this boolean wiLL either return a true or false value if both of the conditions meet or fail
+}                                                           //this boolean either return true/false value if both conditions meet or fail
 
 
 
@@ -119,16 +126,16 @@ void determineQuadrant(double locationX, double locationY) {                    
 //---------------------------------QUADRANT IMAGING FUNCTION---------------------------------------------
 // this is used to make a generic visual of the location of the coordinate
  
-void quadImaging() {                                                          //INITIALIZING THE QUADRANT IMAGING FUNCTION
+void quadImaging() {                                                              //INITIALIZING THE QUADRANT IMAGING FUNCTION
 std::string quad;
 
   if (horizontal == "right" && vertical == "top") {      
-      quad = "1st Quadrant";                                                    // if the above conditions are met then the quadrant is this
+      quad = "1st Quadrant";                                                      // if the above conditions are met then the quadrant is this
         printStatement(quad);  
     std::cout << "[ ] [+]" << std::endl << "[ ] [ ]" << std::endl;                           //visual output of quadrant
 
   } else if(horizontal == "left" && vertical == "top") {      
-      quad = "2nd Quadrant";                                                    // if the above conditions are met then the quadrant is this
+      quad = "2nd Quadrant";                                                      // if the above conditions are met then the quadrant is this
         printStatement(quad); 
     std::cout << "[+] [ ]" << std::endl << "[ ] [ ]" << std::endl;                           //visual output of quadrant
 
@@ -181,17 +188,17 @@ void printStatement(std::string quad) {
 
 //---------------------------------GETTING AN INPUT LOCATION FUNCTION (UNTIL VALID)-------------------------------------------------------------------------
 // Function to get valid numeric input from the user and handle errors
-double getNumberInput(std::string prompt) {                                        //and intitializing a [string] called [prompt]
+double getNumberInput(std::string prompt) {                                       //and intitializing a [string] called [prompt]
   
-  double number;                                                              // Declare variable to store input as [double] called [number]
+  double number;                                                                  // Declare variable to store input as [double] called [number]
    
-    while (true) {                                                            //while loop                                           
+    while (true) {                                                                //while loop                                           
 
-      std::cout << prompt;                                                    //Display prompt, for each occurence "enter coordinate"
+      std::cout << prompt;                                                        //Display prompt, for each occurence "enter coordinate"
     
-      std::cin >> number;                                                     //Get input and attempt to store in [number]
+      std::cin >> number;                                                         //Get input and attempt to store in [number]
 
-      if (std::cin.fail()) {                                                  //Check if input failed (i.e.,user didnt enter valid number)
+      if (std::cin.fail()) {                                                      //Check if input failed (i.e.,user didnt enter valid number)
               
         std::cout << "Invalid input. Please enter a valid number no letters." << std::endl;        //error message indicating input invalid   
         
@@ -205,4 +212,16 @@ double getNumberInput(std::string prompt) {                                     
         }
     }
 }
+
+
+
+//---------------------------------REVEALING THE MAP AND QUADRANT SIZE FUNCTION---------------
+   void showMapSizes() { // Calculate halfX and halfY here for final statement
+    float halfX = mapSizeX / 2.0f;
+    float halfY = mapSizeY / 2.0f;
+
+    std::cout << "The map is ("<< mapSizeX << " by "<< mapSizeY << ") B T dubs"<< std::endl;
+    std::cout << "Each quadrant is ("<< halfX << " by "<< halfY << ")" << std::endl << std::endl;
+   }
+
 
