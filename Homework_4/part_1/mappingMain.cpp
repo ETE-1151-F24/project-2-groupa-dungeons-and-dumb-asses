@@ -23,7 +23,7 @@ int main() {
     quadImaging();                                                                          //print the map location
 
     showMapSizes();                                                                         //RUNS function to reveal actual map size
-  
+  std::cout << "Thanks for playing preshuss" << std::endl << std::endl;
     return 0;
 }
 

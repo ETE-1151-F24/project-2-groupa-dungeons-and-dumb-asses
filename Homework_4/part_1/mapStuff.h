@@ -7,7 +7,7 @@
  int mapSizeX, mapSizeY; 
  double locationX, locationY;
  std::string userName, horizontal, vertical, quad;
-
+ std::string lowerName;
 // Function declarations for map-related operations
 void generateMap();                                         // Function to generate random map size
 bool isValidLocation(double locationX, double locationY);   // Function to check if the entered location is within the map boundaries

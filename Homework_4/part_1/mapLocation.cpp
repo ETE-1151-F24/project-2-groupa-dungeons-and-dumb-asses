@@ -22,7 +22,7 @@
 #include <cstdlib>                      // For rand() function (random number generation)
 #include <ctime>                        // For time() function to seed random number generator
 #include <limits>                       // For numeric limits to handle input errors
-
+#include <algorithm>                    // For std::transform (to convert to lowercase) TO CHECK NAME
 
 // ------------------------GLOBAL VARIABLES AND STRINGS FOR MAPSIZE, LOCATION AND NAME INITIALIZATIONS---------------------
 //NOTE: i only want to generate the map at the start of the program and not every time there is an error
@@ -43,12 +43,26 @@ void generateMap() {                                                            
 
 //--------------------------------- USER NAME ENTRY FUNCTION--------------------
 void nameEntry(){
-    std::cout << "Please enter your name." << std::endl << std::endl;                       // initial prompt
+    std::cout << std::endl << "Please enter your name." << std::endl << std::endl;                       // initial prompt
     
     std::cout << "We swears we will KEEP IT SECRET, KEEP IT SAFE ....*retching*  *gollum*  *gollum*." << std::endl << std::endl; 
-    
+
+
     std::getline(std::cin, userName);                                                       // Use std::getline to allow names with spaces
-    
+
+//-------STUPID BUT FUN CONDITION IF THE NAME IS FRODO
+    // Convert the input name to lowercase for case-insensitive comparison
+      std::string lowerName = userName;
+      std::transform(lowerName.begin(), lowerName.end(), lowerName.begin(), ::tolower);
+
+    // Check if the name is "frodo" (any variant)
+      if (lowerName == "frodo") {
+          std::cout << "*Gollum screams* \"THE PRECIOUS IS MINE!!!!\"" << std::endl;
+          std::cout << "\"YOU HAVE DIED... GAME OVER\"" << std::endl << std::endl;
+          exit(0);  // End the program immediately
+      }    
+
+
     std::cout << std::endl  <<  "Thank you [" << userName << "] for participating in this adventure!" << std::endl;    //THANKYOU message
    }
 
