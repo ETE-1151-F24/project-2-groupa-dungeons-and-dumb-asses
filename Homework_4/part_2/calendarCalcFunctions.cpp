@@ -50,15 +50,16 @@ void printMonth(int year, int month, int &startDay) {
 
 
 //--------------------------------------------FUNCTION TO GET USER INPUT FOR YEAR-----------------------------
-int getYear(int year){                                                                              //want function to not accept years before 1900
-    int year;                                                                                       // Declare variable to store the input year
+int getYear() {                                                                              //want function to not accept years before 1900
+     int year;                                                                                      // Declare variable to store the input year
 
     while (true) {
         std::cout << "Enter a year (>= 1900): ";                                                    // Prompt the user for a year
         std::cin >> year;
                                                                                                     //USING ERROR HANDLING FROM MAP PROGRAM
         if (std::cin.fail()) {                                                                      // Check if input is valid
-            std::cout << "Invalid input. Please enter a valid number." << std::endl;
+            std::cout << "You may Whisper sweet nothings to me..." << std::endl;
+            std::cout << " but Please make your sweet nothings a VALID NUMBER." << std::endl;
             std::cin.clear();                                                                       // Clear error flag on input stream
             std::cin.ignore(1000, '\n');                                                            // Clear any remaining input in the stream
         } else if(year < 1900){
@@ -69,6 +70,7 @@ int getYear(int year){                                                          
         }
     }
 }
+
 
 
 
