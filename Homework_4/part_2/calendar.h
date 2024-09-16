@@ -5,7 +5,7 @@
 #include <string>
 //GLOBAL VARIABLE DECLARATIONS
 int year;
-
+int month;
 
 //FUNCTION DECLARATIONS AND INITIALIZATIONS
 void printMonth(int year, int month, int &startDay);        //initializes the Function to print a specific month

@@ -101,3 +101,12 @@ int getMonth() {                                                                
 // THE YEAR 1900 BEGAN ON A MONDAY
 // ANY YEAR BEFORE 1900, DISPLAY AN ERROR MESSAGE 
 //
+int calculateStartDay(int year) {
+    int totalDays = 0;                                                                       //track total number days from 1900 to entered year
+    for (int y = 1900; y < year; y++) {
+        // Add 365 days for normal years and 366 for leap years
+        totalDays += isLeapYear(y) ? 366 : 365;
+    }
+    // Year 1900 starts on a Monday, so offset by totalDays % 7
+    return totalDays % 7; // Returns the start day offset for the given year
+}
