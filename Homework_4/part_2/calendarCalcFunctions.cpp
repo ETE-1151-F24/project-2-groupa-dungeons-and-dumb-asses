@@ -49,6 +49,8 @@ void printMonth(int year, int month, int &startDay) {
 
 
 
+
+
 //--------------------------------------------FUNCTION TO GET USER INPUT FOR YEAR-----------------------------
 int getYear() {                                                                              //want function to not accept years before 1900
      int year;                                                                                      // Declare variable to store the input year
@@ -71,7 +73,27 @@ int getYear() {                                                                 
     }
 }
 
+//--------------------------------------------FUNCTION TO GET USER INPUT FOR MONTH-----------------------------
+int getMonth() {                                                                              //want function to not accept years before 1900
+     int month;                                                                                      // Declare variable to store the input year
 
+    while (true) {
+        std::cout << "Choose a month";                                                    // Prompt the user for a year
+        std::cin >> month;
+                                                                                                    //USING ERROR HANDLING FROM MAP PROGRAM
+        if (std::cin.fail()) {                                                                      // Check if input is valid
+            std::cout << "I'm sorry I didn't quite get that" << std::endl;
+            std::cout << " Please make your input a 'VALID' NUMBER." << std::endl;
+            std::cin.clear();                                                                       // Clear error flag on input stream
+            std::cin.ignore(1000, '\n');                                                            // Clear any remaining input in the stream
+        } else if(month < 1 || month > 12){
+            std::cout << "*facepalm*  please choose a 'VALID' NUMBER.," << std::endl;
+    
+        } else {
+            return month;
+        }
+    }
+}
 
 
 
