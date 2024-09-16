@@ -38,3 +38,16 @@
 
 //preliminary thinking
 //find out if the year is a leap year
+// if the year is a leap year, then february has 29 days
+//JAN / FEB / MAR / APR / MAY / JUN / JUL / AUG / SEP / OCT / NOV / DEC /
+//31    28    31    30    31    30    31    31    30    31    30    31
+//WANT TO KNOW WHAT DAY OF THE WEEK THE MONTH STARTS ON
+//TEMPLATE SHOULD BE //  Mon     Tue     Wed     Thu     Fri     Sat     Sun
+
+//USING CODE FROM STACK OVERFLOW I FOUND
+
+// A C++ Program to Implement a Calendar
+// of an year
+#include<bits/stdc++.h>
+using namespace std;
+ 
