@@ -33,4 +33,8 @@
 //  22      23      24      25      26      27      28
 //  29      30      31
 
-mon5spaceTue5spaceWed5spaceThu5space
+//mon5spaceTue5spaceWed5spaceThu5space
+
+
+//preliminary thinking
+//find out if the year is a leap year
