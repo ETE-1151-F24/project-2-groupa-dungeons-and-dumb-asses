@@ -73,8 +73,8 @@ bool nameEntry(){
 
 //---------------------------------COORDINATE intro function--------------------
 void coordination() {
-  std::cout << std::endl << "Where would you like to be on the map?" << std::endl << std::endl;
-  std::cout << std::endl << "The map size I chose is a secret until the end" << std::endl << std::endl;
+  std::cout << std::endl << "Where would you like to be on the map?" << std::endl;
+  std::cout  << "               The map size I chose is a secret until the end" << std::endl << std::endl;
 
                                                                                               //Get user X, Y coordinates using input validation
   locationX = getNumberInput("Enter an [X] coordinate: ");                                    //Call getNumberInput with prompt for x coordinate

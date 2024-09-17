@@ -28,6 +28,10 @@ if (!nameEntry()) {                                                             
 
     showMapSizes();                                                                         //RUNS function to reveal actual map size
   std::cout << "Thanks for playing preshuss" << std::endl << std::endl;
+
+      
+    std::cout << "\nPress any key to exit..." << std::endl;                                 // Wait for user input before closing 
+    std::cin.get();                                                                         // Wait for the user to press any key
     return 0;
 }
 
