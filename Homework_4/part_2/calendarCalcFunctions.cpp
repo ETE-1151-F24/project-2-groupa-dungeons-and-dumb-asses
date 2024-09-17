@@ -21,7 +21,6 @@ bool isLeapYear(int year) {
 
 
 
-
 //--------------------------------------------FUNCTION TO CHECK DAYS IN THE MONTH-----------------------------
 int findMonthLength(int year, int month) {
     //switch operator will go here
@@ -47,28 +46,14 @@ void printMonth(int year, int month, int &startDay) {                       //in
                                                                             //and references it so the print function can modify it
     int monthLength = findMonthLength(year, month);
 
-    // Use a switch statement to print the month name
-    switch (month) {
-        case 1: std::cout << "  January  "; break;
-        case 2: std::cout << "  February "; break;
-        case 3: std::cout << "  March    " << std::endl; break;
-        case 4: std::cout << "  April    " << std::endl; break;
-        case 5: std::cout << "  May      " << std::endl; break;
-        case 6: std::cout << "  June     " << std::endl; break;
-        case 7: std::cout << "  July     " << std::endl; break;
-        case 8: std::cout << "  August   " << std::endl; break;
-        case 9: std::cout << "  September" << std::endl; break;
-        case 10: std::cout << "  October  " << std::endl; break;
-        case 11: std::cout << "  November " << std::endl; break;
-        case 12: std::cout << "  December " << std::endl; break;
-        
+    std::cout << "  " << months[month - 1] << " " << year << std::endl;     // Print the header (month name and year)
+
     std::cout << year << std::endl;
-    std::cout << "  Mon  Tue  Wed  Thu  Fri  Sat  Sun" << std::endl;  // Change order of days to start with Monday
+    std::cout << "  Mon  Tue  Wed  Thu  Fri  Sat  Sun" << std::endl;        // Change order of days to start with Monday
 
-    // this makes sure the startDay  Monday is day 0, and the other days are adjusted
-    startDay = (startDay == 0) ? 6 : startDay - 1;  // Convert Sunday (0) to 6, and shift other days down
+                                                                            //makes sure startDay Monday is day 0, other days adjusted
+    startDay = (startDay == 0) ? 6 : startDay - 1;                          // Convert Sunday (0) to 6, and shift other days down
 
-  // Print leading spaces for the first week using setw
     std::cout << std::setw(startDay * 5) << "";     // Use setw to align the first day properly
                                                     // Explanation: had to look this up on stack overflow and dig to find about what it is doing
                                                     // 2. [std::setw(startDay * 5)]: 
@@ -84,10 +69,13 @@ void printMonth(int year, int month, int &startDay) {                       //in
         std::cout << std::setw(5) << day;                       // Right-align days with 5-width spacing
         
         if ((startDay + day) % 7 == 0) {            //Check if current day of week is last day of week (Sunday, which is day 6 by index)
-            std::cout << "\n";                      //Start a new line after Sunday
+            std::cout << std::endl;                      //Start a new line after Sunday
         }
     }
 
+    if ((startDay + monthLength) % 7 != 0) {                    // If the last day of the month doesn't end on a Sunday, 
+        std::cout << std::endl;                                 //add a final newline after last day of the month
+    }
 
 
 }

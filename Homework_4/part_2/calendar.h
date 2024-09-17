@@ -7,6 +7,9 @@
 int year;
 int month;
 
+const char *months[] = {"January", "February", "March", "April", "May", "June",    
+                            "July", "August", "September", "October", "November", "December"};  // Array to hold the names of the months
+
 //FUNCTION DECLARATIONS AND INITIALIZATIONS
 void printMonth(int year, int month, int &startDay);        //initializes the Function to print a specific month
                                                             // Takes in year, month, and a reference to the start day of the week
