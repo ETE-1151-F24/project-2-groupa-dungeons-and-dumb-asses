@@ -26,13 +26,22 @@ bool isLeapYear(int year) {
 
 //--------------------------------------------FUNCTION TO CHECK DAYS IN THE MONTH-----------------------------
 int findMonthLength(int year, int month) {
-    //switch operator will go her
+    //switch operator will go here
+    switch (month) {
     // cases will be 1:JAN  2:FEB  3:MAR   4:APR   5:MAY   6:JUN   7:JUL   8:AUG   9:SEP   10:OCT  11:NOV  12:DEC
     // CASES WITH 31 DAYS       :  1,3,5,7,8,10,12
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            return 31; 
     // CASES WITH 30 DAYS       :  4,6,9,11
+        case 4: case 6: case 9: case 11:
+            return 30; // Months with 30 days
     // FEB WITH 28(29 LEAP YEAR):  2
+        case 2:
+            return isLeapYear(year) ? 29 : 28; // February (adjust for leap year) by running leap year check
 
+    }
 }
+
 
 
 
@@ -74,27 +83,31 @@ int getYear() {                                                                 
 }
 
 //--------------------------------------------FUNCTION TO GET USER INPUT FOR MONTH-----------------------------
-int getMonth() {                                                                              //want function to not accept years before 1900
-     int month;                                                                                      // Declare variable to store the input year
+int getMonth() {                                                                                        //want function guide month choices
+     int month;                                                                                         // Declare variable to store the input month
 
     while (true) {
-        std::cout << "Choose a month";                                                    // Prompt the user for a year
+                                                                                                        // Display the options for months
+        std::cout << "Choose a month by entering the corresponding number:\n";
+        std::cout << "[ 1: Jan], [ 2: Feb], [ 3: Mar], [ 4: Apr], [ 5: May], [ 6: Jun]\n";
+        std::cout << "[ 7: Jul], [ 8: Aug], [ 9: Sep], [10: Oct], [11: Nov], [12: Dec]\n";
+         
+        std::cout << "Choose a month (1-12): ";                                                           // Prompt the user for a month
         std::cin >> month;
                                                                                                     //USING ERROR HANDLING FROM MAP PROGRAM
-        if (std::cin.fail()) {                                                                      // Check if input is valid
+        if (std::cin.fail()) {                                                                          // Check if input is valid
             std::cout << "I'm sorry I didn't quite get that" << std::endl;
             std::cout << " Please make your input a 'VALID' NUMBER." << std::endl;
-            std::cin.clear();                                                                       // Clear error flag on input stream
-            std::cin.ignore(1000, '\n');                                                            // Clear any remaining input in the stream
+            std::cin.clear();                                                                           // Clear error flag on input stream
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                         // Clear any remaining input in stream
         } else if(month < 1 || month > 12){
-            std::cout << "*facepalm*  please choose a 'VALID' NUMBER.," << std::endl;
+            std::cout << "*facepalm*  please choose a 'VALID' NUMBER (1-12).," << std::endl;
     
         } else {
             return month;
         }
     }
 }
-
 
 
 //--------------------------------------------FUNCTION TO FIND START DAY OF A MONTH BASED ON THE YEAR-----------------------------
