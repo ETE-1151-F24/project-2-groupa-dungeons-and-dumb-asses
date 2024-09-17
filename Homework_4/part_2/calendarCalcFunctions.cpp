@@ -8,16 +8,14 @@
 
 
 
-//--------------------------------------------FUNCTION TO CHECK FOR A LEAP YEAR-----------------------------
-                                                                                // A leap year occurs if:
-                                                                                // 1. The year is divisible by 4. or
-                                                                                // 2. The year is divisible by 100 and by 400.
+//--------------------------------------------FUNCTION TO CHECK FOR A LEAP YEAR-----------------------------        
+//leap year if either condition is satisfied:                                   //1. The year is multiple of 400.
+                                                                                
+                                                                                //2. The year is multiple of 4 (year % 4 == 0)...
+                                                                                //   and (&&) not multiple of 100 (year % 100 !=0).
 bool isLeapYear(int year) {
-
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
-                                                                                // The leap year logic used to adjust the number of days
-                                                                                // in February based on if leap year.
-//-------------------------------------------------------------
 
 //-------------------------------------------------------------
 
@@ -118,7 +116,7 @@ int calculateStartDay(int year) {
     int totalDays = 0;                                                                       //track total number days from 1900 to entered year
     for (int y = 1900; y < year; y++) {
         // Add 365 days for normal years and 366 for leap years
-        totalDays += isLeapYear(y) ? 366 : 365;
+        totalDays += isLeapYear(y) ? 366 : 365;             //uses the is leapyear function to check for extra days
     }
     // Year 1900 starts on a Monday, so offset by totalDays % 7
     return totalDays % 7; // Returns the start day offset for the given year
