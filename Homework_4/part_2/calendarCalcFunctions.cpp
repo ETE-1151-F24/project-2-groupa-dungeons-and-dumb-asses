@@ -65,17 +65,29 @@ void printMonth(int year, int month, int &startDay) {                       //in
     std::cout << year << std::endl;
     std::cout << "  Mon  Tue  Wed  Thu  Fri  Sat  Sun" << std::endl;  // Change order of days to start with Monday
 
+    // this makes sure the startDay  Monday is day 0, and the other days are adjusted
+    startDay = (startDay == 0) ? 6 : startDay - 1;  // Convert Sunday (0) to 6, and shift other days down
+
   // Print leading spaces for the first week using setw
-    std::cout << std::setw(startDay * 5) << "";  // Use setw to align the first day properly
-                                            // Explanation: had to look this up on stack overflow about what it is doing
-                                            // 2. [std::setw(startDay * 5)]: 
-                                            // [std::setw] is a stream manipulator that sets the width for the next output.
-                                            //Multiplying startDay by 5 means we leave 5 spaces per day for alignment.
-                                            //Each day in calendar takes up 5 character spaces (a day number plus spacing).
-                                            //if month starts Wednesday (startDay = 2 because index), 
-                                            //it will leave two slots (2 * 5 = 10 spaces) for Monday and Tuesday, 
-                                            //and the first day of month will print under Wednesday.
-                                            //[<< ""] outputs empty string to provide something for std::setw() adjust.
+    std::cout << std::setw(startDay * 5) << "";     // Use setw to align the first day properly
+                                                    // Explanation: had to look this up on stack overflow and dig to find about what it is doing
+                                                    // 2. [std::setw(startDay * 5)]: 
+                                                    // [std::setw]  sets the width for the next output.
+                                                    //Multiplying startDay by 5 means we leave 5 spaces per day for alignment.
+                                                    //Each day in calendar takes up 5 character spaces (a day number plus spacing).
+                                                    //if month starts Wednesday (startDay = 2 because index), 
+                                                    //it will leave two slots (2 * 5 = 10 spaces) for Monday and Tuesday, 
+                                                    //and the first day of month will print under Wednesday.
+                                                    //[<< ""] outputs empty string to provide something for std::setw() adjust.
+   
+    for (int day = 1; day <= monthLength; day++) {              // Print each day of the month (day)
+        std::cout << std::setw(5) << day;                       // Right-align days with 5-width spacing
+        
+        if ((startDay + day) % 7 == 0) {            //Check if current day of week is last day of week (Sunday, which is day 6 by index)
+            std::cout << "\n";                      //Start a new line after Sunday
+        }
+    }
+
 
 
 }
