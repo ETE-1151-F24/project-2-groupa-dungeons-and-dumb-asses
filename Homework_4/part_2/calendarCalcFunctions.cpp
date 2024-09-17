@@ -16,8 +16,8 @@
 bool isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
+//----------------------------------------------------------------------------------------------------------
 
-//-------------------------------------------------------------
 
 
 
@@ -36,19 +36,22 @@ int findMonthLength(int year, int month) {
     // FEB WITH 28(29 LEAP YEAR):  2
         case 2:
             return isLeapYear(year) ? 29 : 28; // February (adjust for leap year) by running leap year check
-
     }
 }
-
+//----------------------------------------------------------------------------------------------------------
 
 
 
 //--------------------------------------------FUNCTION TO PRINT THE DAYS OF THE MONTH-----------------------------
-void printMonth(int year, int month, int &startDay) {
-    //once the year is known, you will be able to know how many days are in february
+void printMonth(int year, int month, int &startDay) {                       //int [&startDay], initializes the variable [startDay] 
+                                                                            //and references it so the print function can modify it
+
+    int monthLength = findMonthLength(year, month);
+
     //you will also know what day of the week january starts on
     //and from there you will be able to find what day each month starts on
     //then you output the formatting using [setw] syntax
+std::cout << "--"<<month<<"--" << std::endl;
 
 
 }

@@ -12,16 +12,12 @@ void printMonth(int year, int month, int &startDay);        //initializes the Fu
                                                             // Takes in year, month, and a reference to the start day of the week
 int getYear(int year);
 
+bool isLeapYear(int year);                                  //initializes [isLeapYear] function logic check for leapyear
 
-
-bool isLeapYear(int year);      //initializes the [isLeapYear] function to do math logic check for leapyear based on input [year]
-
-int findMonthLength(int year, int month);  
-
-                           //initalizes the [findMonthLength] function to show how many days are in a month
-                                                     //which is calculated by knowing the year and month
-
-                                //initializes the startday function, that will decide based on the day of the week the month starts on
+int findMonthLength(int year, int month);                   //initalizes the [findMonthLength] function to show how many days are in a month
+                                                            //which is calculated by knowing the year and month
+int getMonth();                                             //gets month based on user input
+int calculateStartDay();                                    //initializes the startday function, that will decide based on the day of the week the month starts on
 
 
 

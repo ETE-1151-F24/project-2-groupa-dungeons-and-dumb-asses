@@ -49,5 +49,19 @@
 // A C++ Program to Implement a Calendar
 // of an year
 #include<bits/stdc++.h>
+#include "calendarCalcFunctions.cpp"
 using namespace std;
  
+int main() {
+                                                                                    // Get user input for year and month
+    int year = getYear();
+    int month = getMonth();
+
+                                                                                    // Calculate the start day of the year
+    int startDay = calculateStartDay(year);
+
+                                                                                    // Print the requested month
+    printMonth(year, month, startDay);
+
+    return 0;
+}
