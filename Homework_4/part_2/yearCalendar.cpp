@@ -55,13 +55,11 @@ using namespace std;
 int main() {
                                                                                     // Get user input for year and month
     int year = getYear();
-    int month = getMonth();
+    int month = getMonth();                                                                                
+    int startWeekDay = calculateStartDay(year);                                     // Calculate the start day of the year
 
-                                                                                    // Calculate the start day of the year
-    int startDay = calculateStartDay(year);
-
-                                                                                    // Print the requested month
-    printMonth(year, month, startDay);
+                                                                                    
+    printMonth(year, month, startWeekDay);                                          // Print the requested month
 
     return 0;
 }
