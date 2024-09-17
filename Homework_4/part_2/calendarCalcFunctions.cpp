@@ -3,10 +3,6 @@
 #include <iostream>                     // For input/output functionality
 
 
-//----------------FUNCTION IMPLEMENTATIONS START HERE----------
-                                                                                // This file implements the declared functions in calendar.h
-
-
 
 //--------------------------------------------FUNCTION TO CHECK FOR A LEAP YEAR-----------------------------        
 //leap year if either condition is satisfied:                                   //1. The year is multiple of 400.
@@ -41,6 +37,7 @@ int findMonthLength(int year, int month) {
 
 
 
+
 //--------------------------------------------FUNCTION TO PRINT THE DAYS OF THE MONTH-----------------------------
 void printMonth(int year, int month, int &startDay) {                       //int [&startDay], initializes the variable [startDay] 
                                                                             //and references it so the print function can modify it
@@ -69,17 +66,15 @@ void printMonth(int year, int month, int &startDay) {                       //in
         std::cout << std::setw(5) << day;                       // Right-align days with 5-width spacing
         
         if ((startDay + day) % 7 == 0) {            //Check if current day of week is last day of week (Sunday, which is day 6 by index)
-            std::cout << std::endl;                      //Start a new line after Sunday
+            std::cout << std::endl;                             //Start a new line after Sunday
         }
     }
 
     if ((startDay + monthLength) % 7 != 0) {                    // If the last day of the month doesn't end on a Sunday, 
         std::cout << std::endl;                                 //add a final newline after last day of the month
     }
-
-
 }
-
+//----------------------------------------------------------------------------------------------------------
 
 
 
@@ -106,6 +101,9 @@ int getYear() {                                                                 
         }
     }
 }
+//----------------------------------------------------------------------------------------------------------
+
+
 
 //--------------------------------------------FUNCTION TO GET USER INPUT FOR MONTH-----------------------------
 int getMonth() {                                                                                        // Function to get user input for month
@@ -133,6 +131,9 @@ int getMonth() {                                                                
         }
     }
 }
+//----------------------------------------------------------------------------------------------------------
+
+
 
 //--------------------------------------------FUNCTION TO FIND START DAY OF A MONTH BASED ON THE YEAR-----------------------------
 // THE YEAR 1900 BEGAN ON A MONDAY
@@ -147,3 +148,5 @@ int calculateStartDay(int year) {
     // Year 1900 starts on a Monday, so offset by totalDays % 7
     return totalDays % 7; // Returns the start day offset for the given year
 }
+//----------------------------------------------------------------------------------------------------------
+
