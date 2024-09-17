@@ -61,5 +61,7 @@ int main() {
                                                                                     
     printMonth(year, month, startWeekDay);                                          // Print the requested month
 
+                                                                        // Wait for the user to press any key
+
     return 0;
 }

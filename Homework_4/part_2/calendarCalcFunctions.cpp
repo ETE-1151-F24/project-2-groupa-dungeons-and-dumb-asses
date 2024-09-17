@@ -104,7 +104,7 @@ void printMonth(int year, int month, int &startWeekDay) {                       
                                                                             //and references it so the print function can modify it
     int monthLength = findMonthLength(year, month);
 
-    std::cout << "  " << months[month - 1] << " " << year << std::endl;     // Print the header (month name and year)
+    std::cout << std::endl << "  " << months[month - 1] << " " << year << std::endl;     // Print the header (month name and year)
 
     std::cout << "  Mon  Tue  Wed  Thu  Fri  Sat  Sun" << std::endl;        // Change order of days to start with Monday
 
@@ -132,7 +132,10 @@ void printMonth(int year, int month, int &startWeekDay) {                       
     if ((startWeekDay + monthLength) % 7 != 0) {                    // If the last day of the month doesn't end on a Sunday, 
         std::cout << std::endl;                                 //add a final newline after last day of the month
     }
-std::cout << std::endl <<"OOOOOHhh!...look at it....LOOK...AT...IT!" << std::endl;
+std::cout << std::endl <<"OOOOOHhh!...look at it....LOOK...AT...IT!" << std::endl << std::endl;
+
+  std::cout << std::endl << "Press any key to exit..." << std::endl;                                 // Wait for user input before closing 
+    std::cin.get();   
 }
 //----------------------------------------------------------------------------------------------------------
 
