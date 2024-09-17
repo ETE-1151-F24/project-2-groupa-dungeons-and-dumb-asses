@@ -48,10 +48,13 @@ void printMonth(int year, int month, int &startDay) {                       //in
 
     int monthLength = findMonthLength(year, month);
 
-    //you will also know what day of the week january starts on
-    //and from there you will be able to find what day each month starts on
-    //then you output the formatting using [setw] syntax
-std::cout << "--"<<month<<"--" << std::endl;
+    // Use a switch statement to print the month name
+    switch (month) {
+        case 1: std::cout << "  January "; break;
+        case 2: std::cout << "  February "; break;
+        case 3: std::cout << "" << std::endl;
+        case 4: std::cout << "" << std::endl;
+        
 
 
 }
