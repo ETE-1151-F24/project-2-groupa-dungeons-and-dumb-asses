@@ -42,7 +42,7 @@ void generateMap() {                                                            
 
 
 //--------------------------------- USER NAME ENTRY FUNCTION--------------------
-void nameEntry(){
+bool nameEntry(){
     std::cout << std::endl << "Please enter your name." << std::endl << std::endl;                       // initial prompt
     
     std::cout << "We swears we will KEEP IT SECRET, KEEP IT SAFE ....*retching*  *gollum*  *gollum*." << std::endl << std::endl; 
@@ -56,20 +56,25 @@ void nameEntry(){
       std::transform(lowerName.begin(), lowerName.end(), lowerName.begin(), ::tolower);
 
     // Check if the name is "frodo" (any variant)
-      if (lowerName == "frodo") {
-          std::cout << "*Gollum screams* \"THE PRECIOUS IS MINE!!!!\"" << std::endl;
-          std::cout << "\"YOU HAVE DIED... GAME OVER\"" << std::endl << std::endl;
-          exit(0);  // End the program immediately
-      }    
+    if (lowerName == "frodo") {
+        std::cout << "*Gollum screams* \"THE PRECIOUS IS MINE!!!!\"" << std::endl;
+        std::cout << "\"YOU HAVE DIED... GAME OVER\"" << std::endl << std::endl;
+        std::cout << "Press any key to exit..." << std::endl;
+        std::cin.get();  // Wait for the user to press a key
+
+        return false;  // Return false to indicate that the program should terminate
+    }   
 
 
     std::cout << std::endl  <<  "Thank you [" << userName << "] for participating in this adventure!" << std::endl;    //THANKYOU message
+      return true;
    }
 
 
 //---------------------------------COORDINATE intro function--------------------
 void coordination() {
   std::cout << std::endl << "Where would you like to be on the map?" << std::endl << std::endl;
+  std::cout << std::endl << "The map size I chose is a secret until the end" << std::endl << std::endl;
 
                                                                                               //Get user X, Y coordinates using input validation
   locationX = getNumberInput("Enter an [X] coordinate: ");                                    //Call getNumberInput with prompt for x coordinate
@@ -218,10 +223,10 @@ double getNumberInput(std::string prompt) {                                     
         
         std::cin.clear();                                     // Clear error flag on input stream [std::cin], from non-num value entered    
         
-        std::cin.ignore(1000, '\n');                          // Ignore remaining input in stream up to 1000 characters or until the next newline
-                                                              // helps remove any invalid input that might still be in the buffer
-                                                              //(1000 characters should be more than enough)        
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Ignore any remaining invalid input in the buffer
+
         } else {
+                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Ignore any remaining characters in buffer after valid input
             return number;                                    // Valid input received, return it
         }
     }

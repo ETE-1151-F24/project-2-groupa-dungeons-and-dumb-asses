@@ -11,7 +11,11 @@ int main() {
     generateMap();                                                                          //Generate random map size, but doesnt print yet
 
 //-------------------------- USER NAME ENTRY FUNCTION ---------------------------
-   nameEntry();
+   
+    // If nameEntry() returns false (i.e., if the name is "Frodo"), we immediately return 0 to stop the program
+if (!nameEntry()) {                                                                         //Call nameEntry() function check return value
+    return 0;  // End the program if the user enters "Frodo"
+    }
 
 //-------------------------- USER lOCATION ENTRY FUNCTION -----------------------
 
