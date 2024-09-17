@@ -31,10 +31,13 @@ int findMonthLength(int year, int month) {
     // FEB WITH 28(29 LEAP YEAR):  2
         case 2:
             return isLeapYear(year) ? 29 : 28; // February (adjust for leap year) by running leap year check
+        default:
+            // If an invalid month is entered, return a default value like 0
+            std::cerr << "Error: Invalid month entered." << std::endl;
+            return 0;  // Return 0 for invalid months
     }
 }
 //----------------------------------------------------------------------------------------------------------
-
 
 
 
