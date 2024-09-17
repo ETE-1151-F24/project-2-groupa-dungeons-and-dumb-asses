@@ -45,16 +45,37 @@ int findMonthLength(int year, int month) {
 //--------------------------------------------FUNCTION TO PRINT THE DAYS OF THE MONTH-----------------------------
 void printMonth(int year, int month, int &startDay) {                       //int [&startDay], initializes the variable [startDay] 
                                                                             //and references it so the print function can modify it
-
     int monthLength = findMonthLength(year, month);
 
     // Use a switch statement to print the month name
     switch (month) {
-        case 1: std::cout << "  January "; break;
+        case 1: std::cout << "  January  "; break;
         case 2: std::cout << "  February "; break;
-        case 3: std::cout << "" << std::endl;
-        case 4: std::cout << "" << std::endl;
+        case 3: std::cout << "  March    " << std::endl; break;
+        case 4: std::cout << "  April    " << std::endl; break;
+        case 5: std::cout << "  May      " << std::endl; break;
+        case 6: std::cout << "  June     " << std::endl; break;
+        case 7: std::cout << "  July     " << std::endl; break;
+        case 8: std::cout << "  August   " << std::endl; break;
+        case 9: std::cout << "  September" << std::endl; break;
+        case 10: std::cout << "  October  " << std::endl; break;
+        case 11: std::cout << "  November " << std::endl; break;
+        case 12: std::cout << "  December " << std::endl; break;
         
+    std::cout << year << std::endl;
+    std::cout << "  Mon  Tue  Wed  Thu  Fri  Sat  Sun" << std::endl;  // Change order of days to start with Monday
+
+  // Print leading spaces for the first week using setw
+    std::cout << std::setw(startDay * 5) << "";  // Use setw to align the first day properly
+                                            // Explanation: had to look this up on stack overflow about what it is doing
+                                            // 2. [std::setw(startDay * 5)]: 
+                                            // [std::setw] is a stream manipulator that sets the width for the next output.
+                                            //Multiplying startDay by 5 means we leave 5 spaces per day for alignment.
+                                            //Each day in calendar takes up 5 character spaces (a day number plus spacing).
+                                            //if month starts Wednesday (startDay = 2 because index), 
+                                            //it will leave two slots (2 * 5 = 10 spaces) for Monday and Tuesday, 
+                                            //and the first day of month will print under Wednesday.
+                                            //[<< ""] outputs empty string to provide something for std::setw() adjust.
 
 
 }
@@ -87,32 +108,31 @@ int getYear() {                                                                 
 }
 
 //--------------------------------------------FUNCTION TO GET USER INPUT FOR MONTH-----------------------------
-int getMonth() {                                                                                        //want function guide month choices
-     int month;                                                                                         // Declare variable to store the input month
+int getMonth() {                                                                                        // Function to get user input for month
+    int month;                                                                                         // Declare variable to store the input month
 
     while (true) {
-                                                                                                        // Display the options for months
+        // Display the options for months
         std::cout << "Choose a month by entering the corresponding number:\n";
         std::cout << "[ 1: Jan], [ 2: Feb], [ 3: Mar], [ 4: Apr], [ 5: May], [ 6: Jun]\n";
         std::cout << "[ 7: Jul], [ 8: Aug], [ 9: Sep], [10: Oct], [11: Nov], [12: Dec]\n";
          
         std::cout << "Choose a month (1-12): ";                                                           // Prompt the user for a month
         std::cin >> month;
-                                                                                                    //USING ERROR HANDLING FROM MAP PROGRAM
-        if (std::cin.fail()) {                                                                          // Check if input is valid
-            std::cout << "I'm sorry I didn't quite get that" << std::endl;
-            std::cout << " Please make your input a 'VALID' NUMBER." << std::endl;
-            std::cin.clear();                                                                           // Clear error flag on input stream
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                         // Clear any remaining input in stream
-        } else if(month < 1 || month > 12){
-            std::cout << "*facepalm*  please choose a 'VALID' NUMBER (1-12).," << std::endl;
-    
+
+        // Error handling: Check if input is not a valid number
+        if (std::cin.fail()) {  
+            std::cout << "I'm sorry, I didn't quite get that." << std::endl;
+            std::cout << "Please make your input a 'VALID' NUMBER." << std::endl;
+            std::cin.clear();  // Clear error flag on input stream
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Clear any remaining input
+        } else if (month < 1 || month > 12) {  // Check if input is outside valid range (1-12)
+            std::cout << "*facepalm* Please choose a 'VALID' NUMBER (1-12)." << std::endl;
         } else {
-            return month;
+            return month;  // Return the valid month input
         }
     }
 }
-
 
 //--------------------------------------------FUNCTION TO FIND START DAY OF A MONTH BASED ON THE YEAR-----------------------------
 // THE YEAR 1900 BEGAN ON A MONDAY
