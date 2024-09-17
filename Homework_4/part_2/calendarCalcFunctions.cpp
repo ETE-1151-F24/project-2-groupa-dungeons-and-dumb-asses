@@ -134,8 +134,7 @@ void printMonth(int year, int month, int &startWeekDay) {                       
     }
 std::cout << std::endl <<"OOOOOHhh!...look at it....LOOK...AT...IT!" << std::endl << std::endl;
 
-  std::cout << std::endl << "Press any key to exit..." << std::endl;                                 // Wait for user input before closing 
-    std::cin.get();   
+
 }
 //----------------------------------------------------------------------------------------------------------
 

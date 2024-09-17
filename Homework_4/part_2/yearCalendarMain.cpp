@@ -61,7 +61,9 @@ int main() {
                                                                                     
     printMonth(year, month, startWeekDay);                                          // Print the requested month
 
-                                                                        // Wait for the user to press any key
+  std::cout << std::endl << "Press any key to exit..." << std::endl;  
+    std::cin.ignore(); // Ignore the leftover newline character from the previous input
+std::cin.get();    // Wait for user input to pause                                                                    // Wait for the user to press any key
 
     return 0;
 }
