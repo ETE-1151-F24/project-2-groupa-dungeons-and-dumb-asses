@@ -309,3 +309,20 @@ double getNumberInput(string prompt) {
             // Practical use: This line clears any leftover characters from the input buffer, preventing
             // unexpected behavior when reading further input. It's commonly used after input validation
             // to ensure no invalid characters (like extra letters or spaces) remain in the input stream.
+
+//-------------------------------press any key to exit/continue
+ void exitFunctionWait(){
+  std::cout << std::endl << "Press any key to exit..." << std::endl;  
+    std::cin.ignore(); // Ignore the leftover newline character from the previous input
+std::cin.get();    // Wait for user input to pause       
+
+//or you can do this     
+    // Prompt the user to press any key to continue
+    std::cout << "Are you ready to get that Wordsalad tossed? Press any key to continue..." << std::endl;
+
+    // Clear the input buffer to ignore any leftover newline characters
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    // Wait for the user to press a key
+    std::cin.get();  // Wait for a single character input
+ }

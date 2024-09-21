@@ -20,19 +20,16 @@ int generic[]
 //while indexPosition is < max lenght of the array keep going with the counting
 //  once done output a message
 /*  "in [inputString] there are [charCount] letters and [numericCount] numbers "
+*/ 
+displayCharTypes();
+//then have an output message "thank you and have a nice dice my wordsalad tosser"
 
-then have an output message "thank you and have a nice dice my wordsalad tosser"
-
-"press any key to exit" message
+/*"press any key to exit" message
 clear input buffer of stream
 wait for user to press any key to exit
-
-
 */
 
 
-std::cout << "" << std::endl;
-std::cin >> generic ;
 
     return 0;
 }
