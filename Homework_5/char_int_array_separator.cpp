@@ -3,9 +3,12 @@
 
 int main() {
 // i need to declare an array that will first be able to store the input stream
+int generic[]
+
 // also have a prompt to say no more that a certain amount of characters
 // error message if too many are entered.
 // loop it back to entry to try again
+//take an input string and split it all into elements of an array
 //convert the input string into individual items in the array
 // for caracter in wordinput, make the next index of the array that value.  
 // then look throught the array and  perform
@@ -26,7 +29,7 @@ wait for user to press any key to exit
 
 
 */
-int generic;
+
 
 std::cout << "" << std::endl;
 std::cin >> generic ;
