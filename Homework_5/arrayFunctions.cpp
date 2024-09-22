@@ -186,7 +186,7 @@ void checkCharacterType(){
 // -------------------------FUNCTION TO SHOW THE CHARACTER QUANTITIES
 
 void displayCharTypes(){
-   std::cout << "                                     ["<< userInputString <<"] was really loaded." << std::endl << std::endl;
+   std::cout << "                                     "<< userInputString <<" was really loaded." << std::endl << std::endl;
 
  
 //---------------having alternates when it finds a zero value for a character type---------   
@@ -208,7 +208,7 @@ void displayCharTypes(){
 
     }if (spacesOrTabsCount > 0) {                                // if>1...plural (s) else singular
     std::cout << "A total of " << spacesOrTabsCount << " gap" << (spacesOrTabsCount > 1 ? "s" : "") <<  
-    " were created with space bar or tab" << std::endl;
+    (spacesOrTabsCount > 1 ? " were" : " was") << " created with space bar or tab" << std::endl;
     } else {
         std::cout << "No spaces? ... let's loosen things up next time." << std::endl;
 
