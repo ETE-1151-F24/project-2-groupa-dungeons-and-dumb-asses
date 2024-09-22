@@ -86,8 +86,8 @@ void printStrobingText(const std::string& text, int duration) {
 }
 
 // ----------------------KEY CONCEPT BREAKDOWN-----------------------
-// The `printStrobingText` function creates a strobing effect by changing the text color for each character 
-// in sequence. The strobing lasts for a specified duration, and the colors are applied using ANSI escape codes.
+// The `printStrobingText` function creates a strobing effect by changing the text color for each character in sequence.
+//  The strobing lasts for a specified duration, and the colors are applied using ANSI escape codes.
 // ANSI escape codes allow for changing the text color on the terminal.
 // The chrono library is used to measure time, allowing the strobing effect to continue for the desired duration.
 // This effect is achieved using a loop that prints each character of the string with a strobing color applied, 
@@ -121,8 +121,7 @@ void getArrayInput(){
 
     std::cout << "Are you ready to get that Wordsalad tossed?"<< std::endl;         // Prompt to press any key to continue
     std::cout << "Press any key to continue...";
-    // Clear the input buffer and wait for the key press
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     std::cin.get();
 
 }
@@ -232,6 +231,6 @@ void cleanup() {
 void closingMessageExit() {
 
     // Wait for a key press before exiting
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     std::cin.get();
 }

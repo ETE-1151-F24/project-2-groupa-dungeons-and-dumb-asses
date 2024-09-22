@@ -1,5 +1,6 @@
 #include "arrayConversionHeader.h"  // Include the correct header file
 #include "arrayFunctions.cpp"
+#include <limits>  // For std::numeric_limits
 
 int main() {
     printStrobingText("WORDSALAD TOSSER", 5);  // Display strobing title
