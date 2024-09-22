@@ -104,7 +104,7 @@ void wordSaladGreeting(){
    std::cout << "Brace yourself... it’s about to get messy...." << std::endl << std::endl;
 
 }
-
+//----------------------------------------------------------------------------------------------------
 
 
 // -------------------------FUNCTION TO PROMPT AND GATHER INPUT STRING
@@ -123,24 +123,29 @@ void getArrayInput(){
         // Clear the input buffer to ignore any leftover newline characters
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//  need [#include <limits>]  For std::numeric_limits
     std::cin.get();                                                                 // Wait for a single character input
-
-
 }
+//----------------------------------------------------------------------------------------------------
+
+
+
 // -------------------------FUNCTION TO CONVERT THE INPUT STRING INTO AN ARRAY
 
-void stringToArrayConversion(){
-
-char* characterStorageArray = new char[userInputString.length() + 1];                // +1 for the null terminator
-std::strcpy(characterStorageArray, userInputString.c_str());                     // Copy std::string to char array
-
-//-----------i pulled this from stack overflow and had to look up what it does
-// additional_comments.cpp holds the explaination to clarify
+void stringToArrayConversion() {
+                                                                                    //Allocate memory for global [characterStorageArray] 
+                                                                                    //(make sure don't redeclare it locally)
+    characterStorageArray = new char[userInputString.length() + 1];                 // +1 for the null terminator
+    
+                                                                                    //Copy content[userInputString] to [characterStorageArray]
+    std::strcpy(characterStorageArray, userInputString.c_str());                    // Convert std::string to C-style string
 }
+//----------------------------------------------------------------------------------------------------
+
+
 
 // -------------------------FUNCTION TO EVALUATE THE CHARACTER QUANTITIES
-
+//--------------------------ESTABLISh VARIABLES to HOLD COUNT OF EACH CHARACTER TYPE (and are aptly named)
 void checkCharacterType(){
-//-----ESTABLISHING THE VARIABLES THAT WILL HOLD THE COUNT OF EACH CHARACTER TYPE (and are aptly named)
+                            
     int punctuationCount=0;                                             
     int vowelsCount=0;
     int consonantsCount=0;
@@ -148,20 +153,20 @@ void checkCharacterType(){
     int spacesOrTabsCount=0;
     int lengthOfArray = strlen(characterStorageArray);                                      //Calculate the length of the array
 
-// here is the for statement to loop through [characterStorageArray] and determine the type of charachter in the array
+//for statement to loop through [characterStorageArray] and determine the type of charachter in the array
 
   for (int characterNumber = 0;  characterNumber < lengthOfArray; characterNumber++) {// position is the traversal of each individual element in the array
         // Convert the character to lowercase to simplify the comparison
         char indChr = tolower(characterStorageArray[characterNumber]);                      //[indChr] short for individual character
-
+                                                                                            //[tolower] converts to lowercase
          if (std::ispunct(indChr)){                                                         //if the character is a punctuation....
             punctuationCount+=1;                                                            //then it increments the [spacesOrTabsCount]
         }
         else if (std::isalpha(indChr)){                                                     //if the character is alphabetic...
-                                                                                            // Nested if else statement to Check ...
+                                                                                            // NESTED if / else statement to Check ...
                                                                                             //if the character is a vowel or a consonant
             
-            if (indChr == 'a' || indChr == 'e' || indChr == 'i' || indChr == 'o' || indChr == 'u') { //"a", "e", "i", "o", or "u"
+/*NESTED*/  if (indChr == 'a' || indChr == 'e' || indChr == 'i' || indChr == 'o' || indChr == 'u') { //"a", "e", "i", "o", or "u"
                 vowelsCount++;                                                              // Increment the vowel count
         }   else {                                                                          //if character is alphabetic but not a vowel....
                 consonantsCount+=1;                                                         //then it increments the [consonantsCount]
@@ -179,7 +184,7 @@ void checkCharacterType(){
 //std::isalpha(): Checks if a character is alphabetic.
 //std::isdigit(): Checks if a character is a numeric digit.
 //std::ispunct(): Checks if a character is punctuation or a symbol.
-}
+  }
 }
 
 // -------------------------FUNCTION TO SHOW THE CHARACTER QUANTITIES
@@ -222,6 +227,13 @@ void displayCharTypes(){
     std::cin.get(); 
     }
 }
+
+// -------------------------FUNCTION TO CLEAN UP MEMORY
+void cleanup() {
+    delete[] characterStorageArray;                                                 // Free up dynamically allocated memory
+    characterStorageArray = nullptr;                                                // Avoid having a dangling pointer
+}
+
 // -------------------------FUNCTION TO WAIT FOR USER INPUT TO TERMINATE PROGRAM
 void closingMessageExit() {
     std::cout << "This was a fun challenge to face down." << std::endl; 

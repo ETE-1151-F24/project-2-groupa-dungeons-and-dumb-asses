@@ -1,8 +1,21 @@
-#include <iostream>            // Includes the standard input/output stream library for cout
-#include <limits>                       // For numeric limits to handle input errors
-#include "arrayFunctions.cpp"
+#include "arrayConversionHeader.h"  // Include the correct header file
 
 int main() {
+    printStrobingText("WORDSALAD TOSSER", 5);  // Display strobing title
+    wordSaladGreeting();  // Greet the user
+    getArrayInput();  // Get user input
+    stringToArrayConversion();  // Convert string to char array
+    checkCharacterType();  // Check character types in the array
+    displayCharTypes();  // Display the counts of different character types
+    cleanup();  // Free memory for the dynamically allocated array
+    closingMessageExit();  // Wait for user input before exiting
+
+    return 0;
+
+
+
+    
+}//---------------------ORIGINAL CONCEPUTALIZATIOn
 // i need to declare an array that will first be able to store the input stream
 
 // also have a prompt to say no more that a certain amount of characters
@@ -28,19 +41,3 @@ int main() {
 clear input buffer of stream
 wait for user to press any key to exit
 */
-
-
-printStrobingText("WORDSALAD TOSSER", 5);
-
-
-wordSaladGreeting();
-getArrayInput();
-stringToArrayConversion();
-checkCharacterType();
-displayCharTypes();
-closingMessageExit();
-
-
-    return 0;
-}
-
