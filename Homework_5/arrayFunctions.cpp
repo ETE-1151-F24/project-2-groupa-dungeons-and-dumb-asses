@@ -116,11 +116,10 @@ void getArrayInput(){
 
     std::getline(std::cin, userInputString);                                        //Read the whole line of input into [userInputString]
 
-    std::cout << "That's quite the load...." << std::endl << std::endl;
+    std::cout << std::endl << "That's quite the load...." << std::endl << std::endl;
 
-
-    std::cout << "Are you ready to get that Wordsalad tossed?"<< std::endl;         // Prompt to press any key to continue
-    std::cout << "Press any key to continue...";
+    std::cout << "Are you ready to get that Wordsalad tossed?"<< std::endl << std::endl;         // Prompt to press any key to continue
+    std::cout << "Press ENTER to continue...";
 
     std::cin.get();
 
@@ -186,35 +185,38 @@ void checkCharacterType(){
 // -------------------------FUNCTION TO SHOW THE CHARACTER QUANTITIES
 
 void displayCharTypes(){
-   std::cout << "["<< userInputString <<" ] was really loaded." << std::endl;
+   std::cout << "["<< userInputString <<"] was really loaded." << std::endl << std::endl;
 
-    std::cout << "Here are all your character counts, nice and tidy... just the way you like it." << std::endl << std::endl;
+    std::cout << "Here are all your character counts, just the way you like it." << std::endl << std::endl;
  
 //---------------having alternates when it finds a zero value for a character type---------   
-    if (vowelsCount > 0) {
-    std::cout <<"You came with " << vowelsCount << " vowels." << std::endl;
+    if (vowelsCount > 0) {                                     // if>1...plural (s) else singular
+     std::cout << "You slipped in " << vowelsCount << " vowel" << (vowelsCount > 1 ? "s." : ".") << std::endl;
     } else {
-        std::cout << "No vowels? So silent... we're a little disappointed." << std::endl;
+        std::cout << "No vowels? that's a bit anti-climactic for me." << std::endl;
 
-    }if (consonantsCount > 0) {
-    std::cout <<"You filled it with "<< consonantsCount << " consonants." << std::endl;
+    }if (consonantsCount > 0) {                                             // if>1...plural (s) else singular
+    std::cout << "and filled it with "<< consonantsCount << " consonant" << (consonantsCount > 1 ? "s." : ".") << std::endl;
     } else {
         std::cout << "No consonants? Yea it felt a bit soft." << std::endl;
     
-    }if (punctuationCount > 0) {
-    std::cout <<"You finished with " << punctuationCount << " punctuations or special characters." << std::endl;
+    }if (punctuationCount > 0) {                                               // if>1...plural (s) else singular
+    std::cout << "I see you came with " << punctuationCount << " punctuation" << (punctuationCount > 1 ? "s" : "") <<  
+    " or special character" << (punctuationCount > 1 ? "s." : ".") << std::endl;
     } else {
-        std::cout << "No punctuations? We expected more excitement." << std::endl;
+        std::cout << "No punctuations? not even a single (_*_)...We expected more excitement." << std::endl;
 
-    }if (spacesOrTabsCount > 0) {
-    std::cout <<"A total of " << spacesOrTabsCount << " gaps were created with space bar or tab" << std::endl;
+    }if (spacesOrTabsCount > 0) {                                // if>1...plural (s) else singular
+    std::cout << "A total of " << spacesOrTabsCount << " gap" << (spacesOrTabsCount > 1 ? "s" : "") <<  
+    " were created with space bar or tab" << std::endl;
     } else {
         std::cout << "No spaces? ... let's loosen things up next time." << std::endl;
 
-    }if (numericDigitsCount > 0) {
-    std::cout <<"You managed to fit " << numericDigitsCount <<" digits inside.  So adventurous!!" << std::endl;
+    }if (numericDigitsCount > 0) {                                          // if>1...plural (s) else singular
+    std::cout << "And, you managed to fit " << numericDigitsCount << " digit" << (numericDigitsCount > 1 ? "s" : "") << 
+    " inside.  So adventurous!!" << std::endl;
     } else {
-        std::cout << "No digits? We hoped your digits were a little more heavy handed." << std::endl;
+        std::cout << "No digits? We preferer your digits to be a little more heavy handed." << std::endl;
 
 
 
@@ -231,6 +233,6 @@ void cleanup() {
 void closingMessageExit() {
 
     // Wait for a key press before exiting
-
+    std::cout << "Press ENTER to pull out of the program...";
     std::cin.get();
 }
