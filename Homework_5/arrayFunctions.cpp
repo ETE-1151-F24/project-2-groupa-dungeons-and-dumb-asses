@@ -116,9 +116,10 @@ void getArrayInput(){
 
     std::getline(std::cin, userInputString);                                        //Read the whole line of input into [userInputString]
 
-    std::cout << std::endl << "That's quite the load...." << std::endl << std::endl;
+    std::cout << std::endl << "                                     That's quite the load...." << std::endl << std::endl;
 
-    std::cout << "Are you ready to get that Wordsalad tossed?"<< std::endl << std::endl;         // Prompt to press any key to continue
+    std::cout << "                            Are you ready to get that Wordsalad tossed?"<< std::endl << std::endl;        
+    // Prompt to press any key to continue
     std::cout << "Press ENTER to continue...";
 
     std::cin.get();
@@ -185,9 +186,8 @@ void checkCharacterType(){
 // -------------------------FUNCTION TO SHOW THE CHARACTER QUANTITIES
 
 void displayCharTypes(){
-   std::cout << "["<< userInputString <<"] was really loaded." << std::endl << std::endl;
+   std::cout << "                                     ["<< userInputString <<"] was really loaded." << std::endl << std::endl;
 
-    std::cout << "Here are all your character counts, just the way you like it." << std::endl << std::endl;
  
 //---------------having alternates when it finds a zero value for a character type---------   
     if (vowelsCount > 0) {                                     // if>1...plural (s) else singular
