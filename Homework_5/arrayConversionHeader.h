@@ -44,6 +44,7 @@ void displayCharTypes();
 void closingMessageExit();
 
 // Declare strobing effect function (implementation will be in the .cpp file)
+//------------------- [  "arbirtaty words"  ] , [how long it strobes]
 void printStrobingText(const std::string& text, int duration);
 
 

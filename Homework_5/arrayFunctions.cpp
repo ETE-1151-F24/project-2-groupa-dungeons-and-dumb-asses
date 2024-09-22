@@ -6,6 +6,90 @@
 // -------------------------FUNCTION FOR DISPLAYING THE STROBING EFFECT OF THE LETTERS AT THE BEGINNING
 
 
+void printStrobingText(const std::string& text, int duration) {
+    // ---------------------ANSI COLOR CODES-------------------------
+    // Array of ANSI escape codes representing different text colors.
+    const std::string colors[] = {
+        "\033[31m",                                                                 // Red color code
+        "\033[32m",                                                                 // Green color code
+        "\033[33m",                                                                 // Yellow color code
+        "\033[34m",                                                                 // Blue color code
+        "\033[35m",                                                                 // Magenta color code
+        "\033[36m",                                                                 // Cyan color code
+        "\033[37m"                                                                  // White color code
+    };
+
+    // -----------------------COLOR COUNT---------------------------
+ 
+    const int colorCount = sizeof(colors) / sizeof(colors[0]);                      //Calculate number colors available in colors array
+   
+    int currentColorIndex = 0;                                                      //Variable for current color index for strobe effect
+
+    // ---------------------TIME START POINT-------------------------
+   
+    auto startTime = std::chrono::steady_clock::now();                              //Mark current time as start point of strobe effect
+
+    // -------------------LOOP FOR STROBING EFFECT-------------------
+                                                               
+    while (true) {                                                                  //loop to display strobe effect until specified duration
+        // -------------------CHECK TIME ELAPSED----------------------
+        
+        auto currentTime = std::chrono::steady_clock::now();                        // Get current time >> calculate seconds passed since start
+        auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
+
+                            
+        if (elapsedTime >= duration) {                                              //If elapsed reaches/exceeds duration, break the loop
+            break;
+        }
+
+        // ------------------STROBING CHARACTERS----------------------
+                                                                                    // Iterate over each character in the string
+        for (size_t currentCharacterIndex = 0; currentCharacterIndex < text.length(); ++currentCharacterIndex) {
+                                                                
+            std::cout << "\r";                                                      //"\r" moves cursor to start of line w/o advance next line
+
+            // ------------------PRINTING EACH LETTER------------------
+            // Iterate over the text and apply the strobing effect to the current character
+            for (size_t textPosition = 0; textPosition < text.length(); ++textPosition) {
+                if (textPosition == currentCharacterIndex) {
+                    // When current character is being printed, apply current strobe color
+                    std::cout << colors[currentColorIndex % colorCount] << text[textPosition];
+                } else {
+                    // Reset color and print rest of text normally
+                    std::cout << "\033[0m" << text[textPosition]; // "\033[0m" resets the terminal color to default
+                }
+            }
+
+            // --------------------BUFFER FLUSH-------------------------
+            // Flush the output buffer to make sure the current state of the text is immediately displayed
+            std::cout.flush();
+
+            // --------------------DELAY-------------------------------
+            // Introduce a delay between each strobing iteration to make the effect visible
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+            // ------------------INCREMENT COLOR-----------------------
+            // Move to the next color in the color array for the next iteration
+            ++currentColorIndex;
+        }
+    }
+
+    // ---------------------RESET COLOR AT END-----------------------
+    // Once the strobing effect is over, reset the terminal color to default and add a newline
+    std::cout << "\033[0m\n";
+}
+
+// ----------------------KEY CONCEPT BREAKDOWN-----------------------
+// The `printStrobingText` function creates a strobing effect by changing the text color for each character 
+// in sequence. The strobing lasts for a specified duration, and the colors are applied using ANSI escape codes.
+// ANSI escape codes allow for changing the text color on the terminal.
+// The chrono library is used to measure time, allowing the strobing effect to continue for the desired duration.
+// This effect is achieved using a loop that prints each character of the string with a strobing color applied, 
+// along with a small delay to create a smooth transition between colors.
+// More descriptive variable names like `currentCharacterIndex` and `textPosition` have been used to clarify 
+// the purpose of each loop and variable for readability.
+
+
 
 
 

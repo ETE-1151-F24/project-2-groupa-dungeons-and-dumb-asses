@@ -432,7 +432,8 @@ void printStrobingText(const std::string &text, int duration) {  //
     // Once the strobing effect is over, reset the terminal color to default and add a newline
     std::cout << "\033[0m\n";
 }
-
+//-------------------------------calling the function in the main will be like......
+printStrobingText("Hello World", 5);
 // ----------------------KEY CONCEPT BREAKDOWN-----------------------
 // The `printStrobingText` function creates a strobing effect by changing the text color for each character 
 // in sequence. The strobing lasts for a specified duration, and the colors are applied using ANSI escape codes.
