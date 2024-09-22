@@ -326,3 +326,119 @@ std::cin.get();    // Wait for user input to pause
     // Wait for the user to press a key
     std::cin.get();  // Wait for a single character input
  }
+
+
+
+ //--------------------------------------------------------------------
+ #include <thread> // For sleep_for
+// #include <thread>:
+
+// This directive includes the C++ Standard Library's thread header, which provides functionality for multithreading. It allows you to create, manage, and control multiple threads of execution in your program.
+// In your particular case, you're using this library to utilize the function std::this_thread::sleep_for, which is responsible for making the current thread sleep (pause execution) for a specified amount of time.
+// Key Classes/Functions in <thread>:
+
+// std::thread: A class representing an independent thread of execution.
+// std::this_thread::sleep_for: Pauses the calling thread for a specified duration.
+// std::this_thread::sleep_until: Pauses the calling thread until a certain point in time.
+// In your program, you are particularly interested in std::this_thread::sleep_for, which allows you to pause your program for a certain amount of time.
+
+#include <chrono> // For timing
+// #include <chrono>:
+// This directive includes the C++ Standard Library's chrono header, which provides a set of utilities for measuring time. It defines types for dealing with clocks, durations, and time points.
+// chrono is essential for timing-related operations in modern C++ programs, allowing you to represent durations (like seconds, milliseconds) and time points (like a specific time of day or an exact point in time).
+// Key Types/Classes in <chrono>:
+// std::chrono::duration: Represents a span of time (like "5 seconds" or "10 milliseconds"). It is template-based, meaning you can create durations of any time unit.
+// std::chrono::time_point: Represents a specific point in time, relative to a clock (e.g., "now").
+// std::chrono::steady_clock: A clock that is guaranteed to never jump forward or backward. It’s often used for measuring intervals of time.
+// std::chrono::system_clock: A clock based on the system time, representing wall-clock time.
+// std::chrono::high_resolution_clock: Provides the highest available resolution clock (typically used for benchmarking or fine time measurements).
+
+
+//---------------------------------------------
+
+// -------------------PRINT STROBING TEXT FUNCTION-------------------
+// Function to print text with a strobing color effect
+//---------------------[  "arbirtaty words"  ],[how long it strobes]
+void printStrobingText(const std::string &text, int duration) {  //
+    // ---------------------ANSI COLOR CODES-------------------------
+    // Array of ANSI escape codes representing different text colors.
+    const std::string colors[] = {
+        "\033[31m", // Red color code
+        "\033[32m", // Green color code
+        "\033[33m", // Yellow color code
+        "\033[34m", // Blue color code
+        "\033[35m", // Magenta color code
+        "\033[36m", // Cyan color code
+        "\033[37m"  // White color code
+    };
+
+    // -----------------------COLOR COUNT---------------------------
+    // Calculate the number of colors available in the colors array
+    const int colorCount = sizeof(colors) / sizeof(colors[0]);
+
+    // Variable to track the current color index for the strobe effect
+    int currentColorIndex = 0;
+
+    // ---------------------TIME START POINT-------------------------
+    // Mark the current time as the starting point of the strobing effect
+    auto startTime = std::chrono::steady_clock::now();
+
+    // -------------------LOOP FOR STROBING EFFECT-------------------
+    // Infinite loop to continuously display the strobing effect until the specified duration is reached
+    while (true) {
+        // -------------------CHECK TIME ELAPSED----------------------
+        // Get the current time and calculate how many seconds have passed since the start
+        auto currentTime = std::chrono::steady_clock::now();
+        auto elapsedTime = std::chrono::duration_cast<std::chrono::seconds>(currentTime - startTime).count();
+
+        // If the elapsed time has reached or exceeded the duration, break out of the loop
+        if (elapsedTime >= duration) {
+            break; // Stop the strobing effect after the duration
+        }
+
+        // ------------------STROBING CHARACTERS----------------------
+        // Iterate over each character in the string
+        for (size_t currentCharacterIndex = 0; currentCharacterIndex < text.length(); ++currentCharacterIndex) {
+            // "\r" moves the cursor back to the start of the line without advancing to the next line
+            std::cout << "\r"; 
+
+            // ------------------PRINTING EACH LETTER------------------
+            // Iterate over the text and apply the strobing effect to the current character
+            for (size_t textPosition = 0; textPosition < text.length(); ++textPosition) {
+                if (textPosition == currentCharacterIndex) {
+                    // When the current character is being printed, apply the current strobing color
+                    std::cout << colors[currentColorIndex % colorCount] << text[textPosition];
+                } else {
+                    // Reset the color and print the rest of the text normally
+                    std::cout << "\033[0m" << text[textPosition]; // "\033[0m" resets the terminal color to default
+                }
+            }
+
+            // --------------------BUFFER FLUSH-------------------------
+            // Flush the output buffer to make sure the current state of the text is immediately displayed
+            std::cout.flush();
+
+            // --------------------DELAY-------------------------------
+            // Introduce a delay between each strobing iteration to make the effect visible
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+            // ------------------INCREMENT COLOR-----------------------
+            // Move to the next color in the color array for the next iteration
+            ++currentColorIndex;
+        }
+    }
+
+    // ---------------------RESET COLOR AT END-----------------------
+    // Once the strobing effect is over, reset the terminal color to default and add a newline
+    std::cout << "\033[0m\n";
+}
+
+// ----------------------KEY CONCEPT BREAKDOWN-----------------------
+// The `printStrobingText` function creates a strobing effect by changing the text color for each character 
+// in sequence. The strobing lasts for a specified duration, and the colors are applied using ANSI escape codes.
+// ANSI escape codes allow for changing the text color on the terminal.
+// The chrono library is used to measure time, allowing the strobing effect to continue for the desired duration.
+// This effect is achieved using a loop that prints each character of the string with a strobing color applied, 
+// along with a small delay to create a smooth transition between colors.
+// More descriptive variable names like `currentCharacterIndex` and `textPosition` have been used to clarify 
+// the purpose of each loop and variable for readability.
