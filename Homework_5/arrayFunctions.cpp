@@ -1,8 +1,13 @@
-#include<iostream>
-#include<cstring>            //include the cstring library contains various functions for working with C-style strings 
 #include "arrayConversionHeader.h"
-#include <limits>  // For std::numeric_limits such as 
+#include <limits>  // For std::numeric_limits
 
+// Define global variables here
+char* characterStorageArray = nullptr;  // Global definition of the character array
+int punctuationCount = 0;
+int vowelsCount = 0;
+int consonantsCount = 0;
+int numericDigitsCount = 0;
+int spacesOrTabsCount = 0;
 // -------------------------FUNCTION FOR DISPLAYING THE STROBING EFFECT OF THE LETTERS AT THE BEGINNING
 
 

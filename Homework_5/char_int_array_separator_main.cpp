@@ -1,6 +1,7 @@
 #include <iostream>            // Includes the standard input/output stream library for cout
 #include <limits>                       // For numeric limits to handle input errors
 #include "arrayFunctions.cpp"
+
 int main() {
 // i need to declare an array that will first be able to store the input stream
 
@@ -28,6 +29,16 @@ clear input buffer of stream
 wait for user to press any key to exit
 */
 
+
+printStrobingText("WORDSALAD TOSSER", 5);
+
+
+wordSaladGreeting();
+getArrayInput();
+stringToArrayConversion();
+checkCharacterType();
+displayCharTypes();
+closingMessageExit();
 
 
     return 0;
