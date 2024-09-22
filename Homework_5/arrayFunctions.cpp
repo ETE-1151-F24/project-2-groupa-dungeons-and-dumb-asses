@@ -121,6 +121,9 @@ void getArrayInput(){
 
     std::cout << "Are you ready to get that Wordsalad tossed?"<< std::endl;         // Prompt to press any key to continue
     std::cout << "Press any key to continue...";
+    // Clear the input buffer and wait for the key press
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 
 }
 //----------------------------------------------------------------------------------------------------
@@ -190,12 +193,12 @@ void displayCharTypes(){
  
 //---------------having alternates when it finds a zero value for a character type---------   
     if (vowelsCount > 0) {
-    std::cout <<"Your input came with " << vowelsCount << " vowels." << std::endl;
+    std::cout <<"You came with " << vowelsCount << " vowels." << std::endl;
     } else {
         std::cout << "No vowels? So silent... we're a little disappointed." << std::endl;
 
     }if (consonantsCount > 0) {
-    std::cout <<"You filled it "<< consonantsCount << " consonants." << std::endl;
+    std::cout <<"You filled it with "<< consonantsCount << " consonants." << std::endl;
     } else {
         std::cout << "No consonants? Yea it felt a bit soft." << std::endl;
     
@@ -205,9 +208,9 @@ void displayCharTypes(){
         std::cout << "No punctuations? We expected more excitement." << std::endl;
 
     }if (spacesOrTabsCount > 0) {
-    std::cout <<"What a spread. A total of " << spacesOrTabsCount << " gaps were created with space bar or tab" << std::endl;
+    std::cout <<"A total of " << spacesOrTabsCount << " gaps were created with space bar or tab" << std::endl;
     } else {
-        std::cout << "No spaces? It felt pretty tight... let's loosen things up next time." << std::endl;
+        std::cout << "No spaces? ... let's loosen things up next time." << std::endl;
 
     }if (numericDigitsCount > 0) {
     std::cout <<"You managed to fit " << numericDigitsCount <<" digits inside.  So adventurous!!" << std::endl;
@@ -227,7 +230,8 @@ void cleanup() {
 
 // -------------------------FUNCTION TO WAIT FOR USER INPUT TO TERMINATE PROGRAM
 void closingMessageExit() {
-    std::cout << "This was a fun challenge to face down." << std::endl; 
-    std::cout << "Class is up!" << std::endl;
 
+    // Wait for a key press before exiting
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 }
