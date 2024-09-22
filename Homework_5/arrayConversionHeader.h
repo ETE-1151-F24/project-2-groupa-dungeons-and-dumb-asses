@@ -10,6 +10,8 @@
 
 //-------------------Declaring global variables-----------------
 std::string userInputString; 
+// Externally declared array (to be defined in the source file)
+extern char* characterStorageArray;  // This declaration tells the compiler the array exists
 
 
 

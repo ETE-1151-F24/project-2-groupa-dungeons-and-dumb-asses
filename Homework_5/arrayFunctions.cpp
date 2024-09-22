@@ -3,6 +3,12 @@
 #include "arrayConversionHeader.h"
 #include <limits>  // For std::numeric_limits such as 
 
+// -------------------------FUNCTION FOR DISPLAYING THE STROBING EFFECT OF THE LETTERS AT THE BEGINNING
+
+
+
+
+
 // -------------------------FUNCTION FOR PROGRAM GREETING
 void wordSaladGreeting(){
    std::cout << std::endl << "Welcome to WORDSALAD TOSSER, where things get... mixed up in all the right ways." << std::endl;
@@ -45,13 +51,22 @@ std::strcpy(characterStorageArray, userInputString.c_str());           // Copy s
 // -------------------------FUNCTION TO EVALUATE THE CHARACTER QUANTITIES
 
 void checkCharacterType(){
-    int spaces=0;
-    int vowels=0;
-    int consonants=0;
-    int numericDigits=0;
-    int spacesOrTabs=0;
-
+//-----ESTABLISHING THE VARIABLE THAT WILL HOLD THE COUNT OF EACH CHARACTER TYPE
+    int punctuationCount=0;
+    int vowelsCount=0;
+    int consonantsCount=0;
+    int numericDigitsCount=0;
+    int spacesOrTabsCount=0;
+    int lengthOfArray = strlen(characterStorageArray); // Calculate the length of the input
 // here is the for statement to loop through [characterStorageArray] and determine the type of charachter in the array
+  for (int position = 0;  position < lengthOfArray; position++) {// position is the traversal of each individual element in the array
+        // Convert the character to lowercase to simplify the comparison
+        char individualCharCheck = tolower(characterStorageArray[i]);
+
+        // Check if the character is a vowel
+        if (individualCharCheck == 'a' || individualCharCheck == 'e' || individualCharCheck == 'i' || individualCharCheck == 'o' || individualCharCheck == 'u') {
+            vowelsCount++; // Increment the vowel count
+        }  
 
 //std::isspace() //checks whether a character is a whitespace character, including spaces, tabs, newlines, etc
 //std::isalpha(): Checks if a character is alphabetic.
