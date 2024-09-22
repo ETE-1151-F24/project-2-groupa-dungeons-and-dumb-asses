@@ -11,7 +11,7 @@ int main() {
     checkCharacterType(); 
     displayCharTypes();  
       
-    std::cout << std::endl << "We hope you enjoyed having your vowels tossed" << std::endl;
+    std::cout << std::endl << "We hope you enjoyed having your vowels tossed" << std::endl << std::endl;
 
     cleanup();  // Free memory for the dynamically allocated array
     closingMessageExit();  // Exit message 

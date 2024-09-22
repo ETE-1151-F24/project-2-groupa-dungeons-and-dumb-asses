@@ -101,9 +101,7 @@ void printStrobingText(const std::string& text, int duration) {
 
 // -------------------------FUNCTION FOR PROGRAM GREETING
 void wordSaladGreeting(){
-   std::cout << std::endl << "Welcome to WORDSALAD TOSSER, where things get... mixed up in all the right ways." << std::endl;
-   std::cout << "Brace yourself... it's about to get messy...." << std::endl << std::endl;
-
+   std::cout << std::endl << "Welcome to WORDSALAD TOSSER, where things get... mixed up in all the right ways." << std::endl << std::endl;
 }
 //----------------------------------------------------------------------------------------------------
 
@@ -186,7 +184,8 @@ void checkCharacterType(){
 // -------------------------FUNCTION TO SHOW THE CHARACTER QUANTITIES
 
 void displayCharTypes(){
-   std::cout << "                                     "<< userInputString <<" was really loaded." << std::endl << std::endl;
+   std::cout << "                                     "<< userInputString << std::endl;
+   std::cout << "                                      was really loaded." << std::endl << std::endl;
 
  
 //---------------having alternates when it finds a zero value for a character type---------   
