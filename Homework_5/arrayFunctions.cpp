@@ -2,6 +2,7 @@
 #include <limits>  // For std::numeric_limits
 
 // Define global variables here
+std::string userInputString = "";  // Define the userInputString
 char* characterStorageArray = nullptr;  // Global definition of the character array
 int punctuationCount = 0;
 int vowelsCount = 0;
@@ -101,7 +102,7 @@ void printStrobingText(const std::string& text, int duration) {
 // -------------------------FUNCTION FOR PROGRAM GREETING
 void wordSaladGreeting(){
    std::cout << std::endl << "Welcome to WORDSALAD TOSSER, where things get... mixed up in all the right ways." << std::endl;
-   std::cout << "Brace yourself... it’s about to get messy...." << std::endl << std::endl;
+   std::cout << "Brace yourself... it's about to get messy...." << std::endl << std::endl;
 
 }
 //----------------------------------------------------------------------------------------------------
@@ -111,7 +112,7 @@ void wordSaladGreeting(){
 
 void getArrayInput(){
 
-    std::cout << "Enter a string: it can be whatever you like";                     // Prompt the user for input
+    std::cout << "Enter a string: it can be whatever you like" << std::endl << std::endl;                     // Prompt the user for input
 
     std::getline(std::cin, userInputString);                                        //Read the whole line of input into [userInputString]
 
@@ -121,7 +122,7 @@ void getArrayInput(){
     std::cout << "Are you ready to get that Wordsalad tossed?"<< std::endl;         // Prompt to press any key to continue
     std::cout << "Press any key to continue..." << std::endl;
         // Clear the input buffer to ignore any leftover newline characters
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//  need [#include <limits>]  For std::numeric_limits
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max());//  need [#include <limits>]  For std::numeric_limits
     std::cin.get();                                                                 // Wait for a single character input
 }
 //----------------------------------------------------------------------------------------------------
@@ -145,12 +146,7 @@ void stringToArrayConversion() {
 // -------------------------FUNCTION TO EVALUATE THE CHARACTER QUANTITIES
 //--------------------------ESTABLISh VARIABLES to HOLD COUNT OF EACH CHARACTER TYPE (and are aptly named)
 void checkCharacterType(){
-                            
-    int punctuationCount=0;                                             
-    int vowelsCount=0;
-    int consonantsCount=0;
-    int numericDigitsCount=0;
-    int spacesOrTabsCount=0;
+
     int lengthOfArray = strlen(characterStorageArray);                                      //Calculate the length of the array
 
 //for statement to loop through [characterStorageArray] and determine the type of charachter in the array
@@ -218,12 +214,12 @@ void displayCharTypes(){
     }if (numericDigitsCount > 0) {
     std::cout <<"You managed to fit " << numericDigitsCount <<" digits inside.  So adventurous!!" << std::endl;
     } else {
-        std::cout << "No digits? Afraid to get numerical? We hoped it was a little more heavy handed." << std::endl;
+        std::cout << "No digits? We hoped your digits were a little more heavy handed." << std::endl;
 
     std::cout << "" << std::endl;    
     std::cout << "We hope you enjoyed having your vowels tossed" << std::endl;
         std::cout << "\nPress any key to continue..." << std::endl;                                 // Wait for user input before closing 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     //need [#include <limits>]  For std::numeric_limits    
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max());                     //need [#include <limits>]  For std::numeric_limits    
     std::cin.get(); 
     }
 }
@@ -236,10 +232,10 @@ void cleanup() {
 
 // -------------------------FUNCTION TO WAIT FOR USER INPUT TO TERMINATE PROGRAM
 void closingMessageExit() {
-    std::cout << "This was a fun challenge to face down." << std::endl; 
+    std::cout << std::endl << "This was a fun challenge to face down." << std::endl; 
     std::cout << "Class is up!" << std::endl << std::endl;
 
     std::cout << "\nPress any key to exit..." << std::endl; 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max());  
     std::cin.get();  // Wait for the user to press any key
 }

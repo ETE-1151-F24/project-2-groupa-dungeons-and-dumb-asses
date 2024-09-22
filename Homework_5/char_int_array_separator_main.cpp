@@ -1,4 +1,5 @@
 #include "arrayConversionHeader.h"  // Include the correct header file
+#include "arrayFunctions.cpp"
 
 int main() {
     printStrobingText("WORDSALAD TOSSER", 5);  // Display strobing title
@@ -14,7 +15,7 @@ int main() {
 
 
 
-    
+
 }//---------------------ORIGINAL CONCEPUTALIZATIOn
 // i need to declare an array that will first be able to store the input stream
 
