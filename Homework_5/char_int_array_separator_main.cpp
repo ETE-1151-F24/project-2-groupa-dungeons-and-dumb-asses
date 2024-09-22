@@ -3,14 +3,33 @@
 
 int main() {
     printStrobingText("WORDSALAD TOSSER", 5);  // Display strobing title
-    wordSaladGreeting();  // Greet the user
-    getArrayInput();  // Get user input
-    stringToArrayConversion();  // Convert string to char array
-    checkCharacterType();  // Check character types in the array
-    displayCharTypes();  // Display the counts of different character types
-    cleanup();  // Free memory for the dynamically allocated array
-    closingMessageExit();  // Wait for user input before exiting
+    
+    wordSaladGreeting();  
+    
+    getArrayInput();  
 
+       // Clear the input buffer to ignore any leftover newlines
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+    std::cin.get();  // Wait for a single character input
+
+    stringToArrayConversion();  
+    
+    checkCharacterType(); 
+    
+    displayCharTypes();  
+    
+    std::cout << "" << std::endl;    
+    std::cout << "We hope you enjoyed having your vowels tossed" << std::endl;
+    closingMessageExit();  // Wait for user input before exiting
+    
+    cleanup();  // Free memory for the dynamically allocated array 
+
+    std::cout << "\nPress any key to exit..";                                 // Wait for user input before closing 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');                     //need [#include <limits>]  For std::numeric_limits    
+    std::cin.get(); 
+
+  
+    
     return 0;
 
 
