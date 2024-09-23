@@ -14,13 +14,17 @@ void swapArrays(int* data, int* data1, size_t sizeData, size_t sizeData1) {
 }
 
 // ------------------------------Function to print the elements of an array
-void printArray(const int* arr, size_t size, const char* name) {                   // Function definition for printing an array, accepting the array, its size, and a name for the array
+void printArray(const int* arrayInQuestion, size_t size, const char* name) {       // Function definition for printing an array, accepting the array, its size, and a name for the array
     std::cout << name << " = { ";                                                  // Output the name of the array followed by an opening curly brace
     for (size_t i = 0; i < size; ++i) {                                            // Loop through each element of the array
-        std::cout << arr[i] << " ";                                                // Print each element followed by a space
+        std::cout << arrayInQuestion[i] << " ";                                    // Print each element followed by a space
     }
     std::cout << "}" << std::endl;                                                 // Print the closing curly brace and move to the next line
 }
+
+
+
+
 
 
 //------------------ADDITIONAL COMMENTS OF EXPLANATION
