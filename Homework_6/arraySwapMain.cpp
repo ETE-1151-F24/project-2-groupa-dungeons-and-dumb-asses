@@ -38,10 +38,26 @@ Using the same 2 arrays create a function that will search the arrays and output
 
 int main() {
     // Initialize two arrays with different sizes
-    int data[] = {1, 3, 6, 7, 9};        // Array 'data' with 5 elements
-    int data1[] = {5, 3, 3, 11};         // Array 'data1' with 4 elements
+    int data[] = {1, 3, 6, 7, 9};                                           // Array 'data' with 5 elements
+    int data1[] = {5, 3, 3, 11};                                            // Array 'data1' with 4 elements
 
-        // Determine the sizes of the arrays
-    size_t size_DataArray = sizeof(data) / sizeof(data[0]);     // Size of 'data' array
-    size_t size_Data1_Array = sizeof(data1) / sizeof(data1[0]);  // Size of 'data1' array
+     // Determine the sizes of the arrays
+    size_t sizeData = sizeof(data) / sizeof(data[0]);                       // Size of 'data' array
+    size_t sizeData1 = sizeof(data1) / sizeof(data1[0]);                    // Size of 'data1' array
 
+
+ 
+    // Find the minimum size of the two arrays
+    size_t minSize = (sizeData < sizeData1) ? sizeData : sizeData1;
+
+   // Perform element-wise swapping using XOR via pointers
+    for (size_t i = 0; i < minSize; ++i) {
+        int* ptrData = &data[i];                                            // Pointer to current element in 'data'
+        int* ptrData1 = &data1[i];                                          // Pointer to current element in 'data1'
+
+        // XOR swap using pointers which are 
+        //***per wikipedia*** "an algorithm that uses the exclusive or bitwise operation to swap the values 
+        //of two variables without using the temporary variable which is normally required."
+        *ptrData ^= *ptrData1;       // First XOR operation
+        *ptrData1 ^= *ptrData;       // Second XOR operation
+        *ptrData ^= *ptrData1;       // Third XOR operation, swap complete
