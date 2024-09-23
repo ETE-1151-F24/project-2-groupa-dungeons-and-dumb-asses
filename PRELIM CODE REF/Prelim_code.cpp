@@ -443,3 +443,44 @@ printStrobingText("Hello World", 5);
 // along with a small delay to create a smooth transition between colors.
 // More descriptive variable names like `currentCharacterIndex` and `textPosition` have been used to clarify 
 // the purpose of each loop and variable for readability.
+
+
+//     size_t data type
+
+size_t is an unsigned data type much like float or int or double
+
+for (size_t i = 0; i < std::size(array); ++i) {
+    // Do something with array[i]
+}
+This prevents issues with signed integers, such as overflow when working with large sizes.
+Why Use size_t?
+Safety: Using size_t ensures that you do not accidentally assign negative values to variables 
+representing sizes or counts, as it is an unsigned type.
+Efficiency: Since size_t is optimized for the platform (32-bit or 64-bit), 
+it is the most efficient way to represent sizes and counts.
+Compatibility: Functions in the standard library that deal with memory sizes, 
+array indexing, and other size-related operations often expect size_t, so using it ensures consistency and compatibility.
+
+//---------------------------Calculate size of array
+The formula to calculate the size of an array using sizeof() is:
+
+sizeof(array) / sizeof(array[0])  // [array] is a generic label you could use anything is the name of the array
+/*Here's what is happening:
+sizeof(array):
+
+The sizeof() operator returns the total size, in bytes, of the entire array.
+For example, if array is of type int and has 5 elements, each int typically takes 4 bytes 
+(depending on the system), so sizeof(array) will return 5 * 4 = 20 bytes.
+sizeof(array[0]):
+
+sizeof(array[0]) returns the size, in bytes, of the first element in the array. 
+Since array[0] is the first element, it has the same size as any other element in the array.
+For an array of int, sizeof(array[0]) will return 4 bytes because each integer takes up 4 bytes of memory 
+(again, this may vary by system).
+
+Dividing sizeof(array) by sizeof(array[0]):
+
+    The total size of the array in bytes (sizeof(array)) divided by the size of one element (sizeof(array[0])) 
+    gives the number of elements in the array.  For example, if sizeof(array) is 20 bytes (for an array of 5 integers) 
+    and sizeof(array[0]) is 4 bytes (since each integer takes up 4 bytes), the expression sizeof(array) / sizeof(array[0]) 
+    results in 20 / 4 = 5, which is the number of elements in the array.*/

@@ -33,13 +33,15 @@ Part 2.
 Using the same 2 arrays create a function that will search the arrays and output the numbers that are the same.*/
 
 #include <iostream>
-#include <algorithm> // for std::swap
-#include <iterator>  // for std::size
+#include <vector>
+#include <algorithm>  // For std::copy
 
 int main() {
-    int data[] {1, 3, 6, 7, 9};    // First array with 5 elements
-    int data1[] {5, 3, 3, 11};     // Second array with 4 elements
+    // Initialize two arrays with different sizes
+    int data[] = {1, 3, 6, 7, 9};        // Array 'data' with 5 elements
+    int data1[] = {5, 3, 3, 11};         // Array 'data1' with 4 elements
 
-
-
+        // Determine the sizes of the arrays
+    size_t size_DataArray = sizeof(data) / sizeof(data[0]);     // Size of 'data' array
+    size_t size_Data1_Array = sizeof(data1) / sizeof(data1[0]);  // Size of 'data1' array
 
