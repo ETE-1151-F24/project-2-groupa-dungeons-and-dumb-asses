@@ -4,7 +4,7 @@
 
 // Function to find common elements
 void findStuffInCommon(const int* data, const int* data1, size_t sizeOfDataArray, size_t sizeOfData1_Array) {
-    std::cout << "Here are the similarities: ";
+    std::cout << "The following value(s) are shared between the arrays: ";
     bool similarities = false;
     
     for (size_t dataElem = 0; dataElem < sizeOfDataArray; ++dataElem) {                         // Loop through first array

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstddef> // For size_t
 #include "arrayCompHeader.h"
-
+#include "arrayCompImplement.cpp"
 
 int main(){
 int data[] {1,3,6,7,9};
