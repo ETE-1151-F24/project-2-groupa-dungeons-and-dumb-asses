@@ -2,7 +2,7 @@
 #include <iostream>                                                               // Include the iostream library for input/output operations
 
 // -------------------------Function to swap elements between two arrays using XOR
-void swapArrays(int* data, int* data1, size_t sizeData, size_t sizeData1) {   
+void swappingTheArrays(int* data, int* data1, size_t sizeData, size_t sizeData1) {   
     size_t minSize = (sizeData < sizeData1) ? sizeData : sizeData1;               // Determine minimum size between arrays to avoid out-of-bounds access
     for (size_t i = 0; i < minSize; ++i) {                                        // Iterate through the elements of both arrays up to the minimum size
         int* ptrData = &data[i];                                                  // Create a pointer to the current element of the first array
@@ -14,7 +14,7 @@ void swapArrays(int* data, int* data1, size_t sizeData, size_t sizeData1) {
 }
 
 // ------------------------------Function to print the elements of an array
-void printArray(const int* arrayInQuestion, size_t size, const char* name) {       // Function definition for printing an array, accepting the array, its size, and a name for the array
+void printingTheArray(const int* arrayInQuestion, size_t size, const char* name) {       // Function definition for printing an array, accepting the array, its size, and a name for the array
     std::cout << name << " = { ";                                                  // Output the name of the array followed by an opening curly brace
     for (size_t i = 0; i < size; ++i) {                                            // Loop through each element of the array
         std::cout << arrayInQuestion[i] << " ";                                    // Print each element followed by a space

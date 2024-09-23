@@ -45,14 +45,14 @@ int main() {
     size_t sizeData1 = sizeof(data1) / sizeof(data1[0]);                    //[data1] array initialized as a [size_t] datatype named [SizeData1]
 
     std::cout << "Before the swap" << std::endl;
-    printArray(data, sizeData, "data[]");                                   //use print array function to print data before swap
-    printArray(data1, sizeData1, "data1[]");                                //use print array function to print data1 before swap
+    printingTheArray(data, sizeData, "data[]");                                   //use print array function to print data before swap
+    printingTheArray(data1, sizeData1, "data1[]");                                //use print array function to print data1 before swap
  
-    swapArrays(data, data1, sizeData, sizeData1);                           // perform swapping function of the elements
+    swappingTheArrays(data, data1, sizeData, sizeData1);                           // perform swapping function of the elements
 
     std::cout << "After the swap" << std::endl;
-    printArray(data, sizeData, "data[]");                                   //use print array function to print data after swap
-    printArray(data1, sizeData1, "data1[]");                                //use print array function to print data1 after swap
+    printingTheArray(data, sizeData, "data[]");                                   //use print array function to print data after swap
+    printingTheArray(data1, sizeData1, "data1[]");                                //use print array function to print data1 after swap
 
     std::cout << "}" << std::endl;
 
