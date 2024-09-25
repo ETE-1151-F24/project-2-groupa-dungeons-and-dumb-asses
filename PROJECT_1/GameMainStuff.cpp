@@ -68,7 +68,7 @@ void showClassDescription(int classChoice) {
             break;
         case 4:
             // Output the Cleric class description and its stat focus
-            std::cout << "Cleric: A divine healer and protector, wielding holy magic to heal and protect allies.\n";
+            std::cout << "Cleric: A divine healer and protector, wielding holy magic to heal and protect allies and auras to damage enemies.\n";
             std::cout << "Stat focus: Wisdom and Constitution.\n";
             break;
         case 5:
@@ -139,8 +139,90 @@ void displayClasses() {
 }
 //--------------------------------------------------------------------------------------------------------
 
-// Statistics array to hold string representations of attributes
-std::string statistics[] = {"Strength", "Dexterity", "Wisdom", "Intelligence", "Constitution", "Charisma"};
+//*** */ Statistics array to hold string representations of attributes
+//***std::string statistics[] = {"Strength", "Dexterity", "Wisdom", "Intelligence", "Constitution", "Charisma"};
+
+
+
+// [Enum] for character stats (e.g., Strength, Dexterity, etc.)       used to define a type that consists of a set of named integer 
+                                                                    //constants and allows you to represent a collection of related 
+                                                                    //values with human-readable names rather than using raw integers
+
+enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount };
+
+//----------------------------------------- Function to random roll with a specified range
+int roll(int min, int max) {
+    return rand() % (max - min + 1) + min;  // Generate a random number in the range [min, max]
+}
+
+//-------------------------------------------- Function to handle stat rolling with proficiency based on focus
+void rollStats(const std::array<bool, StatCount>& statFocus) {
+
+                                        /*[void]: This specifies that the function doesn't return any value.
+                                        [rollStats]: The name of the function.
+                                        [const std::array<bool, StatCount>& statFocus]:
+                                        [std::array<bool, StatCount>]: This is a fixed-size array from the C++ Standard 
+                                        Library (<array>). It holds boolean values (true or false) and has a size defined 
+                                        by [StatCount] in the [statisticType] array.
+                                        [&]: The function takes the array by reference, meaning the function operates directly 
+                                        on the original array instead of making a copy.
+                                        [const]: The array reference is constant, meaning the function is not allowed 
+                                        to modify the contents of the [statFocus] array.*/
+
+    std::array<int, StatCount> rolledStatsArray;  // Array to store the rolled values for each stat
+
+    for (int statIndex = 0; statIndex < StatCount; ++statIndex) {       //[statIndex] refers to index postion in enum [statisticType]
+        if (statFocus[statIndex]) {
+                                                                        // if Stat is a focus, roll between 9 and 20
+            rolledStatsArray[statIndex] = roll(9, 20);                             //use [roll] function with the ranges from 9 to 20
+            std::cout << "Proficiency roll for stat " << statIndex << ": " << rolledStatsArray[statIndex] << std::endl;
+        } else {
+                                                                        // else if Stat not focus, roll between 6 and 13
+            rolledStatsArray[statIndex] = roll(6, 13);                             //use [roll] function with the ranges from 9 to 20
+            std::cout << "Non-focus roll for stat " << statIndex << ": " << rolledStatsArray[statIndex] << std::endl;
+        }
+    }
+}
+
+//-----------------Function for assigning stat focus rolls based on character class chosen
+
+void assignStatFocus(int classSelect, std::array<bool, StatCount>& statFocus) {
+    // Arrays representing stat focus of classes     { Strg, Dexte, Intel, Wisdo, Constitu}
+    const std::array<bool, StatCount> warriorFocus = { true, false, false, false, true };  // Focus: Strength and Constitution
+    const std::array<bool, StatCount> rogueFocus   = { false, true, true, false, false };  // Focus: Dexterity and Intelligence
+    const std::array<bool, StatCount> mageFocus    = { false, false, true, true, false };  // Focus: Intelligence and Wisdom
+    const std::array<bool, StatCount> clericFocus  = { false, false, false, true, true };  // Focus: Wisdom and Constitution
+    const std::array<bool, StatCount> rangerFocus  = { false, true, false, true, false };  // Focus: Dexterity and Wisdom
+
+    // Assign the corresponding stat focus based on the selected class
+    switch (classSelect) {
+        case 1:
+            statFocus = warriorFocus;  // Warrior: Focus on Strength and Constitution
+            break;
+        case 2:
+            statFocus = rogueFocus;    // Rogue: Focus on Dexterity and Intelligence
+            break;
+        case 3:
+            statFocus = mageFocus;     // Mage: Focus on Intelligence and Wisdom
+            break;
+        case 4:
+            statFocus = clericFocus;   // Cleric: Focus on Wisdom and Constitution
+            break;
+        case 5:
+            statFocus = rangerFocus;   // Ranger: Focus on Dexterity and Wisdom
+            break;
+        default:
+            std::cout << "Invalid class selection.\n";
+            break;
+    }
+}
+
+
+
+//how abilities are adjusted based on statistics
+
+
+
 
 
 
