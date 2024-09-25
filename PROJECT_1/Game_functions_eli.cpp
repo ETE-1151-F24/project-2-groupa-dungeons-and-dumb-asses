@@ -42,3 +42,4 @@
     std::cout << resetColor << "\n";  // Reset terminal color and add a newline
 }
 //_________________________________________________________________________________________________________
+Player_class:

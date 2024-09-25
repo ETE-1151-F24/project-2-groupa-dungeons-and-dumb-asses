@@ -8,7 +8,7 @@
 #include "Game_functions_eli.cpp"
 #include "GameHeaderEli.h"
 
-std::string CharacterName;
+
 /*Game flow
 -Welcome message
     // Call the function to display the strobing title
@@ -23,14 +23,33 @@ std::string CharacterName;
     // ---------------------TITLE DISPLAY---------------------------
     std::string title = "Goblins & Glittery S*** !";                         maybe initialize as a global
     int duration = 5;  // Duration for strobing effect in seconds*/
-int main(){
 
 
-//-whats your name
-std::cout << "What is your name, adventurer? ... you know, the type of thing someone goes by\n"
-          << "when they are on a thirst-trappy voyage for peril and riches." << std::endl;
-std::cin >> CharacterName;
-//-hello [name]
+#include <iostream>
+#include <string>
+
+
+
+// Function to get character name
+std::string getPlayerName() {
+std::string PlayerName;
+std::cout << "What is your name, adventurer? ... you know, the type of thing someone goes by" << std::endl;
+std::cout << "when they are on a thirst-trappy voyage for peril and riches." << std::endl;
+std:: getline(std::cin, PlayerName);  // Read full line for name using getline operator 
+}
+// Function to display available classes
+void displayClasses() {
+    int PlayerClass;                                                                         //initialize PlayerClass integer  
+    std::cout << "What type of adventurer would you like to be"<< std::endl; 
+    std::cout <<"(chose a number from the list below)" << std::endl << std::endl;
+    std::cout << "1. Warrior\n2. Rogue\n3. Mage\n4. Cleric\n5. Ranger\n";                    //List of all of the options for 
+    std::cout << "Enter a number to select a class, or press 'I' to get info about a specific class." << std::endl;
+    std::cin >> PlayerClass;
+}
+
+
+
+std::string statistics[]{streng,dexter,wisdom,intell,consti,charis};
 
 
 /*-pick a charachter class message [playerClass]
@@ -45,9 +64,9 @@ then display the stats for the character
 
 playerIdentity   Class: [playerClass]   
 ---------STATICS---------------------------
-streng           STG [ streng ]......attack +1 for every 3
-dexter           DEX [ dexter ]......speed +1 for every 3, range +1 for every 4
-wisdom           WIS [ wisdom ]......magic reserve +1 for every 3,  
+streng           STG [ streng ]......attack +1 for every 3, lift/pull/push/throw +1 every 3, +1 range every 6
+dexter           DEX [ dexter ]......speed +1 for every 3, range +1 for every 4, number of attacks +1 every 6
+wisdom           WIS [ wisdom ]......magic reserve +1 for every 3,  magic duration (rounds) +1 every 6
 intell           ITL [ intell ]......attack +1 every 5......magic power +1 every 3       
 consti           CON [ consti ]......defense +1 every 3 points....healing +1 every 4...health +1 every 2
 charis           CRM [ charis ]......healing +1 every 5....magic power +1 every 4....
