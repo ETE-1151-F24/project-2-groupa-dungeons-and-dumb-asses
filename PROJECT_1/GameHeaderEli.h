@@ -4,7 +4,11 @@
 
 
 //+++++++++++++++++++++++++++ any INCLUDES needed for the file  ---------------
-// #include <iostream>                     // Provides functionality for input and output operations [(cin, cout)].
+#include <vector>  // Required for using std::vector
+#include <string>  // Required for using std::string
+#include <array>   // Required for using std::array
+#include <iostream>                     // Provides functionality for input and output operations [(cin, cout)].
+
 // #include <iomanip>                      // Allows for formatting and [alignment] of output, such as setting precision. [setw]
 // #include <string>                       // Enables the use of the standard [string] class for handling text.
 // #include <cstring>                      // Provides C-style string manipulation functions like [strcpy], [strlen], etc.
@@ -25,7 +29,10 @@ enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, St
                                                                                            // representing character stats
 
 enum ItemType { WEAPON, MAGICAL, CLOTHING };                                 //defines three named constants: WEAPON, MAGICAL, and CLOTHING. 
+
+int statModifier;
                                                                              //allows categorizing items by type in program,
+
 
 class Item {
 public:
@@ -34,15 +41,38 @@ public:
     std::array<int, StatCount> statModifier;       // Modifier for each statistic (e.g., strength, agility)
     std::string ability;                          // Special ability associated with the item
     ItemType type;                                // Type of the item (e.g., weapon, magical, clothing)
-    
-    // Constructor that is a templat of how information is gathered and kept for different items
-    Item(std::string itemName, std::string itemDescription, std::array<int, StatCount> modifier, std::string itemAbility, ItemType itemType)
-        : name(itemName),                            // Initialize the item name
-          description(itemDescription),              // Initialize the item description
-          ability(itemAbility),                      // Initialize the item ability
-          type(itemType),                            // Initialize the item type
-          statModifier(modifier) {}                  // Initialize the stat modifiers
+    int minDamage; // Minimum damage value for weapons
+    int maxDamage; // Maximum damage value for weapons             //min and max damage values
 
+    // Constructor that is a template of how information is gathered and kept for different items
+     Item(std::string itemName, std::string itemDescription, std::array<int, StatCount> modifier, 
+         std::string itemAbility, ItemType itemType, int minDmg = 0, int maxDmg = 0)
+        : name(itemName),                             // Initialize the item name
+          description(itemDescription),                // Initialize the item description
+          ability(itemAbility),                        // Initialize the item ability
+          type(itemType),                              // Initialize the item type
+          statModifier(modifier),                      // Initialize the stat modifiers
+          minDamage(minDmg),                           // Initialize the minimum damage value
+          maxDamage(maxDmg) {}                         // Initialize the maximum damage value
+
+}
+
+
+//------------------------CLASS FOR PLAYER DEVELOPMENT----------------------------
+// Player Class
+class Player {
+public:
+    std::string name;                                   // Player's name
+    std::array<int, StatCount> stats;                   // Player's stats, stored in an array of fixed size (StatCount)
+    std::vector<Item> inventory;                        // Player's inventory, a collection of items that the player has acquired
+    std::vector<Item> equippedItems;                    // Items that the player currently has equipped, affecting their stats or abilities
+
+    // Constructor
+    Player(std::string playerName) : name(playerName) { // Initialize player with a name
+        // Initialize stats (these can be set based on class selection and stat rolling)
+        stats = {10, 10, 10, 10, 10};                   // Example initial stats set to 10 for each stat
+    }
+}
 
 
 
