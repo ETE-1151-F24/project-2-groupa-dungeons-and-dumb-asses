@@ -35,3 +35,15 @@ void displayItemDetails(const Item& item) {
             std::cout << "Damage Range: " << damageRange.first << " - " << damageRange.second << "\n";
         }
     }
+
+    //-------------------------------FUNCTION TO EQUIP AN ITEM-------------------------
+
+
+
+
+
+
+    //-------------------------------FUNCTION TO UNEQUIP AN ITEM-----------------------
+
+
+    

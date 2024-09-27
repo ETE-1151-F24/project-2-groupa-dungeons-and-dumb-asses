@@ -60,24 +60,42 @@ public:
 
 //------------------------CLASS FOR PLAYER DEVELOPMENT----------------------------
 // Player Class
+// Player Class
 class Player {
 public:
     std::string name;                                   // Player's name
-    std::array<int, StatCount> stats;                   // Player's stats, stored in an array of fixed size (StatCount)
-    std::vector<Item> inventory;                        // Player's inventory, a collection of items that the player has acquired
-    std::vector<Item> equippedItems;                    // Items that the player currently has equipped, affecting their stats or abilities
+    std::string characterClass;                         // Character's class type (e.g., cleric, ranger, etc.)
+    int level;                                          // Player's current level
+    int experience;                                     // Player's accumulated experience points
+    std::array<int, StatCount> stats;                   // Player's stats, stored in an array of size StatCount
+    std::vector<std::string> abilitiesMenu;             // List of abilities available to the player
+    std::vector<Item> equippedItems;                    // Items currently equipped by the player, affecting their abilities
+    std::vector<Item> saccySak;                         // Player's inventory, renamed to saccySak, stores all items that the player has acquired
 
     // Constructor
-    Player(std::string playerName) : name(playerName) { // Initialize player with a name
+    Player(std::string playerName, std::string charClass, int startLevel = 1) // Constructor takes player's name, class, and optional start level
+        : name(playerName), characterClass(charClass), level(startLevel), experience(0) { // Initialize name, class, level, and experience
         // Initialize stats (these can be set based on class selection and stat rolling)
-        stats = {10, 10, 10, 10, 10};                   // Example initial stats set to 10 for each stat
+        //stats = {10, 10, 10, 10, 10};                   // Example initial stats set to 10 for each stat
     }
-}
+    
+    // Add other functions here as needed, such as for leveling up, gaining experience, etc.
+};
 
 
 
 //-------------------------DECLARE FUNCTION INITIALIZATIONS----------
 bool confirmClassChoice();
 
+    // Function to equip an item
+    bool equipItem(Item &item);
 
+    // Function to unequip an item
+    void unequipItem(int index);
+
+    // Function to display player's stats
+    void showStats() const;
+
+    // Function to display equipped items
+    void showEquippedItems() const;
 #endif //closes the definition guard
