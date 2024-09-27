@@ -217,9 +217,11 @@ void assignStatFocus(int classSelect, std::array<bool, StatCount>& statFocus) {
     }
 }
 
+//----------------------function for assigning bonus points to the stats
+//this function will be added later and the bonus points will change stat values permanently
+//since it starts at the beginning
 
 
-//how abilities are adjusted based on statistics
 
 
 
