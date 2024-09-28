@@ -78,6 +78,12 @@ public:
 
     // Function to display equipped items
     void showEquippedItems() const;                    // Show items that are currently equipped by the player
+
+private:
+    // Helper method to simulate rolling stats within a given range
+    int roll(int minValue, int maxValue);              // Method to roll a stat between a given range
+
+
 };
 
 //-------------------------DECLARE FUNCTION PROTOTYPES----------

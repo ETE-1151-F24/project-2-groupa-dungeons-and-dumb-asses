@@ -13,6 +13,9 @@
 #include "Game_inventory_functions.cpp"            // Include inventory management functions
 
 int main() {
+
+    srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
+    
     /*[new code goes in these]*/
     // --------------------WELCOME MESSAGE--------------------------
     std::string title = "Goblins & Glittery S***!";                          // Title of the game

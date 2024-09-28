@@ -21,13 +21,11 @@ Player::Player(std::string playerName, std::string charClass, int startLevel)
     // Stats will be initialized based on rolling values for each character class
 }
 
-
-
 // Method to roll stats based on character class
 void Player::rollStats() {
-    srand(static_cast<unsigned int>(time(0)));             // Seed for random number generation with current time
-
-    // Define stat ranges for each class
+    // Implementation for rolling stats based on class
+    // Example: Rolling each stat based on the player's character class
+       // Define stat ranges for each class
     struct StatRange {
         int minValue;                                      // Minimum value for the stat
         int maxValue;                                      // Maximum value for the stat
@@ -56,7 +54,7 @@ void Player::rollStats() {
     } else {                                                                    // If character class is unknown
         std::cerr << "Error: Unknown character class." << std::endl;            // Print error message
         return;                                                                 // Exit the function if an invalid class is given
-    }
+    }//////////////////////////////////////////////////////////////
 
     // Roll stats using the selected stat range
     for (int i = 0; i < StatCount; ++i) {
@@ -64,15 +62,12 @@ void Player::rollStats() {
     }
 }
 
-// Helper method to simulate rolling stats within a given range
+// Helper method to simulate rolling stats within a given range using rand()
 int Player::roll(int minValue, int maxValue) {
     return rand() % (maxValue - minValue + 1) + minValue; // Random value between minValue and maxValue (inclusive)
 }
 
 //----------------------------------------------------------------------------------------------------
-
-
-
 
 
 //------------------------------------------- PLAYER NAME AND CLASS SELECTION -------------------------------------------
