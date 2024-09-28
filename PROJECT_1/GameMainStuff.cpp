@@ -33,7 +33,7 @@ int main() {
     // Display the complete welcome message
     std::cout << "Welcome to 'Goblins & Glittery S***!'\n\n";                // Game title and welcome message
     std::cout << "Brace yourself for a ridiculous adventure where goblins are annoying, magic is overrated,\n";  // Describe adventure setting
-    std::cout << "and you're probably going to make some terrible decisions. But hey, that’s half the fun!\n";   // Add a humorous note
+    std::cout << "and you're probably going to make some terrible decisions. But hey, that's half the fun!\n";   // Add a humorous note
     std::cout << "Collect shiny crap, survive questionable life choices, and try not to die... too much.\n\n";   // Set player expectations for gameplay
 
     // --------------------PLAYER SETUP--------------------------
