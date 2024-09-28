@@ -4,12 +4,17 @@
 
 //+++++++++++++++++++++++++++ any INCLUDES needed for the file  ---------------
 #include <vector>                                      // Required for using std::vector to store dynamic data collections
-#include <string>                                      // Required for using std::string to handle text data
 #include <array>                                       // Required for using std::array to handle fixed-size stat arrays
 #include <iostream>                                    // Required for input and output operations (cin, cout)
-#include <cstdlib>                        // Required for random number generation
-#include <ctime>                          // Required for seeding the random number generator
-#include <algorithm>                        //for transform opa
+#include <string>                                  // Include string class for player names, commands, etc.
+#include <chrono>                                  // Include chrono for time-based operations
+#include <thread>                                  // Include thread for pauses in strobing effect
+#include <limits>                                  // Include limits for clearing input buffer
+#include <cctype>                                  // Include cctype for checking digit characters
+#include <algorithm>                               // Required for std::max to ensure minimum damage of 1
+#include <cstdlib>                                 // Required for random number generation (rand())
+#include <ctime>                                   // Required for seeding random number generation (time)
+
 //-------------------------DECLARE GLOBAL VARIABLES----------
 // Enum for character stats
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount }; // Defines a set of named constants to represent character stats
@@ -75,30 +80,30 @@ public:
     Player(std::string playerName, std::string charClass, int startLevel = 1);
 
 
-    // Method to roll stats based on character class
+//Method to roll stats based on character class
     void rollStats();                                  // Method to roll stats, unique for each character class
 
-    // Function to display player's stats
+// Function to display player's stats
     void showStats() const;                            // Display all the player's stats in the game
 
-    // Function to display equipped items
+// Function to display equipped items
     void showEquippedItems() const;                    // Show items that are currently equipped by the player
 
 private:
-    // Helper method to simulate rolling stats within a given range
+
     int roll(int minValue, int maxValue);              // Method to roll a stat between a given range
 
 
 };
 
 //-------------------------DECLARE FUNCTION PROTOTYPES----------
-void initializeGameItems(std::vector<Item>& gameItems);  // Function to initialize game items
-void printStrobingText(const std::string& text, int duration); // Function to print strobing text effect for title
-bool confirmClassChoice();                                // Function to confirm player's class choice
-bool equipItem(Player& player, int itemIndex);            // Function to equip an item from player's inventory
-bool unequipItem(Player& player, int itemIndex);          // Function to unequip an item from player's equipped items
-void displayClasses(Player& player);                      // Function to display available character classes and handle selection
-std::string getPlayerName();                              // Function to get the player's name
-void runGameLoop(Player& player);                         // Function to run the main game loop
+void initializeGameItems(std::vector<Item>& gameItems);         // Function to initialize game items
+void printStrobingText(const std::string& text, int duration);  // Function to print strobing text effect for title
+bool confirmClassChoice();                                      // Function to confirm player's class choice
+bool equipItem(Player& player, int itemIndex);                  // Function to equip an item from player's inventory
+bool unequipItem(Player& player, int itemIndex);                // Function to unequip an item from player's equipped items
+void displayClasses(Player& player);                            // Function to display available character classes and handle selection
+std::string getPlayerName();                                    // Function to get the player's name
+void runGameLoop(Player& player);                               // Function to run the main game loop
 
 #endif // GAMEHEADERELI_H

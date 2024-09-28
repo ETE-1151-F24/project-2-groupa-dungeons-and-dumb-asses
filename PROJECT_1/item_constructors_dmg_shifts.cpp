@@ -1,9 +1,5 @@
 // item_constructors_dmg_shifts.cpp
 #include "GameHeaderEli.h"
-#include "gameItems.cpp"                     // Include game-specific headers containing class definitions and enums
-#include <algorithm>                           // Required for std::max to ensure minimum damage of 1
-#include <cstdlib>                             // Required for random number generation (rand())
-#include <ctime>                               // Required for seeding random number generation (time)
 
 
 // Default constructor for Item

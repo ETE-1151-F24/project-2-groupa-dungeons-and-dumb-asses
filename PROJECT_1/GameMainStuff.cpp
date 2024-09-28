@@ -1,19 +1,24 @@
 //GameMainStuff.cpp
-#include <iostream>                                // Include input-output stream for console interactions
-#include <string>                                  // Include string class for player names, commands, etc.
-#include <chrono>                                  // Include chrono for time-based operations
-#include <thread>                                  // Include thread for pauses in strobing effect
-#include <limits>                                  // Include limits for clearing input buffer
-#include <cctype>                                  // Include cctype for checking digit characters
-
-#include "Game_functions_eli.cpp"                  // Include custom functions for game functionality
 #include "GameHeaderEli.h"                         // Include game-specific classes and definitions
-#include "Character_develop_functs.cpp"            // Include functions for character development and stats
-#include "gameItems.cpp"                           // Include initialization of game items
-#include "Game_inventory_functions.cpp"            // Include inventory management functions
+#include "Character_develop_functs.cpp"
 #include "Game_functions_eli.cpp"
+#include "Game_inventory_functions.cpp"
+#include "gameItems.cpp"
+#include "item_constructors_dmg_shifts.cpp"
+// #include ""
+// #include ""
+// #include ""
 
 
+// #include <iostream>                                // Include input-output stream for console interactions
+// #include <string>                                  // Include string class for player names, commands, etc.
+// #include <chrono>                                  // Include chrono for time-based operations
+// #include <thread>                                  // Include thread for pauses in strobing effect
+// #include <limits>                                  // Include limits for clearing input buffer
+// #include <cctype>                                  // Include cctype for checking digit characters
+// #include <algorithm>                               // Required for std::max to ensure minimum damage of 1
+// #include <cstdlib>                                 // Required for random number generation (rand())
+// #include <ctime>                                   // Required for seeding random number generation (time)
 
 int main() {
 

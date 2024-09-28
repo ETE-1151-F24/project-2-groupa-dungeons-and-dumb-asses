@@ -1,13 +1,5 @@
 // Character_develop_functs.cpp
 #include "GameHeaderEli.h"                  // Include the game header file for necessary class definitions and enums
-#include <iostream>                         // Required for input and output operations (cin, cout)
-#include <string>                           // Required for using std::string
-#include <array>                            // Required for using std::array
-#include <vector>                           // Required for using std::vector
-#include <cstdlib>                          // Required for random number generation (rand())
-#include <ctime>                            // Required for seeding random number generation (time())
-#include <cctype>                           // Required for character conversion functions like std::tolower()
-
 
 
 //------------------------------------------ PLAYER CLASS IMPLEMENTATION -------------------------------------------------
