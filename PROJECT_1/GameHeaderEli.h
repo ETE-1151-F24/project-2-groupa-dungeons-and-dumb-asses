@@ -9,6 +9,7 @@
 #include <iostream>                                    // Required for input and output operations (cin, cout)
 #include <cstdlib>                        // Required for random number generation
 #include <ctime>                          // Required for seeding the random number generator
+#include <algorithm>                        //for transform opa
 //-------------------------DECLARE GLOBAL VARIABLES----------
 // Enum for character stats
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount }; // Defines a set of named constants to represent character stats
@@ -31,7 +32,7 @@ public:
     std::string ability;                                // Special ability description
     ItemType classification;                            // Classification of the item (MAGICAL, CLOTHING, WEAPON)
     CombatType combatType;                              // Combat type for weapons (MELEE or RANGED)
-    int statModifier[StatCount] = {0};                  // Stat modifiers for the item
+    int statModifier[StatCount];                        // Stat modifiers for the item
     int minDamage = 0;                                  // Minimum damage for weapons
     int maxDamage = 0;                                  // Maximum damage for weapons
     int rangeModifier = 0;                              // Range modifier for ranged weapons
@@ -41,11 +42,12 @@ public:
     // Default constructor
     Item();                                             // Declares the default constructor
 
-    // Parameterized constructor
+public:
+    // Parameterized constructor declaration
     Item(std::string itemName, std::string itemDescription, ItemType itemClassification,
          CombatType itemCombatType, std::array<int, StatCount> modifier, std::string itemAbility,
-         int minDmg = 0, int maxDmg = 0, int rangeMod = 0, int sneakPen = 0, std::string itemRestriction = ""); // Declares parameterized constructor
-
+         int minDmg = 0, int maxDmg = 0, int rangeMod = 0, int sneakPen = 0, std::string itemRestriction = "");
+  
     // Function to calculate damage based on combat type
     int calculateDamage(int distance);                  // Declares function to calculate item damage
 
@@ -67,8 +69,11 @@ public:
     std::vector<Item> inventory;                       // Player's inventory renamed to "inventory" for clarity
 
     // Constructor template for how the character is built, could be used to define a character other than the main player
-    Player(std::string playerName, std::string charClass, int startLevel = 1) // Constructor takes player's name, class, and optional start level
-        : name(playerName), characterClass(charClass), level(startLevel), experience(0) {} // Initialize player properties
+    // Player(std::string playerName, std::string charClass, int startLevel = 1) // Constructor takes player's name, class, and optional start level
+    //     : name(playerName), characterClass(charClass), level(startLevel), experience(0) {} // Initialize player properties
+    // Constructor declaration only (no implementation)
+    Player(std::string playerName, std::string charClass, int startLevel = 1);
+
 
     // Method to roll stats based on character class
     void rollStats();                                  // Method to roll stats, unique for each character class

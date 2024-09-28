@@ -151,6 +151,22 @@
     "thread": "cpp",
     "typeindex": "cpp",
     "valarray": "cpp",
-    "gameheadereli.h": "c"
+    "gameheadereli.h": "c",
+    "xmemory": "cpp",
+    "xtr1common": "cpp",
+    "xutility": "cpp",
+    "item_constructors_dmg_shifts": "c",
+    "ios": "cpp",
+    "locale": "cpp",
+    "xfacet": "cpp",
+    "xiosbase": "cpp",
+    "xlocale": "cpp",
+    "xlocbuf": "cpp",
+    "xlocinfo": "cpp",
+    "xlocmes": "cpp",
+    "xlocmon": "cpp",
+    "xlocnum": "cpp",
+    "xloctime": "cpp",
+    "xstring": "cpp"
   }
 }

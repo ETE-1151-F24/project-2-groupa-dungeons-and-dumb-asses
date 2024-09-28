@@ -32,10 +32,10 @@ void displayItemDetails(const Item& item) {
         }
 
         // Display damage range if applicable
-        if (type == WEAPON) {
-            std::cout << "Damage Range: " << damageRange.first << " - " << damageRange.second << "\n";
-        }
+    if (item.classification == WEAPON) {
+        std::cout << "Damage Range: " << item.minDamage << " - " << item.maxDamage << "\n";
     }
+}
 
     //-------------------------------FUNCTION TO EQUIP AN ITEM-------------------------
 // Function to equip an item from inventory
@@ -84,7 +84,7 @@ bool unequipItem(Player& player, int itemIndex) {
 
 //------------------------------- FUNCTION TO CHECK FOR WEAPON -----------------------
 // Function to check if the player has a weapon equipped
-void checkForWeapon(const Player& player) {
+void checkForWeapon(Player& player) {
     bool hasWeapon = false;                               // Flag to check if the player has a weapon equipped
 
     for (const auto& item : player.equippedItems) {       // Loop through equipped items

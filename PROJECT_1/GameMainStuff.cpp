@@ -11,6 +11,9 @@
 #include "Character_develop_functs.cpp"            // Include functions for character development and stats
 #include "gameItems.cpp"                           // Include initialization of game items
 #include "Game_inventory_functions.cpp"            // Include inventory management functions
+#include "Game_functions_eli.cpp"
+
+
 
 int main() {
 
@@ -36,7 +39,7 @@ int main() {
     std::vector<Item> gameItems;                                            // Create a vector to store game items
     initializeGameItems(gameItems);                                         // Initialize all items in the game
 
-    player.inventory.insert(player.inventory.end(), gameItems.begin(), gameItems.end()); // Add initialized items to player's inventory for demo
+    player.inventory = gameItems; // Add initialized items to player's inventory for demo
 
     // --------------------GAME LOOP--------------------------
     runGameLoop(player);                                                    // Call the game loop function

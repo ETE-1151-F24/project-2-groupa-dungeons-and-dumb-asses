@@ -17,8 +17,13 @@ Player::Player(std::string playerName, std::string charClass, int startLevel)
     : name(playerName),                    // Initialize player's name with the provided name
       characterClass(charClass),           // Set player's character class (e.g., cleric, ranger, etc.)
       level(startLevel),                   // Set player's level
-      experience(0) {                      // Initialize experience points to 0
-    // Stats will be initialized based on rolling values for each character class
+      experience(0),                       // Initialize experience points to 0
+      stats{},                             // Default initialize stats to zero
+      abilitiesMenu{},                     // Default initialize abilities menu (empty vector)
+      equippedItems{},                     // Default initialize equipped items (empty vector)
+      inventory{}                          // Default initialize inventory (empty vector)
+{
+    // The stats array is explicitly default-initialized, meaning all values are set to zero.
 }
 
 // Method to roll stats based on character class
@@ -52,9 +57,10 @@ void Player::rollStats() {
     } else if (characterClass == "ranger") {                                    // If character class is ranger
         selectedStats = rangerStats;                                                // Assign ranger stat ranges
     } else {                                                                    // If character class is unknown
-        std::cerr << "Error: Unknown character class." << std::endl;            // Print error message
+        std::cerr << "Error: Unknown character class '" << characterClass << "'." << std::endl;
+                    // Print error message
         return;                                                                 // Exit the function if an invalid class is given
-    }//////////////////////////////////////////////////////////////
+    }
 
     // Roll stats using the selected stat range
     for (int i = 0; i < StatCount; ++i) {
@@ -78,13 +84,17 @@ std::string getPlayerName() {
     std::cout << "What is your name, adventurer?" << std::endl; 
     std::cout <<"... you know, the type of thing someone goes by" << std::endl;
     std::cout << "when they are on a thirst-trappy voyage for peril and riches." << std::endl;
-    std::getline(std::cin, playerName);                                                         //getline capture full name, include spaces
+    while (playerName.empty()) {                                                                //while loop not allowing blank names
+        std::cout << "Name cannot be empty. Please enter your name: "; 
+        std::getline(std::cin, playerName); };                                                  //getline capture full name, include spaces
     return playerName;                                                                          // Return the captured name
 }
 
 // ---------------------------------------Function to check if a string is a valid number
 bool isNumber(const std::string& str) {
-    for (char const& c : str) {
+        for (auto c : str) {                              //Use auto to improve readability and make code 
+                                                          //easier to refactor if data type changes.
+
         if (!std::isdigit(c)) return false;               // If any character is not a digit, return false
     }
     return true;                                          // If all characters are digits, return true
@@ -125,7 +135,7 @@ bool confirmClassChoice() {
     while (true) {                                                                          // Loop until a valid input is given
         std::cout << "Does this sound like a class you want to belong to? (yes/no): ";
         std::cin >> confirmation;                                                           // Record the player's confirmation choice
-        for (auto& ch : confirmation) ch = std::tolower(ch);                                // Convert input to lowercase for case-insensitive comparison
+        (std::transform(confirmation.begin(), confirmation.end(), confirmation.begin(), ::tolower)); //Use `std::transform` to convert the entire string to lowercase in a more efficient and readable way.
 
         if (confirmation == "yes") {                                                        // If player confirms with "yes"
             return true;                                                                    // Return true, indicating confirmation
