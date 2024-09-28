@@ -46,3 +46,38 @@
     // ---------------------RESET COLOR AT END-----------------------
     std::cout << resetColor << "\n";  // Reset terminal color and add a newline
 //----------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------Function for running the main game loop
+void runGameLoop(Player& player) {
+    std::string command;                                                                    // Command variable to handle player inputs
+    while (true) {
+        std::cout << "\nEnter a command (equip / unequip / inventory / stats / quit): ";    // Display available commands
+        std::getline(std::cin, command);                                                    // Get command from the player
+
+        if (command == "equip") {                                                           // If player wants to equip an item
+            int itemChoice;                                                                 // Variable to hold player's item choice
+            std::cout << "Enter the number of the item to equip from your inventory: ";     // Prompt for item number
+            std::cin >> itemChoice;                                                         // Record player's item selection
+            equipItem(player, itemChoice - 1);                                              // Call function to equip the item (adjust for zero-based index)
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');             // Clear the input buffer
+        } else if (command == "unequip") {                                                  // If player wants to unequip an item
+            int itemChoice;                                                                 // Variable to hold player's item choice
+            std::cout << "Enter the number of the item to unequip: ";                       // Prompt for item number
+            std::cin >> itemChoice;                                                         // Record player's item selection
+            unequipItem(player, itemChoice - 1);                                            // Call function to unequip the item (adjust for zero-based index)
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');             // Clear the input buffer
+        } else if (command == "inventory") {                                                // If player wants to view their inventory
+            for (size_t i = 0; i < player.inventory.size(); ++i) {                          // Iterate over items in inventory
+                std::cout << (i + 1) << ". " << player.inventory[i].name << "\n";           // Display each item in the inventory
+            }
+        } else if (command == "stats") {                                                    // If player wants to view their stats
+            player.showStats();                                                             // Call function to display player's stats
+        } else if (command == "quit") {                                                     // If player wants to quit the game
+            std::cout << "Goodbye, " << player.name << "!\n";                               // Display farewell message
+            break;                                                                          // Exit the game loop
+        } else {                                                                            // Handle unknown commands
+            std::cout << "Unknown command. Try again.\n";                                   // Display error message for unknown commands
+        }
+    }
+}

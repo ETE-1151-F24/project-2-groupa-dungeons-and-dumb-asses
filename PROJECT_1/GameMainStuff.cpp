@@ -1,43 +1,45 @@
 //GameMainStuff.cpp
-#include <iostream>
-#include <string>
-#include <chrono>
-#include <thread>
-//include the flashing logo intro similar to the wordsalad tosser
+#include <iostream>                                // Include input-output stream for console interactions
+#include <string>                                  // Include string class for player names, commands, etc.
+#include <chrono>                                  // Include chrono for time-based operations
+#include <thread>                                  // Include thread for pauses in strobing effect
+#include <limits>                                  // Include limits for clearing input buffer
+#include <cctype>                                  // Include cctype for checking digit characters
 
-#include "Game_functions_eli.cpp"
-#include "GameHeaderEli.h"
+#include "Game_functions_eli.cpp"                  // Include custom functions for game functionality
+#include "GameHeaderEli.h"                         // Include game-specific classes and definitions
+#include "Character_develop_functs.cpp"            // Include functions for character development and stats
+#include "gameItems.cpp"                           // Include initialization of game items
+#include "Game_inventory_functions.cpp"            // Include inventory management functions
 
-
-/*Game flow
--Welcome message
-    // Call the function to display the strobing title
-    printStrobingText(title, duration);
-
+int main() {
+    /*[new code goes in these]*/
     // --------------------WELCOME MESSAGE--------------------------
-    std::cout << "Welcome to 'Goblins & Glittery S***!'\n\n";
-    std::cout << "Brace yourself for a ridiculous adventure where goblins are annoying, magic is overrated,\n";
-    std::cout << "and you're probably going to make some terrible decisions. But hey, that’s half the fun!\n";
-    std::cout << "Collect shiny crap, survive questionable life choices, and try not to die... too much.\n\n";
+    std::string title = "Goblins & Glittery S***!";                          // Title of the game
+    int duration = 5;                                                        // Duration for the strobing effect in seconds
+    printStrobingText(title, duration);                                      // Call the function to display the strobing title effect
 
-    // ---------------------TITLE DISPLAY---------------------------
-    std::string title = "Goblins & Glittery S*** !";                         maybe initialize as a global
-    int duration = 5;  // Duration for strobing effect in seconds*/
+    // Display the complete welcome message
+    std::cout << "Welcome to 'Goblins & Glittery S***!'\n\n";                // Game title and welcome message
+    std::cout << "Brace yourself for a ridiculous adventure where goblins are annoying, magic is overrated,\n";  // Describe adventure setting
+    std::cout << "and you're probably going to make some terrible decisions. But hey, that’s half the fun!\n";   // Add a humorous note
+    std::cout << "Collect shiny crap, survive questionable life choices, and try not to die... too much.\n\n";   // Set player expectations for gameplay
 
+    // --------------------PLAYER SETUP--------------------------
+    Player player(getPlayerName(), "");                                      // Create a player with default class and their name
+    displayClasses(player);                                                 // Prompt player to choose their character class
 
-#include <iostream>
-#include <string>
-#include <limits>
-#include <cctype>  // For std::isdigit
+    // --------------------INITIALIZE GAME ITEMS--------------------------
+    std::vector<Item> gameItems;                                            // Create a vector to store game items
+    initializeGameItems(gameItems);                                         // Initialize all items in the game
 
+    player.inventory.insert(player.inventory.end(), gameItems.begin(), gameItems.end()); // Add initialized items to player's inventory for demo
 
+    // --------------------GAME LOOP--------------------------
+    runGameLoop(player);                                                    // Call the game loop function
 
-//----------------------function for assigning bonus points to the stats
-//this function will be added later and the bonus points will change stat values permanently
-//since it starts at the beginning
-
-
-
+    return 0;    
+}
 
 
 

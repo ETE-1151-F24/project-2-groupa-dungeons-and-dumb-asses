@@ -1,3 +1,4 @@
+//Game_inventory_functions.cpp
 #include "GameHeaderEli.h"
 #include <iostream>
 
@@ -37,28 +38,83 @@ void displayItemDetails(const Item& item) {
     }
 
     //-------------------------------FUNCTION TO EQUIP AN ITEM-------------------------
+// Function to equip an item from inventory
+bool equipItem(Player& player, int itemIndex) {
+    if (itemIndex < 0 || itemIndex >= static_cast<int>(player.inventory.size())) { // Check if item index is valid
+        std::cout << "Invalid item selection.\n";          // Display error for invalid index
+        return false;                                      // Return false indicating failure
+    }
+
+    Item itemToEquip = player.inventory[itemIndex];        // Get the item to equip
+    player.inventory.erase(player.inventory.begin() + itemIndex); // Remove item from inventory
+
+    player.equippedItems.push_back(itemToEquip);           // Add item to equipped items
+    std::cout << "Equipped " << itemToEquip.name << "!\n"; // Display confirmation message
+
+    // Update player stats based on the item's modifiers
+    for (int i = 0; i < StatCount; ++i) {
+        player.stats[i] += itemToEquip.statModifier[i];    // Add item stat modifiers to player's stats
+    }
+
+    return true;                                           // Return true indicating success
+}
 
 
+//---------------------------------------Function to unequip an item from equipped items
+bool unequipItem(Player& player, int itemIndex) {
+    if (itemIndex < 0 || itemIndex >= static_cast<int>(player.equippedItems.size())) {  // Check if item index is valid
+        std::cout << "Invalid item selection.\n";                                       // Display error for invalid index
+        return false;                                                                   // Return false indicating failure
+    }
 
+    Item itemToUnequip = player.equippedItems[itemIndex];                               // Get the item to unequip
+    player.equippedItems.erase(player.equippedItems.begin() + itemIndex);               // Remove item from equipped items
 
+    player.inventory.push_back(itemToUnequip);                                          // Add item back to inventory
+    std::cout << "Unequipped " << itemToUnequip.name << "!\n";                          // Display confirmation message
 
+    // Update player stats by subtracting the item's modifiers
+    for (int i = 0; i < StatCount; ++i) {
+        player.stats[i] -= itemToUnequip.statModifier[i];                               // Subtract item stat modifiers from player's stats
+    }
 
-    //-------------------------------FUNCTION TO UNEQUIP AN ITEM-----------------------
+    return true;                                                                        // Return true indicating success
+}
 
 
     //-------------------------------FUNCTION TO CHECK FOR WEAPON-----------------------
 // Function to check if the player has a weapon equipped
 void checkForWeapon(const Player& player) {
-    bool hasWeapon = false;                                 // Flag to check if the player has a weapon equipped
+    bool hasWeapon = false;                                                             // Flag to check if the player has a weapon equipped
 
-    for (const auto& item : player.equippedItems) {         // Loop through equipped items
-        if (item.type == WEAPON) {                          // If an item is a weapon
-            hasWeapon = true;                               // Set flag to true
-            break;                                          // Exit loop as soon as a weapon is found
+    for (const auto& item : player.equippedItems) {                                     // Loop through equipped items
+        if (item.type == WEAPON) {                                                      // If an item is a weapon
+            hasWeapon = true;                                                           // Set flag to true
+            break;                                                                      // Exit loop as soon as a weapon is found
         }
     }
 
-    if (!hasWeapon) {                                       // If no weapon is equipped
+    if (!hasWeapon) {                                                                   // If no weapon is equipped
         std::cout << "Warning: You are without a weapon. This might not end well in combat!\n"; // Warning message
+        std::cout << "If you wanna punch and kick your way out, be my guest, but youve been warned.";
+        char weapResponse;                                      // Variable to store user response
+        while (true) {
+            std::cout << "Do you want to proceed without a weapon? (y/n): "; // Ask player for confirmation
+            std::cin >> weapResponse;                           // Get response
+
+            if (weapResponse == 'y' || weapResponse == 'Y') {       // If player is okay with no weapon
+                std::cout << "Alright, but be careful out there!\n"; // Warning confirmation
+                break;                                      // Break loop to continue with main menu
+            } else if (weapResponse == 'n' || weapResponse == 'N') {// If player wants to equip a weapon
+                std::cout << "Let's head back to the inventory to equip a weapon.\n";
+                int itemChoice;                             // Variable to store user's item choice
+                std::cout << "Enter the number of the item to equip from your inventory: "; // Prompt user to choose an item
+                std::cin >> itemChoice;
+                equipItem(player, itemChoice - 1);          // Call equipItem with the chosen item
+                break;                                      // Break loop after equipping
+            } else {
+                std::cout << "Invalid input. Please enter 'y' or 'n'.\n"; // Handle invalid input
+            }
+        }
     }
 }
