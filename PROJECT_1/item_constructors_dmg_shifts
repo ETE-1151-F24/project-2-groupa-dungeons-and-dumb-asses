@@ -1,5 +1,8 @@
 // item_constructors_dmg_shifts.cpp
-#include "GameHeaderEli.h"
+#include "GameHeaderEli.h"                     // Include game-specific headers containing class definitions and enums
+#include <algorithm>                           // Required for std::max to ensure minimum damage of 1
+#include <cstdlib>                             // Required for random number generation (rand())
+#include <ctime>                               // Required for seeding random number generation (time)
 
 
 // Default constructor for Item
@@ -21,71 +24,65 @@ Item::Item()
     }
 }
 
-// Parameterized constructor for Item
+//---------------------------------------Parameterized constructor for Item------------------------------------------
+
 Item::Item(std::string itemName, std::string itemDescription, ItemType itemClassification,
            CombatType itemCombatType, std::array<int, StatCount> modifier, std::string itemAbility,
-           int minDmg, int maxDmg, int rangeMod, int sneakPen, std::string itemRestriction)
-    : name(itemName),                     // Initialize item name with the provided value
-      description(itemDescription),       // Initialize item description
-      classification(itemClassification), // Set item classification (MAGICAL, CLOTHING, WEAPON)
-      combatType(itemCombatType),         // Set combat type (MELEE or RANGED)
-      ability(itemAbility),               // Set special ability description
-      minDamage(minDmg),                  // Set minimum damage for the item
-      maxDamage(maxDmg),                  // Set maximum damage for the item
-      rangeModifier(rangeMod),            // Set range modifier for ranged weapons
-      sneakPenalty(sneakPen),             // Set penalty to sneak ability
-      restriction(itemRestriction) {      // Set any restrictions on who can use the item
-
+           int minDmg, int maxDmg, int rangeMod, int sneakPen, std::string itemRestriction) //****can add new parameters here but must add to
+    : name(itemName),                                                                       // Initialize item name with the provided value
+      description(itemDescription),                                                         // Initialize item description
+      classification(itemClassification),                                                   //Set item classification (MAGICAL, CLOTHING, WEAPON)
+      combatType(itemCombatType),                                                           // Set combat type (MELEE or RANGED)
+      ability(itemAbility),                                                                 // Set special ability description
+      minDamage(minDmg),                                                                    // Set minimum damage for the item
+      maxDamage(maxDmg),                                                                    // Set maximum damage for the item
+      rangeModifier(rangeMod),                                                              // Set range modifier for ranged weapons
+      sneakPenalty(sneakPen),                                                               // Set penalty to sneak ability
+      restriction(itemRestriction) {                                                        // Set any restrictions on who can use the item
+                          //****  ^   here as well add her like minusDodge(dodgePen) !!ALSO UPDATE HEADER FILE!!
+    
     // Initialize stat modifiers from the provided array
     for (int i = 0; i < StatCount; ++i) {
         statModifier[i] = modifier[i];    // Set each stat modifier (e.g., Strength, Dexterity, etc.) from the input array
     }
 }
 
-// Function to calculate damage based on combat type
+// -------------------------------------Function to calculate damage based on combat type---------------------------
+
 int Item::calculateDamage(int distance) {
     if (combatType == RANGED) {
         return calculateRangedDamage(distance, rangeModifier, minDamage, maxDamage); // Call ranged damage calculation
     } else if (combatType == MELEE) {
         return calculateMeleeDamage();   // Call melee damage calculation
     }
-    return 0;                            // Default return if combat type is not applicable
+    return 0;                            // Default return [melee] if combat type is not applicable
 }
 
-// Private function to calculate damage for ranged weapons based on distance
+//----------------------------Private function to calculate damage for ranged weapons based on distance
 int Item::calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage) {
-    static bool seeded = false;           // Static variable to track if the generator has been seeded
-    if (!seeded) {
-        std::srand(std::time(0));         // Seed the random number generator with the current time
-        seeded = true;                    // Mark that the generator has been seeded
-    }
 
     int damage = 0;                       // Initialize damage to 0
 
     if (distance == 1) {
-        // If the target is right next to the user, reduce the damage range by 1
+//If the target is right next to the user, reduce the damage range by 1
         damage = std::max((std::rand() % (maxDamage - minDamage + 1)) + minDamage - 1, 1);
-                                            // Reduce min and max by 1, ensure minimum is 1
+                                                                                        // Reduce min and max by 1, ensure minimum is 1
     } else if (distance <= maxRange) {
-        // If the target is within regular range, roll for damage between minDamage and maxDamage
-        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage; // Roll damage within normal range
+                                                                                        //If the target is within regular range, 
+                                                                                        //roll for damage between [minDamage] and [maxDamage]
+        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;               //Roll damage within normal range
     } else {
-        // If the target is beyond the range max
-        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage; // Start with damage within normal range
-        damage -= (distance - maxRange);                                  // Reduce damage for each square beyond max range
-        damage = std::max(damage, 1);                                     // Ensure minimum damage of 1
+//If the target is beyond the range max
+        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;               //Start with damage within normal range
+        damage -= (distance - maxRange);                                                //Reduce damage for each square beyond max range
+        damage = std::max(damage, 1);                                                   //Ensure minimum damage of 1
     }
 
-    return damage;                     // Return calculated damage
+    return damage;                                                                      // Return calculated damage
 }
 
-// Private function to calculate damage for melee weapons (simplified logic)
+//-------------------------------Private function to calculate damage for melee weapons (simplified logic)----------------
 int Item::calculateMeleeDamage() {
-    static bool seeded = false;          // Static variable to track if the generator has been seeded
-    if (!seeded) {
-        std::srand(std::time(0));        // Seed the random number generator with the current time
-        seeded = true;                   // Mark that the generator has been seeded
-    }
 
     // Simple melee damage calculation between minDamage and maxDamage
     return (std::rand() % (maxDamage - minDamage + 1)) + minDamage; // Roll damage within min and max range
