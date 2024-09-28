@@ -82,38 +82,39 @@ bool unequipItem(Player& player, int itemIndex) {
 }
 
 
-    //-------------------------------FUNCTION TO CHECK FOR WEAPON-----------------------
+//------------------------------- FUNCTION TO CHECK FOR WEAPON -----------------------
 // Function to check if the player has a weapon equipped
 void checkForWeapon(const Player& player) {
-    bool hasWeapon = false;                                                             // Flag to check if the player has a weapon equipped
+    bool hasWeapon = false;                               // Flag to check if the player has a weapon equipped
 
-    for (const auto& item : player.equippedItems) {                                     // Loop through equipped items
-        if (item.type == WEAPON) {                                                      // If an item is a weapon
-            hasWeapon = true;                                                           // Set flag to true
-            break;                                                                      // Exit loop as soon as a weapon is found
+    for (const auto& item : player.equippedItems) {       // Loop through equipped items
+        if (item.classification == WEAPON) {              // If an item is a weapon
+            hasWeapon = true;                             // Set flag to true
+            break;                                        // Exit loop as soon as a weapon is found
         }
     }
 
-    if (!hasWeapon) {                                                                   // If no weapon is equipped
-        std::cout << "Warning: You are without a weapon. This might not end well in combat!\n"; // Warning message
-        std::cout << "If you wanna punch and kick your way out, be my guest, but youve been warned.";
-        char weapResponse;                                      // Variable to store user response
-        while (true) {
-            std::cout << "Do you want to proceed without a weapon? (y/n): "; // Ask player for confirmation
-            std::cin >> weapResponse;                           // Get response
+    if (!hasWeapon) {                                                                                               //If no weapon equipped
+        std::cout << "Warning: You are without a weapon. This might not end well in combat!\n";                     //Warning message
+        std::cout << "If you wanna punch and kick your way out, be my guest, but you've been warned." << std::endl;
 
-            if (weapResponse == 'y' || weapResponse == 'Y') {       // If player is okay with no weapon
-                std::cout << "Alright, but be careful out there!\n"; // Warning confirmation
-                break;                                      // Break loop to continue with main menu
-            } else if (weapResponse == 'n' || weapResponse == 'N') {// If player wants to equip a weapon
+        char weapResponse;                                                                              // Variable to store user response
+        while (true) {
+            std::cout << "Do you want to proceed without a weapon? (y/n): ";                            // Ask player for confirmation
+            std::cin >> weapResponse;                                                                   // Get response
+
+            if (weapResponse == 'y' || weapResponse == 'Y') {                                           // If player is okay with no weapon
+                std::cout << "Alright, but be careful out there!\n";                                    // Warning confirmation
+                break;                                                                                  // Break loop continue main menu
+            } else if (weapResponse == 'n' || weapResponse == 'N') {                                    // If player wants equip a weapon
                 std::cout << "Let's head back to the inventory to equip a weapon.\n";
-                int itemChoice;                             // Variable to store user's item choice
-                std::cout << "Enter the number of the item to equip from your inventory: "; // Prompt user to choose an item
+                int itemChoice;                                                                         //Variable store user item choice
+                std::cout << "Enter the number of the item to equip from your inventory: ";             // Prompt user to choose an item
                 std::cin >> itemChoice;
-                equipItem(player, itemChoice - 1);          // Call equipItem with the chosen item
-                break;                                      // Break loop after equipping
+                equipItem(player, itemChoice - 1);                                                      //Call [equipItem] with chosen item
+                break;                                                                                  //Break loop after equipping
             } else {
-                std::cout << "Invalid input. Please enter 'y' or 'n'.\n"; // Handle invalid input
+                std::cout << "Invalid input. Please enter 'y' or 'n'.\n";                               // Handle invalid input
             }
         }
     }
