@@ -142,3 +142,70 @@ void displayClasses(Player& player) {
         std::cout << "Invalid input. Please select a number from 1-5." << std::endl; // Error message for invalid input
     }
 }
+
+
+// Function to roll stats based on character class using consolidated stat ranges
+void Player::rollStats() {
+    srand(static_cast<unsigned int>(time(0)));             // Seed for random number generation
+
+    // Define stat ranges for each class
+    struct StatRange {
+        int minValue;
+        int maxValue;
+    };
+
+    // Stat ranges for each class
+    StatRange warriorStats[StatCount] = {{9, 20}, {2, 13}, {2, 13}, {2, 13}, {9, 20}};
+    StatRange rogueStats[StatCount]   = {{2, 13}, {9, 20}, {9, 20}, {2, 13}, {2, 13}};
+    StatRange mageStats[StatCount]    = {{2, 13}, {2, 13}, {9, 20}, {9, 20}, {2, 13}};
+    StatRange clericStats[StatCount]  = {{2, 13}, {2, 13}, {2, 13}, {9, 20}, {9, 20}};
+    StatRange rangerStats[StatCount]  = {{2, 13}, {9, 20}, {2, 13}, {9, 20}, {2, 13}};
+
+    StatRange* selectedStats = nullptr;                    // Pointer to the selected stat range array
+
+    // Use a switch statement to assign the appropriate stat range
+    if (characterClass == "warrior") {                     // If character class is warrior
+        selectedStats = warriorStats;                      // Assign warrior stat ranges
+    } else if (characterClass == "rogue") {                // If character class is rogue
+        selectedStats = rogueStats;                        // Assign rogue stat ranges
+    } else if (characterClass == "mage") {                 // If character class is mage
+        selectedStats = mageStats;                         // Assign mage stat ranges
+    } else if (characterClass == "cleric") {               // If character class is cleric
+        selectedStats = clericStats;                       // Assign cleric stat ranges
+    } else if (characterClass == "ranger") {               // If character class is ranger
+        selectedStats = rangerStats;                       // Assign ranger stat ranges
+    } else {                                               // If character class is unknown
+        std::cerr << "Error: Unknown character class." << std::endl;  // Print error message
+        return;                                            // Exit the function if invalid class
+    }
+
+    // Roll stats using the selected stat range
+    for (int i = 0; i < StatCount; ++i) {                  // Loop through each stat
+        stats[i] = roll(selectedStats[i].minValue, selectedStats[i].maxValue);  // Roll stat within defined range
+    }
+}
+
+
+
+// Function to display player's stats
+void Player::showStats() const {
+    std::cout << "\n--- Player Stats ---\n";             // Display header for player stats
+    std::cout << "Strength: " << stats[Strength] << "\n";  // Display strength stat
+    std::cout << "Dexterity: " << stats[Dexterity] << "\n"; // Display dexterity stat
+    std::cout << "Intelligence: " << stats[Intelligence] << "\n"; // Display intelligence stat
+    std::cout << "Wisdom: " << stats[Wisdom] << "\n";       // Display wisdom stat
+    std::cout << "Constitution: " << stats[Constitution] << "\n"; // Display constitution stat
+}
+
+// Function to display equipped items
+void Player::showEquippedItems() const {
+    std::cout << "\n--- Equipped Items ---\n";            // Display header for equipped items
+    if (equippedItems.empty()) {                            // Check if no items are equipped
+        std::cout << "No items equipped.\n";               // Print message indicating no items equipped
+    } else {
+        for (const auto& item : equippedItems) {            // Loop through equipped items
+            std::cout << item.name << ": " << item.description << "\n"; // Display item name and description
+        }
+    }
+}
+

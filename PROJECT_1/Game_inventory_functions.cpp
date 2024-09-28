@@ -46,4 +46,19 @@ void displayItemDetails(const Item& item) {
     //-------------------------------FUNCTION TO UNEQUIP AN ITEM-----------------------
 
 
-    
+    //-------------------------------FUNCTION TO CHECK FOR WEAPON-----------------------
+// Function to check if the player has a weapon equipped
+void checkForWeapon(const Player& player) {
+    bool hasWeapon = false;                                 // Flag to check if the player has a weapon equipped
+
+    for (const auto& item : player.equippedItems) {         // Loop through equipped items
+        if (item.type == WEAPON) {                          // If an item is a weapon
+            hasWeapon = true;                               // Set flag to true
+            break;                                          // Exit loop as soon as a weapon is found
+        }
+    }
+
+    if (!hasWeapon) {                                       // If no weapon is equipped
+        std::cout << "Warning: You are without a weapon. This might not end well in combat!\n"; // Warning message
+    }
+}

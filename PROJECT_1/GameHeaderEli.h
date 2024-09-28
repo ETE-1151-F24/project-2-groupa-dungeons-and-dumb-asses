@@ -1,24 +1,12 @@
-//GameHeaderEli.h
+// GameHeaderEli.h
 #ifndef GAMEHEADERELI_H
 #define GAMEHEADERELI_H
-
 
 //+++++++++++++++++++++++++++ any INCLUDES needed for the file  ---------------
 #include <vector>                                      // Required for using std::vector to store dynamic data collections
 #include <string>                                      // Required for using std::string to handle text data
 #include <array>                                       // Required for using std::array to handle fixed-size stat arrays
 #include <iostream>                                    // Required for input and output operations (cin, cout)
-
-// #include <iomanip>                      // Allows for formatting and [alignment] of output, such as setting precision. [setw]
-// #include <string>                       // Enables the use of the standard [string] class for handling text.
-// #include <cstring>                      // Provides C-style string manipulation functions like [strcpy], [strlen], etc.
-// #include <thread>                       // Enables multithreading, allowing the program to [run tasks concurrently].
-// #include <chrono>                       // Provides facilities for [time-based operations], such as timing and sleeping.
-// #include <limits>                       // Allows access to numeric limits, such as [maximum or minimum] values of data types.
-// #include <bits/stdc++.h>                // A GCC-specific header that includes nearly [all standard library] headers in one file.
-// #include <cstdlib>                      // Provides functions for [random number generation, memory management], and other utilities.
-// #include <ctime>                        // Provides functions to get the current time and to [seed the random number generator].
-// #include <algorithm>                    // Provides functions for algorithmic operations like [sorting, searching, and transforming].
 
 //-------------------------DECLARE GLOBAL VARIABLES----------
 // Enum for character stats
@@ -29,7 +17,6 @@ enum ItemType { WEAPON, MAGICAL, CLOTHING };           // Defines item types to 
 
 // Enum for character type
 enum CharacterType { CHOSEN_ONE, NPC, ENEMY };         // Character types: main player, NPC, enemy
-
 
 //------------------------------------------Declaring Class for game items---------------------------------------------------------
 class Item {
@@ -48,6 +35,7 @@ public:
         : name(itemName), description(itemDescription), statModifier(modifier),          // Initialize item name, description, and stat modifiers
           ability(itemAbility), type(itemType), minDamage(minDmg), maxDamage(maxDmg) {}  // Initialize ability, item type, and damage values
 };
+
 //-----------------------------------------Declaring Class for character development----------------------------------------------------
 class Player {
 public:
@@ -58,7 +46,7 @@ public:
     std::array<int, StatCount> stats;                  // Player's stats stored in an array of fixed size
     std::vector<std::string> abilitiesMenu;            // List of abilities available to the player
     std::vector<Item> equippedItems;                   // Items currently equipped by the player, affecting their abilities
-    std::vector<Item> saccySak;                        // Player's inventory renamed to "saccySak" to personalize their inventory
+    std::vector<Item> inventory;                       // Player's inventory renamed to "inventory" for clarity
 
     // Constructor template for how the character is built, could be used to define a character other than the main player
     Player(std::string playerName, std::string charClass, int startLevel = 1) // Constructor takes player's name, class, and optional start level
@@ -74,20 +62,13 @@ public:
     void showEquippedItems() const;                    // Show items that are currently equipped by the player
 };
 
-#endif // GAMEHEADERELI_H
-
 //-------------------------DECLARE FUNCTION INITIALIZATIONS----------
 bool confirmClassChoice();
 
-    // Function to equip an item
-    bool equipItem(Item &item);
+// Function to equip an item
+bool equipItem(Item &item);
 
-    // Function to unequip an item
-    void unequipItem(int index);
+// Function to unequip an item
+void unequipItem(int index);
 
-    // Function to display player's stats
-    void showStats() const;
-
-    // Function to display equipped items
-    void showEquippedItems() const;
-#endif //closes the definition guard
+#endif // GAMEHEADERELI_H
