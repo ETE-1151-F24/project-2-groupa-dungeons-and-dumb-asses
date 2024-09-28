@@ -53,7 +53,11 @@ void runGameLoop(Player& player) {
     while (true) {
         std::cout << "\nEnter a command (equip / unequip / inventory / stats / quit): ";            // Display available commands
         std::getline(std::cin, command);                                                            // Get command from the player
-        command.erase(0, command.find_first_not_of(" \t\n\r\f\v"));                                 // Trim leading whitespace to avoid errors.
+
+        command.erase(0, command.find_first_not_of(" \t\n\r\f\v"));                                 // Trim leading ****whitespace to avoid errors
+        command.erase(command.find_last_not_of(" \t\n\r\f\v") + 1);                                 // Trim trailing ****whitespace to avoid errors
+
+        std::transform(command.begin(), command.end(), command.begin(), ::tolower);                 // Convert command to lowercase for case-insensitivity
 
         if (command == "equip") {                                                                   // If player wants to equip an item
             int itemChoice;
@@ -61,11 +65,11 @@ void runGameLoop(Player& player) {
             std::cin >> itemChoice;
 
             // Input validation for equip
-            if (std::cin.fail() || itemChoice <= 0 || itemChoice > player.inventory.size()) {
+            if (std::cin.fail() || itemChoice <= 0 || itemChoice > player.inventory.size()) {       // Validate input for correct range and type
                 std::cout << "Invalid item number. Please try again.\n";                            // Invalid input message
                 std::cin.clear();                                                                   // Clear error flag on cin
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                 // Discard invalid input
-                continue;                                                                           // Prevent further processing after invalid input.
+                continue;                                                                           // Prevent further processing after invalid input
             }
 
             equipItem(player, itemChoice - 1);                                                      // Equip selected item (adjust for zero-based index)
@@ -77,18 +81,18 @@ void runGameLoop(Player& player) {
             std::cin >> itemChoice;
 
             // Input validation for unequip
-            if (std::cin.fail() || itemChoice <= 0 || itemChoice > player.equippedItems.size()) {
+            if (std::cin.fail() || itemChoice <= 0 || itemChoice > player.equippedItems.size()) {   // Validate input for correct range and type
                 std::cout << "Invalid item number. Please try again.\n";                            // Invalid input message
                 std::cin.clear();                                                                   // Clear the error flag on cin
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                 // Discard invalid input
-                continue;                                                                           // Prevent further processing after invalid input.
+                continue;                                                                           // Prevent further processing after invalid input
             }
 
             unequipItem(player, itemChoice - 1);                                                    // Unequip the selected item (adjust for zero-based index)
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     // Clear the input buffer
 
-        } else if (command == "inventory") {                                                        // If player wants to view own inventory
-            if (player.inventory.empty()) {                                                         // Handle empty inventory case.
+        } else if (command == "inventory") {                                                        // If player wants to view their inventory
+            if (player.inventory.empty()) {                                                         // Handle empty inventory case
                 std::cout << "Your inventory is empty.\n";
             } else {
                 for (size_t i = 0; i < player.inventory.size(); ++i) {                              // Iterate over items in inventory
@@ -96,7 +100,7 @@ void runGameLoop(Player& player) {
                 }
             }
 
-        } else if (command == "stats") {                                                            // If player wants to view own stats
+        } else if (command == "stats") {                                                            // If player wants to view their stats
             player.showStats();                                                                     // Call function to display player's stats
 
         } else if (command == "quit") {                                                             // If player wants to quit the game
@@ -109,3 +113,46 @@ void runGameLoop(Player& player) {
     }
 }
 //-----------------------------------------------------------------
+
+
+//--------------------------clarification of the ****whitespace cleaning syntax-----------------------
+/* 
+-------------------------------------------------------------------------------------------
+Explanation of Whitespace Characters Used for Trimming (`" \t\n\r\f\v"`):
+-------------------------------------------------------------------------------------------
+The string `" \t\n\r\f\v"` contains various **whitespace characters** that may need to be trimmed
+from user input. Each of these characters has a specific purpose related to formatting:
+
+1. **Space (`' '`)**:
+   - A regular space character, used for separating words or padding.
+
+2. **Horizontal Tab (`\t`)**:
+   - Represents a **tab** character, commonly used to align text in columns.
+
+3. **Newline (`\n`)**:
+   - Represents a **newline** character, moving the cursor to the **next line**.
+   - This is used to end a line of text and start a new one.
+
+4. **Carriage Return (`\r`)**:
+   - Represents a **carriage return**, moving the cursor to the **beginning of the current line**.
+   - Often used with `\n` (`\r\n`) for line endings in Windows environments.
+
+5. **Form Feed (`\f`)**:
+   - Represents a **form feed** character, used to advance the printer to the **next page**.
+   - It is mostly a legacy character and rarely used in modern applications.
+
+6. **Vertical Tab (`\v`)**:
+   - Represents a **vertical tab**, moving the cursor **down to the next tab stop** vertically.
+   - Similar to form feed, it is not common in modern software.
+
+These characters are used in the trimming functions:
+- `command.erase(0, command.find_first_not_of(" \t\n\r\f\v"))`:
+  - Removes all **leading whitespace** characters from the string `command`.
+
+- `command.erase(command.find_last_not_of(" \t\n\r\f\v") + 1)`:
+  - Removes all **trailing whitespace** characters from the string `command`.
+
+This ensures that any input given by the user is clean and free from unintended spaces or control 
+characters that might cause issues during processing, especially for commands entered in the game.
+-------------------------------------------------------------------------------------------
+*/
