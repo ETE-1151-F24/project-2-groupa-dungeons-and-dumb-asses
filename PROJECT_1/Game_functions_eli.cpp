@@ -56,22 +56,19 @@ void runGameLoop(Player& player) {
         std::cout << "\nEnter a command (equip / unequip / inventory / stats / quit): ";            // Display available commands
         std::getline(std::cin, command);                                                            // Get command from the player
 
-        // Trim leading and trailing whitespace
+        // ----------------------------------- TRIM AND PROCESS COMMAND INPUT ---------------------------------
         command.erase(0, command.find_first_not_of(" \t\n\r\f\v"));                                 // Trim leading whitespace
         command.erase(command.find_last_not_of(" \t\n\r\f\v") + 1);                                 // Trim trailing whitespace
-
-        // Convert the command to lowercase for case insensitivity
-        std::transform(command.begin(), command.end(), command.begin(), ::tolower);
-
-        // Debug output to verify the command
+        std::transform(command.begin(), command.end(), command.begin(), ::tolower);                 // Convert the command to lowercase for case insensitivity
         std::cout << "DEBUG: Command entered: '" << command << "'\n";                               // Debug output to verify command input
 
+        // ----------------------------------- COMMAND HANDLING -----------------------------------------------
         if (command == "equip") {                                                                   // If player wants to equip an item
-            int itemChoice;
+            int itemChoice;                                                                         // Variable to store item choice
             std::cout << "Enter the number of the item to equip from your inventory: ";             // Prompt for item number
             std::cin >> itemChoice;
 
-            // Input validation for equip
+            // ------------------------------- INPUT VALIDATION FOR EQUIP ------------------------------------
             if (std::cin.fail() || itemChoice <= 0 || itemChoice > player.inventory.size()) {       // Validate input for correct range and type
                 std::cout << "Invalid item number. Please try again.\n";                            // Invalid input message
                 std::cin.clear();                                                                   // Clear error flag on cin
@@ -79,15 +76,17 @@ void runGameLoop(Player& player) {
                 continue;                                                                           // Prevent further processing after invalid input
             }
 
+            // ------------------------------- EQUIP ITEM ----------------------------------------------------
             equipItem(player, itemChoice - 1);                                                      // Equip selected item (adjust for zero-based index)
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     // Clear the input buffer to remove leftover newline character
+            std::cout << "You have equipped: " << player.inventory[itemChoice - 1].name << "\n";    // Display confirmation of equipped item
 
         } else if (command == "unequip") {                                                          // If player wants to unequip an item
-            int itemChoice;
+            int itemChoice;                                                                         // Variable to store item choice
             std::cout << "Enter the number of the item to unequip: ";                               // Prompt for item number
             std::cin >> itemChoice;
 
-            // Input validation for unequip
+            // ------------------------------- INPUT VALIDATION FOR UNEQUIP -------------------------------
             if (std::cin.fail() || itemChoice <= 0 || itemChoice > player.equippedItems.size()) {   // Validate input for correct range and type
                 std::cout << "Invalid item number. Please try again.\n";                            // Invalid input message
                 std::cin.clear();                                                                   // Clear the error flag on cin
@@ -95,32 +94,41 @@ void runGameLoop(Player& player) {
                 continue;                                                                           // Prevent further processing after invalid input
             }
 
+            // ------------------------------- UNEQUIP ITEM -------------------------------------------------
             unequipItem(player, itemChoice - 1);                                                    // Unequip the selected item (adjust for zero-based index)
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     // Clear the input buffer to remove leftover newline character
+            std::cout << "You have unequipped: " << player.equippedItems[itemChoice - 1].name << "\n"; // Display confirmation of unequipped item
 
         } else if (command == "inventory") {                                                        // If player wants to view their inventory
+            // ---------------------------------- DISPLAY INVENTORY -----------------------------------------
             if (player.inventory.empty()) {                                                         // Handle empty inventory case
                 std::cout << "Your inventory is empty.\n";
             } else {
                 for (size_t i = 0; i < player.inventory.size(); ++i) {                              // Iterate over items in inventory
-                    std::cout << (i + 1) << ". " << player.inventory[i].name << "\n";               // Display each item in the inventory
+                    std::cout << (i + 1) << ". " << player.inventory[i].name;                       // Display each item in the inventory
+                    if (player.isEquipped(player.inventory[i])) {                                   // Check if item is equipped
+                        std::cout << " (Equipped)";
+                    }
+                    std::cout << "\n";
                 }
             }
 
         } else if (command == "stats") {                                                            // If player wants to view their stats
+            // ---------------------------------- DISPLAY PLAYER STATS --------------------------------------
             player.showStats();                                                                     // Call function to display player's stats
 
         } else if (command == "quit") {                                                             // If player wants to quit the game
+            // ---------------------------------- QUIT GAME -------------------------------------------------
             std::cout << "Goodbye, " << player.name << "!\n";                                       // Display farewell message
             break;                                                                                  // Exit the game loop
 
         } else {                                                                                    // Handle unknown commands
+            // ---------------------------------- UNKNOWN COMMAND ------------------------------------------
             std::cout << "Unknown command. Try again.\n";                                           // Show error for unknown commands
         }
     }
 }
 //-----------------------------------------------------------------
-
 
 
 

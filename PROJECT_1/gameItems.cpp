@@ -52,8 +52,8 @@ void initializeGameItems(std::vector<Item>& gameItems) {
             0,                                                         // Magic power modifier
             "No restriction");                                         // Restriction
 
-    addItem(gameItems, "Amulet of Minor Healing",                      // Item name
-            "Heals 6 health chips per day.",                           // Item description
+    addItem(gameItems, "Amulet of Goodness",                      // Item name
+            "Such a warm jewel, it feels cozy.",                           // Item description
             MAGICAL,                                                   // Classification: Magical
             MELEE,                                                     // Combat type (not applicable, default to MELEE)
             {0, 0, 0, 0, 2},                                           // Stat modifiers: +2 Constitution, others 0
@@ -66,12 +66,12 @@ void initializeGameItems(std::vector<Item>& gameItems) {
             "No restriction");                                         // Restriction (default value)
 
     // ---------- Clothing Items ----------
-    addItem(gameItems, "Bracers of Thunderstrike",                     // Item name
+    addItem(gameItems, "Bracers of Blustery Bash",                     // Item name
             "Bracers that amplify strength but increase spell cost.",  // Item description
             CLOTHING,                                                  // Classification: Clothing
             MELEE,                                                     // Combat type (not applicable, default to MELEE)
             {1, 0, 0, 0, 2},                                           // Stat modifiers: +2 Strength, others 0
-            "+1 Strength, +2 constitution, +20 percent chance to stun, +25 percent Spell Cost Increase.",           // Ability description
+            "+1 Strength, +2 constitution, +20percent chance to stun, +25percent Spell Cost Increase.",           // Ability description
             0,                                                         // Minimum damage (default value)
             0,                                                         // Maximum damage (default value)
             0,                                                         // Range modifier (default value)
@@ -97,7 +97,7 @@ void initializeGameItems(std::vector<Item>& gameItems) {
             CLOTHING,                                                  // Classification: Clothing
             MELEE,                                                     // Combat type (not applicable, default to MELEE)
             {0, 2, 0, 0, 0},                                           // Stat modifiers: +2 Dexterity, others 0
-            "+2 Dexterity, +1 to Dodge chance.",                       // Ability description
+            "+2 Dexterity, +2 to Dodge.",                              // Ability description
             0,                                                         // Minimum damage (default value)
             0,                                                         // Maximum damage (default value)
             0,                                                         // Range modifier (default value)
@@ -114,29 +114,29 @@ void initializeGameItems(std::vector<Item>& gameItems) {
             "+3 Dexterity, increases range and accuracy. Arrows make farting noise when fired (-4 Sneak/Hide).", // Ability description
             2,                                                         // Minimum damage
             7,                                                         // Maximum damage
-            3,                                                         // Range modifier
+            3+(Dexterity/6),                                           // Range modifier
             -4,                                                        // Sneak penalty
             0,                                                         // Magic power modifier (default value)
             "No restriction");                                         // Restriction (default value)
 
-    addItem(gameItems, "Dagger of the Quickstrike",                    // Item name
+    addItem(gameItems, "Dagger of the Quicky-strike",                    // Item name
             "A dagger with enhanced speed.",                           // Item description
             WEAPON,                                                    // Classification: Weapon
             MELEE,                                                     // Combat type: Melee
             {0, 2, 0, 0, 0},                                           // Stat modifiers: +2 Dexterity, others 0
-            "+2 Dexterity, 5% chance to attack twice in a turn.",      // Ability description
+            "+2 Dexterity, 10percent chance to attack twice a turn.", // Ability description
             2,                                                         // Minimum damage
-            6,                                                         // Maximum damage
+            5,                                                         // Maximum damage
             0,                                                         // Range modifier (default value)
             0,                                                         // Sneak penalty (default value)
             0,                                                         // Magic power modifier (default value)
             "No restriction");                                         // Restriction (default value)
 
-    addItem(gameItems, "Staff of the Mystic Mist",                     // Item name
+    addItem(gameItems, "Staff of the Whipering Eye",                     // Item name
             "A staff that grants some range and dodging.",             // Item description
             WEAPON,                                                    // Classification: Weapon
             MELEE,                                                     // Combat type (not applicable, default to MELEE)
-            {0, 0, 1, 0, 0},                                           // Stat modifiers: +1 Intelligence, others 0
+            {0, 0, 1, 0, 0},                                           // Stat modifiers: 
             "+2 Intelligence, +2 Magic power, +1 Range.",              // Ability description
             1,                                                         // Minimum damage
             6,                                                         // Maximum damage
@@ -144,6 +144,33 @@ void initializeGameItems(std::vector<Item>& gameItems) {
             0,                                                         // Sneak penalty (default value)
             2,                                                         // Magic power modifier
             "Mage, Cleric Only");                                      // Restriction
+
+    addItem(gameItems, "Hammer of Emberstrike",                         // Item name
+            "A hammer with the power of fire.",                         // Item description
+            WEAPON,                                                    // Classification: Weapon
+            MELEE,                                                     // Combat type (not applicable, default to MELEE)
+            {3, 0, -2, 0, 0},                                           // Stat modifiers: str dex int wis con
+            "+3 Strength, -2 Dexterity, 10percent chance to Emberstrike, 1d6 fire damage.",   // Ability description
+            2,                                                         // Minimum damage
+            9,                                                         // Maximum damage
+            0,                                                         // Range modifier
+            0,                                                         // Sneak penalty (default value)
+            0,                                                         // Magic power modifier
+            "no restriction....why?");                                  // Restriction
+
+    addItem(gameItems, "Sword of the Slicey Way",                         // Item name
+            "A very sharp sword.....its a helluva can opener",                         // Item description
+            WEAPON,                                                    // Classification: Weapon
+            MELEE,                                                     // Combat type (not applicable, default to MELEE)
+            {2, 0, 0, 0, 0},                                           // Stat modifiers: str dex int wis con
+            "+2 Strength, additional Damage to armor clad enemies (strength/6)dmg ",   // Ability description
+            2,                                                         // Minimum damage
+            5,                                                         // Maximum damage
+            0,                                                         // Range modifier
+            0,                                                         // Sneak penalty (default value)
+            0,                                                         // Magic power modifier
+            "none");                                  // Restriction
+
 
  /*   // Add a new item to the game
     addItem(gameItems, "ACTUAL ITEM NAME",                             // Item name
@@ -182,7 +209,7 @@ void initializeGameItems(std::vector<Item>& gameItems) {
 */
     // Example usage:
     // addItem(gameItems, "Sword of Valor", "A powerful sword infused with magic.", WEAPON, MELEE, {3, 0, 0, 0, 1}, "+3 Strength, +1 Constitution", 5, 10, 0, 0, 0, "Warrior Only");
-*/
+
 
 
 

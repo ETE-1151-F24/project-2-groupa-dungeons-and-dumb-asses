@@ -90,6 +90,14 @@ public:
 // Function to display equipped items
     void showEquippedItems() const;                    // Show items that are currently equipped by the player
 
+    // Methods for equipment management
+    bool isEquipped(const Item& item) const;               // Checks if an item is equipped
+    void equipItem(Item& item);                            // Equip an item
+    void unequipItem(Item& item);                          // Unequip an item
+    bool hasEquippedWeapon() const;                        // Checks if a weapon is currently equipped
+
+
+
 private:
 
     int roll(int minValue, int maxValue);              // Method to roll a stat between a given range
