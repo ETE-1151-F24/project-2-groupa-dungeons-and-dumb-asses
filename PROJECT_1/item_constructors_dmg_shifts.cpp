@@ -1,5 +1,6 @@
 // item_constructors_dmg_shifts.cpp
 #include "GameHeaderEli.h"
+#include <iostream>
 
 // Default constructor for Item
 Item::Item()

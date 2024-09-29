@@ -81,16 +81,16 @@ void runGameLoop(Player& player) {
             unequipItem(player, itemChoice - 1);
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         } else if (command == "inventory") {
-            std::cout << "\n--- Your Inventory ---\n";
-
-            for (size_t i = 0; i < player.inventory.size(); ++i) {
-                const Item& item = player.inventory[i];
-                std::string status = item.isPlaceholder ? "(Placeholder for equipped item)" : "In your Sakky";
-                std::cout << (i + 1) << ". " << item.name << " - " << status << "\n";
-            }
-
-            std::string response;
             while (true) {
+                // Display inventory items
+                std::cout << "\n--- Your Inventory ---\n";
+                for (size_t i = 0; i < player.inventory.size(); ++i) {
+                    const Item& item = player.inventory[i];
+                    std::string status = item.isPlaceholder ? "Placeholder (equipped)" : "In your Sakky";
+                    std::cout << (i + 1) << ". " << item.name << " - " << status << "\n";
+                }
+
+                std::string response;
                 std::cout << "\nWould you like to focus on an item? Enter the number or type 'no': ";
                 std::getline(std::cin, response);
 
@@ -98,47 +98,51 @@ void runGameLoop(Player& player) {
                     break;
                 }
 
+                int itemChoice;
                 try {
-                    int itemChoice = std::stoi(response) - 1;
-                    if (itemChoice < 0 || itemChoice >= static_cast<int>(player.inventory.size())) {
-                        std::cout << "Invalid item number. Please try again.\n";
-                        continue;
-                    }
-
-                    Item& selectedItem = player.inventory[itemChoice];
-                    if (selectedItem.isPlaceholder) {
-                        std::cout << "This is a placeholder for an equipped item. Please unequip it first if you want to modify it.\n";
-                        continue;
-                    }
-
-                    std::string itemResponse;
-                    while (true) {
-                        std::cout << "\nWhat would you like to do with '" << selectedItem.name << "'?\n";
-                        std::cout << "1. Read Description\n";
-                        if (player.isEquipped(selectedItem)) {
-                            std::cout << "2. Unequip Item\n";
-                        } else {
-                            std::cout << "2. Equip Item\n";
-                        }
-                        std::cout << "3. Back to Inventory\n";
-                        std::getline(std::cin, itemResponse);
-
-                        if (itemResponse == "1") {
-                            displayItemDetails(selectedItem);
-                        } else if (itemResponse == "2") {
-                            if (player.isEquipped(selectedItem)) {
-                                unequipItem(player, itemChoice);
-                            } else {
-                                equipItem(player, itemChoice);
-                            }
-                        } else if (itemResponse == "3") {
-                            break;
-                        } else {
-                            std::cout << "Invalid input. Please enter 1, 2, or 3.\n";
-                        }
-                    }
-                } catch (std::invalid_argument&) {
+                    itemChoice = std::stoi(response) - 1;
+                } catch (std::exception& e) {
                     std::cout << "Invalid input. Please enter a valid number.\n";
+                    continue;
+                }
+
+                if (itemChoice < 0 || itemChoice >= static_cast<int>(player.inventory.size())) {
+                    std::cout << "Invalid item number. Please try again.\n";
+                    continue;
+                }
+
+                Item& selectedItem = player.inventory[itemChoice];
+                if (selectedItem.isPlaceholder) {
+                    std::cout << "This is a placeholder for an equipped item. Please unequip it first if you want to modify it.\n";
+                    continue;
+                }
+
+                std::string itemResponse;
+                while (true) {
+                    std::cout << "\nWhat would you like to do with '" << selectedItem.name << "'?\n";
+                    std::cout << "1. Read Description\n";
+                    if (player.isEquipped(selectedItem)) {
+                        std::cout << "2. Unequip Item\n";
+                    } else {
+                        std::cout << "2. Equip Item\n";
+                    }
+                    std::cout << "3. Back to Inventory\n";
+                    std::getline(std::cin, itemResponse);
+
+                    if (itemResponse == "1") {
+                        displayItemDetails(selectedItem);
+                    } else if (itemResponse == "2") {
+                        if (player.isEquipped(selectedItem)) {
+                            unequipItem(player, itemChoice);
+                        } else {
+                            equipItem(player, itemChoice);
+                        }
+                    } else if (itemResponse == "3") {
+                        // Redisplay inventory items before going back to the previous question
+                        break; // This breaks the inner loop, and the outer loop redisplays the inventory.
+                    } else {
+                        std::cout << "Invalid input. Please enter 1, 2, or 3.\n";
+                    }
                 }
             }
         } else if (command == "stats") {

@@ -59,6 +59,7 @@ bool Player::isEquipped(const Item& item) const {                               
     return false;                                                                           // rtrn false if Item is not equipped
 }
 //-------------------------------- FUNCTION TO EQUIP AN ITEM -----------------------------------------------
+
 bool equipItem(Player& player, int itemIndex) {
     // Step 1: Validate item index
     if (itemIndex < 0 || itemIndex >= static_cast<int>(player.inventory.size())) {
@@ -75,8 +76,8 @@ bool equipItem(Player& player, int itemIndex) {
         return false;
     }
 
-    // Step 4: Mark the item in the inventory as a placeholder
-    itemToEquip.isPlaceholder = true;
+    // Step 4: Mark the item as a placeholder
+    itemToEquip.markAsPlaceholder(); // Mark item as placeholder
 
     // Step 5: Add the item to equipped items
     player.equippedItems.push_back(itemToEquip);
@@ -92,6 +93,7 @@ bool equipItem(Player& player, int itemIndex) {
 
 
 //-------------------------------- FUNCTION TO UNEQUIP AN ITEM --------------------------------------------
+
 bool unequipItem(Player& player, int itemIndex) {
     // Step 1: Validate item index
     if (itemIndex < 0 || itemIndex >= static_cast<int>(player.equippedItems.size())) {
@@ -107,11 +109,13 @@ bool unequipItem(Player& player, int itemIndex) {
 
     // Step 4: Find the placeholder in the inventory and replace it
     for (auto& item : player.inventory) {
-        if (item.name == itemToUnequip.name && item.isPlaceholder) {
-            item.isPlaceholder = false;  // Mark it as no longer a placeholder
+        if (item.isPlaceholder && item.name ==  itemToUnequip.name + " (equipped)") {
+            item = itemToUnequip; // Replace the placeholder with the actual item
+            item.isPlaceholder = false; // Reset placeholder status
             break;
         }
     }
+
     std::cout << "Unequipped " << itemToUnequip.name << "!\n";
 
     // Step 5: Update player stats by removing item modifiers
