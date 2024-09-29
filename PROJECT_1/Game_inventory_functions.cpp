@@ -1,7 +1,5 @@
 // Game_inventory_functions.cpp
 #include "GameHeaderEli.h"                            // Include header file for necessary declarations
-#include <iostream>                                   // For std::cin, std::cout
-#include <iomanip>                                    // For std::setw formatting
 
 //------------------------------- FUNCTION TO DISPLAY PLAYER INVENTORY -------------------------------------------
 void displayInventory(Player& player) {
@@ -126,28 +124,39 @@ bool Player::isEquipped(const Item& item) const {
 //------------------------------- FUNCTION TO EQUIP AN ITEM -----------------------------------------------
 
 void Player::equipItem(Item* item) {
-    if (isEquipped(*item)) {                        // Check if item is already equipped
-        std::cout << item->name << " is already equipped.\n";
-        return;
+    if (item->classification == WEAPON) {                                                   // Check if the item to equip is a weapon
+        for (auto* equippedItem : equippedItems) {                                          // Iterate through currently equipped items
+            if (equippedItem->classification == WEAPON) {                                   // If a weapon is already equipped
+                std::cout << "You already have a weapon equipped: " << equippedItem->name << ".\n"; // Display current weapon
+                std::cout << "Please unequip it before equipping another weapon.\n";        // Prompt to unequip before equipping a new weapon
+                return;                                                                     // Exit the function if another weapon is equipped
+            }
+        }
     }
 
-    equippedItems.push_back(item);                  // Add item to equipped items
-    std::cout << "Equipped " << item->name << "!\n";
+    if (isEquipped(*item)) {                                                                // Check if the item is already equipped
+        std::cout << item->name << " is already equipped.\n";                               // Inform the user that the item is already equipped
+        return;                                                                             // Exit the function if item is already equipped
+    }
 
-    for (int i = 0; i < StatCount; ++i) {           // Update player stats based on item modifiers
-        stats[i] += item->statModifier[i];
+    equippedItems.push_back(item);                                                          // Add the item to equipped items
+    std::cout << "Equipped " << item->name << "!\n";                                        // Display message indicating the item is equipped
+
+    for (int i = 0; i < StatCount; ++i) {                                                   // Iterate over each player stat to update
+        stats[i] += item->statModifier[i];                                                  // Add the stat modifiers of the equipped item to the player's stats
     }
 }
+
 
 //------------------------------- FUNCTION TO UNEQUIP AN ITEM ---------------------------------------------
 
 void Player::unequipItem(Item* item) {
-    auto it = std::find(equippedItems.begin(), equippedItems.end(), item);  // Find item in equipped items
-    if (it != equippedItems.end()) {                 // If item is found
-        equippedItems.erase(it);                     // Remove item from equipped items
+    auto it = std::find(equippedItems.begin(), equippedItems.end(), item);                  // Find item in equipped items
+    if (it != equippedItems.end()) {                                                        // If item is found
+        equippedItems.erase(it);                                                            // Remove item from equipped items
         std::cout << "Unequipped " << item->name << "!\n";
 
-        for (int i = 0; i < StatCount; ++i) {        // Update player stats by removing item modifiers
+        for (int i = 0; i < StatCount; ++i) {                                               // Update player stats by removing item modifiers
             stats[i] -= item->statModifier[i];
         }
     } else {

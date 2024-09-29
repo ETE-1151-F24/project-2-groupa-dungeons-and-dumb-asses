@@ -3,6 +3,7 @@
 #include <chrono>                                    // Provides facilities for time-based operations
 #include <iostream>                                  // For std::cin, std::cout
 #include <thread>                                    // Enables multithreading, allowing tasks to run concurrently
+#include <iomanip>                                   // Required for using setw, left, and right manipulators
 
 //------------------------------------------- FUNCTION FOR STROBING TITLE --------------------------------------------
 void printStrobingText(const std::string& text, int duration) {
@@ -55,10 +56,17 @@ void runGameLoop(Player& player) {
             while (true) {
                 // Display inventory items
                 std::cout << "\n--- Your Inventory ---\n";                                    // Print inventory header
+
+                const int nameWidth = 35; // Set a fixed width for item names
+
                 for (size_t i = 0; i < player.inventory.size(); ++i) {
                     const Item& item = player.inventory[i];                                   // Get item reference
                     std::string status = player.isEquipped(item) ? "(equipped)" : "In your Sakky"; // Determine item status
-                    std::cout << (i + 1) << ". " << item.name << " - " << status << "\n";     // Display item name and status
+
+                    // Use setw, left, and right to align the output correctly
+                    std::cout << std::setw(3) << (i + 1) << ". "                              // Index of the item, right aligned
+                              << std::left << std::setw(nameWidth) << item.name               // Left-align item name with fixed width
+                              << std::right << status << "\n";                                // Right-align item status
                 }
 
                 std::string response;
@@ -113,11 +121,11 @@ void runGameLoop(Player& player) {
             }
         } else if (command == "stats") {                                                      // Stats command
             player.showStats();                                                               // Display player's stats
-        } else if (command == "quit") {                                     // Quit command
-            std::cout << "Goodbye, " << player.name << "!\n";               // Display goodbye message
-            std::cout << "Press Enter to exit...";                          // Prompt user to press Enter
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Wait for user input (Enter)
-            break;                                                          // Exit the game loop                                                                       
+        } else if (command == "quit") {                                                       // Quit command
+            std::cout << "Goodbye, " << player.name << "!\n";                                 // Display goodbye message
+            std::cout << "Press Enter to exit...";                                            // Prompt user to press Enter
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');               // Wait for user input (Enter)
+            break;                                                                            // Exit the game loop                                                                       
         } else {
             std::cout << "Unknown command. Try again.\n";                                     // Handle unknown command
         }
