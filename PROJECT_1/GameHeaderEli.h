@@ -74,27 +74,21 @@ public:
     std::vector<Item> equippedItems;                   // Items currently equipped by the player, affecting their abilities
     std::vector<Item> inventory;                       // Player's inventory renamed to "inventory" for clarity
 
-    // Constructor template for how the character is built, could be used to define a character other than the main player
-    // Player(std::string playerName, std::string charClass, int startLevel = 1) // Constructor takes player's name, class, and optional start level
-    //     : name(playerName), characterClass(charClass), level(startLevel), experience(0) {} // Initialize player properties
-    // Constructor declaration only (no implementation)
     Player(std::string playerName, std::string charClass, int startLevel = 1);
 
 
-//Method to roll stats based on character class
-    void rollStats();                                  // Method to roll stats, unique for each character class
+// Stat methods
+    void rollStats();                                  // Roll stats based on the character class
+    void finalizeStats();                              // Method for rolling and finalizing stats
+    void showStats() const;                            // Display player's stats
+    void showEquippedItems() const;                    // Display equipped items 
 
-// Function to display player's stats
-    void showStats() const;                            // Display all the player's stats in the game
-
-// Function to display equipped items
-    void showEquippedItems() const;                    // Show items that are currently equipped by the player
-
-    // Methods for equipment management
+// Methods for equipment management
     bool isEquipped(const Item& item) const;               // Checks if an item is equipped
     void equipItem(Item& item);                            // Equip an item
     void unequipItem(Item& item);                          // Unequip an item
     bool hasEquippedWeapon() const;                        // Checks if a weapon is currently equipped
+
 
 
 
@@ -114,5 +108,6 @@ bool unequipItem(Player& player, int itemIndex);                // Function to u
 void displayClasses(Player& player);                            // Function to display available character classes and handle selection
 std::string getPlayerName();                                    // Function to get the player's name
 void runGameLoop(Player& player);                               // Function to run the main game loop
+void displayItemDetails(const Item& item);                      // Declare the function to display item details
 
 #endif // GAMEHEADERELI_H

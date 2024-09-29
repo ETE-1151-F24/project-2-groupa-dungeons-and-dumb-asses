@@ -39,7 +39,7 @@ int main() {
     // --------------------PLAYER SETUP--------------------------
     Player player(getPlayerName(), "");                                      // Create a player with default class and their name
     displayClasses(player);                                                 // Prompt player to choose their character class
-
+   
     // --------------------INITIALIZE GAME ITEMS--------------------------
     std::vector<Item> gameItems;                                            // Create a vector to store game items
     initializeGameItems(gameItems);                                         // Initialize all items in the game

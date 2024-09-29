@@ -4,6 +4,16 @@
 
 //------------------------------------------ PLAYER CLASS IMPLEMENTATION -------------------------------------------------
 
+// Method to check if the player has a weapon equipped
+bool Player::hasEquippedWeapon() const {
+    for (const auto& item : equippedItems) {                // Iterate through all equipped items
+        if (item.classification == WEAPON) {                // Check if the item classification is WEAPON
+            return true;                                    // Return true if a weapon is found
+        }
+    }
+    return false;                                           // Return false if no weapon is found
+}
+
 // Constructor for Player - Takes player's name, class, and optional start level
 Player::Player(std::string playerName, std::string charClass, int startLevel)
     : name(playerName),                    // Initialize player's name with the provided name
@@ -65,6 +75,63 @@ int Player::roll(int minValue, int maxValue) {
     return rand() % (maxValue - minValue + 1) + minValue; // Random value between minValue and maxValue (inclusive)
 }
 
+// -----------------------------------------Function to display player's stats
+void Player::showStats() const {
+    std::cout << "\n--- Player Stats ---\n";                                            // Display header for player stats
+    std::cout << "Strength: " << stats[Strength] << "\n";                               // Display strength stat
+    std::cout << "Dexterity: " << stats[Dexterity] << "\n";                             // Display dexterity stat
+    std::cout << "Intelligence: " << stats[Intelligence] << "\n";                       // Display intelligence stat
+    std::cout << "Wisdom: " << stats[Wisdom] << "\n";                                   // Display wisdom stat
+    std::cout << "Constitution: " << stats[Constitution] << "\n";                       // Display constitution stat
+}
+
+// ------------------------------------------Function to display equipped items
+void Player::showEquippedItems() const {
+    std::cout << "\n--- Equipped Items ---\n";                                          // Display header for equipped items
+    if (equippedItems.empty()) {                                                        // Check if no items are equipped
+        std::cout << "No items equipped.\n";                                            // Print message indicating no items equipped
+    } else {
+        for (const auto& item : equippedItems) {                                        // Loop through equipped items
+            std::cout << item.name << ": " << item.description << "\n";                 // Display item name and description
+        }
+    }
+}
+
+
+// Method to handle rolling stats and allowing player to decide whether to keep or re-roll
+void Player::finalizeStats() {
+    std::string response;                                                             // Store player's response for confirming or re-rolling stats
+
+    // First roll
+    rollStats();                                                                      // Roll stats for the first time
+    showStats();                                                                      // Display the rolled stats
+
+    // Ask player if they are satisfied with the rolled stats
+    while (true) {
+        std::cout << "Do you like these stats? (yes/no): ";                           // Prompt player to confirm if they like the stats
+        std::cin >> response;                                                         // Get player's response
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');           // Clear input buffer to avoid any leftover newline issues
+        std::transform(response.begin(), response.end(), response.begin(), ::tolower); // Convert response to lowercase for consistent comparison
+
+        if (response == "yes") {                                                      // If player likes the stats
+            std::cout << "Great! We will keep these stats.\n";                        // Confirm that the stats will be kept
+            break;                                                                    // Exit the loop as stats are finalized
+        } else if (response == "no") {                                                // If player does not like the stats
+            std::cout << "Alright, we'll give it one more roll.\n";                   // Inform player that a second roll will be given
+
+            // Second roll (final roll)
+            rollStats();                                                              // Roll stats for the final time
+            showStats();                                                              // Display the newly rolled stats
+
+            std::cout << "These are your final stats. Looks like we're going to keep these!\n"; // Inform player that these are the final stats
+            break;                                                                    // Exit the loop after the final roll
+        } else {
+            std::cout << "Invalid input. Please enter 'yes' or 'no'.\n";              // Handle invalid input by displaying an error message
+        }
+    }
+}
+
+
 //----------------------------------------------------------------------------------------------------
 
 
@@ -121,7 +188,7 @@ void showClassDescription(int classChoice) {
     }
 }
 
-// -----------------------------------------------Function to confirm the player's class choice
+
 // -----------------------------------------------Function to confirm the player's class choice
 bool confirmClassChoice() {
     std::string confirmation;                                                                       // Variable to store player yes/no confirmation
@@ -142,56 +209,40 @@ bool confirmClassChoice() {
 }
 // ---------------------------------Function to display available classes, allow selection, and handle confirmation
 void displayClasses(Player& player) {
-    std::string playerInput;                                                            // Variable storing player input for class selection
+    std::string playerInput; // Variable storing player input for class selection
 
     std::cout << "What type of adventurer would you like to be?" << std::endl;
     std::cout << "(choose a number from the list below)" << std::endl << std::endl;
 
-    std::cout << "1. Warrior\n2. Rogue\n3. Mage\n4. Cleric\n5. Ranger\n";               // List the available classes                  
+    std::cout << "1. Warrior\n2. Rogue\n3. Mage\n4. Cleric\n5. Ranger\n";                       // List the available classes
 
-    std::cout << "Enter a number to select a class: ";                                  // Ask player to enteR number corresponding to class
-    std::cin >> playerInput;                                                            // Record player's input
+    std::cout << "Enter a number to select a class: ";                                          // Ask player to enter a number corresponding to the class
+    std::cin >> playerInput;                                                                    // Record player's input
 
-    if (isNumber(playerInput) && (playerInput >= "1" && playerInput <= "5")) {          // Make sure numeric input in correct range
-        int classChoice = std::stoi(playerInput);                                       // Convert input string to an integer using stoi
-        showClassDescription(classChoice);                                              // Display class description after selection
+    if (isNumber(playerInput) && (playerInput >= "1" && playerInput <= "5")) {                  // Make sure numeric input is in the correct range
+        int classChoice = std::stoi(playerInput);                                               // Convert input string to an integer using stoi
+        showClassDescription(classChoice);                                                      // Display class description after selection
 
         if (confirmClassChoice()) {
             player.characterClass = (classChoice == 1 ? "warrior" : classChoice == 2 ? "rogue" :
                                      classChoice == 3 ? "mage" : classChoice == 4 ? "cleric" : "ranger");
             std::cout << "Awesome! You have decided to be a " << player.characterClass << ".\n";
             std::cout << "Now, let's talk about your base statistics...\n";
-            player.rollStats();                                                         // Roll stats based on the selected class
+
+// Call finalizeStats to roll stats, allow player to review, and finalize them
+            player.finalizeStats();
         } else {
             std::cout << "Okay, let's choose a different class then.\n";
-            displayClasses(player);                                                     // Recursive call to restart the class selection
+            displayClasses(player); // Recursive call to restart the class selection
         }
     } else {
-        std::cout << "Invalid input. Please select a number from 1-5." << std::endl;    // Error message for invalid input
-        displayClasses(player);                                                         // Recursive call to retry the class selection
+        std::cout << "Invalid input. Please select a number from 1-5." << std::endl; // Error message for invalid input
+        displayClasses(player); // Recursive call to retry the class selection
     }
 }
 
 
-// -----------------------------------------Function to display player's stats
-void Player::showStats() const {
-    std::cout << "\n--- Player Stats ---\n";                                            // Display header for player stats
-    std::cout << "Strength: " << stats[Strength] << "\n";                               // Display strength stat
-    std::cout << "Dexterity: " << stats[Dexterity] << "\n";                             // Display dexterity stat
-    std::cout << "Intelligence: " << stats[Intelligence] << "\n";                       // Display intelligence stat
-    std::cout << "Wisdom: " << stats[Wisdom] << "\n";                                   // Display wisdom stat
-    std::cout << "Constitution: " << stats[Constitution] << "\n";                       // Display constitution stat
-}
 
-// ------------------------------------------Function to display equipped items
-void Player::showEquippedItems() const {
-    std::cout << "\n--- Equipped Items ---\n";                                          // Display header for equipped items
-    if (equippedItems.empty()) {                                                        // Check if no items are equipped
-        std::cout << "No items equipped.\n";                                            // Print message indicating no items equipped
-    } else {
-        for (const auto& item : equippedItems) {                                        // Loop through equipped items
-            std::cout << item.name << ": " << item.description << "\n";                 // Display item name and description
-        }
-    }
-}
+
+
 
