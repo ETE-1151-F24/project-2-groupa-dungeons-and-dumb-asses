@@ -1,57 +1,42 @@
-//GameMainStuff.cpp
 #include "GameHeaderEli.h"                         // Include game-specific classes and definitions
-#include "Character_develop_functs.cpp"
-#include "Game_functions_eli.cpp"
-#include "Game_inventory_functions.cpp"
-#include "gameItems.cpp"
-#include "item_constructors_dmg_shifts.cpp"
+#include "Character_develop_functs.cpp"            // Include character development-related functions
+#include "Game_functions_eli.cpp"                  // Include general game functions
+#include "Game_inventory_functions.cpp"            // Include inventory management functions
+#include "gameItems.cpp"                           // Include functions to initialize game items
+#include "item_constructors_dmg_shifts.cpp"        // Include item constructor implementations
+
+// Additional headers (commented out if not used)
 // #include ""
 // #include ""
 // #include ""
 
-
-// #include <iostream>                                // Include input-output stream for console interactions
-// #include <string>                                  // Include string class for player names, commands, etc.
-// #include <chrono>                                  // Include chrono for time-based operations
-// #include <thread>                                  // Include thread for pauses in strobing effect
-// #include <limits>                                  // Include limits for clearing input buffer
-// #include <cctype>                                  // Include cctype for checking digit characters
-// #include <algorithm>                               // Required for std::max to ensure minimum damage of 1
-// #include <cstdlib>                                 // Required for random number generation (rand())
-// #include <ctime>                                   // Required for seeding random number generation (time)
-
+//----------------------------- Main Function ------------------------------------------------
 int main() {
+    srand(static_cast<unsigned int>(time(0)));                                                                  // Seed the random number generator
 
-    srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
-    
-    /*[new code goes in these]*/
-    // --------------------WELCOME MESSAGE--------------------------
-    std::string title = "Goblins & Glittery S***!";                          // Title of the game
-    int duration = 5;                                                        // Duration for the strobing effect in seconds
-    printStrobingText(title, duration);                                      // Call the function to display the strobing title effect
+    // -------------------- WELCOME MESSAGE ---------------------------
+    std::string title = "Goblins & Glittery S***!";                                                             // Title of the game
+    int duration = 5;                                                                                           // Duration strobing effect seconds
+    printStrobingText(title, duration);                                                                         // Call function to display strobing title effect
 
     // Display the complete welcome message
-    std::cout << "Welcome to 'Goblins & Glittery S***!'\n\n";                // Game title and welcome message
-    std::cout << "Brace yourself for a ridiculous adventure where goblins are annoying, magic is overrated,\n";  // Describe adventure setting
-    std::cout << "and you're probably going to make some terrible decisions. But hey, that's half the fun!\n";   // Add a humorous note
-    std::cout << "Collect shiny crap, survive questionable life choices, and try not to die... too much.\n\n";   // Set player expectations for gameplay
+    std::cout << "Welcome to 'Goblins & Glittery S***!'\n\n";                                                   // Game title + welcome message
+    std::cout << "Brace yourself for a ridiculous adventure where goblins are annoying, magic is overrated,\n"; // Describe setting
+    std::cout << "and you're probably going to make some terrible decisions. But hey, that's half the fun!\n";  // Add humor
+    std::cout << "Collect shiny crap, survive questionable life choices, and try not to die... too much.\n\n";  // Set expectations
 
-    // --------------------PLAYER SETUP--------------------------
-    Player player(getPlayerName(), "");                                      // Create a player with default class and their name
-    displayClasses(player);                                                 // Prompt player to choose their character class
-   
-    // --------------------INITIALIZE GAME ITEMS--------------------------
-    std::vector<Item> gameItems;                                            // Create a vector to store game items
-    initializeGameItems(gameItems);                                         // Initialize all items in the game
+    // -------------------- PLAYER SETUP --------------------------
+    Player player(getPlayerName(), "");                                 // Create player w/default class and their name
+    displayClasses(player);                                             // Prompt player to choose their character class
 
-    player.inventory = gameItems; // Add initialized items to player's inventory for demo
+    // -------------------- INITIALIZE GAME ITEMS --------------------------
+    std::vector<Item> gameItems;                                        // Create a vector to store game items
+    initializeGameItems(gameItems);                                     // Initialize all items in the game
 
-    // --------------------GAME LOOP--------------------------
-    runGameLoop(player);                                                    // Call the game loop function
+    player.inventory = gameItems;                                       // Add initialized items to player's inventory
 
-    return 0;    
+    // -------------------- GAME LOOP --------------------------
+    runGameLoop(player);                                                // Call the game loop function
+
+    return 0;                                                           // Exit the program
 }
-
-
-
-

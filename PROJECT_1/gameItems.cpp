@@ -15,10 +15,10 @@ void addItem(std::vector<Item>& gameItems, const std::string& itemName, const st
     gameItems.push_back(newItem);
 }
 
-
 // Function to initialize items in the game
 void initializeGameItems(std::vector<Item>& gameItems) {
     gameItems.clear();  // Clear any existing items
+
 
     //---------------------------------------------ITEM GLOSSARY---------------------------
     
