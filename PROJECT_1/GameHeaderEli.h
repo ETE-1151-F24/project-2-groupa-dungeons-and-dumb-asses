@@ -14,22 +14,17 @@
 #include <cstdlib>                                                  // Required for random number generation (rand())
 #include <ctime>                                                    // Required for seeding random number generation (time)
 
-//+++++++++++++++++++++++++++++ Enum declarations for the project +++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount };  // Defines character stats
 enum ItemType { WEAPON, MAGICAL, CLOTHING };                                                // Defines item categories
 enum CharacterType { CHOSEN_ONE, NPC, ENEMY };                                              // Defines character types
 enum CombatType { MELEE, RANGED };                                                          // Defines weapon combat types
 
+//+++++++++++++++++++++++++++++ Class declarations ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-//+++++++++++++++++++++++++++++++ Class declarations ++++++++++++++++++++++++++++++++++++++++++++
-
-//note on constructors
+// Note on constructors:
 // A constructor helps set up an object with its initial values when it's created,
 // making sure everything is ready to use right from the start.
-// A constructor lets you set up different fields of information for an object right when it's created, 
-// with specific values for each, whether they're numbers, strings, or other types.
-
 
 //-------------------------------- Class for Game Items ----------------------------------------
 class Item {
@@ -48,10 +43,10 @@ public:
     int magPowModifier = 0;                                         // Magic power modifier
     std::string restriction;                                        // Restriction on who can use the item
 
-// Default constructor
+    // Default constructor
     Item();                                                         // Declares the default constructor
 
-//Parameterized constructor to initialize an Item object
+    // Parameterized constructor to initialize an Item object
     Item(std::string itemName,                                      // Set the item's name
          std::string itemDescription,                               // Set the item's description
          ItemType itemClassification,                               // Set the item's classification (e.g., WEAPON, CLOTHING)
@@ -64,7 +59,6 @@ public:
          int sneakPen = 0,                                          // Set sneak penalty (default 0)
          int magPowMod = 0,                                         // Set magic power modifier (default 0)
          std::string itemRestriction = "");                         // Set usage restrictions (e.g., class-specific, default none)
-
 
     // Function Declarations
     int calculateDamage(int distance);                              // Function to calculate damage based on combat type
@@ -92,7 +86,7 @@ public:
 
     // Function Declarations
     void rollStats();                                               // Roll stats based on the character class
-    void finalizeStats();                                           // function for rolling and finalizing stats
+    void finalizeStats();                                           // Function for rolling and finalizing stats
     void showStats() const;                                         // Display player's stats
     void showEquippedItems() const;                                 // Display equipped items
 
@@ -106,15 +100,14 @@ private:
     int roll(int minValue, int maxValue);                           // Function to roll a stat within a given range
 };
 
-//++++++++++++++++++++++++++++ Function prototypes +++++++++++++++++++++++++++++++++++++++++++++
-
+//++++++++++++++++++++++++++++ Function prototypes ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void printStrobingText(const std::string& text, int duration);      // Function to print strobing text effect for title
 bool confirmClassChoice();                                          // Function to confirm player's class choice
-bool equipItem(Player& player, int itemIndex);                      // Function to equip an item from player's inventory
-bool unequipItem(Player& player, int itemIndex);                    // Function to unequip an item from player's equipped items
 void initializeGameItems(std::vector<Item>& gameItems);             // Function to initialize game items
 void displayClasses(Player& player);                                // Function to display available character classes and handle selection
 void runGameLoop(Player& player);                                   // Function to run the main game loop
 void displayItemDetails(const Item& item);                          // Function to display item details
-std::string getPlayerName();                                        // Function to get the player's name
+void displayInventory(const Player& player);                       // Function to display player inventory
+std::string getPlayerName();                                        // Function to get the player's name                           
+
 #endif // GAMEHEADERELI_H
