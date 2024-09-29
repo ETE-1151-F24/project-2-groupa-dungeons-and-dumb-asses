@@ -13,6 +13,7 @@
 #include <algorithm>                                                // Required for using std::max
 #include <cstdlib>                                                  // Required for random number generation (rand())
 #include <ctime>                                                    // Required for seeding random number generation (time)
+#include <iomanip>
 
 //+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount };  // Defines character stats
