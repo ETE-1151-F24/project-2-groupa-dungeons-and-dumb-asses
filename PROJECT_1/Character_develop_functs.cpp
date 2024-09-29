@@ -122,23 +122,24 @@ void showClassDescription(int classChoice) {
 }
 
 // -----------------------------------------------Function to confirm the player's class choice
+// -----------------------------------------------Function to confirm the player's class choice
 bool confirmClassChoice() {
-    std::string confirmation;                                                               // Variable to store player yes/no confirmation
-    while (true) {                                                                          // Loop until a valid input is given
+    std::string confirmation;                                                                       // Variable to store player yes/no confirmation
+    while (true) {                                                                                  // Loop until a valid input is given
         std::cout << "Does this sound like a class you want to belong to? (yes/no): ";
-        std::cin >> confirmation;                                                           // Record the player's confirmation choice
-        (std::transform(confirmation.begin(), confirmation.end(), confirmation.begin(), ::tolower)); //Use `std::transform` to convert the entire string to lowercase in a more efficient and readable way.
+        std::cin >> confirmation;                                                                   // Record the player's confirmation choice
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                         // Clear the input buffer to prevent leftover newlines
+        std::transform(confirmation.begin(), confirmation.end(), confirmation.begin(), ::tolower);  // Convert string to lowercase
 
-        if (confirmation == "yes") {                                                        // If player confirms with "yes"
-            return true;                                                                    // Return true, indicating confirmation
-        } else if (confirmation == "no") {                                                  // If player declines with "no"
-            return false;                                                                   // Return false, indicating no confirmation
+        if (confirmation == "yes") {                                                                // If player confirms with "yes"
+            return true;                                                                            // Return true, indicating confirmation
+        } else if (confirmation == "no") {                                                          // If player declines with "no"
+            return false;                                                                           // Return false, indicating no confirmation
         } else {
-            std::cout << "Invalid input. Please enter 'yes' or 'no'.\n";                    // Error message for invalid input
+            std::cout << "Invalid input. Please enter 'yes' or 'no'.\n";                            // Error message for invalid input
         }
     }
 }
-
 // ---------------------------------Function to display available classes, allow selection, and handle confirmation
 void displayClasses(Player& player) {
     std::string playerInput;                                                            // Variable storing player input for class selection

@@ -37,22 +37,23 @@ public:
     std::string ability;                                // Special ability description
     ItemType classification;                            // Classification of the item (MAGICAL, CLOTHING, WEAPON)
     CombatType combatType;                              // Combat type for weapons (MELEE or RANGED)
-    int statModifier[StatCount];                        // Stat modifiers for the item
+    int statModifier[StatCount];                        // Stat modifiers for the item (Strength, Dexterity, Intelligence, Wisdom, Constitution)
     int minDamage = 0;                                  // Minimum damage for weapons
     int maxDamage = 0;                                  // Maximum damage for weapons
     int rangeModifier = 0;                              // Range modifier for ranged weapons
     int sneakPenalty = 0;                               // Penalty to sneak when using the item
+    int magPowModifier = 0;                             // Magic power modifier
     std::string restriction;                            // Any restriction on who can use the item
 
     // Default constructor
     Item();                                             // Declares the default constructor
 
-public:
     // Parameterized constructor declaration
     Item(std::string itemName, std::string itemDescription, ItemType itemClassification,
          CombatType itemCombatType, std::array<int, StatCount> modifier, std::string itemAbility,
-         int minDmg = 0, int maxDmg = 0, int rangeMod = 0, int sneakPen = 0, std::string itemRestriction = "");
-  
+         int minDmg = 0, int maxDmg = 0, int rangeMod = 0, int sneakPen = 0, int magPowMod = 0, std::string itemRestriction = "");
+
+    // Other member functions (if needed) can go here
     // Function to calculate damage based on combat type
     int calculateDamage(int distance);                  // Declares function to calculate item damage
 

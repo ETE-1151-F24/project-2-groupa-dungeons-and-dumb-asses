@@ -45,6 +45,8 @@ void printStrobingText(const std::string& text, int duration) {
 //----------------------------------------------------------------------------------------------
 
 
+
+
 //---------------------------------------------- FUNCTION FOR RUNNING MAIN GAME LOOP ---------------------------
 
 void runGameLoop(Player& player) {
@@ -54,10 +56,15 @@ void runGameLoop(Player& player) {
         std::cout << "\nEnter a command (equip / unequip / inventory / stats / quit): ";            // Display available commands
         std::getline(std::cin, command);                                                            // Get command from the player
 
-        command.erase(0, command.find_first_not_of(" \t\n\r\f\v"));                                 // Trim leading ****whitespace to avoid errors
-        command.erase(command.find_last_not_of(" \t\n\r\f\v") + 1);                                 // Trim trailing ****whitespace to avoid errors
+        // Trim leading and trailing whitespace
+        command.erase(0, command.find_first_not_of(" \t\n\r\f\v"));                                 // Trim leading whitespace
+        command.erase(command.find_last_not_of(" \t\n\r\f\v") + 1);                                 // Trim trailing whitespace
 
-        std::transform(command.begin(), command.end(), command.begin(), ::tolower);                 // Convert command to lowercase for case-insensitivity
+        // Convert the command to lowercase for case insensitivity
+        std::transform(command.begin(), command.end(), command.begin(), ::tolower);
+
+        // Debug output to verify the command
+        std::cout << "DEBUG: Command entered: '" << command << "'\n";                               // Debug output to verify command input
 
         if (command == "equip") {                                                                   // If player wants to equip an item
             int itemChoice;
@@ -73,7 +80,7 @@ void runGameLoop(Player& player) {
             }
 
             equipItem(player, itemChoice - 1);                                                      // Equip selected item (adjust for zero-based index)
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     // Clear the input buffer
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     // Clear the input buffer to remove leftover newline character
 
         } else if (command == "unequip") {                                                          // If player wants to unequip an item
             int itemChoice;
@@ -89,7 +96,7 @@ void runGameLoop(Player& player) {
             }
 
             unequipItem(player, itemChoice - 1);                                                    // Unequip the selected item (adjust for zero-based index)
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     // Clear the input buffer
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                     // Clear the input buffer to remove leftover newline character
 
         } else if (command == "inventory") {                                                        // If player wants to view their inventory
             if (player.inventory.empty()) {                                                         // Handle empty inventory case
@@ -113,6 +120,8 @@ void runGameLoop(Player& player) {
     }
 }
 //-----------------------------------------------------------------
+
+
 
 
 //--------------------------clarification of the ****whitespace cleaning syntax-----------------------
