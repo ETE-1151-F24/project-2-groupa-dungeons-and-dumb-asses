@@ -3,6 +3,19 @@
 #include "GameHeaderEli.h"
 #include <iostream>
 
+//------------------------------- FUNCTION TO DISPLAY PLAYER INVENTORY -------------------------------------------
+void displayInventory(const Player& player) {
+    std::cout << "\n--- Your Inventory ---\n";
+
+    for (size_t i = 0; i < player.inventory.size(); ++i) {
+        const Item& item = player.inventory[i];
+        std::string status = item.isPlaceholder ? "(equipped)" : "In your Sakky";
+        std::cout << (i + 1) << ". " << item.name << " - " << status << "\n";
+    }
+}
+
+
+
 //-------------------------------- FUNCTION TO DISPLAY ITEM DESCRIPTIONS -----------------------------------
 void displayItemDetails(const Item& item) {
     std::cout << "Item: " << item.name << "\nDescription: " << item.description << "\nAbility: " << item.ability << "\n"; // Display item details
@@ -45,67 +58,71 @@ bool Player::isEquipped(const Item& item) const {                               
     }
     return false;                                                                           // rtrn false if Item is not equipped
 }
-//------------------------------- FUNCTION TO EQUIP AN ITEM -----------------------------------------------
-// Function to equip an item from inventory
+//-------------------------------- FUNCTION TO EQUIP AN ITEM -----------------------------------------------
 bool equipItem(Player& player, int itemIndex) {
-
     // Step 1: Validate item index
-    if (itemIndex < 0 || itemIndex >= static_cast<int>(player.inventory.size())) { // Check if item index is within inventory bounds
-        std::cout << "Invalid item selection.\n";           // Display error for invalid index
-        return false;                                       // Return false indicating the equip process failed
+    if (itemIndex < 0 || itemIndex >= static_cast<int>(player.inventory.size())) {
+        std::cout << "Invalid item selection.\n";
+        return false;
     }
 
     // Step 2: Get the item to equip
-    Item itemToEquip = player.inventory[itemIndex];         // Retrieve the item from the player's inventory using the index provided
+    Item& itemToEquip = player.inventory[itemIndex];
 
     // Step 3: Check if the item is already equipped
-    if (player.isEquipped(itemToEquip)) {                   // Use Player's `isEquipped` method to verify if the item is already equipped
-        std::cout << itemToEquip.name << " is already equipped.\n"; // Notify the player if the item is already equipped
-        return false;                                       // Return false to indicate no action taken
+    if (player.isEquipped(itemToEquip)) {
+        std::cout << itemToEquip.name << " is already equipped.\n";
+        return false;
     }
 
-    // Step 4: Remove the item from the inventory
-    player.inventory.erase(player.inventory.begin() + itemIndex); // Remove the item from inventory using the vector's `erase` method
+    // Step 4: Mark the item in the inventory as a placeholder
+    itemToEquip.isPlaceholder = true;
 
     // Step 5: Add the item to equipped items
-    player.equippedItems.push_back(itemToEquip);            // Add the item to the `equippedItems` vector
-    std::cout << "Equipped " << itemToEquip.name << "!\n";  // Inform the player that the item was successfully equipped
+    player.equippedItems.push_back(itemToEquip);
+    std::cout << "Equipped " << itemToEquip.name << "!\n";
 
     // Step 6: Update player stats based on item modifiers
-    for (int i = 0; i < StatCount; ++i) {                   // Iterate through all stats (Strength, Dexterity, etc.)
-        player.stats[i] += itemToEquip.statModifier[i];     // Add the stat modifier from the item to the player's stats
+    for (int i = 0; i < StatCount; ++i) {
+        player.stats[i] += itemToEquip.statModifier[i];
     }
 
-    return true;                                            // Return true to indicate success
+    return true;
 }
 
+
 //-------------------------------- FUNCTION TO UNEQUIP AN ITEM --------------------------------------------
-// Function to unequip an item from equipped items
 bool unequipItem(Player& player, int itemIndex) {
-    
     // Step 1: Validate item index
-    if (itemIndex < 0 || itemIndex >= static_cast<int>(player.equippedItems.size())) { // Check if item index is valid
-        std::cout << "Invalid item selection.\n";         // Display error for invalid index
-        return false;                                     // Return false indicating the unequip process failed
+    if (itemIndex < 0 || itemIndex >= static_cast<int>(player.equippedItems.size())) {
+        std::cout << "Invalid item selection.\n";
+        return false;
     }
 
     // Step 2: Get the item to unequip
-    Item itemToUnequip = player.equippedItems[itemIndex]; // Retrieve the item from the equipped items
+    Item itemToUnequip = player.equippedItems[itemIndex];
 
     // Step 3: Remove the item from equipped items
-    player.equippedItems.erase(player.equippedItems.begin() + itemIndex); // Remove item from `equippedItems` using vector's `erase` method
+    player.equippedItems.erase(player.equippedItems.begin() + itemIndex);
 
-    // Step 4: Add the item back to inventory
-    player.inventory.push_back(itemToUnequip);            // Return the item to the player's inventory
-    std::cout << "Unequipped " << itemToUnequip.name << "!\n"; // Inform the player that the item was successfully unequipped
+    // Step 4: Find the placeholder in the inventory and replace it
+    for (auto& item : player.inventory) {
+        if (item.name == itemToUnequip.name && item.isPlaceholder) {
+            item.isPlaceholder = false;  // Mark it as no longer a placeholder
+            break;
+        }
+    }
+    std::cout << "Unequipped " << itemToUnequip.name << "!\n";
 
     // Step 5: Update player stats by removing item modifiers
-    for (int i = 0; i < StatCount; ++i) {                 // Iterate through all stats (Strength, Dexterity, etc.)
-        player.stats[i] -= itemToUnequip.statModifier[i]; // Subtract the stat modifier from the player's stats
+    for (int i = 0; i < StatCount; ++i) {
+        player.stats[i] -= itemToUnequip.statModifier[i];
     }
 
-    return true;                                          // Return true to indicate success
+    return true;
 }
+
+
 
 //------------------------------- FUNCTION TO CHECK FOR WEAPON -------------------------------------------
 void checkForWeapon(Player& player) {

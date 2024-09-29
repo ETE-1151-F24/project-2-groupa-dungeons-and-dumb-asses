@@ -6,14 +6,14 @@
 #include <vector>                                      // Required for using std::vector to store dynamic data collections
 #include <array>                                       // Required for using std::array to handle fixed-size stat arrays
 #include <iostream>                                    // Required for input and output operations (cin, cout)
-#include <string>                                  // Include string class for player names, commands, etc.
-#include <chrono>                                  // Include chrono for time-based operations
-#include <thread>                                  // Include thread for pauses in strobing effect
-#include <limits>                                  // Include limits for clearing input buffer
-#include <cctype>                                  // Include cctype for checking digit characters
-#include <algorithm>                               // Required for std::max to ensure minimum damage of 1
-#include <cstdlib>                                 // Required for random number generation (rand())
-#include <ctime>                                   // Required for seeding random number generation (time)
+#include <string>                                      // Include string class for player names, commands, etc.
+#include <chrono>                                      // Include chrono for time-based operations
+#include <thread>                                      // Include thread for pauses in strobing effect
+#include <limits>                                      // Include limits for clearing input buffer
+#include <cctype>                                      // Include cctype for checking digit characters
+#include <algorithm>                                   // Required for std::max to ensure minimum damage of 1
+#include <cstdlib>                                     // Required for random number generation (rand())
+#include <ctime>                                       // Required for seeding random number generation (time)
 
 //-------------------------DECLARE GLOBAL VARIABLES----------
 // Enum for character stats
@@ -44,6 +44,7 @@ public:
     int sneakPenalty = 0;                               // Penalty to sneak when using the item
     int magPowModifier = 0;                             // Magic power modifier
     std::string restriction;                            // Any restriction on who can use the item
+    bool isPlaceholder = false;                         // New attribute to determine if the item is a placeholder
 
     // Default constructor
     Item();                                             // Declares the default constructor
@@ -53,8 +54,10 @@ public:
          CombatType itemCombatType, std::array<int, StatCount> modifier, std::string itemAbility,
          int minDmg = 0, int maxDmg = 0, int rangeMod = 0, int sneakPen = 0, int magPowMod = 0, std::string itemRestriction = "");
 
+    // Function to mark the item as a placeholder
+    void markAsPlaceholder();
+
     // Other member functions (if needed) can go here
-    // Function to calculate damage based on combat type
     int calculateDamage(int distance);                  // Declares function to calculate item damage
 
 private:
@@ -62,6 +65,7 @@ private:
     int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage); // Calculates damage for ranged weapons
     int calculateMeleeDamage();                         // Calculates damage for melee weapons
 };
+
 //-----------------------------------------Declaring Class for character development----------------------------------------------------
 class Player {
 public:
@@ -76,27 +80,20 @@ public:
 
     Player(std::string playerName, std::string charClass, int startLevel = 1);
 
-
-// Stat methods
+    // Stat methods
     void rollStats();                                  // Roll stats based on the character class
     void finalizeStats();                              // Method for rolling and finalizing stats
     void showStats() const;                            // Display player's stats
     void showEquippedItems() const;                    // Display equipped items 
 
-// Methods for equipment management
+    // Methods for equipment management
     bool isEquipped(const Item& item) const;               // Checks if an item is equipped
     void equipItem(Item& item);                            // Equip an item
     void unequipItem(Item& item);                          // Unequip an item
     bool hasEquippedWeapon() const;                        // Checks if a weapon is currently equipped
 
-
-
-
 private:
-
     int roll(int minValue, int maxValue);              // Method to roll a stat between a given range
-
-
 };
 
 //-------------------------DECLARE FUNCTION PROTOTYPES----------

@@ -1,7 +1,6 @@
 // item_constructors_dmg_shifts.cpp
 #include "GameHeaderEli.h"
 
-
 // Default constructor for Item
 Item::Item()
     : name(""),                                // Set item name to an empty string by default
@@ -14,12 +13,12 @@ Item::Item()
       sneakPenalty(0),                         // Set sneak penalty to 0 by default
       magPowModifier(0),                       // Set magic power modifier to 0 by default
       ability(""),                             // Set ability description to an empty string by default
-      restriction("") {                        // Set restriction to an empty string by default
+      restriction(""),                         // Set restriction to an empty string by default
+      isPlaceholder(false) {                   // Set isPlaceholder to false by default
 
     std::fill(std::begin(statModifier), std::end(statModifier), 0); // Set all stat modifiers to 0 by default
-}  // Removed the semicolon after the closing brace
+}
 
-//---------------------------------------Parameterized constructor for Item------------------------------------------
 // Parameterized constructor for Item
 Item::Item(std::string itemName, std::string itemDescription, ItemType itemClassification,
            CombatType itemCombatType, std::array<int, StatCount> modifier, std::string itemAbility,
@@ -34,12 +33,13 @@ Item::Item(std::string itemName, std::string itemDescription, ItemType itemClass
       sneakPenalty(sneakPen),                        // Set penalty to sneak ability
       magPowModifier(magPowMod),                     // Set magic power modifier
       ability(itemAbility),                          // Set special ability description
-      restriction(itemRestriction) {                 // Set any restrictions on who can use the item
+      restriction(itemRestriction),                  // Set any restrictions on who can use the item
+      isPlaceholder(false) {                         // Set isPlaceholder to false by default
 
     std::copy(modifier.begin(), modifier.end(), statModifier);  // Copy stat modifiers from provided array
-}  // Removed the semicolon after the closing brace
-// -------------------------------------Function to calculate damage based on combat type---------------------------
+}
 
+// Function to calculate damage based on combat type
 int Item::calculateDamage(int distance) {
     if (combatType == RANGED) {
         return calculateRangedDamage(distance, rangeModifier, minDamage, maxDamage); // Call ranged damage calculation
@@ -49,32 +49,36 @@ int Item::calculateDamage(int distance) {
     return 0;                            // Default return [melee] if combat type is not applicable
 }
 
-//----------------------------Private function to calculate damage for ranged weapons based on distance
+// Private function to calculate damage for ranged weapons based on distance
 int Item::calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage) {
-
     int damage = 0;                       // Initialize damage to 0
 
     if (distance == 1) {
-//If the target is right next to the user, reduce the damage range by 1
+        // If the target is right next to the user, reduce the damage range by 1
         damage = std::max((std::rand() % (maxDamage - minDamage + 1)) + minDamage - 1, 1);
-                                                                                        // Reduce min and max by 1, ensure minimum is 1
+        // Reduce min and max by 1, ensure minimum is 1
     } else if (distance <= maxRange) {
-                                                                                        //If the target is within regular range, 
-                                                                                        //roll for damage between [minDamage] and [maxDamage]
-        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;               //Roll damage within normal range
+        // If the target is within regular range, roll for damage between [minDamage] and [maxDamage]
+        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;  // Roll damage within normal range
     } else {
-//If the target is beyond the range max
-        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;               //Start with damage within normal range
-        damage -= (distance - maxRange);                                                //Reduce damage for each square beyond max range
-        damage = std::max(damage, 1);                                                   //Ensure minimum damage of 1
+        // If the target is beyond the range max
+        damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;  // Start with damage within normal range
+        damage -= (distance - maxRange);  // Reduce damage for each square beyond max range
+        damage = std::max(damage, 1);     // Ensure minimum damage of 1
     }
 
-    return damage;                                                                      // Return calculated damage
+    return damage;  // Return calculated damage
 }
 
-//-------------------------------Private function to calculate damage for melee weapons (simplified logic)----------------
+// Private function to calculate damage for melee weapons (simplified logic)
 int Item::calculateMeleeDamage() {
-
     // Simple melee damage calculation between minDamage and maxDamage
-    return (std::rand() % (maxDamage - minDamage + 1)) + minDamage; // Roll damage within min and max range
+    return (std::rand() % (maxDamage - minDamage + 1)) + minDamage;  // Roll damage within min and max range
+}
+
+// Function to mark an item as a placeholder
+void Item::markAsPlaceholder() {
+    isPlaceholder = true;  // Set the isPlaceholder attribute to true
+    name = "Placeholder: " + name + " (equipped)";  // Update the name to reflect its placeholder status
+    description = "This item is currently equipped and cannot be used.";  // Update the description to reflect placeholder status
 }
