@@ -3,7 +3,15 @@
 #include <string>                                                       // Include string library to handle string inputs
 using namespace std;                                                    // Use the standard namespace
 
-string reverseDigits(string number);                                    // Function prototype declaration for reverseDigits
+string reverseDigits(string number) {                                   // Declare function reverseDigits with string argument
+    string reversed = "";                                               // Declare and initialize reversed as an empty string
+    for (int i = number.length() - 1; i >= 0; --i) {                    // Loop from the last character to the first
+        reversed += number[i];                                          // Append each character to the reversed string
+    }
+    return reversed;                                                    // Return the reversed string
+}
+
+
 
 int main() {                                                            // Start of the main function
     string input;                                                       // Declare string variable for user input
@@ -13,8 +21,14 @@ int main() {                                                            // Start
         try {                                                           // Try block to handle string to int conversion
             int num = stoi(input);                                      // Convert string input to integer to validate range
             if (num > 0 && num <= 9999) {                               // Check if the number is within the valid range
-                cout << "The number with its digits reversed is: " 
-                     << reverseDigits(input) << endl;                   // Output the reversed number as a string to preserve zeros
+                string reversed = reverseDigits(input);                 // Get the reversed string
+                try {                                                   // Nested try block to check if reversed string is a valid integer
+                    int reversedNum = stoi(reversed);                   // Attempt to convert the reversed string to an integer
+                    cout << "The number with its digits reversed is: " 
+                         << reversedNum << endl;                        // Output the reversed integer
+                } catch (invalid_argument&) {                           // Catch any invalid reversed number
+                    cout << "Error: The reversed number is not a valid integer." << endl;  // Output error if reversed string can't be converted
+                }
             } else {                                                    // Else case for invalid range input
                 cout << "Invalid input. Please enter a number between 1 and 9999." << endl; // Error message
             }
@@ -34,13 +48,6 @@ int main() {                                                            // Start
     return 0;                                                           // End of the main function, return 0
 }
 
-string reverseDigits(string number) {                                   // Declare function reverseDigits with string argument
-    string reversed = "";                                               // Declare and initialize reversed as an empty string
-    for (int i = number.length() - 1; i >= 0; --i) {                    // Loop from the last character to the first
-        reversed += number[i];                                          // Append each character to the reversed string
-    }
-    return reversed;                                                    // Return the reversed string
-}
 
 
 
