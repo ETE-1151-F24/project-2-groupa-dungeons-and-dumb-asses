@@ -41,3 +41,13 @@ int main() {
 
     return 0;                                                           // Exit the program
 }
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    J:The only major nitpick that I have is that the program is lowkey hard to follow, only becuase I feel like 
+    im playing a scavenger hunt looking for each function, so I feel like when a fuction is used, there should should be a comment to the exact location
+    aka for the function on line '40: runGameLoop(player);' with in the comment add its location 
+    (ex. Located in Game_functions_eli.cpp on line 43) that way the program is easier to follow and is not a search for every function that is used
+    cause my adhd monkey brain may follow the code, but lose track of what I was trying to do whilst going through all the functions,
+    I feel that it will create better organization throughout the program and would be easier for others who are seeing it for the first time
+    to be able to not only understand the program but follow the path it is taking in a more effecient manner.
+*/
