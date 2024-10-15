@@ -50,4 +50,9 @@ int main() {
     cause my adhd monkey brain may follow the code, but lose track of what I was trying to do whilst going through all the functions,
     I feel that it will create better organization throughout the program and would be easier for others who are seeing it for the first time
     to be able to not only understand the program but follow the path it is taking in a more effecient manner.
+    
+    
+     test
+    ajbfg
+    fna
 */
