@@ -4,10 +4,20 @@
 
 
 //----------------------------------Helper function to add an item to the game
-void addItem(std::vector<Item>& gameItems, const std::string& itemName, const std::string& itemDescription,
-             ItemType classification, CombatType combatType, const std::array<int, StatCount>& statModifiers,
-             const std::string& abilityDescription, int minDamage, int maxDamage, int rangeModifier,
-             int sneakPenalty, int magicPowerModifier, const std::string& restriction) {
+void addItem(std::vector<Item>& gameItems, 
+                const std::string& itemName, 
+                const std::string& itemDescription,
+                ItemType classification, 
+                CombatType combatType, 
+                const std::array<int, 
+                StatCount>& statModifiers,
+             const std::string& abilityDescription, 
+             int minDamage, 
+             int maxDamage, 
+             int rangeModifier,
+             int sneakPenalty, 
+             int magicPowerModifier, 
+             const std::string& restriction) {
     
     Item newItem(itemName, itemDescription, classification, combatType, statModifiers,
                  abilityDescription, minDamage, maxDamage, rangeModifier,

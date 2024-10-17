@@ -45,10 +45,11 @@ double calculateExponential(int numTerms, double x) {
 
 int main() {
     int choice;                                              // Variable to store the user's menu choice
+    double a = 0, b = 0, c = 0;                              // Initialize coefficients a, b, and c in main
 
     while (true) {                                           // Sentinel loop to keep the program running until the user exits
         cout << "Hello! What would you like to do today?"     // Prompt the user with a greeting message
-             << endl;                                        
+             << endl;                                      
         cout << "1. Solve a quadratic equation" << endl;     // Menu option 1: Solve a quadratic equation
         cout << "2. Approximate e^x" << endl;                // Menu option 2: Approximate e^x
         cout << "3. Exit" << endl;                           // Menu option 3: Exit the program
@@ -57,8 +58,7 @@ int main() {
 
         if (choice == 1) {                                   // If user chooses option 1
             // Quadratic equation solver
-            double a, b, c;                                  // Variables to store coefficients of the quadratic equation
-            cout << "Enter coefficients a, b, and c: "<<endl;      // Prompt user to enter the coefficients
+            cout << "Enter coefficients a, b, and c: " << endl;  // Prompt user to enter the coefficients
             cin >> a >> b >> c;                              // Read the coefficients from input
             findRoots(a, b, c);                              // Call the findRoots function to solve the equation
             
