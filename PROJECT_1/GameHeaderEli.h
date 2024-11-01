@@ -62,11 +62,11 @@ public:
          std::string itemRestriction = "");                         // Set usage restrictions (e.g., class-specific, default none)
 
     // Function Declarations
-    int calculateDamage(int distance);                              // Function to calculate damage based on combat type
+    int calculateDamage(int distance);                              // calculate damage based on combat type
 
 private:
-    int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);  // Function for ranged damage calculation
-    int calculateMeleeDamage();                                     // Function for melee damage calculation
+    int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);  // ranged damage calculation
+    int calculateMeleeDamage();                                                           // melee damage calculation
 };
 
 //-------------------------------- Class for Player Development --------------------------------
@@ -86,8 +86,8 @@ public:
     Player(std::string playerName, std::string charClass, int startLevel = 1);
 
     // Function Declarations
-    void rollStats();                                               // Roll stats based on the character class
-    void finalizeStats();                                           // Function for rolling and finalizing stats
+    void rollStats();                                               // Roll stats based on the character class @ Character_develop_functs.cpp--LINE 133
+    void finalizeStats();                                           // rolling and finalizing stats
     void showStats() const;                                         // Display player's stats
     void showEquippedItems() const;                                 // Display equipped items
 
@@ -98,17 +98,18 @@ public:
     bool hasEquippedWeapon() const;                                 // Checks if a weapon is currently equipped
 
 private:
-    int roll(int minValue, int maxValue);                           // Function to roll a stat within a given range
+    int roll(int minValue, int maxValue);                           // roll a stat within a given range                 @ Character_develop_functs.cpp-  -LINE 181
 };
 
 //++++++++++++++++++++++++++++ Function prototypes ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void printStrobingText(const std::string& text, int duration);      // Function to print strobing text effect for title
-bool confirmClassChoice();                                          // Function to confirm player's class choice
-void initializeGameItems(std::vector<Item>& gameItems);             // Function to initialize game items
-void displayClasses(Player& player);                                // Function to display available character classes and handle selection
-void runGameLoop(Player& player);                                   // Function to run the main game loop
-void displayItemDetails(const Item& item);                          // Function to display item details
-void displayInventory(const Player& player);                       // Function to display player inventory
-std::string getPlayerName();                                        // Function to get the player's name                           
+void printStrobingText(const std::string& text, int duration);      // print strobing text effect for title             @ Game_functions_eli.cpp --     --LINE 10
+void initializeGameItems(std::vector<Item>& gameItems);             // initialize game items                            @ gameItems.cpp --              --LINE 19
+void displayClasses(Player& player);                                // display character classes and handle selection   @ Character_develop_functs.cpp -- LINE 71
+void runGameLoop(Player& player);                                   // run the main game loop                           @ Game_functions_eli.cpp--      --LINE 44
+void displayItemDetails(const Item& item);                          // display item details                             @ Game_inventory_functions.cpp----LINE 81
+void displayInventory(const Player& player);                        // display player inventory                         @ Game_inventory_functions.cpp----LINE 5
+std::string getPlayerName();                                        // get the player's name                            @ Character_develop_functs.cpp -- LINE 31
+                        
 
 #endif // GAMEHEADERELI_H
+  

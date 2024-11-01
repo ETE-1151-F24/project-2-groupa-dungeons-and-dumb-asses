@@ -84,7 +84,8 @@ void displayClasses(Player& player) {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (classChoice >= 1 && classChoice <= 5) {
-            showClassDescription(classChoice);  // Display the class description based on player choice
+            showClassDescription(classChoice);  //## calling LINE 45 above  ## 
+            // Display the class description based on player choice
 
             // Confirm class choice
             std::string confirmation;
