@@ -28,6 +28,7 @@ summary (single spaced) explaining what you learned in this lab.*/
 
 
 #include<iostream>
+#include<limits>
 using namespace std;                    //this makes it the [std::] naming scheme so i dont have to type it over and over
 
 int main() {
@@ -46,6 +47,9 @@ if (number1 % number2 != 0){                                                    
         cout << number1 << " is a multiple of " << number2 << endl;                        //state that IS MULTIPLE
         }
 
+    cout << "Press Enter to exit..."; 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clears the input buffer to ignore leftover characters
+    cin.get(); // Waits for the Enter key press to exit the program
         return 0;                   //returns the value of 0 if the program completes correctly                   
 
 }

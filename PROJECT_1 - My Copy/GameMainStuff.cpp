@@ -27,8 +27,8 @@ int main() {
     std::cout << "Collect shiny crap, survive questionable life choices, and try not to die... too much.\n\n";  // Set expectations
 
     // -------------------- PLAYER SETUP --------------------------
-    Player player(getPlayerName(), "");                                 // Create player w/default class and their name
-    displayClasses(player);                                             // Prompt player to choose their character class
+    Player player(getPlayerName(), "");                                 //@Character_develop_functs.cpp LINE 7-14 // Create player w/default class and their name
+    displayClasses(player);                                             //// Prompt player to choose their character class
 
     // -------------------- INITIALIZE GAME ITEMS --------------------------
     std::vector<Item> gameItems;                                        // Create a vector to store game items

@@ -40,24 +40,26 @@ Item::Item(std::string itemName, std::string itemFlavorDescription, ItemType ite
 // Function to calculate damage based on combat type
 int Item::calculateDamage(int distance) {
     if (combatType == RANGED) {
-        return calculateRangedDamage(distance, rangeModifier, minDamage, maxDamage);        // Call ranged damage calculation
+        return calculateRangedDamage(distance, rangeModifier, minDamage, maxDamage);  //@LINE 51      // Call ranged damage calculation
     } else if (combatType == MELEE) {
-        return calculateMeleeDamage();                                                      // Call melee damage calculation
+        return calculateMeleeDamage();                                                //@LINE 70      // Call melee damage calculation
     }
     return 0;                                                                               // Default return 0 if combat type N/A
 }
 
-// Private function to calculate damage for ranged weapons based on distance
+// function to calculate damage for ranged weapons based on distance
 int Item::calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage) {
     int damage = 0;                                                                         // Initialize damage to 0
 
     if (distance == 1) {
         damage = std::max((std::rand() % (maxDamage - minDamage + 1)) + minDamage - 1, 1);  // Reduce min and max by 1, ensure minimum is 1
+    
     } else if (distance <= maxRange) {
         damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;                   // Roll damage within normal range
+   
     } else {
         damage = (std::rand() % (maxDamage - minDamage + 1)) + minDamage;                   // Start with damage within normal range
-        damage -= (distance - maxRange);                                                    // Reduce damage for each square beyond max range
+        damage -= (distance - maxRange);                                                    // Reduce damage each square beyond max range
         damage = std::max(damage, 1);                                                       // Ensure minimum damage of 1
     }
 

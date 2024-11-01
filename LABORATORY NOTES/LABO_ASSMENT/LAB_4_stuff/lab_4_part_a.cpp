@@ -9,8 +9,9 @@ int main() {
     while (choice == 'y' || choice == 'Y') {
         // Input coefficient a
         std::cout << "Enter coefficient [a] (non-zero): ";
-        while (!(std::cin >> a) || a == 0) {
-            std::cout << "Invalid input. Coefficient 'a' must be a non-zero real number. Try again: ";
+        while (!(std::cin >> a) || a == 0) {    // While loop continues if the input is either invalid (e.g., non-numeric)
+                                                // or the entered value of 'a' is zero.
+            std::cout << "Invalid. Coef 'a' must non-0 real.";
             std::cin.clear();  // Clear the error flag
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Ignore invalid input
         }

@@ -63,8 +63,6 @@ public:
 
     // Function Declarations
     int calculateDamage(int distance);                              // Function to calculate damage based on combat type
-
-private:
     int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);  // Function for ranged damage calculation
     int calculateMeleeDamage();                                     // Function for melee damage calculation
 };
@@ -104,11 +102,12 @@ private:
 //++++++++++++++++++++++++++++ Function prototypes ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void printStrobingText(const std::string& text, int duration);      // Function to print strobing text effect for title
 bool confirmClassChoice();                                          // Function to confirm player's class choice
-void initializeGameItems(std::vector<Item>& gameItems);             // Function to initialize game items
+void initializeGameItems(std::vector<Item>& gameItems);             // Function to initialize game items to start in inventory
+void initializeAdventureItems(std::vector<Item>& adventureItems);    // initializes items found while adventuring
 void displayClasses(Player& player);                                // Function to display available character classes and handle selection
 void runGameLoop(Player& player);                                   // Function to run the main game loop
 void displayItemDetails(const Item& item);                          // Function to display item details
-void displayInventory(const Player& player);                       // Function to display player inventory
+void displayInventory(Player& player);                       // Function to display player inventory
 std::string getPlayerName();                                        // Function to get the player's name                           
 
 #endif // GAMEHEADERELI_H

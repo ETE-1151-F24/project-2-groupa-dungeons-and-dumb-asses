@@ -63,8 +63,6 @@ public:
 
     // Function Declarations
     int calculateDamage(int distance);                              // Function to calculate damage based on combat type
-
-private:
     int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);  // Function for ranged damage calculation
     int calculateMeleeDamage();                                     // Function for melee damage calculation
 };

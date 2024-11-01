@@ -9,7 +9,7 @@ void displayInventory(Player& player) {
 
     for (size_t i = 0; i < player.inventory.size(); ++i) {
         const Item& item = player.inventory[i];                                 // Access current item in inventory
-        std::string status = player.isEquipped(item) ? "(equipped)"             // Set status to "(equipped)" if item is equipped
+        std::string status = player.isEquipped(item) ? "(equipped)"             //@ this file LINES 115-122  // Set status to "(equipped)" if item is equipped
                                                      : "In your Sakky";         // Otherwise, set status to "In your Sakky"
         
         // Calculate remaining space for alignment
@@ -34,7 +34,7 @@ void displayInventory(Player& player) {
 
         int itemChoice;
         try {
-            itemChoice = std::stoi(response) - 1;                                             // Convert response to an index
+            itemChoice = std::stoi(response) - 1;                                             // Convert response to an index int
         } catch (std::exception& e) {
             std::cout << "Invalid input. Please enter a valid number.\n";                     // Handle invalid input
             continue;                                                                         // Restart loop
@@ -51,7 +51,7 @@ void displayInventory(Player& player) {
         while (true) {
             std::cout << "\nWhat would you like to do with '" << selectedItem.name << "'?\n"; // Prompt actions for the selected item
             std::cout << "1. Read Description\n";                                  
-            if (player.isEquipped(selectedItem)) {                                            // If item is equipped
+            if (player.isEquipped(selectedItem)) {                                        //@ this file LINES 115-122    // If item is equipped
                 std::cout << "2. Unequip Item\n";                                             // Provide unequip option
             } else {                                                                          // If item is not equipped
                 std::cout << "2. Equip Item\n";                                               // Provide equip option
@@ -60,12 +60,12 @@ void displayInventory(Player& player) {
             std::getline(std::cin, itemResponse);                                             // Get user's choice
 
             if (itemResponse == "1") {                                                        // If user chooses to read description
-                displayItemDetails(selectedItem);                                             // Display item details
+                displayItemDetails(selectedItem);                                       //@ this file LINES 81-112      // Display item details
             } else if (itemResponse == "2") {                                                 // If user chooses to equip/unequip item
-                if (player.isEquipped(selectedItem)) {                                        // If item is equipped
-                    player.unequipItem(&selectedItem);                                        // Unequip item
+                if (player.isEquipped(selectedItem)) {                                  //@ this file LINES 115-122      // If item is equipped
+                    player.unequipItem(&selectedItem);                                  //@ this file LINES 153-165      // Unequip item
                 } else {                                                                      // If item is not equipped
-                    player.equipItem(&selectedItem);                                          // Equip item
+                    player.equipItem(&selectedItem);                                    //@ this file LINES 126-148      // Equip item
                 }
             } else if (itemResponse == "3") {                                                 // If user chooses to go back to inventory
                 break;                                                                        // Break inner loop to redisplay inventory
@@ -166,19 +166,10 @@ void Player::unequipItem(Item* item) {
 
 //------------------------------- FUNCTION TO CHECK FOR WEAPON -------------------------------------------
 void checkForWeapon(Player& player) {
-    bool hasWeapon = false;                                                                 // Flag to check if player has a weapon equipped
-
-    for (const auto* item : player.equippedItems) {                                         // Loop through equipped items using pointers
-        if (item->classification == WEAPON) {                                               // If an item is classified as a weapon
-            hasWeapon = true;                                                               // Set flag to true if a weapon is found
-            break;                                                                          // Exit loop as soon as a weapon is found
-        }
-    }
-
-    if (!hasWeapon) {                                                                       // If no weapon equipped, prompt the player
-        std::cout << "Warning: You are without a weapon. This might not end well in combat!\n";           
+ if (!player.hasEquippedWeapon()) {                //@Character_develop_functs.cpp LINES 7-14  // Use hasEquippedWeapon to check if player has a weapon   
+        std::cout << "Warning: You are without a weapon. This might not end well in combat!\n";
         std::cout << "If you wanna punch and kick your way out, be my guest, but you've been warned.\n";
-
+        
         char weapResponse;                                                                  // Variable to store user response
         while (true) {
             std::cout << "Do you want to proceed without a weapon? (y/n): ";              
@@ -201,7 +192,7 @@ void checkForWeapon(Player& player) {
                         std::cin.clear();                                                   // Clear the error state of std::cin
                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore invalid input
                     } else {
-                        player.equipItem(&player.inventory[itemChoice - 1]);                // Call equipItem with chosen item
+                        player.equipItem(&player.inventory[itemChoice - 1]);          //@ this file LINES 126-148       // Call equipItem with chosen item
                         break;                                                              // Exit loop after equipping
                     }
                 }

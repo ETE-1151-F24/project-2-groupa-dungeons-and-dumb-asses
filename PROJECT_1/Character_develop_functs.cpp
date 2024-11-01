@@ -74,17 +74,27 @@ void displayClasses(Player& player) {
               << "2. Rogue\n"
               << "3. Mage\n"
               << "4. Cleric\n"
-              << "5. Ranger\n";           // Display available classes with numeric options
+              << "5. Ranger\n";  // Display available classes with numeric options
 
     int classChoice;
 
     while (true) {
         std::cout << "Please enter the number corresponding to your class: ";  // Prompt user to enter the class choice
         std::cin >> classChoice;
+
+        // Check for invalid input (non-numeric input)
+        if (std::cin.fail()) {
+            std::cin.clear();  // Clear the error flag
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Ignore the invalid input
+            std::cout << "Invalid input. Please enter a number between 1 and 5.\n";
+            continue;  // Restart the loop to ask for input again
+        }
+
+        // Ignore any extra input after a valid number
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (classChoice >= 1 && classChoice <= 5) {
-            showClassDescription(classChoice);  // Display the class description based on player choice
+            showClassDescription(classChoice);  // Character_develop_functs.cpp (this file) LINES 41-67    //Display the class description based on player choice
 
             // Confirm class choice
             std::string confirmation;
@@ -123,7 +133,6 @@ void displayClasses(Player& player) {
     // Roll initial stats and finalize
     player.finalizeStats();  // Call function to roll and finalize stats
 }
-
 //------------------------------------------------------------------------------------------
 
 
@@ -177,7 +186,7 @@ void Player::rollStats() {
 
 
 //--------------------------Function to simulate rolling stats within a given range using rand()---------------------
-int Player::roll(int minValue, int maxValue) {
+int Player::roll(int minValue, int maxValue) {              //
     return rand() % (maxValue - minValue + 1) + minValue;  // Random value between minValue and maxValue (inclusive)
 }
 
@@ -187,11 +196,11 @@ int Player::roll(int minValue, int maxValue) {
 // ----------------------------------------- Function to display player's stats -----------------------------------------
 void Player::showStats() const {
     std::cout << "\n--- Player Stats ---\n";               // Display header for player stats
-    std::cout << "Strength: " << stats[Strength] << "\n";  // Display strength stat
-    std::cout << "Dexterity: " << stats[Dexterity] << "\n";// Display dexterity stat
-    std::cout << "Intelligence: " << stats[Intelligence] << "\n"; // Display intelligence stat
-    std::cout << "Wisdom: " << stats[Wisdom] << "\n";      // Display wisdom stat
-    std::cout << "Constitution: " << stats[Constitution] << "\n"; // Display constitution stat
+    std::cout << "Strength: " << stats[Strength] << "\n";  // Display strength stat from the stats array
+    std::cout << "Dexterity: " << stats[Dexterity] << "\n";// Display dexterity stat from the stats array
+    std::cout << "Intelligence: " << stats[Intelligence] << "\n"; // Display intelligence stat from the stats array
+    std::cout << "Wisdom: " << stats[Wisdom] << "\n";      // Display wisdom stat from the stats array
+    std::cout << "Constitution: " << stats[Constitution] << "\n"; // Display constitution stat from the stats array
 }
 
 
@@ -212,11 +221,11 @@ void Player::showEquippedItems() const {
 void Player::finalizeStats() {
     std::string response;                                                   // Store player's response for confirming or re-rolling stats
 
-    // First roll
-    rollStats();                                                                                // Roll stats for the first time
-    showStats();                                                                                // Display the rolled stats
+                    // First roll
+    rollStats();                       // Roll stats for the first time       //@character_develop_functs (this file) LINES 132-175            
+    showStats();                       // Display the rolled stats            //@character_develop_functs (this file) LINES 188-195
 
-// Ask player if they are satisfied with the rolled stats
+                    // Ask player if they are satisfied with the rolled stats
     while (true) {
         std::cout << "Do you like these stats? (yes/no): ";                                     // Prompt player to confirm if they like the stats
         std::cin >> response;                                                                   // Get player's response
@@ -230,8 +239,8 @@ void Player::finalizeStats() {
             std::cout << "Alright, we'll give it one more roll.\n";                             // Inform player that a second roll will be given
 
             // Second roll (final roll)
-            rollStats();                                                                        // Roll stats for the final time
-            showStats();                                                                        // Display the newly rolled stats
+            rollStats();   //@character_develop_functs (this file) LINES 132-175                // Roll stats for the final time
+            showStats();   //@character_develop_functs (this file) LINES 188-195                // Display the newly rolled stats
 
             std::cout << "These are your final stats. Looks like we're going to keep these!\n"; // Final confirmation
             break;                                                                              // Exit the loop after the final roll
