@@ -62,11 +62,9 @@ public:
          std::string itemRestriction = "");                         // Set usage restrictions (e.g., class-specific, default none)
 
     // Function Declarations
-    int calculateDamage(int distance);                              // calculate damage based on combat type
-
-private:
-    int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);  // ranged damage calculation
-    int calculateMeleeDamage();                                                           // melee damage calculation
+    int calculateDamage(int distance);                              // Function to calculate damage based on combat type
+    int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);  // Function for ranged damage calculation
+    int calculateMeleeDamage();                                     // Function for melee damage calculation
 };
 
 //-------------------------------- Class for Player Development --------------------------------
@@ -102,14 +100,15 @@ private:
 };
 
 //++++++++++++++++++++++++++++ Function prototypes ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void printStrobingText(const std::string& text, int duration);      // print strobing text effect for title             @ Game_functions_eli.cpp --     --LINE 10
-void initializeGameItems(std::vector<Item>& gameItems);             // initialize game items                            @ gameItems.cpp --              --LINE 19
-void displayClasses(Player& player);                                // display character classes and handle selection   @ Character_develop_functs.cpp -- LINE 71
-void runGameLoop(Player& player);                                   // run the main game loop                           @ Game_functions_eli.cpp--      --LINE 44
-void displayItemDetails(const Item& item);                          // display item details                             @ Game_inventory_functions.cpp----LINE 81
-void displayInventory(const Player& player);                        // display player inventory                         @ Game_inventory_functions.cpp----LINE 5
-std::string getPlayerName();                                        // get the player's name                            @ Character_develop_functs.cpp -- LINE 31
-                        
+void printStrobingText(const std::string& text, int duration);      // Function to print strobing text effect for title
+bool confirmClassChoice();                                          // Function to confirm player's class choice
+void initializeGameItems(std::vector<Item>& gameItems);             // Function to initialize game items to start in inventory
+void initializeAdventureItems(std::vector<Item>& adventureItems);    // initializes items found while adventuring
+void displayClasses(Player& player);                                // Function to display available character classes and handle selection
+void runGameLoop(Player& player);                                   // Function to run the main game loop
+void displayItemDetails(const Item& item);                          // Function to display item details
+void displayInventory(Player& player);                       // Function to display player inventory
+std::string getPlayerName();                                        // Function to get the player's name                           
 
 #endif // GAMEHEADERELI_H
   

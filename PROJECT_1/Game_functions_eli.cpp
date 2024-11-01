@@ -40,7 +40,7 @@ void printStrobingText(const std::string& text, int duration) {
 }
 //---------------------------------------------------------------------------------------------------------------
 
-//------------------------------- FUNCTION FOR RUNNING MAIN GAME LOOP -------------------------------------------
+//------------------------------- FUNCTION FOR RUNNING MAIN GAME LOOP   this is modifiable -------------------------------------------
 void runGameLoop(Player& player) {
     std::string command;
 
@@ -54,74 +54,15 @@ void runGameLoop(Player& player) {
         std::transform(command.begin(), command.end(), command.begin(), ::tolower);           // Convert command to lowercase
 
         if (command == "inventory") {                                                         // Inventory command
-            while (true) {
-                // Display inventory items
-                std::cout << "\n--- Your Inventory ---\n";                                    // Print inventory header
-
-                const int nameWidth = 35; // Set a fixed width for item names
-
-                for (size_t i = 0; i < player.inventory.size(); ++i) {
-                    const Item& item = player.inventory[i];                                   // Get item reference
-                    std::string status = player.isEquipped(item) ? "(equipped)" : "In your Sakky"; // Determine item status
-
-                    // Use setw, left, and right to align the output correctly
-                    std::cout << std::setw(3) << (i + 1) << ". "                              // Index of the item, right aligned
-                              << std::left << std::setw(nameWidth) << item.name               // Left-align item name with fixed width
-                              << std::right << status << "\n";                                // Right-align item status
-                }
-
-                std::string response;
-                std::cout << "\nWould you like to focus on an item? Enter the number or type 'no': "; // Ask if user wants to focus on an item
-                std::getline(std::cin, response);                                             // Get user's response
-
-                if (response == "no") {                                                       // If user doesn't want to focus on an item
-                    break;                                                                    // Exit inventory loop
-                }
-
-                int itemChoice;
-                try {
-                    itemChoice = std::stoi(response) - 1;                                     // Convert response to an index
-                } catch (std::exception& e) {
-                    std::cout << "Invalid input. Please enter a valid number.\n";             // Handle invalid input
-                    continue;                                                                 // Restart loop
-                }
-
-                if (itemChoice < 0 || itemChoice >= static_cast<int>(player.inventory.size())) {
-                    std::cout << "Invalid item number. Please try again.\n";                  // Handle out of bounds item choice
-                    continue;                                                                 // Restart loop
-                }
-
-                Item& selectedItem = player.inventory[itemChoice];                            // Get selected item reference
-
-                std::string itemResponse;
-                while (true) {
-                    std::cout << "\nWhat would you like to do with '" << selectedItem.name << "'?\n"; // Prompt actions for the selected item
-                    std::cout << "1. Read Description\n";                                  
-                    if (player.isEquipped(selectedItem)) {                                    // If item is equipped
-                        std::cout << "2. Unequip Item\n";                                     // Provide unequip option
-                    } else {                                                                  // If item is not equipped
-                        std::cout << "2. Equip Item\n";                                       // Provide equip option
-                    }
-                    std::cout << "3. Back to Inventory\n";                                    // Provide option to go back to inventory
-                    std::getline(std::cin, itemResponse);                                     // Get user's choice
-
-                    if (itemResponse == "1") {                                                // If user chooses to read description
-                        displayItemDetails(selectedItem);                                     // Display item details
-                    } else if (itemResponse == "2") {                                         // If user chooses to equip/unequip item
-                        if (player.isEquipped(selectedItem)) {                                // If item is equipped
-                            player.unequipItem(&selectedItem);                                // Unequip item
-                        } else {                                                              // If item is not equipped
-                            player.equipItem(&selectedItem);                                  // Equip item
-                        }
-                    } else if (itemResponse == "3") {                                         // If user chooses to go back to inventory
-                        break;                                                                // Break inner loop to redisplay inventory
-                    } else {
-                        std::cout << "Invalid input. Please enter 1, 2, or 3.\n";             // Handle invalid input
-                    }
-                }
-            }
+            displayInventory(player);    //@Game_inventory_functions.cpp  LINES 81-112
         } else if (command == "stats") {                                                      // Stats command
-            player.showStats();                                                               // Display player's stats
+            player.showStats();          //@Character_develop_functs.cpp LINES 188-195        // Display player's stats
+
+
+
+            //add OTHER GAME FUNCTIONS IN BETWEEN HERE AS ELSE COMPONENTS
+
+            
         } else if (command == "quit") {                                                       // Quit command
             std::cout << "Goodbye, " << player.name << "!\n";                                 // Display goodbye message
             std::cout << "Press Enter to exit...";                                            // Prompt user to press Enter

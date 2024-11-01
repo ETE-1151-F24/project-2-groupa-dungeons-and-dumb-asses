@@ -1,6 +1,8 @@
 //gameItems.cpp
 #include "GameHeaderEli.h"             // Include necessary headers containing class definitions and enums
-
+#include <vector>
+#include <array>
+#include <string>
 
 
 //----------------------------------Helper function to add an item to the game
@@ -171,9 +173,13 @@ void initializeGameItems(std::vector<Item>& gameItems) {
             0,                                                         // Magic power modifier
             "none");                                  // Restriction
 
+}
+// Function to initialize adventure items (items found during gameplay)
+void initializeAdventureItems(std::vector<Item>& adventureItems) {
+    adventureItems.clear();   // Clear any existing adventure items
 
  /*   // Add a new item to the game
-    addItem(gameItems, "ACTUAL ITEM NAME",                             // Item name
+    addItem(adventureItem, "ACTUAL ITEM NAME",                             // Item name
             "THIS IS WHAT DESCRIBES THE ITEM",                         // Item description
             ITEM_TYPE,                                                 // Classification: WEAPON, CLOTHING, MAGIC, etc.
             COMBAT_TYPE,                                               // Combat type: RANGED, MELEE (not applicable for non-weapons, default to MELEE)
