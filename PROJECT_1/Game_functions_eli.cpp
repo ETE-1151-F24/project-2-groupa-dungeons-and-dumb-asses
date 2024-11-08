@@ -4,6 +4,8 @@
 #include <iostream>                                  // For std::cin, std::cout
 #include <thread>                                    // Enables multithreading, allowing tasks to run concurrently
 #include <iomanip>                                   // Required for using setw, left, and right manipulators
+#include "MapFunctions.h"                            // Any functions that have to do with map manipulation
+
 
 //------------------------------------------- FUNCTION FOR STROBING TITLE --------------------------------------------
 void printStrobingText(const std::string& text, int duration) {
@@ -42,9 +44,10 @@ void printStrobingText(const std::string& text, int duration) {
 //------------------------------- FUNCTION FOR RUNNING MAIN GAME LOOP -------------------------------------------
 void runGameLoop(Player& player) {
     std::string command;
-
+    int map [5] [5] ={{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
+    int stats [6] = {0,0,0,0,0,0};
     while (true) {
-        std::cout << "\nEnter a command (inventory / stats / quit): ";                        // Prompt user for command
+        std::cout << "\nEnter a command (inventory / stats / advneturen /quit): ";                        // Prompt user for command
         std::getline(std::cin, command);                                                      // Get user's command input
 
         // Trim whitespace and convert to lowercase
@@ -126,7 +129,21 @@ void runGameLoop(Player& player) {
             std::cout << "Press Enter to exit...";                                            // Prompt user to press Enter
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');               // Wait for user input (Enter)
             break;                                                                            // Exit the game loop                                                                       
-        } else {
+        } else if( command == "adventure")
+        {
+            int lvl [2] = {1,0};
+            int Stats [6];
+            player.getStats(Stats, lvl[0]);
+            for (size_t i = 0; i < 6; i++)
+            {
+                std::cout << Stats[i] << "\n";
+            }
+            
+            std::cout << "Here is your map and have fun: "; 
+            MapGen(map);
+            Movement(map, Stats);                                                                      //Map Generation in MapFunctions line 5
+
+        }else {
             std::cout << "Unknown command. Try again.\n";                                     // Handle unknown command
         }
     }

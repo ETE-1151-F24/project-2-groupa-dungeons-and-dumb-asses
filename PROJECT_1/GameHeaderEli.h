@@ -96,6 +96,7 @@ public:
     void equipItem(Item* item);                                     // Equip an item using a pointer
     void unequipItem(Item* item);                                   // Unequip an item using a pointer
     bool hasEquippedWeapon() const;                                 // Checks if a weapon is currently equipped
+    void getStats(int S[6], int a) const;
 
 private:
     int roll(int minValue, int maxValue);                           // Function to roll a stat within a given range
@@ -112,3 +113,4 @@ void displayInventory(const Player& player);                       // Function t
 std::string getPlayerName();                                        // Function to get the player's name                           
 
 #endif // GAMEHEADERELI_H
+

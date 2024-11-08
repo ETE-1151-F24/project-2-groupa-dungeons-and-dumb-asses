@@ -23,6 +23,7 @@ Player::Player(std::string playerName, std::string charClass, int startLevel)
       abilitiesMenu{},                    // Default initialize abilities menu (empty vector)
       equippedItems{},                    // Default initialize equipped items (empty vector)
       inventory{}                         // Default initialize inventory (empty vector)
+      
 {
     // The stats array is explicitly default-initialized, meaning all values are set to zero.
 }
@@ -192,6 +193,7 @@ void Player::showStats() const {
     std::cout << "Intelligence: " << stats[Intelligence] << "\n"; // Display intelligence stat
     std::cout << "Wisdom: " << stats[Wisdom] << "\n";      // Display wisdom stat
     std::cout << "Constitution: " << stats[Constitution] << "\n"; // Display constitution stat
+    std::cout << "Health: " << stats[Constitution]<< "\n";
 }
 
 
@@ -239,4 +241,13 @@ void Player::finalizeStats() {
             std::cout << "Invalid input. Please enter 'yes' or 'no'.\n";                        // Handle invalid input by displaying an error message
         }
     }
+}
+
+void Player::getStats(int S[6], int a) const {
+    S[0] =stats[Strength]; 
+    S[1] =stats[Dexterity]; 
+    S[2] =stats[Intelligence]; 
+    S[3] =stats[Wisdom];    
+    S[4] =stats[Constitution]; 
+    S[5] =stats[Constitution]*(1+ a/10);
 }
