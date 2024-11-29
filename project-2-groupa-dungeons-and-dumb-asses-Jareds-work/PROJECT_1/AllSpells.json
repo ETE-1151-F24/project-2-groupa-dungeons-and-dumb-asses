@@ -1,0 +1,23 @@
+[ 
+    {
+        "name": "Fireball",
+        "description": "A blazing ball of fire that deals damage to enemies.",
+        "mana_cost": 10,
+        "damage": 25,
+        "level_required": 1
+    },
+    {
+        "name": "Healing Light",
+        "description": "A soothing light that restores health.",
+        "mana_cost": 8,
+        "healing": 20,
+        "level_required": 2
+    },
+    {
+        "name": "Ice Shard",
+        "description": "Sharp shards of ice that pierce enemies.",
+        "mana_cost": 12,
+        "damage": 30,
+        "level_required": 3
+    }
+]
