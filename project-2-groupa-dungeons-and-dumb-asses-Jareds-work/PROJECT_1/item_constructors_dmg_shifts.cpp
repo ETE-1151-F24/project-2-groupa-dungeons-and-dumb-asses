@@ -14,7 +14,7 @@ Item::Item()
       sneakPenalty(0),                                              // Set sneak penalty to 0 by default
       magPowModifier(0),                                            // Set magic power modifier to 0 by default
       ability(""),                                                  // Set ability description to an empty string by default
-      restriction("")                                              // Set restriction to an empty string by default
+      restriction(""),                                              // Set restriction to an empty string by default
       regenerationRate(0) {                                         // Set HP regeneration rate to 0 by default
 
 
@@ -35,7 +35,7 @@ Item::Item(std::string itemName, std::string itemFlavorDescription, ItemType ite
       sneakPenalty(sneakPen),                                       // Set penalty to sneak ability
       magPowModifier(magPowMod),                                    // Set magic power modifier
       ability(itemAbility),                                         // Set special ability description
-      restriction(itemRestriction)                                 // Set any restrictions on who can use the item
+      restriction(itemRestriction),                                 // Set any restrictions on who can use the item
        regenerationRate(regenRate) {                                 // Set HP regeneration rate
 
     std::copy(modifier.begin(), modifier.end(), statModifier);      // Copy stat modifiers from provided array

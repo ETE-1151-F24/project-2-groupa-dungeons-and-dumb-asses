@@ -139,6 +139,19 @@ bool Player::isEquipped(const Item& item) const {
 }
 
 //-------------------------------------------------------------------------------------------
+// helper function to update stats for equipping or unequipping
+//-------------------------------------------------------------------------------------------
+void Player::updateStats(const Item& item, bool isEquipping) {
+    int factor = isEquipping ? 1 : -1; // Add stats if equipping, subtract if unequipping
+    for (int i = 0; i < StatCount; ++i) {
+        stats[i] += factor * item.statModifier[i];
+    }
+    totalRegenerationRate += factor * item.regenerationRate;
+}
+
+
+
+//-------------------------------------------------------------------------------------------
 //------------------------------- FUNCTION TO EQUIP AN ITEM -----------------------------------------------
 //-------------------------------------------------------------------------------------------
 
@@ -160,21 +173,18 @@ void Player::equipItem(Item* item) {
 
     equippedItems.push_back(item);                                                          // Add the item to equipped items
     std::cout << "Equipped " << item->name << "!\n";                                        // Display message indicating the item is equipped
-    totalRegenerationRate += item.regenerationRate; // Add to player's regeneration
-    for (int i = 0; i < StatCount; ++i) {                                                   // Iterate over each player stat to update
-        stats[i] += item->statModifier[i];                                                  // Add the stat modifiers of the equipped item to the player's stats
-    }
-    // Update temporary health modifiers
-//****************************armor wont giv a bonus outright, it will make you harder to hit */
-    if (item->classification == CLOTHING) { // Example for armor
-        healthModifiers.temporaryMod += item->statModifier[Constitution] * 2; // Constitution adds 2 HP per point
-        healthModifiers.temporaryMod += 10; // Flat bonus for wearing armor
-    } else if (item->classification == WEAPON) { // Example for weapons
-        healthModifiers.temporaryMod += item->statModifier[Constitution] * 1; // Constitution bonus is less impactful for weapons
+
+    updateStats(*item, true); // Abstracted stat update logic
+
+    if (item->classification == CLOTHING) {
+        healthModifiers.temporaryMod += item->statModifier[Constitution] * 2;
+        healthModifiers.temporaryMod += 10;
+    } else if (item->classification == WEAPON) {
+        healthModifiers.temporaryMod += item->statModifier[Constitution] * 1;
     }
 }
 
-
+ 
 //------------------------------- FUNCTION TO UNEQUIP AN ITEM ---------------------------------------------
 
 void Player::unequipItem(Item* item) {
@@ -183,26 +193,18 @@ void Player::unequipItem(Item* item) {
         equippedItems.erase(it);                                                            // Remove item from equipped items
         std::cout << "Unequipped " << item->name << "!\n";
 
-        for (int i = 0; i < StatCount; ++i) {                                               // Update player stats by removing item modifiers
-            stats[i] -= item->statModifier[i];
-        }
-        // Update regeneration rate
-        totalRegenerationRate -= item->regenerationRate;                                    // Subtract item's regeneration rate
+        updateStats(*item, false); // Abstracted stat update logic
 
-        // Update temporary health modifiers
-        if (item->classification == CLOTHING) {                                            // If the unequipped item is armor
-            healthModifiers.temporaryMod -= item->statModifier[Constitution] * 2;          // Remove Constitution-based bonus
-           
-//***********************item will not have a default health mod just by existing */           
-            healthModifiers.temporaryMod -= 10;                                            // Remove flat bonus for wearing armor
-        } else if (item->classification == WEAPON) {                                       // If the unequipped item is a weapon
-            healthModifiers.temporaryMod -= item->statModifier[Constitution] * 1;          // Remove Constitution bonus for weapons
+        if (item->classification == CLOTHING) {
+            healthModifiers.temporaryMod -= item->statModifier[Constitution] * 2;
+            healthModifiers.temporaryMod -= 10;
+        } else if (item->classification == WEAPON) {
+            healthModifiers.temporaryMod -= item->statModifier[Constitution] * 1;
         }
     } else {
-        std::cout << item->name << " is not equipped.\n";                                   // Inform user that the item was not equipped
+        std::cout << item->name << " is not equipped.\n";
     }
 }
-
 //------------------------------- FUNCTION TO CHECK FOR WEAPON -------------------------------------------
 void checkForWeapon(Player& player) {
     bool hasWeapon = false;                                                                 // Flag to check if player has a weapon equipped

@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-int xp;
+int xp;   //this tracks the characters xp for the game
 
 
 //GENERIC FUNCTION FOR GIVING OUT XP
@@ -132,7 +132,7 @@ struct HealthModifiers {
         
     }
 }*/
-int fight(int Stats [6], int lvl)
+/*int fight(int Stats [6], int lvl)
 {
     const int MaxHP =Stats[6];
     int z;
@@ -224,4 +224,4 @@ int fight(int Stats [6], int lvl)
         }
     }
     return Stats[6];
-}
+}*/

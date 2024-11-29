@@ -1,10 +1,16 @@
-#include "GameHeaderEli.h"
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include "gameItems.cpp"
+#include "GameHeaderEli.h"                // Include the game header file for necessary declarations
+#include <vector>                         // Required for std::vector
+#include <iostream>                       // Required for input/output operations
+#include <algorithm>                      // Required for algorithms like std::min
+#include "gameItems.cpp"                  // Include definitions for game items
+
+//-------------------------------------------------------------------------------------------
+// Function to apply regeneration to the player's health
+//-------------------------------------------------------------------------------------------
 void Player::applyRegeneration() {
     currentHealth += totalRegenerationRate;                     // Add total regeneration rate to current health
-    currentHealth = std::min(currentHealth, maxHealth);         // Ensure health does not exceed the maximum
+    currentHealth = std::min(currentHealth, maxHealth);         // Ensure health does not exceed the maximum limit
     std::cout << "Regenerated " << totalRegenerationRate << " HP! Current Health: " << currentHealth << "\n";
 }
+
+//this will trigger each round, time frame, or day, depending on its condition

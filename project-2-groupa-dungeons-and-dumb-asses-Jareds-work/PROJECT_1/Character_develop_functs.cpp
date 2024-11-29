@@ -13,7 +13,11 @@ bool Player::hasEquippedWeapon() const {
     return false;                                                               // Return false if no weapon is found
 }
 
+//-------------------------------------------------------------------------------------------
 //---------------------------- Constructor for Player - Takes player's name, class, and optional start level
+//-------------------------------------------------------------------------------------------
+ 
+
 Player::Player(std::string playerName, std::string charClass, int startLevel)
     : name(playerName),                                                         // Initialize player's name with the provided name
       characterClass(charClass),                                                // Set player's character class (e.g., cleric, ranger, etc.)
@@ -26,12 +30,16 @@ Player::Player(std::string playerName, std::string charClass, int startLevel)
     totalRegenerationRate(0),               //specifies default regeneration rate for the player
     currentHealth(8),                       //specifies default health as 8 points
     maxHealth(8),                            //specifies initial max health as 8 points
-    healthModifiers{0}                      // Initialize health modifiers to zero  
+    healthModifiers{}                      // Initialize health modifiers to zero  
 {
     // The stats array is explicitly default-initialized, meaning all values are set to zero except for health
 }
 
+//-------------------------------------------------------------------------------------------
 //------------------------------ FUNCTION TO GET PLAYER NAME ------------------------------
+//-------------------------------------------------------------------------------------------
+ 
+
 std::string getPlayerName() {
     std::string playerName;                                                                     // Variable to store player's name
     std::cout << "Enter your character's name: ";                                               // Prompt the user for their character's name
@@ -39,9 +47,13 @@ std::string getPlayerName() {
 
     return playerName;                                                                          // Return the player's name to be used in the game
 }
-//----------------------------------------------------------------------------------------------
 
+
+//-------------------------------------------------------------------------------------------
 // ------------------------------Function to show class description and stat focus based on the player's selection
+//-------------------------------------------------------------------------------------------
+ 
+
 void showClassDescription(int classChoice) {
     switch (classChoice) {
         case 1:
@@ -70,8 +82,10 @@ void showClassDescription(int classChoice) {
     }
 }
 
+//-------------------------------------------------------------------------------------------
+//--------------------------------- FUNCTION TO DISPLAY CLASSES ---------------------------- 
+//-------------------------------------------------------------------------------------------
 
-//--------------------------------- FUNCTION TO DISPLAY CLASSES ----------------------------
 void displayClasses(Player& player) {
     std::cout << "\nAvailable Classes:\n"
               << "1. Warrior\n"
@@ -136,9 +150,6 @@ void displayClasses(Player& player) {
 void Player::rollStats() {
     // Implementation for rolling stats based on class
     // Example: Rolling each stat based on the player's character class
-//-----------------------------------------------------------------------------
-
-
 
 // Define stat ranges for each class
     struct StatRange {
@@ -179,8 +190,10 @@ void Player::rollStats() {
 }
 
 
-
+//-------------------------------------------------------------------------------------------
 //--------------------------Function to simulate rolling stats within a given range using rand()---------------------
+//-------------------------------------------------------------------------------------------
+ 
 int Player::roll(int minValue, int maxValue) {                         // Function to roll a random number within a range
     std::random_device rd;                                             // Seed generator for random number engine
     std::mt19937 gen(rd());                                            // Mersenne Twister random number generator
@@ -189,8 +202,11 @@ int Player::roll(int minValue, int maxValue) {                         // Functi
 }
 
 
+//-------------------------------------------------------------------------------------------
+// ----------------------------------------- Function to display player's stats ----------------------------------------
+//-------------------------------------------------------------------------------------------
+ 
 
-// ----------------------------------------- Function to display player's stats -----------------------------------------
 void Player::showStats() const {
     std::cout << "\n--- Player Stats ---\n";               // Display header for player stats
     std::cout << "Strength: " << stats[Strength] << "\n";  // Display strength stat
@@ -204,8 +220,11 @@ void Player::showStats() const {
     std::cout << "Health: " << totalHealth << " (Base + Level + Modifiers)\n";
 }
 
+//-------------------------------------------------------------------------------------------
+//--- Function to display equipped items     may not be necessary     ----------------------
+//-------------------------------------------------------------------------------------------
+ 
 
-// ------------------------------------------ Function to display equipped items ----------------------------------------
 void Player::showEquippedItems() const {
     std::cout << "\n--- Equipped Items ---\n";             // Display header for equipped items
     if (equippedItems.empty()) {                           // Check if no items are equipped
@@ -252,7 +271,10 @@ void Player::finalizeStats() {
         // Recalculate level-based health modifier
     healthModifiers.levelMod = level * 6;
 }
-
+//-------------------------------------------------------------------------------------------
+// function to get the stats of the player, may not be needed anymore
+//-------------------------------------------------------------------------------------------
+ 
 void Player::getStats(int Statvalue[5], int a) const {
     Statvalue[0] =stats[Strength]; 
     Statvalue[1] =stats[Dexterity]; 

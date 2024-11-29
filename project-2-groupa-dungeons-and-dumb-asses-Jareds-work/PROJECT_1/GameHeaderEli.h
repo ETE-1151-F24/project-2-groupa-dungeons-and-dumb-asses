@@ -64,32 +64,29 @@ public:
     int sneakPenalty = 0;                                           // Penalty to sneak when using the item
     int magPowModifier = 0;                                         // Magic power modifier
     std::string restriction;                                        // Restriction on who can use the item
-    // New Attribute
-    int regenerationRate = 0; // HP regeneration rate for this item
+    int regenerationRate = 0;                                       // HP regeneration rate for this item
 
-    // Default constructor
-     // Default Constructor
+    // Default Constructor
     Item()
         : name("Unknown"), flavorDescription("No description"), ability("No ability"),
-          classification(ItemType::MAGICAL), combatType(CombatType::MELEE) {
+          classification(ItemType::MAGICAL), combatType(CombatType::MELEE), regenerationRate(0) {
         std::fill(std::begin(statModifier), std::end(statModifier), 0);
-    }                                                         // Declares the default constructor
-
+    }
 
     // Parameterized Constructor
-    Item(std::string itemName,                                      // Set the item's name 
-        std::string itemDescription,                               // Set the item's description 
-        ItemType itemClassification,                               // Set the item's classification (e.g., WEAPON, CLOTHING) 
-        CombatType itemCombatType,,                                 // Set the item's combat type (MELEE or RANGED)
-        std::array<int, StatCount> modifier,                       // Set stat modifiers (e.g., strength, dexterity adjustments) 
-        std::string itemAbility,                                   // Set the item's special ability description 
-         int minDmg = 0,                                            // Set minimum damage (default 0 for non-weapons)
-         int maxDmg = 0,                                            // Set maximum damage (default 0 for non-weapons)
-         int rangeMod = 0,                                          // Set range modifier (default 0)
-         int sneakPen = 0,                                          // Set sneak penalty (default 0)
-         int magPowMod = 0,                                         // Set magic power modifier (default 0)
-        std::string itemRestriction = "",                         // Set usage restrictions (e.g., class-specific, default none)
-        int regenRate = 0)
+    Item(std::string itemName,                                      // Set the item's name
+         std::string itemDescription,                              // Set the item's description
+         ItemType itemClassification,                              // Set the item's classification (e.g., WEAPON, CLOTHING)
+         CombatType itemCombatType,                                // Set the item's combat type (MELEE or RANGED)
+         std::array<int, StatCount> modifier,                      // Set stat modifiers (e.g., strength, dexterity adjustments)
+         std::string itemAbility,                                  // Set the item's special ability description
+         int minDmg = 0,                                           // Set minimum damage (default 0 for non-weapons)
+         int maxDmg = 0,                                           // Set maximum damage (default 0 for non-weapons)
+         int rangeMod = 0,                                         // Set range modifier (default 0)
+         int sneakPen = 0,                                         // Set sneak penalty (default 0)
+         int magPowMod = 0,                                        // Set magic power modifier (default 0)
+         std::string itemRestriction = "",                         // Set usage restrictions (e.g., class-specific, default none)
+         int regenRate = 0)
         : name(itemName), flavorDescription(itemDescription), ability(itemAbility),
           classification(itemClassification), combatType(itemCombatType), minDamage(minDmg),
           maxDamage(maxDmg), rangeModifier(rangeMod), sneakPenalty(sneakPen), magPowModifier(magPowMod),
@@ -123,10 +120,10 @@ public:
     std::vector<std::string> abilitiesMenu;                         // List of abilities available to the player
     std::vector<Item*> equippedItems;                               // Pointers to items currently equipped by the player
     std::vector<Item> inventory;                                    // Player's inventory
-    HealthModifiers healthModifiers; // Added healthModifiers
-    int totalRegenerationRate = 0; // Tracks total HP regeneration from equipped items
-    int currentHealth = 8;          // Set initial health to 8
-    int  maxHealth = 8; {             // Set maximum health to 8
+    HealthModifiers healthModifiers;                                // Added healthModifiers
+    int totalRegenerationRate = 0;                                  // Tracks total HP regeneration from equipped items
+    int currentHealth = 8;                                          // Set initial health to 8
+    int  maxHealth = 8;                                             // Set maximum health to 8
     // Constructor
     Player(std::string playerName, std::string charClass, int startLevel = 1);
 
@@ -144,6 +141,7 @@ public:
     void unequipItem(Item* item);                                   // Unequip an item using a pointer
     bool hasEquippedWeapon() const;                                 // Checks if a weapon is currently equipped
     void getStats(int S[6], int a) const;
+    void updateStats(const Item& item, bool isEquipping);           //helper to update the stats of player
 
 private:
     int roll(int minValue, int maxValue);                           // Function to roll a stat within a given range
