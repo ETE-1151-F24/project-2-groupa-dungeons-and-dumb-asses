@@ -2,6 +2,7 @@
 #include<iostream>
 #include <cstdlib>
 #include <ctime>
+
 #include "GameHeaderEli.h"
 using namespace std;
 
@@ -15,34 +16,42 @@ int xp;
 //GENERIC FUNCTION FOR GIVING OUT XP
 
 
+//-------------------------------------------------------------------------------------------
+// Function to determine the player's level using a map
+//-------------------------------------------------------------------------------------------
 
-
-
-// --------------------------------Function to determine the player's level
-int getLevel(int xp, const std::vector<int>& xpBenchmarks) {
-    for (int i = xpBenchmarks.size() - 1; i >= 0; --i) {
-        if (xp >= xpBenchmarks[i]) {
-            return i + 1; // Levels are 1-indexed
+int getLevel(int xp, const std::map<int, int>& xpBenchmarks) {
+    int level = 1;
+    for (const auto& [lvl, threshold] : xpBenchmarks) {
+        if (xp >= threshold) {  //the threshold is established in the map for the xpbenchmarks
+            level = lvl;
+        } else {
+            break; // Stop checking once XP is less than the threshold
         }
     }
-    return 1; // Default to level 1 if below all benchmarks
+    return level;
 }
+
 // ---------------------------experience benchmarks
-     // -------------------------XP Benchmarks
-    std::vector<int> xpBenchmarks = {
-        0, 150, 450, 1350, 3250, 7000, 11500, 17000, 24000, 32000,
-        42500, 50000, 60000, 72500, 87500, 105000, 125000, 150000, 177500, 205000
+     // -------------------------vector that stores the XP Benchmarks
+    // Map for storing XP benchmarks with levels as keys
+    std::map<int, int> xpBenchmarks = {
+        {1, 0},       {2, 150},    {3, 450},    {4, 1350},   {5, 3250},
+        {6, 7000},    {7, 11500},  {8, 17000},  {9, 24000},  {10, 32000},
+        {11, 42500},  {12, 50000}, {13, 60000}, {14, 72500}, {15, 87500},
+        {16, 105000}, {17, 125000},{18, 150000},{19, 177500},{20, 205000}
     };
 
-        // Determine and display the player's level
-int level = getLevel(xp, xpBenchmarks);
-std::cout << "Your level is: " << level << "\n";
 
-// Function to award XP after a combat or puzzle
-void awardXP(int& xp, int amount, const std::vector<int>& xpBenchmarks) {
-    int oldLevel = getLevel(xp, xpBenchmarks); // Determine current level
-    xp += amount;                             // Add the XP reward
-    int newLevel = getLevel(xp, xpBenchmarks); // Recalculate level
+
+//-------------------------------------------------------------------------------------------
+// function to award xp after a quest, combat or puzzle and calculate level-up
+//-------------------------------------------------------------------------------------------
+ 
+void awardXP(int& xp, int amount, const std::map<int, int>& xpBenchmarks) {
+    int oldLevel = getLevel(xp, xpBenchmarks);
+    xp += amount;
+    int newLevel = getLevel(xp, xpBenchmarks);
 
     std::cout << "You earned " << amount << " XP!\n";
     if (newLevel > oldLevel) {
@@ -51,6 +60,53 @@ void awardXP(int& xp, int amount, const std::vector<int>& xpBenchmarks) {
         std::cout << "You are now at " << xp << " XP, Level " << newLevel << ".\n";
     }
 }
+
+//-------------------------------------------------------------------------------------------
+// function or struct for establishing the health of my character
+//-------------------------------------------------------------------------------------------
+struct HealthModifiers {
+    int constitutionMod = 0; // Constitution modifier (permanent)
+    int levelMod = 0;        // Level-based modifier (permanent)
+    int temporaryMod = 0;    // Temporary modifier from items, spells, etc.
+
+    // Function to calculate total health
+    int calculateTotalHealth(int baseConstitution, int level) const {
+        int health = 0;
+
+        // Constitution-based health
+        health += baseConstitution * 2;
+
+        // Level-based health
+        health += level * 6;
+
+        // Add permanent and temporary modifiers
+        health += constitutionMod;
+        health += levelMod;
+        health += temporaryMod;
+
+        return health;
+    }
+};
+
+ 
+ //-------------------------------------------------------------------------------------------
+ //  this is the function for displaying the health of the character
+ //-------------------------------------------------------------------------------------------
+
+ void displayHealthDetails(const HealthModifiers& modifiers, int baseConstitution, int level) {
+    int totalHealth = modifiers.calculateTotalHealth(baseConstitution, level);
+    std::cout << "--- Health Details ---\n";
+    std::cout << "Base Constitution: " << baseConstitution << " -> " << baseConstitution * 2 << " HP\n";
+    std::cout << "Level: " << level << " -> " << level * 6 << " HP\n";
+    std::cout << "Permanent Modifiers: " << modifiers.constitutionMod + modifiers.levelMod << " HP\n";
+    std::cout << "Temporary Modifiers: " << modifiers.temporaryMod << " HP\n";
+    std::cout << "Total Health: " << totalHealth << " HP\n";
+}
+
+
+
+
+
 
 
 

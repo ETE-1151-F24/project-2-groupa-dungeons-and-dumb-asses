@@ -5,7 +5,7 @@
 #include <iostream>                                  // For std::cin, std::cout
 #include <thread>                                    // Enables multithreading, allowing tasks to run concurrently
 #include <iomanip>                                   // Required for using setw, left, and right manipulators
-#include "MapFunctions.h"                            // Any functions that have to do with map manipulation
+#include "MapFunctions.cpp"                            // Any functions that have to do with map manipulation
 
 
 //------------------------------------------- FUNCTION FOR STROBING TITLE --------------------------------------------

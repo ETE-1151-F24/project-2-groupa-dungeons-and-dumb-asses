@@ -1,7 +1,14 @@
 // Game_inventory_functions.cpp
-#include "GameHeaderEli.h"                            // Include header file for necessary declarations
+#include "GameHeaderEli.h" 
+#include "Leveling.cpp"                           // Include header file for necessary declarations
 
+
+
+//-------------------------------------------------------------------------------------------
 //------------------------------- FUNCTION TO DISPLAY PLAYER INVENTORY -------------------------------------------
+//-------------------------------------------------------------------------------------------
+ 
+
 void displayInventory(Player& player) {
     std::cout << "\n--- Your Inventory ---\n";
 
@@ -76,8 +83,11 @@ void displayInventory(Player& player) {
     }
 }
 
+//-------------------------------------------------------------------------------------------
+//------------------------------- FUNCTION TO DISPLAY ITEM DESCRIPTIONS ------------------------------------------- 
+//-------------------------------------------------------------------------------------------
+ 
 
-//------------------------------- FUNCTION TO DISPLAY ITEM DESCRIPTIONS -------------------------------------------
 void displayItemDetails(const Item& item) {
     std::cout << "Item: " << item.name << "\nFlavor Description: " << item.flavorDescription // Print item details
               << "\nAbility: " << item.ability << "\n";                                      // Display ability of item
@@ -109,9 +119,16 @@ void displayItemDetails(const Item& item) {
     if (item.classification == WEAPON) {                                                     // If the item is a weapon, show its damage range
         std::cout << "Damage Range: " << item.minDamage << " - " << item.maxDamage << "\n";  // Show damage for weapons
     }
+        if (item.regenerationRate > 0) {                                                         // If the item has a regeneration rate
+        std::cout << "Regeneration Rate: " << item.regenerationRate << " HP/turn\n";         // Display regeneration rate
+    }
 }
 
+//-------------------------------------------------------------------------------------------
 //------------------------------- FUNCTION TO CHECK IF ITEM IS EQUIPPED -------------------------------------------
+//-------------------------------------------------------------------------------------------
+ 
+
 bool Player::isEquipped(const Item& item) const {
     for (const auto* equippedItem : equippedItems) {                                         // Iterate through equipped items using pointers
         if (equippedItem == &item) {                                                         // Compare pointers directly
@@ -121,7 +138,9 @@ bool Player::isEquipped(const Item& item) const {
     return false;                                                                            // Return false if item is not equipped
 }
 
+//-------------------------------------------------------------------------------------------
 //------------------------------- FUNCTION TO EQUIP AN ITEM -----------------------------------------------
+//-------------------------------------------------------------------------------------------
 
 void Player::equipItem(Item* item) {
     if (item->classification == WEAPON) {                                                   // Check if the item to equip is a weapon
@@ -141,9 +160,17 @@ void Player::equipItem(Item* item) {
 
     equippedItems.push_back(item);                                                          // Add the item to equipped items
     std::cout << "Equipped " << item->name << "!\n";                                        // Display message indicating the item is equipped
-
+    totalRegenerationRate += item.regenerationRate; // Add to player's regeneration
     for (int i = 0; i < StatCount; ++i) {                                                   // Iterate over each player stat to update
         stats[i] += item->statModifier[i];                                                  // Add the stat modifiers of the equipped item to the player's stats
+    }
+    // Update temporary health modifiers
+//****************************armor wont giv a bonus outright, it will make you harder to hit */
+    if (item->classification == CLOTHING) { // Example for armor
+        healthModifiers.temporaryMod += item->statModifier[Constitution] * 2; // Constitution adds 2 HP per point
+        healthModifiers.temporaryMod += 10; // Flat bonus for wearing armor
+    } else if (item->classification == WEAPON) { // Example for weapons
+        healthModifiers.temporaryMod += item->statModifier[Constitution] * 1; // Constitution bonus is less impactful for weapons
     }
 }
 
@@ -159,8 +186,20 @@ void Player::unequipItem(Item* item) {
         for (int i = 0; i < StatCount; ++i) {                                               // Update player stats by removing item modifiers
             stats[i] -= item->statModifier[i];
         }
+        // Update regeneration rate
+        totalRegenerationRate -= item->regenerationRate;                                    // Subtract item's regeneration rate
+
+        // Update temporary health modifiers
+        if (item->classification == CLOTHING) {                                            // If the unequipped item is armor
+            healthModifiers.temporaryMod -= item->statModifier[Constitution] * 2;          // Remove Constitution-based bonus
+           
+//***********************item will not have a default health mod just by existing */           
+            healthModifiers.temporaryMod -= 10;                                            // Remove flat bonus for wearing armor
+        } else if (item->classification == WEAPON) {                                       // If the unequipped item is a weapon
+            healthModifiers.temporaryMod -= item->statModifier[Constitution] * 1;          // Remove Constitution bonus for weapons
+        }
     } else {
-        std::cout << item->name << " is not equipped.\n";
+        std::cout << item->name << " is not equipped.\n";                                   // Inform user that the item was not equipped
     }
 }
 

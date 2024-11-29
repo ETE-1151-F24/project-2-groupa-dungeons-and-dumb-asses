@@ -22,10 +22,13 @@ Player::Player(std::string playerName, std::string charClass, int startLevel)
       stats{},                            // Default initialize stats to zero
       abilitiesMenu{},                    // Default initialize abilities menu (empty vector)
       equippedItems{},                    // Default initialize equipped items (empty vector)
-      inventory{}                         // Default initialize inventory (empty vector)
-      
+      inventory{},                         // Default initialize inventory (empty vector)
+    totalRegenerationRate(0),               //specifies default regeneration rate for the player
+    currentHealth(8),                       //specifies default health as 8 points
+    maxHealth(8),                            //specifies initial max health as 8 points
+    healthModifiers{0}                      // Initialize health modifiers to zero  
 {
-    // The stats array is explicitly default-initialized, meaning all values are set to zero.
+    // The stats array is explicitly default-initialized, meaning all values are set to zero except for health
 }
 
 //------------------------------ FUNCTION TO GET PLAYER NAME ------------------------------
@@ -195,7 +198,10 @@ void Player::showStats() const {
     std::cout << "Intelligence: " << stats[Intelligence] << "\n"; // Display intelligence stat
     std::cout << "Wisdom: " << stats[Wisdom] << "\n";      // Display wisdom stat
     std::cout << "Constitution: " << stats[Constitution] << "\n"; // Display constitution stat
-    std::cout << "Health: " << stats[Constitution]<< "\n";
+    
+    // Calculate and display total health
+    int totalHealth = healthModifiers.calculateTotalHealth(stats[Constitution], level);
+    std::cout << "Health: " << totalHealth << " (Base + Level + Modifiers)\n";
 }
 
 
@@ -243,13 +249,15 @@ void Player::finalizeStats() {
             std::cout << "Invalid input. Please enter 'yes' or 'no'.\n";                        // Handle invalid input by displaying an error message
         }
     }
+        // Recalculate level-based health modifier
+    healthModifiers.levelMod = level * 6;
 }
 
-void Player::getStats(int S[5], int a) const {
-    S[0] =stats[Strength]; 
-    S[1] =stats[Dexterity]; 
-    S[2] =stats[Intelligence]; 
-    S[3] =stats[Wisdom];    
-    S[4] =stats[Constitution]; 
-    S[5] =stats[Constitution]*(1+ a/10);
+void Player::getStats(int Statvalue[5], int a) const {
+    Statvalue[0] =stats[Strength]; 
+    Statvalue[1] =stats[Dexterity]; 
+    Statvalue[2] =stats[Intelligence]; 
+    Statvalue[3] =stats[Wisdom];    
+    Statvalue[4] =stats[Constitution]; 
+    Statvalue[5] =stats[Constitution]*(1+ a/10);
 }

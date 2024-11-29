@@ -15,12 +15,32 @@
 #include <ctime>                                                    // Required for seeding random number generation (time)
 #include <iomanip>
 #include <random>
+#include <map>
 
 //+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount };  // Defines character stats
 enum ItemType { WEAPON, MAGICAL, CLOTHING };                                                // Defines item categories
 enum CharacterType { CHOSEN_ONE, NPC, ENEMY };                                              // Defines character types
 enum CombatType { MELEE, RANGED };                                                          // Defines weapon combat types
+
+//+++++++++++++++++++++++++++++ Struct declarations ++++++++++++++++++++++++++++++++++++++++++++++++++++
+struct HealthModifiers {
+    int constitutionMod = 0; // Constitution-based health modifier
+    int levelMod = 0;        // Level-based health modifier
+    int temporaryMod = 0;    // Temporary health modifier (e.g., from items, spells)
+
+    // Calculate total health
+    int calculateTotalHealth(int baseConstitution, int level) const {
+        int baseHealth = baseConstitution * 2;  // Base health from Constitution
+        int levelHealth = level * 6;           // Level-based health bonus
+        return baseHealth + levelHealth + constitutionMod + levelMod + temporaryMod;
+    }
+};
+
+
+
+
+
 
 //+++++++++++++++++++++++++++++ Class declarations ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -44,30 +64,51 @@ public:
     int sneakPenalty = 0;                                           // Penalty to sneak when using the item
     int magPowModifier = 0;                                         // Magic power modifier
     std::string restriction;                                        // Restriction on who can use the item
+    // New Attribute
+    int regenerationRate = 0; // HP regeneration rate for this item
 
     // Default constructor
-    Item();                                                         // Declares the default constructor
+     // Default Constructor
+    Item()
+        : name("Unknown"), flavorDescription("No description"), ability("No ability"),
+          classification(ItemType::MAGICAL), combatType(CombatType::MELEE) {
+        std::fill(std::begin(statModifier), std::end(statModifier), 0);
+    }                                                         // Declares the default constructor
 
-    // Parameterized constructor to initialize an Item object
-    Item(std::string itemName,                                      // Set the item's name
-         std::string itemDescription,                               // Set the item's description
-         ItemType itemClassification,                               // Set the item's classification (e.g., WEAPON, CLOTHING)
-         CombatType itemCombatType,                                 // Set the item's combat type (MELEE or RANGED)
-         std::array<int, StatCount> modifier,                       // Set stat modifiers (e.g., strength, dexterity adjustments)
-         std::string itemAbility,                                   // Set the item's special ability description
+
+    // Parameterized Constructor
+    Item(std::string itemName,                                      // Set the item's name 
+        std::string itemDescription,                               // Set the item's description 
+        ItemType itemClassification,                               // Set the item's classification (e.g., WEAPON, CLOTHING) 
+        CombatType itemCombatType,,                                 // Set the item's combat type (MELEE or RANGED)
+        std::array<int, StatCount> modifier,                       // Set stat modifiers (e.g., strength, dexterity adjustments) 
+        std::string itemAbility,                                   // Set the item's special ability description 
          int minDmg = 0,                                            // Set minimum damage (default 0 for non-weapons)
          int maxDmg = 0,                                            // Set maximum damage (default 0 for non-weapons)
          int rangeMod = 0,                                          // Set range modifier (default 0)
          int sneakPen = 0,                                          // Set sneak penalty (default 0)
          int magPowMod = 0,                                         // Set magic power modifier (default 0)
-         std::string itemRestriction = "");                         // Set usage restrictions (e.g., class-specific, default none)
+        std::string itemRestriction = "",                         // Set usage restrictions (e.g., class-specific, default none)
+        int regenRate = 0)
+        : name(itemName), flavorDescription(itemDescription), ability(itemAbility),
+          classification(itemClassification), combatType(itemCombatType), minDamage(minDmg),
+          maxDamage(maxDmg), rangeModifier(rangeMod), sneakPenalty(sneakPen), magPowModifier(magPowMod),
+          restriction(itemRestriction), regenerationRate(regenRate) {
+        std::copy(modifier.begin(), modifier.end(), statModifier);
+    }
 
-    // Function Declarations
-    int calculateDamage(int distance);                              // Function to calculate damage based on combat type
+    // Accessors and Mutators (Example)
+    std::string getName() const { return name; }
+    void setName(const std::string &itemName) { name = itemName; }
+
+    int getRegenerationRate() const { return regenerationRate; }
+    void setRegenerationRate(int rate) { regenerationRate = rate; }
+
+    int calculateDamage(int distance); // Damage calculation logic
 
 private:
-    int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);  // Function for ranged damage calculation
-    int calculateMeleeDamage();                                     // Function for melee damage calculation
+    int calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage);
+    int calculateMeleeDamage();
 };
 
 //-------------------------------- Class for Player Development --------------------------------
@@ -82,7 +123,10 @@ public:
     std::vector<std::string> abilitiesMenu;                         // List of abilities available to the player
     std::vector<Item*> equippedItems;                               // Pointers to items currently equipped by the player
     std::vector<Item> inventory;                                    // Player's inventory
-
+    HealthModifiers healthModifiers; // Added healthModifiers
+    int totalRegenerationRate = 0; // Tracks total HP regeneration from equipped items
+    int currentHealth = 8;          // Set initial health to 8
+    int  maxHealth = 8; {             // Set maximum health to 8
     // Constructor
     Player(std::string playerName, std::string charClass, int startLevel = 1);
 
@@ -91,6 +135,8 @@ public:
     void finalizeStats();                                           // Function for rolling and finalizing stats
     void showStats() const;                                         // Display player's stats
     void showEquippedItems() const;                                 // Display equipped items
+    void applyRegeneration();     // Function to apply regeneration to current health
+
 
     // Equipment management
     bool isEquipped(const Item& item) const;                        // Checks if an item is equipped
