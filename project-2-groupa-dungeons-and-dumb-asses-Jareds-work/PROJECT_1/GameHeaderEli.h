@@ -16,6 +16,7 @@
 #include <iomanip>
 #include <random>
 #include <map>
+#include <nlohmann/json.hpp>
 
 //+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount };  // Defines character stats

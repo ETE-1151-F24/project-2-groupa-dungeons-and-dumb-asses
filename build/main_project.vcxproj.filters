@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\Character_develop_functs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\Game_functions_eli.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\Health_management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\Leveling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\Game_inventory_functions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\gameItems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\GameMainStuff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\item_constructors_dmg_shifts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\MapFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\SpellHandling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\PROJECT_1\GameHeaderEli.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{844A9CDA-4C6C-3CB2-9D55-FFE641690203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{39E46EC2-FDBF-33F1-89FC-5C0E7D036D97}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
