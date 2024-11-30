@@ -1,6 +1,7 @@
 // Game_inventory_functions.cpp
 #include "GameHeaderEli.h" 
 #include "Leveling.cpp"                           // Include header file for necessary declarations
+#include <nlohmann/json.hpp>
 
 
 

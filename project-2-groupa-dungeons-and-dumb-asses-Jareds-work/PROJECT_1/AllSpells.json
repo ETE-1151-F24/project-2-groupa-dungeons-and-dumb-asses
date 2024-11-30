@@ -1,23 +1,403 @@
-[ 
+[
     {
-        "name": "Fireball",
-        "description": "A blazing ball of fire that deals damage to enemies.",
-        "mana_cost": 10,
-        "damage": 25,
-        "level_required": 1
+        "level": 1,
+        "spells": [
+            {
+                "name": "Firelash",
+                "type": "combat",
+                "description": "A whip of flames lashes out at enemies, searing their flesh.",
+                "mana_cost": 10,
+                "effect": {
+                    "type": "damage",
+                    "value": 10
+                },
+                "range": "15 ft",
+                "scaling": {
+                    "mana_cost_increment": 1,
+                    "effect_increment": 2
+                }
+            },
+            {
+                "name": "Shadowstep",
+                "type": "utility",
+                "description": "Enables the caster to move silently and unseen for a short time.",
+                "mana_cost": 8,
+                "effect": {
+                    "type": "stealth",
+                    "duration": 2
+                },
+                "scaling": {
+                    "mana_cost_increment": 1,
+                    "effect_increment": 1
+                }
+            },
+            {
+                "name": "Lumina's Caress",
+                "type": "protective",
+                "description": "A gentle light that mends wounds and soothes pain.",
+                "mana_cost": 8,
+                "effect": {
+                    "type": "healing",
+                    "value": 8
+                },
+                "range": "Touch",
+                "scaling": {
+                    "mana_cost_increment": 1,
+                    "effect_increment": 2
+                }
+            }
+        ]
     },
     {
-        "name": "Healing Light",
-        "description": "A soothing light that restores health.",
-        "mana_cost": 8,
-        "healing": 20,
-        "level_required": 2
+        "level": 2,
+        "spells": [
+            {
+                "name": "Emberstorm",
+                "type": "combat",
+                "description": "A flurry of embers engulfs the battlefield, scorching multiple foes.",
+                "mana_cost": 12,
+                "effect": {
+                    "type": "damage",
+                    "value": 15
+                },
+                "range": "10 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 2,
+                    "effect_increment": 3
+                }
+            },
+            {
+                "name": "Binding Vines",
+                "type": "utility",
+                "description": "Summons magical vines to entangle foes, slowing their movement.",
+                "mana_cost": 10,
+                "effect": {
+                    "type": "crowd control",
+                    "speed_reduction": 10,
+                    "duration": 2
+                },
+                "scaling": {
+                    "mana_cost_increment": 1,
+                    "effect_increment": 1
+                }
+            },
+            {
+                "name": "Silverveil Ward",
+                "type": "protective",
+                "description": "A protective barrier surrounds an ally, bolstering their defenses.",
+                "mana_cost": 10,
+                "effect": {
+                    "type": "buff",
+                    "armor_increase": 5,
+                    "duration": 3
+                },
+                "scaling": {
+                    "mana_cost_increment": 1,
+                    "effect_increment": 1
+                }
+            }
+        ]
     },
     {
-        "name": "Ice Shard",
-        "description": "Sharp shards of ice that pierce enemies.",
-        "mana_cost": 12,
-        "damage": 30,
-        "level_required": 3
+        "level": 3,
+        "spells": [
+            {
+                "name": "Frostbolt",
+                "type": "combat",
+                "description": "A shard of ice flies at an enemy, chilling them to the core.",
+                "mana_cost": 14,
+                "effect": {
+                    "type": "damage",
+                    "value": 25
+                },
+                "range": "60 ft",
+                "scaling": {
+                    "mana_cost_increment": 3,
+                    "effect_increment": 5
+                }
+            },
+            {
+                "name": "Ethereal Stride",
+                "type": "utility",
+                "description": "The caster becomes incorporeal, passing through physical barriers.",
+                "mana_cost": 12,
+                "effect": {
+                    "type": "phase",
+                    "duration": 1
+                },
+                "scaling": {
+                    "mana_cost_increment": 1,
+                    "effect_increment": 0
+                }
+            },
+            {
+                "name": "Spirit Mend",
+                "type": "protective",
+                "description": "A surge of magical energy revitalizes an ally.",
+                "mana_cost": 12,
+                "effect": {
+                    "type": "healing",
+                    "value": 20
+                },
+                "range": "Touch",
+                "scaling": {
+                    "mana_cost_increment": 2,
+                    "effect_increment": 4
+                }
+            }
+        ]
+    },
+    {
+        "level": 4,
+        "spells": [
+            {
+                "name": "Searing Sigil",
+                "type": "combat",
+                "description": "A glowing sigil brands an enemy, causing searing pain.",
+                "mana_cost": 16,
+                "effect": {
+                    "type": "damage",
+                    "value": 30
+                },
+                "range": "40 ft",
+                "scaling": {
+                    "mana_cost_increment": 3,
+                    "effect_increment": 6
+                }
+            },
+            {
+                "name": "Illusory Phantasm",
+                "type": "utility",
+                "description": "A shimmering illusion confuses enemies, distracting them from their target.",
+                "mana_cost": 14,
+                "effect": {
+                    "type": "crowd control",
+                    "duration": 2
+                },
+                "range": "20 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 2,
+                    "effect_increment": 1
+                }
+            },
+            {
+                "name": "Venomous Balm",
+                "type": "protective",
+                "description": "A magical balm that neutralizes poison and restores health.",
+                "mana_cost": 15,
+                "effect": {
+                    "type": "healing",
+                    "value": 15,
+                    "cures": ["poison"]
+                },
+                "range": "Touch",
+                "scaling": {
+                    "mana_cost_increment": 1,
+                    "effect_increment": 3
+                }
+            }
+        ]
+    },
+    {
+        "level": 5,
+        "spells": [
+            {
+                "name": "Inferno Strike",
+                "type": "combat",
+                "description": "A massive burst of flame erupts, devastating enemies.",
+                "mana_cost": 18,
+                "effect": {
+                    "type": "damage",
+                    "value": 50
+                },
+                "range": "15 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 5,
+                    "effect_increment": 8
+                }
+            },
+            {
+                "name": "Arcane Beacon",
+                "type": "utility",
+                "description": "A magical flare illuminates an area, dispelling darkness and revealing hidden foes.",
+                "mana_cost": 15,
+                "effect": {
+                    "type": "reveal",
+                    "duration": 3
+                },
+                "range": "30 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 2,
+                    "effect_increment": 0
+                }
+            },
+            {
+                "name": "Life Leech",
+                "type": "protective",
+                "description": "Drains vitality from a foe, healing the caster.",
+                "mana_cost": 16,
+                "effect": {
+                    "type": "drain health",
+                    "value": 30
+                },
+                "range": "30 ft",
+                "scaling": {
+                    "mana_cost_increment": 4,
+                    "effect_increment": 5
+                }
+            }
+        ]
+    },
+    {
+        "level": 6,
+        "spells": [
+            {
+                "name": "Blazing Glyph",
+                "type": "combat",
+                "description": "A rune explodes in a fiery burst, scorching nearby foes.",
+                "mana_cost": 20,
+                "effect": {
+                    "type": "damage",
+                    "value": 60
+                },
+                "range": "5 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 5,
+                    "effect_increment": 8
+                }
+            },
+            {
+                "name": "Phantom Scout",
+                "type": "utility",
+                "description": "Summons a spectral guide to explore the surrounding area.",
+                "mana_cost": 18,
+                "effect": {
+                    "type": "scout",
+                    "duration": 5
+                },
+                "range": "60 ft",
+                "scaling": {
+                    "mana_cost_increment": 2,
+                    "effect_increment": 0
+                }
+            },
+            {
+                "name": "Aegis of Dawn",
+                "type": "protective",
+                "description": "A radiant shield deflects attacks, protecting allies.",
+                "mana_cost": 18,
+                "effect": {
+                    "type": "buff",
+                    "armor_increase": 10,
+                    "duration": 3
+                },
+                "scaling": {
+                    "mana_cost_increment": 3,
+                    "effect_increment": 2
+                }
+            }
+        ]
+    },
+    {
+        "level": 7,
+        "spells": [
+            {
+                "name": "Stormcall",
+                "type": "combat",
+                "description": "Summons a tempest of lightning to strike down enemies.",
+                "mana_cost": 22,
+                "effect": {
+                    "type": "damage",
+                    "value": 70
+                },
+                "range": "10 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 6,
+                    "effect_increment": 10
+                }
+            },
+            {
+                "name": "Eldritch Passage",
+                "type": "utility",
+                "description": "Creates a magical portal for instant travel between two locations.",
+                "mana_cost": 20,
+                "effect": {
+                    "type": "teleport",
+                    "range": 50
+                },
+                "scaling": {
+                    "mana_cost_increment": 4,
+                    "effect_increment": 0
+                }
+            },
+            {
+                "name": "Sanctuary of the Lost",
+                "type": "protective",
+                "description": "A wave of healing energy restores allies' vitality in a wide area.",
+                "mana_cost": 22,
+                "effect": {
+                    "type": "healing",
+                    "value": 50
+                },
+                "range": "20 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 5,
+                    "effect_increment": 8
+                }
+            }
+        ]
+    },
+    {
+        "level": 8,
+        "spells": [
+            {
+                "name": "Hellfire Tempest",
+                "type": "combat",
+                "description": "An inferno engulfs the battlefield, annihilating everything in its path.",
+                "mana_cost": 25,
+                "effect": {
+                    "type": "damage",
+                    "value": 100
+                },
+                "range": "15 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 8,
+                    "effect_increment": 12
+                }
+            },
+            {
+                "name": "Time Warp",
+                "type": "utility",
+                "description": "Slows time for enemies while speeding it up for allies.",
+                "mana_cost": 24,
+                "effect": {
+                    "type": "time manipulation",
+                    "slow_enemies": true,
+                    "haste_allies": true,
+                    "duration": 2
+                },
+                "range": "20 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 6,
+                    "effect_increment": 0
+                }
+            },
+            {
+                "name": "Divine Reckoning",
+                "type": "protective",
+                "description": "Calls down holy judgment, smiting foes and healing allies.",
+                "mana_cost": 26,
+                "effect": {
+                    "type": "dual effect",
+                    "damage": 90,
+                    "healing": 40
+                },
+                "range": "20 ft radius",
+                "scaling": {
+                    "mana_cost_increment": 8,
+                    "effect_increment": 10
+                }
+            }
+        ]
     }
 ]

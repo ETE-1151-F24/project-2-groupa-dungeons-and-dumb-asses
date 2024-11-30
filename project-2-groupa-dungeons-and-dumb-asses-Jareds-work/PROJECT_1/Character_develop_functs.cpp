@@ -1,5 +1,8 @@
 // Character_develop_functs.cpp
 #include "GameHeaderEli.h"                  // Include the game header file for necessary class definitions and enums
+#include "spellHandling.cpp"
+
+
 
 //------------------------------------------ PLAYER CLASS IMPLEMENTATION -------------------------------------------------
 
@@ -144,7 +147,16 @@ void displayClasses(Player& player) {
 
 //------------------------------------------------------------------------------------------
 
-
+//-------------------------------------------------------------------------------------------
+//--------------------------Function to simulate rolling stats within a given range using rand()---------------------
+//-------------------------------------------------------------------------------------------
+ 
+int Player::roll(int minValue, int maxValue) {                         // Function to roll a random number within a range
+    std::random_device rd;                                             // Seed generator for random number engine
+    std::mt19937 gen(rd());                                            // Mersenne Twister random number generator
+    std::uniform_int_distribution<> dist(minValue, maxValue);          // Uniform distribution in the range [minValue, maxValue]
+    return dist(gen);                                                  // Generate and return the random number
+}
 
 //------------------------------------------Function to roll stats based on character class
 void Player::rollStats() {
@@ -190,16 +202,7 @@ void Player::rollStats() {
 }
 
 
-//-------------------------------------------------------------------------------------------
-//--------------------------Function to simulate rolling stats within a given range using rand()---------------------
-//-------------------------------------------------------------------------------------------
- 
-int Player::roll(int minValue, int maxValue) {                         // Function to roll a random number within a range
-    std::random_device rd;                                             // Seed generator for random number engine
-    std::mt19937 gen(rd());                                            // Mersenne Twister random number generator
-    std::uniform_int_distribution<> dist(minValue, maxValue);          // Uniform distribution in the range [minValue, maxValue]
-    return dist(gen);                                                  // Generate and return the random number
-}
+
 
 
 //-------------------------------------------------------------------------------------------
@@ -270,6 +273,9 @@ void Player::finalizeStats() {
     }
         // Recalculate level-based health modifier
     healthModifiers.levelMod = level * 6;
+    // After rolling stats and confirming class:
+std::vector<nlohmann::json> availableSpells = loadSpells("AllSpells.json");
+chooseStartingSpell(*this, availableSpells);
 }
 //-------------------------------------------------------------------------------------------
 // function to get the stats of the player, may not be needed anymore

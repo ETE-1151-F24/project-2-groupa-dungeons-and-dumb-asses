@@ -1,19 +1,27 @@
 //Leveling.cpp
 #include<iostream>
 #include <cstdlib>
+#include <vector>
+#include <map>
 #include <ctime>
-
+#include "SpellHandling.cpp"
+#include "Health_management.cpp"
 #include "GameHeaderEli.h"
 using namespace std;
 
 
 
 
+// ---------------------------experience benchmarks
+     // -------------------------vector that stores the XP Benchmarks
+    // Map for storing XP benchmarks with levels as keys
+    std::map<int, int> xpBenchmarks = {
+        {1, 0},       {2, 150},    {3, 450},    {4, 1350},   {5, 3250},
+        {6, 7000},    {7, 11500},  {8, 17000},  {9, 24000},  {10, 32000},
+        {11, 42500},  {12, 50000}, {13, 60000}, {14, 72500}, {15, 87500},
+        {16, 105000}, {17, 125000},{18, 150000},{19, 177500},{20, 205000}
+    };
 
-int xp;   //this tracks the characters xp for the game
-
-
-//GENERIC FUNCTION FOR GIVING OUT XP
 
 
 //-------------------------------------------------------------------------------------------
@@ -32,78 +40,38 @@ int getLevel(int xp, const std::map<int, int>& xpBenchmarks) {
     return level;
 }
 
-// ---------------------------experience benchmarks
-     // -------------------------vector that stores the XP Benchmarks
-    // Map for storing XP benchmarks with levels as keys
-    std::map<int, int> xpBenchmarks = {
-        {1, 0},       {2, 150},    {3, 450},    {4, 1350},   {5, 3250},
-        {6, 7000},    {7, 11500},  {8, 17000},  {9, 24000},  {10, 32000},
-        {11, 42500},  {12, 50000}, {13, 60000}, {14, 72500}, {15, 87500},
-        {16, 105000}, {17, 125000},{18, 150000},{19, 177500},{20, 205000}
-    };
 
 
 
 //-------------------------------------------------------------------------------------------
-// function to award xp after a quest, combat or puzzle and calculate level-up
+// Function to award XP after combat, puzzles, or quests
 //-------------------------------------------------------------------------------------------
- 
-void awardXP(int& xp, int amount, const std::map<int, int>& xpBenchmarks) {
-    int oldLevel = getLevel(xp, xpBenchmarks);
-    xp += amount;
-    int newLevel = getLevel(xp, xpBenchmarks);
+void awardXP(Player& player, int amount, const std::map<int, int>& xpBenchmarks,
+             const std::vector<nlohmann::json>& availableSpells) {
+    int oldLevel = getLevel(player.experience, xpBenchmarks);                   // Determine current level
+    player.experience += amount;                                                // Add XP to player's total
+    int newLevel = getLevel(player.experience, xpBenchmarks);                   // Recalculate level
 
     std::cout << "You earned " << amount << " XP!\n";
+
     if (newLevel > oldLevel) {
         std::cout << "Congratulations! You leveled up to Level " << newLevel << "!\n";
+        player.level = newLevel;                                                // Update the player's level
+        player.healthModifiers.levelMod = newLevel * 6;                         // Update health based on level
+
+        // Grant new spells upon leveling up
+        grantSpellsOnLevelUp(player, availableSpells);
+
+        // Pass healthModifiers directly
+        displayHealthDetails(player.healthModifiers, player.stats[Constitution], player.level);  // Display updated health
     } else {
-        std::cout << "You are now at " << xp << " XP, Level " << newLevel << ".\n";
+        std::cout << "You are now at " << player.experience << " XP, Level " << newLevel << ".\n";
     }
 }
 
 //-------------------------------------------------------------------------------------------
-// function or struct for establishing the health of my character
+// Function to display health details
 //-------------------------------------------------------------------------------------------
-struct HealthModifiers {
-    int constitutionMod = 0; // Constitution modifier (permanent)
-    int levelMod = 0;        // Level-based modifier (permanent)
-    int temporaryMod = 0;    // Temporary modifier from items, spells, etc.
-
-    // Function to calculate total health
-    int calculateTotalHealth(int baseConstitution, int level) const {
-        int health = 0;
-
-        // Constitution-based health
-        health += baseConstitution * 2;
-
-        // Level-based health
-        health += level * 6;
-
-        // Add permanent and temporary modifiers
-        health += constitutionMod;
-        health += levelMod;
-        health += temporaryMod;
-
-        return health;
-    }
-};
-
- 
- //-------------------------------------------------------------------------------------------
- //  this is the function for displaying the health of the character
- //-------------------------------------------------------------------------------------------
-
- void displayHealthDetails(const HealthModifiers& modifiers, int baseConstitution, int level) {
-    int totalHealth = modifiers.calculateTotalHealth(baseConstitution, level);
-    std::cout << "--- Health Details ---\n";
-    std::cout << "Base Constitution: " << baseConstitution << " -> " << baseConstitution * 2 << " HP\n";
-    std::cout << "Level: " << level << " -> " << level * 6 << " HP\n";
-    std::cout << "Permanent Modifiers: " << modifiers.constitutionMod + modifiers.levelMod << " HP\n";
-    std::cout << "Temporary Modifiers: " << modifiers.temporaryMod << " HP\n";
-    std::cout << "Total Health: " << totalHealth << " HP\n";
-}
-
-
 
 
 

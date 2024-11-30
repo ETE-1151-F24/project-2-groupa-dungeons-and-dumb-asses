@@ -14,3 +14,19 @@ void Player::applyRegeneration() {
 }
 
 //this will trigger each round, time frame, or day, depending on its condition
+
+ 
+ //-------------------------------------------------------------------------------------------
+ //  this is the function for displaying the health of the character
+ //-------------------------------------------------------------------------------------------
+
+ void displayHealthDetails(const HealthModifiers& modifiers, int baseConstitution, int level) {
+    int totalHealth = modifiers.calculateTotalHealth(baseConstitution, level);
+    std::cout << "--- Health Details ---\n";
+    std::cout << "Base Constitution: " << baseConstitution << " -> " << baseConstitution * 2 << " HP\n";
+    std::cout << "Level: " << level << " -> " << level * 6 << " HP\n";
+    std::cout << "Permanent Modifiers: " << modifiers.constitutionMod + modifiers.levelMod << " HP\n";
+    std::cout << "Temporary Modifiers: " << modifiers.temporaryMod << " HP\n";
+    std::cout << "Total Health: " << totalHealth << " HP\n";
+}
+

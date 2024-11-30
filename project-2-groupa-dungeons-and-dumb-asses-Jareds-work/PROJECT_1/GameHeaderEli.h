@@ -29,15 +29,13 @@ struct HealthModifiers {
     int levelMod = 0;        // Level-based health modifier
     int temporaryMod = 0;    // Temporary health modifier (e.g., from items, spells)
 
-    // Calculate total health
+    // Correctly mark calculateTotalHealth as const
     int calculateTotalHealth(int baseConstitution, int level) const {
-        int baseHealth = baseConstitution * 2;  // Base health from Constitution
-        int levelHealth = level * 6;           // Level-based health bonus
-        return baseHealth + levelHealth + constitutionMod + levelMod + temporaryMod;
+        int health = baseConstitution * 2 + level * 6;
+        health += constitutionMod + levelMod + temporaryMod;
+        return health;
     }
 };
-
-
 
 
 
@@ -124,6 +122,8 @@ public:
     int totalRegenerationRate = 0;                                  // Tracks total HP regeneration from equipped items
     int currentHealth = 8;                                          // Set initial health to 8
     int  maxHealth = 8;                                             // Set maximum health to 8
+    std::vector<std::string> learnedSpells;                         // Spells the player has learned
+     std::vector<nlohmann::json> spells;                            // Known spells for the player   
     // Constructor
     Player(std::string playerName, std::string charClass, int startLevel = 1);
 
@@ -142,6 +142,9 @@ public:
     bool hasEquippedWeapon() const;                                 // Checks if a weapon is currently equipped
     void getStats(int S[6], int a) const;
     void updateStats(const Item& item, bool isEquipping);           //helper to update the stats of player
+    // New methods for spell handling
+    void displaySpells() const;                                     // Display learned spells
+    void learnSpell(const std::string& spellName);                  // Learn a new spell
 
 private:
     int roll(int minValue, int maxValue);                           // Function to roll a stat within a given range
@@ -156,6 +159,10 @@ void runGameLoop(Player& player);                                   // Function 
 void displayItemDetails(const Item& item);                          // Function to display item details
 void displayInventory(const Player& player);                       // Function to display player inventory
 std::string getPlayerName();                                        // Function to get the player's name                           
+void grantSpellsOnLevelUp(Player& player, const std::vector<nlohmann::json>& availableSpells);
+void awardXP(Player& player, int amount, const std::map<int, int>& xpBenchmarks,
+             const std::vector<nlohmann::json>& availableSpells);
+
 
 #endif // GAMEHEADERELI_H
 
