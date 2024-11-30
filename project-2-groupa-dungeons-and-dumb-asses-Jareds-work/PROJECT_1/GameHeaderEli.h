@@ -17,6 +17,7 @@
 #include <random>
 #include <map>
 #include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 //+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, StatCount };  // Defines character stats
@@ -92,13 +93,13 @@ public:
           restriction(itemRestriction), regenerationRate(regenRate) {
         std::copy(modifier.begin(), modifier.end(), statModifier);
     }
+    // Accessors and Mutators
+    std::string getName() const { return name; }                    // Get the item's name
+    void setName(const std::string &itemName) { name = itemName; }  // Set the item's name
+    int getRegenerationRate() const { return regenerationRate; }    // Get the regeneration rate
+    void setRegenerationRate(int rate) { regenerationRate = rate; } // Set the regeneration rate
 
-    // Accessors and Mutators (Example)
-    std::string getName() const { return name; }
-    void setName(const std::string &itemName) { name = itemName; }
 
-    int getRegenerationRate() const { return regenerationRate; }
-    void setRegenerationRate(int rate) { regenerationRate = rate; }
 
     int calculateDamage(int distance); // Damage calculation logic
 
