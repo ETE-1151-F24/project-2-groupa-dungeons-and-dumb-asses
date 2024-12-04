@@ -20,6 +20,9 @@ BUILD_GMOCK:BOOL=ON
 //Path to a program.
 CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/lib.exe
 
+//No help, variable specified on the command line.
+CMAKE_BUILD_TYPE:STRING=Debug
+
 //Semicolon separated list of supported configuration types, only
 // supports Debug, Release, MinSizeRel, and RelWithDebInfo, anything
 // else will be ignored.
@@ -75,6 +78,9 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
+
+//No help, variable specified on the command line.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/CMakeFiles/pkgRedirects
@@ -269,34 +275,34 @@ GTEST_HAS_ABSL:BOOL=OFF
 INSTALL_GTEST:BOOL=ON
 
 //Value Computed by CMake
-gmock_BINARY_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/googletest/googlemock
+gmock_BINARY_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/PROJECT_1/googletest/googlemock
 
 //Value Computed by CMake
 gmock_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-gmock_SOURCE_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/googletest/googlemock
+gmock_SOURCE_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/googlemock
 
 //Build all of Google Mock's own tests.
 gmock_build_tests:BOOL=OFF
 
 //Value Computed by CMake
-googletest-distribution_BINARY_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/googletest
+googletest-distribution_BINARY_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/PROJECT_1/googletest
 
 //Value Computed by CMake
 googletest-distribution_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-googletest-distribution_SOURCE_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/googletest
+googletest-distribution_SOURCE_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest
 
 //Value Computed by CMake
-gtest_BINARY_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/googletest/googletest
+gtest_BINARY_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/PROJECT_1/googletest/googletest
 
 //Value Computed by CMake
 gtest_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-gtest_SOURCE_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/googletest/googletest
+gtest_SOURCE_DIR:STATIC=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/googletest
 
 //Build gtest's sample programs.
 gtest_build_samples:BOOL=OFF
@@ -488,7 +494,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/DungeonsAndDumbAsses
 cmake_package_name:INTERNAL=GTest
-generated_dir:INTERNAL=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/googletest/googletest/generated
+generated_dir:INTERNAL=C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/PROJECT_1/googletest/googletest/generated
 //ADVANCED property for variable: gmock_build_tests
 gmock_build_tests-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gtest_build_samples

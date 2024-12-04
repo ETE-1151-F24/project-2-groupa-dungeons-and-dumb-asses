@@ -1,0 +1,10 @@
+^C:\USERS\E\PROJECT-2-GROUPA-DUNGEONS-AND-DUMB-ASSES-1\PROJECT-2-GROUPA-DUNGEONS-AND-DUMB-ASSES-JAREDS-WORK\BUILD\CMAKEFILES\000A2626E33275963CACD94416D819D8\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work -BC:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/build/DungeonsAndDumbAsses.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

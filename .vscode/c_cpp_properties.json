@@ -4,7 +4,13 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/msys64/mingw64/include"//added this folder to now include the location of nlohmann folder for systemwide include of json.hpp
+                "C:/msys64/mingw64/include", // Added this folder to include the location of nlohmann/json.hpp
+                "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/googletest/include",
+                "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/googlemock/include",
+                "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1", // Path to PROJECT_1 
+                "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/vcpkg/installed/x64-windows/include",
+                "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/include/nlohmann" ,
+                "C:/msys64/mingw64/include/nlohmann"         
             ],
             "defines": [],
             "cStandard": "c11",
@@ -13,7 +19,10 @@
             "browse": {
                 "path": [
                     "${workspaceFolder}/**",
-                    "C:/msys64/mingw64/include"//added this folder to now include the location of nlohmann folder for browsing
+                    "C:/msys64/mingw64/include", // Added this folder for browsing nlohmann/json
+                                "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/vcpkg/installed/x64-windows/include",
+                                "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/include/nlohmann" ,
+                                "C:/msys64/mingw64/include/nlohmann"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""

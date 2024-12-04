@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\e\project-2-groupa-dungeons-and-dumb-asses-1\project-2-groupa-dungeons-and-dumb-asses-Jareds-work\build\CMakeFiles\e9617770fe77122db3d81501b92f0f2b\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2C9DE586-8797-3652-873B-09CDEB063FD3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/googletest/cmake_install.cmake")
+  include("C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/build/PROJECT_1/googletest/cmake_install.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT

@@ -1,0 +1,157 @@
+{
+	
+		"Clear and Ignore Input": {
+			"scope": "cpp",
+			"prefix": "cin.ignorestuff",
+			"body": [
+				"cin.clear();",
+				"cin.ignore(numeric_limits<streamsize>::max(), '\\n');"
+			],
+			"description": "Clears and ignores invalid input from cin"
+		},
+	
+"press enter to continue": {
+	"scope": "cpp",
+			"prefix": "press_enter_to_continue",
+			"body": [
+				"cout<<\"press enter to continue\" <<endl;",
+				"cin.clear();",
+				"cin.ignore(numeric_limits<streamsize>::max(), '\\n');",
+				"cin.get();"
+			],
+			"description": "creates code for press enter to continue message"
+		},
+
+"section break": {
+	"scope": "cpp",
+			"prefix": "section break",
+			"body": [
+				"//-------------------------------------------------------------------------------------------",
+				"// ",
+				"//-------------------------------------------------------------------------------------------",
+				" "
+			],
+			"description": "creates code for section breaks"
+		},
+
+
+		"Switch Case Template": {
+			"scope": "cpp",
+			"prefix": "switchcase",
+			"body": [
+				"switch (/*variable*/) {",
+				"    case 1:",
+				"        // code goes here",
+				"        break;",
+				"",
+				"    case 2:",
+				"        // code goes here",
+				"        break;",
+				"",
+				"    default:",
+				"        // default code goes here",
+				"}"
+			],
+			"description": "Template for a C++ switch-case structure"
+		},
+
+		"for loop": {
+			"scope": "cpp",
+			"prefix": "forloop",
+			"body": [
+				"for ( i = 0, 1 < /*maxvalue*/, ++i){                        //for i beginning at 0 until maxvalue, increment",
+				"        // code goes here",
+			"}"
+			],
+			"description": "Template for a for loop to get started"
+		},
+
+		
+		
+			"Input Validation Template": {
+				"scope": "cpp",
+				"prefix": "validateinput",
+				"body": [
+					"while (!(cin >> /*variable*/) || /*variable*/ < min || /*variable*/ > max) {",
+					"    cout << \"Invalid input! Please enter a number between min and max: \";",
+					"    cin.clear(); // Clear the error flag",
+					"    cin.ignore(numeric_limits<streamsize>::max(), '\\n'); // Ignore invalid input",
+					"}",
+					"//make sure to have #include <limits>"
+				],
+				"description": "Template for input validation with range checking"
+			},
+
+
+
+"gameloop": {
+    "scope": "cpp",
+    "prefix": "gameloop",
+    "body": [
+        "    // Generic menu with input validation  dont forget #include <limits>",
+        "    /*variable*/ bool running = true; // Loop control for the menu",
+        "",
+        "    while (running) {",
+        "        // Display menu options",
+        "        std::cout << \"\\nMain Menu:\" << std::endl;",
+        "        std::cout << \"1. Option 1\" << std::endl;",
+        "        std::cout << \"2. Option 2\" << std::endl;",
+        "        std::cout << \"3. Exit\" << std::endl;",
+        "        std::cout << \"Enter your choice: \";",
+        "",
+        "        /*variable*/ int choice; // Variable to store the menu choice",
+        "        std::cin >> choice; // Read the user's choice",
+        "",
+        "        if (std::cin.fail() || choice < 1 || choice > 3) {",
+        "            // Handle invalid input (non-numeric or out of range)",
+        "            std::cin.clear(); // Clear the error state",
+        "            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\\n'); // Discard invalid input",
+        "            std::cout << \"Invalid input. Please enter a number between 1 and 3.\" << std::endl;",
+        "            continue; // Restart the loop",
+        "        }",
+        "",
+        "        switch (choice) {",
+        "            case 1:",
+        "                // Code for Option 1 goes here",
+        "                std::cout << \"You selected Option 1.\" << std::endl;",
+        "                break;",
+        "",
+        "            case 2:",
+        "                // Code for Option 2 goes here",
+        "                std::cout << \"You selected Option 2.\" << std::endl;",
+        "                break;",
+        "",
+        "            case 3:",
+        "                // Exit the program",
+        "                std::cout << \"Exiting program. Goodbye!\" << std::endl;",
+        "                running = false; // End the loop",
+        "                break;",
+        "",
+        "            default:",
+        "                // This should never happen because of the validation above",
+        "                std::cout << \"Unexpected error!\" << std::endl;",
+        "                break;",
+        "        }",
+        "    }"
+    ],
+    "description": "Menu-driven program with combined input validation for numeric and range errors."
+},
+"line break": {
+	"scope": "cpp",
+			"prefix": "line break",
+			"body": [
+				"//-------------------------------------------------------------------------------------------"
+			],
+			"description": "creates code for line breaks"
+		}
+
+
+
+
+
+
+		
+		
+	
+	
+		}

@@ -1,0 +1,10 @@
+^C:\USERS\E\PROJECT-2-GROUPA-DUNGEONS-AND-DUMB-ASSES-1\PROJECT-2-GROUPA-DUNGEONS-AND-DUMB-ASSES-JAREDS-WORK\BUILD\CMAKEFILES\000A2626E33275963CACD94416D819D8\RUN_TESTS_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

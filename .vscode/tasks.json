@@ -56,21 +56,58 @@
 //           }  
 //     ]
 // }
+//tasks.json
 
-
-{
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "label": "Build Google Test",
-        "type": "shell",
-        "command": "cmake --build build", // Runs the build process using CMake
-        "problemMatcher": [],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
-      }
-    ]
-  }
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//       {
+//         "label": "Build Google Test",
+//         "type": "shell",
+//         "command": "cmake --build build", // Runs the build process using CMake
+//         "problemMatcher": [],
+//         "group": {
+//           "kind": "build",
+//           "isDefault": true
+//         }
+//       }
+//     ]
+//   }
   
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Google Test",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++20",
+        "-IC:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/vcpkg/installed/x64-windows/include",
+        "-LC:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/googletest/vcpkg/installed/x64-windows/lib",
+        "${file}",
+        "-lgtest",
+        "-lgtest_main",
+        "-pthread",
+        "-o",
+        "${fileBasenameNoExtension}"
+      ],
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Google Test",
+      "type": "shell",
+      "command": "${workspaceFolder}/${fileBasenameNoExtension}",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "dependsOn": "Build Google Test"
+    }
+  ]
+}
