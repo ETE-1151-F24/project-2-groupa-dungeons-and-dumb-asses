@@ -17,10 +17,13 @@
 	"dependencies" : 
 	[
 		{
+			"id" : "main_project::@6890427a1f51a3e7e1df"
+		},
+		{
 			"id" : "run_tests::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "main_project::@6890427a1f51a3e7e1df"
+			"id" : "gtest::@210c36a8eeb8d52b1ba1"
 		},
 		{
 			"id" : "gtest_main::@210c36a8eeb8d52b1ba1"
@@ -29,13 +32,10 @@
 			"id" : "gmock::@dca1f8482bf745b60dc0"
 		},
 		{
-			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
-		},
-		{
-			"id" : "gtest::@210c36a8eeb8d52b1ba1"
-		},
-		{
 			"id" : "gmock_main::@dca1f8482bf745b60dc0"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
