@@ -6,6 +6,7 @@
 #include <ctime>
 #include "SpellHandling.h"
 #include "Leveling.h"
+#include "Character_develop_functs.h"
 
 using namespace std;
  //-------------------------------------------------------------------------------------------

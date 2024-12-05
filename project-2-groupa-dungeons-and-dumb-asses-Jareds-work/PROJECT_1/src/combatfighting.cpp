@@ -3,13 +3,11 @@
 #include "combatfighting.h"
 
 //-------------------------------------------------------------------------------------------
-// // Combat Improvement with Action Choices
+// Combat Improvement with Action Choices
 //-------------------------------------------------------------------------------------------
- 
-
-void fight(int stats[6], int floor) {
-    int enemyHealth = 10 + (floor * 5); // Enemy health scales with floor
-    while (enemyHealth > 0 && stats[0] > 0) { // While enemy and player are alive
+void fight(Player& player, int enemyLevel) {
+    int enemyHealth = 10 + (enemyLevel * 5); // Enemy health scales with level
+    while (enemyHealth > 0 && player.currentHealth > 0) { // While enemy and player are alive
         std::string action;
         std::cout << "Choose an action: (attack/heal/escape): ";
         std::cin >> action;
@@ -19,11 +17,14 @@ void fight(int stats[6], int floor) {
             enemyHealth -= damage;
             std::cout << "You dealt " << damage << " damage. Enemy health: " << enemyHealth << "\n";
         } else if (action == "heal") {
-            int healAmount = rand() % 3 + 2; // Heal the player slightly
-            stats[0] += healAmount;
-            std::cout << "You healed for " << healAmount << " health. Your health: " << stats[0] << "\n";
+            healPlayer(player); // Use Player's healing function
         } else if (action == "escape") {
-            std::cout << "You attempted to escape... but failed.\n";
+            if (tryEscape(player)) {
+                std::cout << "You successfully escaped!\n";
+                return; // Exit the fight
+            } else {
+                std::cout << "You attempted to escape... but failed.\n";
+            }
         }
 
         if (enemyHealth <= 0) {
@@ -32,11 +33,8 @@ void fight(int stats[6], int floor) {
         }
 
         // Enemy's turn to attack
-        int damage = rand() % 5 + 1;
-        stats[0] -= damage; // Subtract from player health
-        std::cout << "Enemy dealt " << damage << " damage. Your health: " << stats[0] << "\n";
-
-        if (stats[0] <= 0) {
+        enemyAttack(player, enemyLevel * 2); // Scale enemy strength with level
+        if (player.currentHealth <= 0) {
             std::cout << "You were defeated...\n";
         }
     }
@@ -81,22 +79,17 @@ void displayCombatStats(const Player& player, const std::map<std::string, int>& 
 //-------------------------------------------------------------------------------------------
 //----------------// Function to simulate the player's healing action during combat----------------------- 
 //-------------------------------------------------------------------------------------------
- void healPlayer(int stats[6]) {
+void healPlayer(Player& player) {
     int healAmount = rand() % 3 + 2; // Heal player slightly
-    stats[0] += healAmount;
-    std::cout << "You healed for " << healAmount << " health. Your health: " << stats[0] << "\n";
+    player.currentHealth = std::min(player.currentHealth + healAmount, player.maxHealth);
+    std::cout << "You healed for " << healAmount << " health. Your health: " << player.currentHealth << "\n";
 }
-
 
 
 //-------------------------------------------------------------------------------------------
 //---------------// Function to simulate the player's attempt to escape the battle------------------------ 
 //-------------------------------------------------------------------------------------------
- bool tryEscape(int stats[6]) {
+bool tryEscape(const Player& player) {
     int escapeChance = rand() % 100; // Random chance to escape, 0 to 99
-    if (escapeChance < 50) { // 50% chance of success
-        return true;
-    } else {
-        return false;
-    }
+    return escapeChance < 50; // 50% chance of success
 }

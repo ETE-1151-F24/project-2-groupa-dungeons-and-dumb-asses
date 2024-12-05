@@ -37,34 +37,35 @@ void MapGen(int map[5][5]) {
 }
 
 // ------------------------------- FUNCTION TO HANDLE PLAYER MOVEMENT -------------------------------
-void Movement(int map[5][5], int stats[6]) {
-    int playerX = 2, playerY = 2;                                  // Player starts at the center of the map
-    int floor = 1;                                                 // Initialize the floor number
+void Movement(int map[5][5], Player& player) {
+    int playerX = 2, playerY = 2;               // Player starts at the center of the map
+    int floor = 1;                              // Initialize the floor number
 
-    while (true) {                                                 // Infinite loop for continuous movement
-        std::string response;                                      // Store player input for movement
+    while (true) {                              // Infinite loop for continuous movement
+        std::string response;                   // Store player input for movement
         std::cout << "What would you like to do (up, down, left, right): ";
-        std::cin >> response;                                      // Get player response
+        std::cin >> response;                   // Get player response
 
-        if (response == "right" && playerX + 1 < 5) {              // If moving right and within map bounds
-            playerX++;                                             // Update player's X-coordinate
-        } else if (response == "left" && playerX - 1 >= 0) {       // If moving left and within map bounds
-            playerX--;                                             // Update player's X-coordinate
-        } else if (response == "down" && playerY + 1 < 5) {        // If moving down and within map bounds
-            playerY++;                                             // Update player's Y-coordinate
-        } else if (response == "up" && playerY - 1 >= 0) {         // If moving up and within map bounds
-            playerY--;                                             // Update player's Y-coordinate
+        if (response == "right" && playerX + 1 < 5) {   // If moving right and within map bounds
+            playerX++;                                  // Update player's X-coordinate
+        } else if (response == "left" && playerX - 1 >= 0) {  // If moving left and within map bounds
+            playerX--;                                  // Update player's X-coordinate
+        } else if (response == "down" && playerY + 1 < 5) {   // If moving down and within map bounds
+            playerY++;                                  // Update player's Y-coordinate
+        } else if (response == "up" && playerY - 1 >= 0) {    // If moving up and within map bounds
+            playerY--;                                  // Update player's Y-coordinate
         } else {
-            std::cout << "Invalid move.\n";                        // Display message for invalid movement
-            continue;                                              // Skip to next iteration
+            std::cout << "Invalid move.\n";             // Display message for invalid movement
+            continue;                                   // Skip to next iteration
         }
 
-        if (map[playerY][playerX] == 2) {                          // If player encounters an enemy
-            fight(stats, floor);                                   // Call combat function
-        } else if (map[playerY][playerX] == 3) {                   // If player reaches the stairs
-            floor++;                                               // Increment floor number
+        if (map[playerY][playerX] == 2) {              // If player encounters an enemy
+            fight(player, floor);                      // Pass the Player object to fight
+        } else if (map[playerY][playerX] == 3) {       // If player reaches the stairs
+            floor++;                                   // Increment floor number
             std::cout << "You found the stairs! Moving to floor " << floor << ".\n";
-            MapGen(map);                                           // Generate a new map for the next floor
+            MapGen(map);                               // Generate a new map for the next floor
         }
     }
 }
+

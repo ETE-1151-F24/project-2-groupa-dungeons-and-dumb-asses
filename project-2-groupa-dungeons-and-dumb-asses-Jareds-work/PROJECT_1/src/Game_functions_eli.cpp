@@ -6,7 +6,8 @@
 #include <thread>                                    // Enables multithreading, allowing tasks to run concurrently
 #include <iomanip>                                   // Required for using setw, left, and right manipulators
 #include "Game_functions_eli.h"
-
+#include "MapFunctions.h"
+#include "Character_develop_functs.h"
 
 //------------------------------------------- FUNCTION FOR STROBING TITLE --------------------------------------------
 void printStrobingText(const std::string& text, int duration) {
@@ -142,7 +143,7 @@ void runGameLoop(Player& player) {
             
             std::cout << "Here is your map and have fun: "; 
             MapGen(map);
-            Movement(map, Stats);                                                                      //Map Generation in MapFunctions line 5
+            Movement(map, player);                                                                      //Map Generation in MapFunctions line 5
 
         }else {
             std::cout << "Unknown command. Try again.\n";                                     // Handle unknown command

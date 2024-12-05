@@ -28,27 +28,27 @@ using json = nlohmann::json;
 //extern void runGameLoop(Player& player);                                   // Function to run the main game loop
 //extern void printStrobingText(const std::string& text, int duration);      // Function to print strobing text effect for title
 
-extern bool confirmClassChoice();                                          // Function to confirm player's class choice
+//extern bool confirmClassChoice();                                          // Function to confirm player's class choice
 //extern void initializeGameItems(std::vector<Item>& gameItems);             // Function to initialize game items
-extern void displayClasses(const Player& player);                                // Function to display available character classes and handle selection
+// extern void displayClasses(const Player& player);                                // Function to display available character classes and handle selection
 
 //extern void displayItemDetails(const Item& item);                          // Function to display item details
 //extern void displayInventory(const Player& player);                       // Function to display player inventory
-extern std::string getPlayerName();                                        // Function to get the player's name                           
+//extern std::string getPlayerName();                                        // Function to get the player's name                           
 //extern void grantSpellsOnLevelUp(Player& player, const std::vector<nlohmann::json>& availableSpells);
 //extern void awardXP(Player& player, int amount, const std::map<int, int>& xpBenchmarks,const std::vector<nlohmann::json>& availableSpells);
 //extern void fight(int stats[6], int floor);                                // Declaration of fight function
-extern void MapGen(int map[5][5]);                                         // Map Generation function
-extern void Movement(int map[5][5], int stats[6]);                        // Player movement function
+//extern void MapGen(int map[5][5]);                                         // Map Generation function
+//extern void Movement(int map[5][5], int stats[6]);                        // Player movement function
 extern std::vector<nlohmann::json> loadSpells(const std::string& filename); // Function to load spells from a file
 //extern void chooseStartingSpell(Player& player, const std::vector<nlohmann::json>& availableSpells);
 // Function to choose starting spell for the player
 
 //+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
-enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, };  // 5 stats
+/enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, };  // 5 stats
 
 //enum ItemType { WEAPON, MAGICAL, CLOTHING };                                                // Defines item categories
-enum CharacterType { CHOSEN_ONE, NPC, ENEMY };                                              // Defines character types
+/enum CharacterType { CHOSEN_ONE, NPC, ENEMY };                                              // Defines character types
 //enum CombatType { MELEE, RANGED };     
 //+++++++++++++++++++++++++++++ Struct declarations ++++++++++++++++++++++++++++++++++++++++++++++++++++
 struct HealthModifiers {

@@ -1,8 +1,6 @@
-//Game_functions_eli.h
-
-
 #ifndef GAME_FUNCTIONS_ELI_H
 #define GAME_FUNCTIONS_ELI_H
+//Game_functions_eli.h
 
 #include <string>
 #include <array>

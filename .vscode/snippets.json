@@ -143,15 +143,18 @@
 				"//-------------------------------------------------------------------------------------------"
 			],
 			"description": "creates code for line breaks"
-		}
-
-
-
-
-
+		},
 
 		
+			"Include GameHeaderEli": {
+				"prefix": "head game",                  
+				"body": [
+					"#include \"GameHeaderEli.h\""        
+				],
+				"description": "Include GameHeaderEli header file" 
+			}
+		}
 		
 	
 	
-		}
+		

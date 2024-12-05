@@ -3,12 +3,35 @@
 #include "Game_inventory_functions.h"
 #include "GameHeaderEli.h"  // Include the necessary base classes and libraries
 //Character_develop_functs.h
+
+
+// Character types for the game
+enum CharacterType {
+    CHOSEN_ONE, // Represents the main character or hero
+    NPC,        // Represents non-player characters
+    ENEMY       // Represents enemy characters
+};
+
+// Statistic types for characters
+enum StatisticType {
+    Strength,     // Represents physical power
+    Dexterity,    // Represents agility and speed
+    Intelligence, // Represents mental acuity
+    Wisdom,       // Represents knowledge and insight
+    Constitution  // Represents physical resilience
+};
+
+
+// Function to display available character classes and handle selection
+void displayClasses(const Player& player);                                
+
+
+
+// Function to get the player's name  
+std::string getPlayerName();  
+
+
 // Define the Player class and its methods
-
-void displayClasses(const Player& player);                                // Function to display available character classes and handle selection
-
-
-
 class Player {
 public:
     // Attributes

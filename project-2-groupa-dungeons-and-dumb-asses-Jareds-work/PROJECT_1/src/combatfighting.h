@@ -9,8 +9,10 @@
 #include "GameHeaderEli.h" // To include Player and HealthModifiers
 #include "Character_develop_functs.h"
 
+int enemyLevel;
+
 // Function to simulate a fight between the player and an enemy
-int fight(Player& player, int enemyLevel); // Declaring the fight function, which handles the player's fight logic
+void fight(Player& player, int enemyLevel); // Declaring the fight function, which handles the player's fight logic
 
 
 // Function to display the player's health
@@ -26,10 +28,11 @@ void enemyAttack(Player& player, int enemyStrength); // Simulate the enemy's att
 void displayCombatStats(const Player& player, const std::map<std::string, int>& enemyStats);  // Display combat stats for both player and enemy
 
 // Function to simulate the player's healing action
-void healPlayer(int stats[6]); // Function to heal the player slightly during combat
+void healPlayer(Player& player); // Use Player reference for healing
+ // Function to heal the player slightly during combat
 
 // Function to simulate the player's attempt to escape
-bool tryEscape(int stats[6]); // Function to attempt an escape from the battle
+bool tryEscape(const Player& player); // Use Player for escape logic  // Function to attempt an escape from the battle
 
 
 //calculating damgage is in the item constructors and damage shift files
