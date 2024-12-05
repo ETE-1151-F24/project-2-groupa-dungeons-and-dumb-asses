@@ -4,7 +4,8 @@
 #include <fstream> // Add this line to include ifstream                                                                   // Include file stream
 #include <vector>                                                                        // Include vector for dynamic arrays
 #include <iostream>                                                                      // Include iostream for console I/O
-#include "GameHeaderEli.h"                                                               // Include game-specific header
+#include "SpellHandling.h" 
+#include "Character_develop_functs.h"                                                              // Include game-specific header
 #include <stdexcept>        // For std::runtime_error
 
 // Display the list of spells based on the player's level
@@ -80,26 +81,28 @@ void chooseStartingSpell(Player& player, const std::vector<nlohmann::json>& avai
         std::cout << "Enter the number of your choice: ";  // Prompt for input
         std::cin >> choice;  // Read input
 
-         // Ensure the input is valid and corresponds to available spells
-        int playerLevel = player.level;  // Ensure the level is correctly referenced
-        if (std::cin.fail() || choice <= 0 || choice > availableSpells[playerLevel - 1]["spells"].size()) {
-
+        // Check for invalid input (non-numeric or out of range)
+        if (std::cin.fail() || choice <= 0 || choice > availableSpells[player.level - 1]["spells"].size()) {
             std::cin.clear();  // Clear input error
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Discard invalid input
-            std::cout << "Invalid input. Please try again.\n";  // Inform user of error
+            std::cout << "Invalid input. Please enter a valid number corresponding to your choice.\n";  // Inform user of error
             continue;  // Retry loop
         }
 
-        const auto& chosenSpell = availableSpells[player.level - 1]["spells"][choice - 1];  // Get chosen spell
-        if (player.level >= chosenSpell["level"]) {  // Check if player's level is enough for the spell
+        // Get the chosen spell from the available spells
+        const auto& chosenSpell = availableSpells[player.level - 1]["spells"][choice - 1];
+
+        // Check if player's level is sufficient for the chosen spell
+        if (player.level >= chosenSpell["level"]) {
             player.learnSpell(chosenSpell["name"]);  // Learn the chosen spell
             std::cout << "You have learned the " << chosenSpell["name"] << " spell!\n";  // Confirm learning
-            break;  // Exit loop
+            break;  // Exit loop after successful learning
         } else {
             std::cout << "You do not meet the level requirement for that spell.\n";  // Inform player of level issue
         }
     }
 }
+
 // Grant new spells upon leveling up
 void grantSpellsOnLevelUp(Player& player, const std::vector<nlohmann::json>& availableSpells) {
     std::cout << "Congratulations! You have leveled up to Level " << player.level        // Announce level up

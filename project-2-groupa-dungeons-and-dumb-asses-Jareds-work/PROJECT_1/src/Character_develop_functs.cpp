@@ -1,7 +1,7 @@
 // Character_develop_functs.cpp
 #include "GameHeaderEli.h"                  // Include the game header file for necessary class definitions and enums
-
-
+#include "Character_develop_functs.h"
+#include "SpellHandling.h"
 
 
 

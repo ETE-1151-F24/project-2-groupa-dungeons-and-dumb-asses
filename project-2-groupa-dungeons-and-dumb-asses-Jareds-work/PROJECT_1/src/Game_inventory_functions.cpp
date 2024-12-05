@@ -1,6 +1,6 @@
 // Game_inventory_functions.cpp
 #include "GameHeaderEli.h" 
-
+#include "Game_inventory_functions.h"
 
 
 

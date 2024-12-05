@@ -2,17 +2,20 @@
 #include <vector>                         // Required for std::vector
 #include <iostream>                       // Required for input/output operations
 #include <algorithm>                      // Required for algorithms like std::min
-
+#include "Character_develop_functs.h"
 
 //-------------------------------------------------------------------------------------------
 // Function to apply regeneration to the player's health
 //-------------------------------------------------------------------------------------------
 void Player::applyRegeneration() {
-    currentHealth += totalRegenerationRate;                     // Add total regeneration rate to current health
-    currentHealth = std::min(currentHealth, maxHealth);         // Ensure health does not exceed the maximum limit
+if (currentHealth < maxHealth) {
+    currentHealth += totalRegenerationRate;
+    currentHealth = std::min(currentHealth, maxHealth);
     std::cout << "Regenerated " << totalRegenerationRate << " HP! Current Health: " << currentHealth << "\n";
+}
 }
 
 //this will trigger each round, 
 
  
+//if the value of the regeneration is negative, then that means that something is draining you of life, like a parasitic curse or something

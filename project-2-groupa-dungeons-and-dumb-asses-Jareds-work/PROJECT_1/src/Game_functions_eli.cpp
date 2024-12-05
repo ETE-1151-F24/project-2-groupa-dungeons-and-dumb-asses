@@ -5,7 +5,7 @@
 #include <iostream>                                  // For std::cin, std::cout
 #include <thread>                                    // Enables multithreading, allowing tasks to run concurrently
 #include <iomanip>                                   // Required for using setw, left, and right manipulators
-
+#include "Game_functions_eli.h"
 
 
 //------------------------------------------- FUNCTION FOR STROBING TITLE --------------------------------------------

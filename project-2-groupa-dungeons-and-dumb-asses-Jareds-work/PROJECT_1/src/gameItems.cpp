@@ -1,5 +1,7 @@
 // Include necessary header
 #include "GameHeaderEli.h"
+#include "gameItems.h"
+#include "item_constructors_dmg_shifts.h"
 
 //---------------------------------- Helper function to add an item to the game
 void addItem(std::vector<Item>& gameItems, const std::string& itemName, const std::string& itemDescription,

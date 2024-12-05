@@ -3,6 +3,7 @@
 #include <algorithm> // For std::max
 #include <cstdlib>   // For std::rand
 #include <random>    // For optional modern random number generation
+#include "item_constructors_dmg_shifts.h"
 
 // Default constructor for Item
 Item::Item()

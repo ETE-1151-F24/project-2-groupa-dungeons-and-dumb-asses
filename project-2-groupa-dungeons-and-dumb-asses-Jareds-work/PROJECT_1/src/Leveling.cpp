@@ -4,8 +4,8 @@
 #include <vector>
 #include <map>
 #include <ctime>
-
-#include "GameHeaderEli.h"
+#include "SpellHandling.h"
+#include "Leveling.h"
 using namespace std;
  //-------------------------------------------------------------------------------------------
  //  this is the function for displaying the health of the character
@@ -27,7 +27,7 @@ using namespace std;
 
 // ---------------------------experience benchmarks
      // -------------------------vector that stores the XP Benchmarks
-    // Map for storing XP benchmarks with levels as keys
+    // Map for storing XP benchmarks with levels as keys these are static and will not change
     std::map<int, int> xpBenchmarks = {
         {1, 0},       {2, 150},    {3, 450},    {4, 1350},   {5, 3250},
         {6, 7000},    {7, 11500},  {8, 17000},  {9, 24000},  {10, 32000},

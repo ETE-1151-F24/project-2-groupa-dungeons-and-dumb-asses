@@ -1,14 +1,14 @@
 //GameMainStuff.cpp
 #include "GameHeaderEli.h"                         // Include game-specific classes and definitions
-#include "Character_develop_functs.cpp"            // Include character development-related functions
-#include "Game_functions_eli.cpp"                  // Include general game functions
-#include "Game_inventory_functions.cpp"            // Include inventory management functions
-#include "gameItems.cpp"                           // Include functions to initialize game items
-#include "item_constructors_dmg_shifts.cpp"        // Include item constructor implementations
-#include "spellHandling.cpp"
-#include "MapFunctions.cpp"                            // Any functions that have to do with map manipulation
-#include "Leveling.cpp"                           // Include header file for necessary declarations
-#include "include/nlohmann/json.hpp"
+// #include "Character_develop_functs.cpp"            // Include character development-related functions
+ #include "Game_functions_eli.cpp"                  // Include general game functions
+// #include "Game_inventory_functions.cpp"            // Include inventory management functions
+ #include "gameItems.cpp"                           // Include functions to initialize game items
+// #include "item_constructors_dmg_shifts.cpp"        // Include item constructor implementations
+// #include "spellHandling.cpp"
+// #include "MapFunctions.cpp"                            // Any functions that have to do with map manipulation
+// #include "Leveling.cpp"                           // Include header file for necessary declarations
+#include <nlohmann/json.hpp>
 
 // Additional headers (commented out if not used)
 // #include ""

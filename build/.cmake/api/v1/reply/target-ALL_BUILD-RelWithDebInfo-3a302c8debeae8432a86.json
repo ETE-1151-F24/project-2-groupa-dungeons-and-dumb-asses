@@ -23,10 +23,10 @@
 			"id" : "gtest_main::@210c36a8eeb8d52b1ba1"
 		},
 		{
-			"id" : "gmock::@dca1f8482bf745b60dc0"
+			"id" : "gmock_main::@dca1f8482bf745b60dc0"
 		},
 		{
-			"id" : "gmock_main::@dca1f8482bf745b60dc0"
+			"id" : "gmock::@dca1f8482bf745b60dc0"
 		},
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"

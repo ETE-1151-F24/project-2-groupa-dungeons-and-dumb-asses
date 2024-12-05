@@ -2,7 +2,7 @@
 #include <cstdlib>                                                 // Required for random number generation
 #include <ctime>                                                   // Required for seeding random number generation
 #include "GameHeaderEli.h"                                         // Include the game header file
-
+#include "combatfighting.h"
 
 // ------------------------------- FUNCTION TO GENERATE THE MAP -------------------------------
 void MapGen(int map[5][5]) {
