@@ -6,6 +6,7 @@
 #include <ctime>
 #include "SpellHandling.h"
 #include "Leveling.h"
+
 using namespace std;
  //-------------------------------------------------------------------------------------------
  //  this is the function for displaying the health of the character

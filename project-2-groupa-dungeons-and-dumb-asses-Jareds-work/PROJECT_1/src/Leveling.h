@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 #include "GameHeaderEli.h"  // Include the game header for Player class and related functionality
-
+#include "Character_develop_functs.h"
 // Function Declarations
 
 // Function to display health details based on player's stats and health modifiers

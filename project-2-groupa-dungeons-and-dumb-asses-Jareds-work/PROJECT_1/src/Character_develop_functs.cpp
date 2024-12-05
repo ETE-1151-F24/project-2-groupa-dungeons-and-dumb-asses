@@ -6,8 +6,11 @@
 
 
 
-
+//-------------------------------------------------------------------------------------------
 //------------------------------------------ PLAYER CLASS IMPLEMENTATION -------------------------------------------------
+//-------------------------------------------------------------------------------------------
+ 
+
 
 // Function to check if the player has a weapon equipped
 bool Player::hasEquippedWeapon() const {
@@ -148,7 +151,7 @@ void displayClasses(Player& player) {
     player.finalizeStats();  // Call function to roll and finalize stats
 }
 
-//------------------------------------------------------------------------------------------
+
 
 //-------------------------------------------------------------------------------------------
 //--------------------------Function to simulate rolling stats within a given range using rand()---------------------
@@ -161,7 +164,12 @@ int Player::roll(int minValue, int maxValue) {                         // Functi
     return dist(gen);                                                  // Generate and return the random number
 }
 
+//-------------------------------------------------------------------------------------------
 //------------------------------------------Function to roll stats based on character class
+//-------------------------------------------------------------------------------------------
+ 
+
+
 void Player::rollStats() {
     // Implementation for rolling stats based on class
     // Example: Rolling each stat based on the player's character class
@@ -245,7 +253,15 @@ void Player::showEquippedItems() const {
 // Define the spell file name as a constant
 constexpr const char* SPELL_FILE = "AllSpells.json";   // this allows me to redeclare the spellfile as something else later if it changes
 
+
+
+
+//-------------------------------------------------------------------------------------------
 // --------------------------Function to handle rolling stats and allowing player to decide whether to keep or re-roll
+//-------------------------------------------------------------------------------------------
+ 
+
+
 void Player::finalizeStats() {
     std::string response;                                                   // Store player's response for confirming or re-rolling stats
 
@@ -286,11 +302,11 @@ void Player::finalizeStats() {
 // function to get the stats of the player, may not be needed anymore
 //-------------------------------------------------------------------------------------------
  
-// void Player::getStats(int Statvalue[5], int a) const {
-//     Statvalue[0] =stats[Strength]; 
-//     Statvalue[1] =stats[Dexterity]; 
-//     Statvalue[2] =stats[Intelligence]; 
-//     Statvalue[3] =stats[Wisdom];    
-//     Statvalue[4] =stats[Constitution]; 
-//     Statvalue[5] =stats[Constitution]*(1+ a/10);
+// void Player::getStats(int Stats[5], int a) const {
+//     Stats[0] =stats[Strength]; 
+//     Stats[1] =stats[Dexterity]; 
+//     Stats[2] =stats[Intelligence]; 
+//     Stats[3] =stats[Wisdom];    
+//     Stats[4] =stats[Constitution]; 
+//     Stats[5] =stats[Constitution]*(1+ a/10);
 //}

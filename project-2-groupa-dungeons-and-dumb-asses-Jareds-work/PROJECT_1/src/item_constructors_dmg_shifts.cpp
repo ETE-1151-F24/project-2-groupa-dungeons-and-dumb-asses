@@ -9,8 +9,8 @@
 Item::Item()
     : name(""),                                                     // Set item name to an empty string by default
       flavorDescription(""),                                        // Set flavor description to an empty string by default
-      classification(MAGICAL),                                      // Default classification is MAGICAL
-      combatType(MELEE),                                            // Default combat type is MELEE
+      classification(ItemType::MAGICAL),                                      // Default classification is MAGICAL
+      combatType(CombatType::MELEE),                                            // Default combat type is MELEE
       minDamage(0),                                                 // Set minimum damage to 0 by default
       maxDamage(0),                                                 // Set maximum damage to 0 by default
       rangeModifier(0),                                             // Set range modifier to 0 by default

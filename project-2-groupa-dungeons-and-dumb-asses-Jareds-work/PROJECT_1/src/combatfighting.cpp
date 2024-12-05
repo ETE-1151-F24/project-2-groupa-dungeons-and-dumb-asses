@@ -2,8 +2,11 @@
 
 #include "combatfighting.h"
 
+//-------------------------------------------------------------------------------------------
+// // Combat Improvement with Action Choices
+//-------------------------------------------------------------------------------------------
+ 
 
-// Combat Improvement with Action Choices
 void fight(int stats[6], int floor) {
     int enemyHealth = 10 + (floor * 5); // Enemy health scales with floor
     while (enemyHealth > 0 && stats[0] > 0) { // While enemy and player are alive
@@ -39,12 +42,21 @@ void fight(int stats[6], int floor) {
     }
 }
 
+
+//-------------------------------------------------------------------------------------------
+// ---------------function to dodge an attack
+//-------------------------------------------------------------------------------------------
+ 
 bool checkDodge(int dodgeChance) {
     int roll = rand() % 100;  // Simulate a dice roll to determine dodge success  there will be 5 types of dodges that can occur
     //those dodges will be based on how good the roll is 
     return roll < dodgeChance;
 }
 
+//-------------------------------------------------------------------------------------------
+//---------------------------function to perform the enemy attack
+//-------------------------------------------------------------------------------------------
+ 
 void enemyAttack(Player& player, int enemyStrength) {
     int damage = enemyStrength + (rand() % 10);  // Randomized damage.....this should also include the weapon that the enemy has
     player.currentHealth -= damage;
@@ -52,6 +64,11 @@ void enemyAttack(Player& player, int enemyStrength) {
     std::cout << "Your health is now: " << player.currentHealth << " / " << player.maxHealth << "\n";
 }
 
+
+//-------------------------------------------------------------------------------------------
+//----------------------------function to display the combat related stats
+//-------------------------------------------------------------------------------------------
+ 
 void displayCombatStats(const Player& player, const std::map<std::string, int>& enemyStats) {
     // Display player's stats
     displayHealth(player);
@@ -61,15 +78,21 @@ void displayCombatStats(const Player& player, const std::map<std::string, int>& 
     }
 }
 
-// Function to simulate the player's healing action during combat
-void healPlayer(int stats[6]) {
+//-------------------------------------------------------------------------------------------
+//----------------// Function to simulate the player's healing action during combat----------------------- 
+//-------------------------------------------------------------------------------------------
+ void healPlayer(int stats[6]) {
     int healAmount = rand() % 3 + 2; // Heal player slightly
     stats[0] += healAmount;
     std::cout << "You healed for " << healAmount << " health. Your health: " << stats[0] << "\n";
 }
 
-// Function to simulate the player's attempt to escape the battle
-bool tryEscape(int stats[6]) {
+
+
+//-------------------------------------------------------------------------------------------
+//---------------// Function to simulate the player's attempt to escape the battle------------------------ 
+//-------------------------------------------------------------------------------------------
+ bool tryEscape(int stats[6]) {
     int escapeChance = rand() % 100; // Random chance to escape, 0 to 99
     if (escapeChance < 50) { // 50% chance of success
         return true;

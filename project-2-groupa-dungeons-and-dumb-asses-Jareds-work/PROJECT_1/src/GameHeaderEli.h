@@ -47,9 +47,9 @@ extern std::vector<nlohmann::json> loadSpells(const std::string& filename); // F
 //+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
 enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, };  // 5 stats
 
-enum ItemType { WEAPON, MAGICAL, CLOTHING };                                                // Defines item categories
+//enum ItemType { WEAPON, MAGICAL, CLOTHING };                                                // Defines item categories
 enum CharacterType { CHOSEN_ONE, NPC, ENEMY };                                              // Defines character types
-enum CombatType { MELEE, RANGED };     
+//enum CombatType { MELEE, RANGED };     
 //+++++++++++++++++++++++++++++ Struct declarations ++++++++++++++++++++++++++++++++++++++++++++++++++++
 struct HealthModifiers {
     int constitutionMod = 0; // Constitution-based health modifier
