@@ -7,7 +7,7 @@
 #include "SpellHandling.h"
 #include "Leveling.h"
 #include "Character_develop_functs.h"
-
+#include "GameHeaderEli.h"
 using namespace std;
  //-------------------------------------------------------------------------------------------
  //  this is the function for displaying the health of the character
@@ -26,8 +26,10 @@ using namespace std;
 
 
 
-
+//--------------------------------------------------------------------------
 // ---------------------------experience benchmarks
+//--------------------------------------------------------------------------
+
      // -------------------------vector that stores the XP Benchmarks
     // Map for storing XP benchmarks with levels as keys these are static and will not change
     std::map<int, int> xpBenchmarks = {

@@ -8,7 +8,10 @@
 #include "Character_develop_functs.h"                                                              // Include game-specific header
 #include <stdexcept>        // For std::runtime_error
 
+//--------------------------------------------------------------------------
 // Display the list of spells based on the player's level
+//--------------------------------------------------------------------------
+
 void displaySpellList(int playerLevel, const std::vector<nlohmann::json>& availableSpells) {
     if (playerLevel <= 0 || playerLevel > static_cast<int>(availableSpells.size())) {
         std::cout << "No spells available for this level.\n";
@@ -24,7 +27,10 @@ void displaySpellList(int playerLevel, const std::vector<nlohmann::json>& availa
     }
 }
 
+//--------------------------------------------------------------------------
 // Function to load spells from a JSON file
+//--------------------------------------------------------------------------
+
 std::vector<nlohmann::json> loadSpells(const std::string& filename) {                    // Function to load spells
     std::ifstream file(filename);                                                       // Open file stream
     if (!file.is_open()) {                                                              // Check if file failed to open
@@ -48,7 +54,9 @@ std::vector<nlohmann::json> loadSpells(const std::string& filename) {           
     return spellData.get<std::vector<nlohmann::json>>();                                // Convert JSON array to vector and return
 }
 
-// Display all learned spells
+//--------------------------------------------------------------------------
+// ----------------------Display all learned spells
+//--------------------------------------------------------------------------
 void Player::displaySpells() const {                                                     // Function to display player's spells
     std::cout << "\n--- Learned Spells ---\n";                                           // Print title
     if (learnedSpells.empty()) {                                                         // Check if no spells learned
@@ -60,7 +68,9 @@ void Player::displaySpells() const {                                            
     }
 }
 
-// Learn a new spell
+//--------------------------------------------------------------------------
+// --------------------------Learn a new spell
+//--------------------------------------------------------------------------
 void Player::learnSpell(const std::string& spellName) {                                  // Function to learn a new spell
     if (std::find(learnedSpells.begin(), learnedSpells.end(), spellName) !=              // Check if spell is already learned
         learnedSpells.end()) {
@@ -71,39 +81,43 @@ void Player::learnSpell(const std::string& spellName) {                         
     std::cout << "You have learned the spell: " << spellName << "\n";                    // Confirm spell learned
 }
 
-// Choose a starting spell
+//--------------------------------------------------------------------------
+//------------------ Choose a starting spell----------------
+//--------------------------------------------------------------------------
 void chooseStartingSpell(Player& player, const std::vector<nlohmann::json>& availableSpells) {
     std::cout << "Choose a starting spell:\n";  // Prompt player to choose
     displaySpellList(player.level, availableSpells);  // Display available spells based on level
 
-    int choice;  // Player's choice
-    while (true) {  // Loop until valid input
-        std::cout << "Enter the number of your choice: ";  // Prompt for input
-        std::cin >> choice;  // Read input
+    int choice;                                                                                                             // Player's choice
+    while (true) {                                                                                                          // Loop until valid input
+        std::cout << "Enter the number of your choice: ";                                                                   // Prompt for input
+        std::cin >> choice;                                                                                                 // Read input
 
         // Check for invalid input (non-numeric or out of range)
         if (std::cin.fail() || choice <= 0 || choice > availableSpells[player.level - 1]["spells"].size()) {
-            std::cin.clear();  // Clear input error
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Discard invalid input
-            std::cout << "Invalid input. Please enter a valid number corresponding to your choice.\n";  // Inform user of error
+            std::cin.clear();                                                                                               // Clear input error
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');                                             // Discard invalid input
+            std::cout << "Invalid input. Please enter a valid number corresponding to your choice.\n";                      // Inform user of error
             continue;  // Retry loop
         }
 
-        // Get the chosen spell from the available spells
+// Get the chosen spell from the available spells
         const auto& chosenSpell = availableSpells[player.level - 1]["spells"][choice - 1];
 
-        // Check if player's level is sufficient for the chosen spell
+// Check if player's level is sufficient for the chosen spell
         if (player.level >= chosenSpell["level"]) {
-            player.learnSpell(chosenSpell["name"]);  // Learn the chosen spell
-            std::cout << "You have learned the " << chosenSpell["name"] << " spell!\n";  // Confirm learning
-            break;  // Exit loop after successful learning
+            player.learnSpell(chosenSpell["name"]);                                                                         // Learn the chosen spell
+            std::cout << "You have learned the " << chosenSpell["name"] << " spell!\n";                                     // Confirm learning
+            break;                                                                                                          // Exit loop after successful learning
         } else {
-            std::cout << "You do not meet the level requirement for that spell.\n";  // Inform player of level issue
+            std::cout << "You do not meet the level requirement for that spell.\n";                                         // Inform player of level issue
         }
     }
 }
 
-// Grant new spells upon leveling up
+//--------------------------------------------------------------------------
+// -------------------Grant new spells upon leveling up----------------
+//--------------------------------------------------------------------------
 void grantSpellsOnLevelUp(Player& player, const std::vector<nlohmann::json>& availableSpells) {
     std::cout << "Congratulations! You have leveled up to Level " << player.level        // Announce level up
               << "!\n";

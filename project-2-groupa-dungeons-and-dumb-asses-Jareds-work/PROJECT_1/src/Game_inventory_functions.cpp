@@ -185,8 +185,11 @@ void Player::equipItem(Item* item) {
     }
 }
 
- 
+//-------------------------------------------------------------------------------------------
 //------------------------------- FUNCTION TO UNEQUIP AN ITEM ---------------------------------------------
+//-------------------------------------------------------------------------------------------
+  
+
 
 void Player::unequipItem(Item* item) {
     auto it = std::find(equippedItems.begin(), equippedItems.end(), item);                  // Find item in equipped items
@@ -206,7 +209,10 @@ void Player::unequipItem(Item* item) {
         std::cout << item->name << " is not equipped.\n";
     }
 }
+
+//-------------------------------------------------------------------------------------------
 //------------------------------- FUNCTION TO CHECK FOR WEAPON -------------------------------------------
+//-------------------------------------------------------------------------------------------
 void checkForWeapon(Player& player) {
     bool hasWeapon = false;                                                                 // Flag to check if player has a weapon equipped
 

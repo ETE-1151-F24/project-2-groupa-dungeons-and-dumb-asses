@@ -1,3 +1,0 @@
-GameInventoryFunctionsTest 0 0
----
-GameInventoryFunctionsTest

@@ -17,7 +17,7 @@
 #include <random>
 #include <map>
 
-#include <nlohmann/json.hpp>
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 
@@ -45,10 +45,10 @@ extern std::vector<nlohmann::json> loadSpells(const std::string& filename); // F
 // Function to choose starting spell for the player
 
 //+++++++++++++++++++++++++++++ Enum declarations for the project ++++++++++++++++++++++++++++++++++++++
-/enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, };  // 5 stats
+//enum StatisticType { Strength, Dexterity, Intelligence, Wisdom, Constitution, };  // 5 stats
 
 //enum ItemType { WEAPON, MAGICAL, CLOTHING };                                                // Defines item categories
-/enum CharacterType { CHOSEN_ONE, NPC, ENEMY };                                              // Defines character types
+//enum CharacterType { CHOSEN_ONE, NPC, ENEMY };                                              // Defines character types
 //enum CombatType { MELEE, RANGED };     
 //+++++++++++++++++++++++++++++ Struct declarations ++++++++++++++++++++++++++++++++++++++++++++++++++++
 struct HealthModifiers {

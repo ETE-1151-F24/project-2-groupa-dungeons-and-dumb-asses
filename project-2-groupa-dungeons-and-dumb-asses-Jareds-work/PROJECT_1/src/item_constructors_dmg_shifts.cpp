@@ -50,8 +50,9 @@ int Item::getRegenerationRate() const {
 void Item::setRegenerationRate(int rate) { 
     regenerationRate = rate; 
 }
-
-// Helper function for rolling random numbers
+//--------------------------------------------------------------------------
+// -----------------------------Helper function for rolling random numbers
+//--------------------------------------------------------------------------
 int randomRoll(int min, int max) {
     static std::random_device rd; // Seed
     static std::mt19937 gen(rd()); // Mersenne Twister engine
@@ -59,7 +60,9 @@ int randomRoll(int min, int max) {
     return dis(gen);
 }
 
+//--------------------------------------------------------------------------
 // Function to calculate damage based on combat type
+//--------------------------------------------------------------------------
 int Item::calculateDamage(int distance) {
     if (combatType == RANGED) {
         return calculateRangedDamage(distance, rangeModifier, minDamage, maxDamage);        // Call ranged damage calculation
@@ -69,7 +72,9 @@ int Item::calculateDamage(int distance) {
     return 0;                                                                               // Default return 0 if combat type N/A
 }
 
+//--------------------------------------------------------------------------
 // Private function to calculate damage for ranged weapons based on distance
+//--------------------------------------------------------------------------
 int Item::calculateRangedDamage(int distance, int maxRange, int minDamage, int maxDamage) {
     int damage = 0;                                                                         // Initialize damage to 0
 
@@ -86,7 +91,9 @@ int Item::calculateRangedDamage(int distance, int maxRange, int minDamage, int m
     return damage;                                                                          // Return calculated damage
 }
 
-// Private function to calculate damage for melee weapons
+//--------------------------------------------------------------------------
+// ---------------Private function to calculate damage for melee weapons
+//--------------------------------------------------------------------------
 int Item::calculateMeleeDamage() {
     return randomRoll(minDamage, maxDamage);                        // Roll damage within min and max range
 }

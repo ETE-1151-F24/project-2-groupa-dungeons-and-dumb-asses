@@ -5,7 +5,10 @@
 #include "combatfighting.h"
 #include "Character_develop_functs.h"
 
+//--------------------------------------------------------------------------
 // ------------------------------- FUNCTION TO GENERATE THE MAP -------------------------------
+//--------------------------------------------------------------------------
+
 void MapGen(int map[5][5]) {
     srand(time(0));                                                // Seed random number generator with current time
     int stairCoords[2];                                            // Coordinates for the stairs
@@ -36,7 +39,9 @@ void MapGen(int map[5][5]) {
     }
 }
 
+//--------------------------------------------------------------------------
 // ------------------------------- FUNCTION TO HANDLE PLAYER MOVEMENT -------------------------------
+//--------------------------------------------------------------------------
 void Movement(int map[5][5], Player& player) {
     int playerX = 2, playerY = 2;               // Player starts at the center of the map
     int floor = 1;                              // Initialize the floor number

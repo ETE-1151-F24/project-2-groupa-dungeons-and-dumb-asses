@@ -9,7 +9,11 @@
 #include "MapFunctions.h"
 #include "Character_develop_functs.h"
 
+
+//-------------------------------------------------------------------------------------------
 //------------------------------------------- FUNCTION FOR STROBING TITLE --------------------------------------------
+//-------------------------------------------------------------------------------------------
+
 void printStrobingText(const std::string& text, int duration) {
     const std::string goldColor = "\033[38;5;220m";                                           // Custom gold color
     const std::string resetColor = "\033[0m";                                                 // Reset to default
@@ -41,9 +45,14 @@ void printStrobingText(const std::string& text, int duration) {
 
     std::cout << resetColor << "\n";                                                          // Reset terminal color and add a newline
 }
-//---------------------------------------------------------------------------------------------------------------
 
+
+
+//-------------------------------------------------------------------------------------------
 //------------------------------- FUNCTION FOR RUNNING MAIN GAME LOOP -------------------------------------------
+//-------------------------------------------------------------------------------------------
+ 
+
 void runGameLoop(Player& player) {
     std::string command;
     int map [5] [5] ={{0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}, {0,0,0,0,0}};
