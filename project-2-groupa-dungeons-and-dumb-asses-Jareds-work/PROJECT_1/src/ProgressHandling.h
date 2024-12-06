@@ -1,7 +1,7 @@
 //ProgressHandling.h
 #ifndef PROGRESSHANDLING_H
 #define PROGRESSHANDLING_H
-
+#include "GameHeaderEli.h"
 #include <vector>
 #include <string>
 #include <map>

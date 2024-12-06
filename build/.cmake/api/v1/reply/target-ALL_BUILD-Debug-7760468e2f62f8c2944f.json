@@ -5,7 +5,7 @@
 		"commands" : [],
 		"files" : 
 		[
-			"PROJECT_1/googletest/googlemock/CMakeLists.txt"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -17,13 +17,19 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "gmock::@dca1f8482bf745b60dc0"
+			"id" : "main_project::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "run_tests::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "gmock_main::@dca1f8482bf745b60dc0"
 		},
 		{
 			"id" : "gtest_main::@210c36a8eeb8d52b1ba1"
 		},
 		{
-			"id" : "gmock_main::@dca1f8482bf745b60dc0"
+			"id" : "gmock::@dca1f8482bf745b60dc0"
 		},
 		{
 			"id" : "gtest::@210c36a8eeb8d52b1ba1"
@@ -32,13 +38,13 @@
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "ALL_BUILD::@dca1f8482bf745b60dc0",
+	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
 	"name" : "ALL_BUILD",
 	"paths" : 
 	{
-		"build" : "PROJECT_1/googletest/googlemock",
-		"source" : "PROJECT_1/googletest/googlemock"
+		"build" : ".",
+		"source" : "."
 	},
 	"sources" : [],
 	"type" : "UTILITY"

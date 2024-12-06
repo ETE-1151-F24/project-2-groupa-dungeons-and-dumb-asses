@@ -1,107 +1,26 @@
-//-----------------------------------------------------------
-// configuration for standard build and compiling
-//------------------------------------------------------------
-
-// {
-//   "version": "0.2.0",
-//   "configurations": [
-    
-//     {
-//       "name": "C/C++ Runner: Debug Session",
-//       "type": "cppdbg",
-//       "request": "launch",
-//       "program": "${workspaceFolder}/Homework1/main.exe",  // Adjust this path to the correct location of your executable
-//       "args": [],
-//       "stopAtEntry": false,
-//       "cwd": "${workspaceFolder}",
-//       "environment": [],
-//       "externalConsole": true,  // Set to false if you prefer the internal console
-//       "MIMode": "gdb",
-//       "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",  // Adjust this path to where GDB is installed
-//       "setupCommands": [
-//         {
-//           "description": "Enable pretty-printing for gdb",
-//           "text": "-enable-pretty-printing",
-//           "ignoreFailures": true
-//         }
-//       ],
-//       "preLaunchTask": "g++ build active file",  // Ensure this matches the task label in tasks.json
-//       "internalConsoleOptions": "openOnSessionStart"
-//     }
-//   ]
-// }
-
-
-
-//-----------------------------------------------
-//configuration for using google test
-// //-----------------------------------------------
-// {
-//   "name": "C/C++ Runner: Debug Session",
-//   "type": "cppdbg",
-//   "request": "launch",
-//   "program": "${workspaceFolder}/PROJECT_1/src/GameMainStuff.exe",
-//   "args": [],
-//   "stopAtEntry": false,
-//   "cwd": "${workspaceFolder}",
-//   "environment": [],
-//   "externalConsole": true,
-//   "MIMode": "gdb",
-//   "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
-//   "setupCommands": [
-//       {
-//           "description": "Enable pretty-printing for gdb",
-//           "text": "-enable-pretty-printing",
-//           "ignoreFailures": true
-//       }
-//   ],
-//   "preLaunchTask": "g++ build active file"
-// }
-
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "name": "Debug Main Executable",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/build/main.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work",
-      "environment": [],
-      "externalConsole": true,
-      "MIMode": "gdb",
-      "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ],
-      "preLaunchTask": "Build Entire Project"
-    },
-    {
-      "name": "Debug Google Tests",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/build/run_tests",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work",
-      "environment": [],
-      "externalConsole": true,
-      "MIMode": "gdb",
-      "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ],
-      "preLaunchTask": "Build Google Test"
-    }
+      {
+          "name": "Debug Main Executable",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/PROJECT_1/build/GameMainStuff.exe",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}/PROJECT_1/src",
+          "environment": [],
+          "externalConsole": true,
+          "MIMode": "gdb",
+          "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+          "setupCommands": [
+              {
+                  "description": "Enable pretty-printing for gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": true
+              }
+          ],
+          "preLaunchTask": "Build Project"
+      }
   ]
 }

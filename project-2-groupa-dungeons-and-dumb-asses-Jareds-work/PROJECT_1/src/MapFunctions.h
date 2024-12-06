@@ -3,7 +3,7 @@
 
 #include <iostream>           // Required for input and output operations
 #include "GameHeaderEli.h"    // Include the game header for shared classes and functions
-#include "combatfighting.h"   // Include combat-related functionality
+// #include "combatfighting.h"   // Include combat-related functionality
 
 // ------------------------------ FUNCTION DECLARATIONS ------------------------------
 

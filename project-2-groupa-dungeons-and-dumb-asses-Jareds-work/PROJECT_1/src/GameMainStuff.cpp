@@ -1,13 +1,9 @@
 //GameMainStuff.cpp
 #include "GameHeaderEli.h"                         // Include game-specific classes and definitions
-// #include "Character_develop_functs.cpp"            // Include character development-related functions
- #include "Game_functions_eli.cpp"                  // Include general game functions
-// #include "Game_inventory_functions.cpp"            // Include inventory management functions
- #include "gameItems.cpp"                           // Include functions to initialize game items
-// #include "item_constructors_dmg_shifts.cpp"        // Include item constructor implementations
-// #include "spellHandling.cpp"
-// #include "MapFunctions.cpp"                            // Any functions that have to do with map manipulation
-// #include "Leveling.cpp"                           // Include header file for necessary declarations
+#include "Game_inventory_functions.h"
+#include "item_constructors_dmg_shifts.h"
+#include "gameItems.h"
+#include "Character_develop_functs.h"
 #include "nlohmann/json.hpp"
 
 // Additional headers (commented out if not used)
@@ -36,9 +32,12 @@
     //-------------------------------------------------------------
     // -------------------- PLAYER SETUP --------------------------
     //-------------------------------------------------------------
-    Player player(getPlayerName(), "");                                 // Create player w/default class and their name
-    displayClasses(player);                                             // Prompt player to choose their character class
+    Player player(getPlayerName(), ""); // Create player with default class and their name
+    // `Player` is defined in Character_develop_functs.h, implemented in Character_develop_functs.cpp
+    // `getPlayerName` is implemented in Character_develop_functs.cpp, line 67
 
+    displayClasses(player); // Prompt player to choose their character class
+    // (Located in Character_develop_functs.cpp, line 180)
     //----------------------------------------------------------------------
     // -------------------- INITIALIZE GAME ITEMS --------------------------
     //----------------------------------------------------------------------

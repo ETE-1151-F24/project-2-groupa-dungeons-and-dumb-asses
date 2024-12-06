@@ -4,9 +4,9 @@
 #include <vector>
 #include <map>
 #include <ctime>
-#include "SpellHandling.h"
+// #include "SpellHandling.h"
 #include "Leveling.h"
-#include "Character_develop_functs.h"
+// #include "Character_develop_functs.h"
 #include "GameHeaderEli.h"
 using namespace std;
  //-------------------------------------------------------------------------------------------

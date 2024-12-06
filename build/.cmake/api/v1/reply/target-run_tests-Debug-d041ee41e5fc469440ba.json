@@ -29,13 +29,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 44,
+				"line" : 45,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 47,
+				"line" : 48,
 				"parent" : 0
 			},
 			{
@@ -64,6 +64,22 @@
 				{
 					"backtrace" : 3,
 					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/include_directories"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/("
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/msys64/mingw64/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/)"
 				},
 				{
 					"backtrace" : 3,

@@ -4,7 +4,7 @@
 #include <string>                                                     // For std::string
 #include <array>                                                      // For std::array
 #include <random>                                                     // For random number generation
-
+#include "GameHeaderEli.h"
 // Define StatCount for the number of stats
 #define StatCount 5
 

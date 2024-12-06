@@ -5,7 +5,10 @@
 #include <string>
 #include <array>
 #include "GameHeaderEli.h"
-#include "Item_constructors_dmg_shifts.h"
+// #include "Item_constructors_dmg_shifts.h"
+
+//forward declaration of item
+class Item;
 
 enum ItemType { WEAPON, MAGICAL, CLOTHING }; 
 enum CombatType { MELEE, RANGED };    

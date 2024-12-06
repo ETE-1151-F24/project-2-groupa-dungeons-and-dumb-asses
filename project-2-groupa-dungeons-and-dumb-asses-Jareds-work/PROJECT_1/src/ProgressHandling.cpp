@@ -12,7 +12,7 @@ bosses defeated
     */
 #include "GameHeaderEli.h"
 #include "ProgressHandling.h"
-#include "ProgressHandling.h"
+
 #include <iostream>
 #include <fstream>
 #include <filesystem> // For file operations

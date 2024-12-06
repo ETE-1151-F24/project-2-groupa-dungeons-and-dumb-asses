@@ -1,5 +1,5 @@
 //combatfighting.cpp
-
+#include "GameHeaderEli.h"
 #include "combatfighting.h"
 
 //-------------------------------------------------------------------------------------------

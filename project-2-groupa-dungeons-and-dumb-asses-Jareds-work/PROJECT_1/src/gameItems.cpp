@@ -1,8 +1,8 @@
 // Include necessary header
 #include "GameHeaderEli.h"
 #include "gameItems.h"
-#include "item_constructors_dmg_shifts.h"
-#include "Character_develop_functs.h"
+// #include "item_constructors_dmg_shifts.h"
+// #include "Character_develop_functs.h"
 // // Shorthand variables  use  these for types
 // constexpr ItemType           magical         = ItemType::MAGICAL;
 // constexpr ItemType           weapon          = ItemType::WEAPON;

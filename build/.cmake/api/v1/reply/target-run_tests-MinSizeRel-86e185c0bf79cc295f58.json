@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RelWithDebInfo/run_tests.exe"
+			"path" : "MinSizeRel/run_tests.exe"
 		},
 		{
-			"path" : "RelWithDebInfo/run_tests.pdb"
+			"path" : "MinSizeRel/run_tests.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -29,13 +29,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 44,
+				"line" : 45,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 47,
+				"line" : 48,
 				"parent" : 0
 			},
 			{
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++20"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG -std:c++20"
 				}
 			],
 			"includes" : 
@@ -64,6 +64,22 @@
 				{
 					"backtrace" : 3,
 					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/PROJECT_1/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/include_directories"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/("
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/msys64/mingw64/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/e/project-2-groupa-dungeons-and-dumb-asses-1/project-2-groupa-dungeons-and-dumb-asses-Jareds-work/)"
 				},
 				{
 					"backtrace" : 3,
@@ -111,26 +127,26 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "lib\\RelWithDebInfo\\gtest.lib",
+				"fragment" : "lib\\MinSizeRel\\gtest.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "lib\\RelWithDebInfo\\gtest_main.lib",
+				"fragment" : "lib\\MinSizeRel\\gtest_main.lib",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "lib\\RelWithDebInfo\\gtest.lib",
+				"fragment" : "lib\\MinSizeRel\\gtest.lib",
 				"role" : "libraries"
 			},
 			{

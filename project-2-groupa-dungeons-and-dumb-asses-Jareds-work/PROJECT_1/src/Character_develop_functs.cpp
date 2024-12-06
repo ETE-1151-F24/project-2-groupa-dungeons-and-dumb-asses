@@ -1,7 +1,7 @@
 // Character_develop_functs.cpp
 #include "GameHeaderEli.h"                  // Include the game header file for necessary class definitions and enums
 #include "Character_develop_functs.h"
-#include "SpellHandling.h"
+
 
 
 
@@ -298,15 +298,3 @@ void Player::finalizeStats() {
     std::vector<nlohmann::json> availableSpells = loadSpells(SPELL_FILE);
     chooseStartingSpell(*this, availableSpells);
 }
-//-------------------------------------------------------------------------------------------
-// function to get the stats of the player, may not be needed anymore
-//-------------------------------------------------------------------------------------------
- 
-// void Player::getStats(int Stats[5], int a) const {
-//     Stats[0] =stats[Strength]; 
-//     Stats[1] =stats[Dexterity]; 
-//     Stats[2] =stats[Intelligence]; 
-//     Stats[3] =stats[Wisdom];    
-//     Stats[4] =stats[Constitution]; 
-//     Stats[5] =stats[Constitution]*(1+ a/10);
-//}

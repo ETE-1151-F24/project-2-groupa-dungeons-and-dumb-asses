@@ -5,9 +5,9 @@
 #include <vector>                                                                        // Include vector for dynamic arrays
 #include <iostream>                                                                      // Include iostream for console I/O
 #include "SpellHandling.h" 
-#include "Character_develop_functs.h"                                                              // Include game-specific header
+// #include "Character_develop_functs.h"                                                              // Include game-specific header
 #include <stdexcept>        // For std::runtime_error
-
+#include "GameHeaderEli.h"
 //--------------------------------------------------------------------------
 // Display the list of spells based on the player's level
 //--------------------------------------------------------------------------

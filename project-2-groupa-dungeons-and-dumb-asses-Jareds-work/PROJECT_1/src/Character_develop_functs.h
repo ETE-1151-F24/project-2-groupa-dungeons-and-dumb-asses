@@ -1,8 +1,9 @@
 #ifndef CHARACTER_DEVELOP_FUNCTS_H
 #define CHARACTER_DEVELOP_FUNCTS_H
-#include "Game_inventory_functions.h"
+
 #include "GameHeaderEli.h"  // Include the necessary base classes and libraries
 //Character_develop_functs.h
+
 
 
 // Character types for the game
@@ -23,9 +24,10 @@ enum StatisticType {
 
 
 // Function to display available character classes and handle selection
-void displayClasses(const Player& player);                                
+void displayClasses(class Player& player);                                
 
-
+// Define the number of stats
+constexpr int StatCount = 5; // Ensure StatCount is defined
 
 // Function to get the player's name  
 std::string getPlayerName();  
